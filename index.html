@@ -47,7 +47,7 @@
     </script>
     
     <!-- High Security Meta Headers -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: data: 'unsafe-inline' 'unsafe-eval'; img-src 'self' https: data:; font-src 'self' https: data:;">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: data: 'unsafe-inline' 'unsafe-eval'; img-src 'self' https: data:; font-src 'self' https: data:; media-src 'self' https:;">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
     <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
@@ -167,7 +167,7 @@
         .reveal-on-scroll {
             opacity: 0;
             transform: translateY(40px);
-            transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
             will-change: opacity, transform;
         }
         .reveal-on-scroll.active {
@@ -200,26 +200,46 @@
 </head>
 <body class="bg-spectacular-dark text-white font-body-md antialiased selection:bg-accent-gold/30 selection:text-white">
 
+<!-- Hidden Audio Element -->
+<audio id="bg-audio" preload="auto"></audio>
+
 <!-- Navigation -->
 <nav class="fixed top-0 w-full z-[100] glass-header">
     <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop h-20 flex justify-between items-center">
-        <div class="flex items-center gap-3 md:gap-4">
-            <div class="flex items-center gap-3 bg-white/5 p-2 rounded-xl backdrop-blur-sm border border-white/10">
-                <img alt="AFBI Logo" class="h-8 md:h-10 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHKp-w3nVdcOdEuXXiUfZVTxGHgfY3UsWdRadl8wHUEUVsekyMaykjqGZrUHOeIaR9ynbTct3YqEyYNaTMrQWJ6P-MRzJvd4nvdPjhitgx89EDJjaH0Pqg9L1dt09l6GbubUyz173L1Lm_akb3BwOx92jOJchHdsldcGMc2tN7BO-1-36R4lEKiTp_c8mIzixUR8RWmr5rEV-fieaeuAsx-bqUKUEjvZACyk3gqTHNYU1WIHwowo399vdGaReG89jEcA"/>
+        <div class="flex items-center gap-2 md:gap-3 shrink-0">
+            <div class="flex items-center gap-2 bg-white/5 p-1.5 md:p-2 rounded-xl backdrop-blur-sm border border-white/10">
+                <img alt="AFBI Logo" class="h-6 md:h-9 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHKp-w3nVdcOdEuXXiUfZVTxGHgfY3UsWdRadl8wHUEUVsekyMaykjqGZrUHOeIaR9ynbTct3YqEyYNaTMrQWJ6P-MRzJvd4nvdPjhitgx89EDJjaH0Pqg9L1dt09l6GbubUyz173L1Lm_akb3BwOx92jOJchHdsldcGMc2tN7BO-1-36R4lEKiTp_c8mIzixUR8RWmr5rEV-fieaeuAsx-bqUKUEjvZACyk3gqTHNYU1WIHwowo399vdGaReG89jEcA"/>
             </div>
-            <span class="font-headline-md text-white font-extrabold tracking-widest text-[18px] md:text-[22px] uppercase drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">AFBI <span class="text-accent-gold">#10</span></span>
+            <span class="font-headline-md text-white font-extrabold tracking-wider text-[15px] sm:text-[18px] md:text-[22px] uppercase drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">AFBI <span class="text-accent-gold">#10</span></span>
         </div>
+        
         <div class="hidden md:flex items-center gap-8">
             <a class="text-white/70 font-label-md hover:text-accent-gold transition-colors tracking-wide" href="#jalur">Jalur</a>
             <a class="text-white/70 font-label-md hover:text-accent-gold transition-colors tracking-wide" href="#timeline">Timeline</a>
             <a class="text-white/70 font-label-md hover:text-accent-gold transition-colors tracking-wide" href="#biaya">Biaya</a>
             <a class="text-white/70 font-label-md hover:text-accent-gold transition-colors tracking-wide" href="#partners">Sponsorship</a>
         </div>
-        <a class="group relative overflow-hidden bg-accent-gold text-spectacular-dark px-4 md:px-6 py-2 md:py-2.5 rounded-full font-label-md transition-all hover:scale-105 active:scale-95 flex items-center gap-2 font-bold" href="#jalur">
-            <span class="relative z-10 text-sm md:text-base">Daftar</span>
-            <span class="material-symbols-outlined text-[16px] md:text-[18px] transition-transform group-hover:translate-x-1 font-bold">rocket_launch</span>
-            <div class="shimmer-btn absolute inset-0 animate-shimmer"></div>
-        </a>
+
+        <div class="flex items-center gap-1.5 md:gap-3 shrink-0">
+            <!-- Compact Simplified Music Player Controls -->
+            <div class="flex items-center bg-white/5 border border-accent-gold/30 rounded-full p-0.5 md:p-1 shadow-[0_0_15px_rgba(212,175,55,0.1)]">
+                <button id="prev-btn" class="text-accent-gold hover:bg-accent-gold/20 p-1 md:p-1.5 rounded-full transition-all" title="Lagu Sebelumnya">
+                    <span class="material-symbols-outlined text-[15px] md:text-[18px] block">skip_previous</span>
+                </button>
+                <button id="music-toggle-btn" class="text-accent-gold hover:bg-accent-gold/20 p-1 md:p-1.5 rounded-full transition-all flex items-center justify-center font-bold" title="Play/Pause">
+                    <span id="music-icon" class="material-symbols-outlined text-[17px] md:text-[20px]">play_arrow</span>
+                </button>
+                <button id="next-btn" class="text-accent-gold hover:bg-accent-gold/20 p-1 md:p-1.5 rounded-full transition-all" title="Lagu Selanjutnya">
+                    <span class="material-symbols-outlined text-[15px] md:text-[18px] block">skip_next</span>
+                </button>
+            </div>
+            
+            <a class="group relative overflow-hidden bg-accent-gold text-spectacular-dark px-3.5 md:px-6 py-2 md:py-2.5 rounded-full font-label-md transition-all hover:scale-105 active:scale-95 flex items-center gap-1.5 font-bold" href="#jalur">
+                <span class="relative z-10 text-xs md:text-base">Daftar</span>
+                <span class="material-symbols-outlined text-[14px] md:text-[18px] transition-transform group-hover:translate-x-1 font-bold">rocket_launch</span>
+                <div class="shimmer-btn absolute inset-0 animate-shimmer"></div>
+            </a>
+        </div>
     </div>
 </nav>
 
@@ -717,7 +737,7 @@
                 </div>
                 <div class="flex items-start gap-4">
                     <span class="material-symbols-outlined text-accent-gold">campaign</span>
-                    <a href="https://whatsapp.com/channel/0029Vb8Cr464dTnQvJ4jmM3e" target="_blank" rel="noopener noreferrer" class="text-sm text-white/70 font-medium hover:text-accent-gold transition-colors">AFBI #10 (WhatsApp Channel)</a>
+                    <a href="https://whatsapp.com/channel/0029Vb8Cr464dTnQvJ4jmM3e" target="_blank" rel="noopener noreferrer" class="text-sm text-white/70 font-medium hover:text-accent-gold transition-colors">AFBI #10</a>
                 </div>
             </div>
         </div>
@@ -749,28 +769,142 @@
             }
         });
 
+        // Background Music Playlist & Controls Logic (with 4-song fixed playlist & tap/click autoplay)
+        const playlist = [
+            "https://files.catbox.moe/ckwmq1.mp3",
+            "https://files.catbox.moe/y9k1mh.mp3",
+            "https://files.catbox.moe/9jaxfc.mp3",
+            "https://files.catbox.moe/13hrfc.mp3"
+        ];
+        let currentTrackIndex = 0;
+        let wasPlayingBeforeHidden = false;
+        let hasInteracted = false;
+
+        const audio = document.getElementById('bg-audio');
+        const musicToggleBtn = document.getElementById('music-toggle-btn');
+        const musicIcon = document.getElementById('music-icon');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+
+        if (audio && musicToggleBtn) {
+            audio.volume = 0.5;
+
+            function loadTrack(index) {
+                audio.src = playlist[index];
+                audio.load();
+            }
+
+            function playTrack(index) {
+                currentTrackIndex = index;
+                loadTrack(currentTrackIndex);
+                audio.play().then(() => {
+                    musicIcon.textContent = 'pause';
+                    hasInteracted = true;
+                }).catch(err => {
+                    console.log("Menunggu tap/klik pengguna untuk memutar audio...");
+                });
+            }
+
+            loadTrack(currentTrackIndex);
+
+            musicToggleBtn.addEventListener('click', () => {
+                if (audio.paused) {
+                    audio.play().then(() => {
+                        musicIcon.textContent = 'pause';
+                        hasInteracted = true;
+                    }).catch(err => {
+                        console.error("Playback prevented:", err);
+                    });
+                } else {
+                    audio.pause();
+                    musicIcon.textContent = 'play_arrow';
+                }
+            });
+
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => {
+                    currentTrackIndex = (currentTrackIndex - 1 + playlist.length) % playlist.length;
+                    playTrack(currentTrackIndex);
+                });
+            }
+
+            if (nextBtn) {
+                nextBtn.addEventListener('click', () => {
+                    currentTrackIndex = (currentTrackIndex + 1) % playlist.length;
+                    playTrack(currentTrackIndex);
+                });
+            }
+
+            audio.addEventListener('ended', () => {
+                currentTrackIndex = (currentTrackIndex + 1) % playlist.length;
+                playTrack(currentTrackIndex);
+            });
+
+            audio.addEventListener('pause', () => {
+                musicIcon.textContent = 'play_arrow';
+            });
+
+            audio.addEventListener('play', () => {
+                musicIcon.textContent = 'pause';
+            });
+
+            // Autoplay on first valid user gesture (tap, click, pointerdown, keydown) across document
+            const triggerAutoPlay = () => {
+                if (!hasInteracted && audio.paused) {
+                    audio.play().then(() => {
+                        musicIcon.textContent = 'pause';
+                        hasInteracted = true;
+                        document.removeEventListener('click', triggerAutoPlay);
+                        document.removeEventListener('touchend', triggerAutoPlay);
+                        document.removeEventListener('pointerdown', triggerAutoPlay);
+                        document.removeEventListener('keydown', triggerAutoPlay);
+                    }).catch(() => {});
+                }
+            };
+
+            document.addEventListener('click', triggerAutoPlay);
+            document.addEventListener('touchend', triggerAutoPlay);
+            document.addEventListener('pointerdown', triggerAutoPlay);
+            document.addEventListener('keydown', triggerAutoPlay);
+
+            // Pause music automatically when switching tabs / leaving the website
+            document.addEventListener('visibilitychange', () => {
+                if (document.hidden) {
+                    wasPlayingBeforeHidden = !audio.paused;
+                    if (wasPlayingBeforeHidden) {
+                        audio.pause();
+                    }
+                } else {
+                    if (wasPlayingBeforeHidden) {
+                        audio.play().catch(() => {});
+                    }
+                }
+            });
+        }
+
+        // Smooth Scroll Reveal for Both Directions (Scroll Up and Down)
         const revealElements = document.querySelectorAll('.reveal-on-scroll, .scale-on-scroll');
         const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         if (prefersReducedMotion) {
             revealElements.forEach(el => el.classList.add('active'));
         } else {
-            const observer = new IntersectionObserver((entries, obs) => {
+            const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('active');
-                        obs.unobserve(entry.target);
+                    } else {
+                        entry.target.classList.remove('active');
                     }
                 });
-            }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+            }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+            
             revealElements.forEach(el => observer.observe(el));
         }
 
         // ==========================================
         // SMART DATE NORMALIZER & TESTING MODE
-        // Masukkan format tanggal bebas (misal "2026-09-12").
-        // Kosongkan ("") untuk memakai tanggal real-time WIB.
         // ==========================================
-        const testDate = ""; 
+        const testDate = "2026-09-12"; 
 
         const normalizeDate = (dateStr) => {
             if (!dateStr) return '';
@@ -785,14 +919,11 @@
         let currentDate = normalizeDate(testDate);
 
         if (!currentDate) {
-            // Accurate National Standard WIB (UTC+7) Synchronization
             const d = new Date();
             const utcTime = d.getTime() + (d.getTimezoneOffset() * 60000);
             const wibTime = new Date(utcTime + (7 * 3600000));
             currentDate = normalizeDate(wibTime);
         }
-
-        console.log("Tanggal Standar Nasional WIB / Testing (Normalized):", currentDate);
 
         const scheduleSMA = [
             { start: '2026-08-03', end: '2026-09-07', name: 'Pendaftaran Dibuka', type: 'reg' },
@@ -817,10 +948,8 @@
         const getActivePhase = (schedule, date) => {
             const activeEvents = schedule.filter(s => date >= s.start && date <= s.end);
             if (activeEvents.length === 0) return { type: 'idle', name: '' };
-            
             const eventMatch = activeEvents.find(s => s.type === 'event');
             if (eventMatch) return eventMatch;
-            
             return activeEvents[0];
         };
 
@@ -859,7 +988,6 @@
             const msg = activeSma.type === 'event' ? `Tahap ${activeSma.name} Sedang Berlangsung` : "Menunggu Tahap Lomba Selanjutnya";
             if(btnSma) btnSma.outerHTML = getSMA_Block(msg, true);
             if(feeSma) feeSma.innerHTML = getSMA_Block(msg);
-            
             if(badgeSmaText) badgeSmaText.textContent = activeSma.type === 'event' ? activeSma.name : "Jeda Waktu";
             if(badgeSma) badgeSma.classList.remove('hidden');
         } 
@@ -888,7 +1016,6 @@
             const msg = activeUniv.type === 'event' ? `Tahap ${activeUniv.name} Sedang Berlangsung` : "Menunggu Tahap Lomba Selanjutnya";
             if(btnUniv) btnUniv.outerHTML = getUNIV_Block(msg, true);
             if(feeUniv) feeUniv.innerHTML = getUNIV_Block(msg);
-            
             if(badgeUnivText) badgeUnivText.textContent = activeUniv.type === 'event' ? activeUniv.name : "Jeda Waktu";
             if(badgeUniv) badgeUniv.classList.remove('hidden');
         } 
@@ -901,7 +1028,6 @@
         timelineRows.forEach(row => {
             const start = row.getAttribute('data-start');
             const end = row.getAttribute('data-end');
-            
             if (currentDate >= start && currentDate <= end) {
                 row.classList.add('timeline-highlight-active');
                 const dot = row.querySelector('.timeline-dot');
@@ -925,7 +1051,6 @@
         feeRows.forEach(row => {
             const start = row.getAttribute('data-start');
             const end = row.getAttribute('data-end');
-            
             if (currentDate >= start && currentDate <= end) {
                 if (row.classList.contains('fee-univ')) {
                     row.classList.add('biaya-highlight-univ');
