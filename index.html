@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="scroll-smooth dark" lang="id">
+<html class="scroll-smooth snap-y snap-proximity dark" lang="id">
 <head>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
@@ -84,6 +84,7 @@
                 animation: {
                     'shimmer': 'shimmer 2.5s linear infinite',
                     'reveal-up': 'revealUp 0.6s ease-out forwards',
+                    'float': 'float 6s ease-in-out infinite',
                 },
                 keyframes: {
                     shimmer: {
@@ -93,6 +94,10 @@
                     revealUp: {
                         '0%': { opacity: '0', transform: 'translateY(25px)' },
                         '100%': { opacity: '1', transform: 'translateY(0)' },
+                    },
+                    float: {
+                        '0%, 100%': { transform: 'translateY(0)' },
+                        '50%': { transform: 'translateY(-15px)' },
                     }
                 }
             },
@@ -100,6 +105,11 @@
     }
     </script>
     <style>
+        /* Smooth Scroll Fallback */
+        html {
+            scroll-behavior: smooth;
+        }
+
         .material-symbols-outlined {
             font-family: 'Material Symbols Outlined' !important;
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
@@ -114,18 +124,21 @@
             -webkit-backdrop-filter: blur(15px);
             border-bottom: 1px solid rgba(212, 175, 55, 0.15);
         }
+        
         .glass-card {
             background: rgba(255, 255, 255, 0.04);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.3);
-            transition: all 0.3s ease;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+            will-change: transform, opacity;
         }
         .glass-card:hover {
             background: rgba(255, 255, 255, 0.07);
             border-color: rgba(212, 175, 55, 0.4);
-            transform: translateY(-4px);
+            transform: translateY(-6px);
+            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.15);
         }
         .text-gradient-gold {
             background: linear-gradient(135deg, #FFF2A6 0%, #D4AF37 50%, #997A15 100%);
@@ -151,12 +164,23 @@
         .reveal-on-scroll {
             opacity: 0;
             transform: translateY(30px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
             will-change: opacity, transform;
         }
         .reveal-on-scroll.active {
             opacity: 1;
             transform: translateY(0);
+        }
+        
+        .scale-on-scroll {
+            opacity: 0;
+            transform: scale(0.95);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            will-change: opacity, transform;
+        }
+        .scale-on-scroll.active {
+            opacity: 1;
+            transform: scale(1);
         }
 
         .timeline-highlight-active {
@@ -268,7 +292,7 @@
 
 <main class="grid-bg-dark">
     <!-- Hero Section -->
-    <section class="relative pt-32 sm:pt-40 pb-20 sm:pb-32 px-4 sm:px-margin-mobile md:px-margin-desktop overflow-hidden min-h-[90vh] flex items-center justify-center">
+    <section class="relative pt-32 sm:pt-40 pb-20 sm:pb-32 px-4 sm:px-margin-mobile md:px-margin-desktop overflow-hidden min-h-[90vh] flex items-center justify-center snap-start">
         <!-- Background Video -->
         <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
             <video 
@@ -285,7 +309,7 @@
         </div>
         
         <div class="max-w-[1000px] mx-auto text-center relative z-10 w-full">
-            <div class="inline-flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-2 rounded-full bg-white/5 border border-accent-gold/40 mb-6 sm:mb-8 animate-reveal-up backdrop-blur-sm max-w-full">
+            <div class="inline-flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-2 rounded-full bg-white/5 border border-accent-gold/40 mb-6 sm:mb-8 animate-reveal-up backdrop-blur-sm max-w-full hover:bg-white/10 transition-colors">
                 <span class="flex h-2 w-2 rounded-full bg-accent-gold animate-ping shrink-0"></span>
                 <span class="font-label-sm text-accent-gold font-bold tracking-[0.1em] sm:tracking-[0.2em] uppercase text-[11px] sm:text-sm truncate">REGISTRASI PESERTA AFBI #10 RESMI DIBUKA</span>
             </div>
@@ -294,8 +318,8 @@
                 Accounting Festival Bina Insani <br class="hidden sm:inline"/><span class="text-gradient-animated">(AFBI #10)</span>
             </h1>
 
-            <div class="p-5 sm:p-8 md:p-10 rounded-[2rem] sm:rounded-[2.5rem] border border-white/15 shadow-[0_10px_30px_rgba(0,0,0,0.5)] mb-8 sm:mb-12 animate-reveal-up backdrop-blur-md bg-[#02120C]/40 text-left sm:text-center mx-auto">
-                <p class="font-body-lg text-white/95 leading-relaxed text-sm sm:text-lg md:text-xl drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
+            <div class="p-5 sm:p-8 md:p-10 rounded-[2rem] sm:rounded-[2.5rem] border border-white/15 shadow-[0_10px_30px_rgba(0,0,0,0.5)] mb-8 sm:mb-12 animate-reveal-up backdrop-blur-md bg-[#02120C]/40 mx-auto hover:border-accent-gold/30 transition-colors duration-500">
+                <p class="font-body-lg text-white/95 leading-relaxed text-sm sm:text-lg md:text-xl drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)] text-justify">
                     Accounting Festival Bina Insani #10 (AFBI #10) merupakan kegiatan tahunan Perguruan Tinggi Bina Insani yang mengusung tema pemanfaatan Artificial Intelligence (AI) dalam dunia akuntansi. Kegiatan ini terdiri atas Lomba Akuntansi tingkat SMA/SMK dan Perguruan Tinggi serta Webinar Nasional yang diselenggarakan secara hybrid. AFBI #10 bertujuan meningkatkan kompetensi, inovasi, dan kesiapan generasi muda dalam menghadapi perkembangan digital accounting, sekaligus menjadi wadah kolaborasi antara siswa, mahasiswa, akademisi, praktisi, dan berbagai mitra pendukung.
                 </p>
             </div>
@@ -314,7 +338,7 @@
     </section>
 
     <!-- Track Selection Section -->
-    <section class="py-20 sm:py-24 px-4 sm:px-margin-mobile md:px-margin-desktop scroll-mt-20 relative" id="jalur">
+    <section class="py-20 sm:py-24 px-4 sm:px-margin-mobile md:px-margin-desktop scroll-mt-20 relative snap-start" id="jalur">
         <div class="max-w-container-max mx-auto relative z-10">
             <div class="text-center mb-16 sm:mb-20 reveal-on-scroll">
                 <span class="font-label-md text-accent-gold uppercase tracking-[0.3em] mb-3 sm:mb-4 block font-bold text-xs sm:text-sm">Kategori Lomba</span>
@@ -324,7 +348,7 @@
             
             <div class="grid md:grid-cols-2 gap-8 sm:gap-10 max-w-5xl mx-auto">
                 <!-- University Track -->
-                <div class="glass-card group rounded-[2rem] sm:rounded-[2.5rem] p-6 sm:p-10 flex flex-col items-start relative overflow-hidden reveal-on-scroll border-t-4 border-t-accent-gold">
+                <div class="glass-card group rounded-[2rem] sm:rounded-[2.5rem] p-6 sm:p-10 flex flex-col items-start relative overflow-hidden reveal-on-scroll border-t-4 border-t-accent-gold hover:shadow-[0_0_30px_rgba(212,175,55,0.2)]">
                     <div id="badge-univ" class="hidden absolute top-6 right-6 bg-gradient-to-r from-accent-gold to-yellow-500 text-spectacular-dark px-3.5 py-1.5 rounded-full font-extrabold text-xs shadow-md flex items-center gap-2 z-20">
                         <span class="relative flex h-2 w-2">
                           <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-spectacular-dark opacity-75"></span>
@@ -333,7 +357,7 @@
                         <span id="text-badge-univ">Status</span>
                     </div>
 
-                    <div class="w-16 h-16 sm:w-20 sm:h-20 bg-accent-gold/15 border border-accent-gold/40 text-accent-gold rounded-2xl sm:rounded-3xl flex items-center justify-center mb-6 group-hover:bg-accent-gold group-hover:text-spectacular-dark transition-all duration-300">
+                    <div class="w-16 h-16 sm:w-20 sm:h-20 bg-accent-gold/15 border border-accent-gold/40 text-accent-gold rounded-2xl sm:rounded-3xl flex items-center justify-center mb-6 group-hover:bg-accent-gold group-hover:text-spectacular-dark transition-all duration-300 transform group-hover:scale-110">
                         <span class="material-symbols-outlined text-[32px] sm:text-[40px]">account_balance</span>
                     </div>
 
@@ -343,10 +367,10 @@
                     <div class="mt-auto w-full flex flex-col gap-3 relative z-20">
                         <a id="btn-univ" class="flex w-full items-center justify-between gap-3 font-label-md text-accent-gold group-hover:gap-5 transition-all bg-accent-gold/15 px-5 sm:px-6 py-3.5 sm:py-4 rounded-full border border-accent-gold/40 hover:bg-accent-gold/25 font-bold text-sm sm:text-base" href="https://docs.google.com/forms/d/e/1FAIpQLScxhHFW34yDEbQsneOqo73maVjwnPEj2Q0sAXJwzWTnYrA-Tg/viewform" target="_blank" rel="noopener noreferrer">
                             <span class="tracking-wide">Isi Formulir Perguruan Tinggi</span>
-                            <span class="material-symbols-outlined text-[18px] sm:text-[20px]">arrow_forward</span>
+                            <span class="material-symbols-outlined text-[18px] sm:text-[20px] transition-transform group-hover:translate-x-1">arrow_forward</span>
                         </a>
                         <div class="w-full" id="actions-univ">
-                            <a class="flex items-center justify-center gap-2 font-label-md text-accent-gold hover:text-white transition-all bg-accent-gold/5 hover:bg-accent-gold/15 py-3.5 rounded-full border border-accent-gold/25 font-bold w-full text-sm" id="btn-booklet-univ" href="https://drive.google.com/file/d/1S_7ovDhG5k-aDssmGQZvymogaQwwWl_l/view?usp=drivesdk" target="_blank">
+                            <a class="flex items-center justify-center gap-2 font-label-md text-accent-gold hover:text-white transition-all bg-accent-gold/5 hover:bg-accent-gold/15 py-3.5 rounded-full border border-accent-gold/25 font-bold w-full text-sm hover:scale-[1.02]" id="btn-booklet-univ" href="https://drive.google.com/file/d/1S_7ovDhG5k-aDssmGQZvymogaQwwWl_l/view?usp=drivesdk" target="_blank">
                                 <span class="material-symbols-outlined text-[18px]">menu_book</span>
                                 <span>Booklet</span>
                             </a>
@@ -355,7 +379,7 @@
                 </div>
 
                 <!-- School Track -->
-                <div class="glass-card group rounded-[2rem] sm:rounded-[2.5rem] p-6 sm:p-10 flex flex-col items-start relative overflow-hidden reveal-on-scroll border-t-4 border-t-blue-400">
+                <div class="glass-card group rounded-[2rem] sm:rounded-[2.5rem] p-6 sm:p-10 flex flex-col items-start relative overflow-hidden reveal-on-scroll border-t-4 border-t-blue-400 hover:shadow-[0_0_30px_rgba(96,165,250,0.2)]">
                     <div id="badge-sma" class="hidden absolute top-6 right-6 bg-gradient-to-r from-blue-400 to-blue-500 text-spectacular-dark px-3 py-1.5 rounded-full font-extrabold text-[11px] sm:text-xs shadow-md flex items-center gap-1.5 z-20 text-center max-w-[180px] sm:max-w-none leading-tight">
                         <span class="relative flex h-2 w-2 shrink-0">
                           <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-spectacular-dark opacity-75"></span>
@@ -364,7 +388,7 @@
                         <span id="text-badge-sma">Status</span>
                     </div>
 
-                    <div class="w-16 h-16 sm:w-20 sm:h-20 bg-blue-500/15 border border-blue-500/40 text-blue-400 rounded-2xl sm:rounded-3xl flex items-center justify-center mb-6 group-hover:bg-blue-400 group-hover:text-spectacular-dark transition-all duration-300">
+                    <div class="w-16 h-16 sm:w-20 sm:h-20 bg-blue-500/15 border border-blue-500/40 text-blue-400 rounded-2xl sm:rounded-3xl flex items-center justify-center mb-6 group-hover:bg-blue-400 group-hover:text-spectacular-dark transition-all duration-300 transform group-hover:scale-110">
                         <span class="material-symbols-outlined text-[32px] sm:text-[40px]">school</span>
                     </div>
 
@@ -374,10 +398,10 @@
                     <div class="mt-auto w-full flex flex-col gap-3 relative z-20">
                         <a id="btn-sma" class="flex w-full items-center justify-between gap-3 font-label-md text-blue-400 group-hover:gap-5 transition-all bg-blue-500/15 px-5 sm:px-6 py-3.5 sm:py-4 rounded-full border border-blue-500/40 hover:bg-blue-500/25 font-bold text-sm sm:text-base" href="https://docs.google.com/forms/d/e/1FAIpQLScb2IaWgS0ruWlx1HD-sZ_Y3jntpevXIFrGXi2VKmJmBjkJVg/viewform" target="_blank" rel="noopener noreferrer">
                             <span class="tracking-wide">Isi Formulir SMA/SMK</span>
-                            <span class="material-symbols-outlined text-[18px] sm:text-[20px]">arrow_forward</span>
+                            <span class="material-symbols-outlined text-[18px] sm:text-[20px] transition-transform group-hover:translate-x-1">arrow_forward</span>
                         </a>
                         <div class="w-full" id="actions-sma">
-                            <a class="flex items-center justify-center gap-2 font-label-md text-blue-400 hover:text-white transition-all bg-blue-500/5 hover:bg-blue-500/15 py-3.5 rounded-full border border-blue-500/25 font-bold w-full text-sm" id="btn-booklet-sma" href="https://drive.google.com/file/d/1kc8GNGqRgRQ4e1lqPYLolstntcwkOcs3/view?usp=drivesdk" target="_blank">
+                            <a class="flex items-center justify-center gap-2 font-label-md text-blue-400 hover:text-white transition-all bg-blue-500/5 hover:bg-blue-500/15 py-3.5 rounded-full border border-blue-500/25 font-bold w-full text-sm hover:scale-[1.02]" id="btn-booklet-sma" href="https://drive.google.com/file/d/1kc8GNGqRgRQ4e1lqPYLolstntcwkOcs3/view?usp=drivesdk" target="_blank">
                                 <span class="material-symbols-outlined text-[18px]">menu_book</span>
                                 <span>Booklet</span>
                             </a>
@@ -389,7 +413,7 @@
     </section>
 
     <!-- Timeline Section -->
-    <section class="py-20 sm:py-24 px-4 sm:px-margin-mobile md:px-margin-desktop relative scroll-mt-20 border-y border-white/10 bg-spectacular-dark/60" id="timeline">
+    <section class="py-20 sm:py-24 px-4 sm:px-margin-mobile md:px-margin-desktop relative scroll-mt-20 border-y border-white/10 bg-spectacular-dark/60 snap-start" id="timeline">
         <div class="max-w-container-max mx-auto relative z-10">
             <div class="flex flex-col md:flex-row items-start md:items-end justify-between mb-16 sm:mb-20 gap-6 reveal-on-scroll">
                 <div>
@@ -403,7 +427,7 @@
                 <div class="reveal-on-scroll" style="transition-delay: 0.1s">
                     <div class="glass-card rounded-[2rem] sm:rounded-[2.5rem] p-6 sm:p-10 border-t-4 border-t-blue-400 relative overflow-hidden">
                         <div class="flex items-center gap-4 sm:gap-5 mb-8 sm:mb-10 pb-6 sm:pb-8 border-b border-white/10 relative z-10">
-                            <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-blue-500/20 border border-blue-500/40 flex items-center justify-center shrink-0">
+                            <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-blue-500/20 border border-blue-500/40 flex items-center justify-center shrink-0 shadow-lg">
                                 <span class="material-symbols-outlined text-blue-400 text-[28px] sm:text-[32px]">school</span>
                             </div>
                             <h3 class="font-headline-md text-xl sm:text-2xl text-white font-bold">Tingkat SMA / SMK</h3>
@@ -461,7 +485,7 @@
                                 <div class="timeline-dot absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-white/20 transition-all"></div>
                                 <div class="timeline-date-label w-full sm:w-28 shrink-0 font-label-md text-blue-400 font-bold text-base sm:text-lg">19 September</div>
                                 <div class="flex-1 w-full mt-1 sm:mt-0">
-                                    <h4 class="font-label-md text-spectacular-dark font-bold bg-gradient-to-r from-blue-400 to-blue-200 inline-block px-3 py-1 rounded-lg mb-2 tracking-widest uppercase text-xs flex items-center gap-2 flex-wrap">FINAL STAGE <span class="badge-status hidden ml-1 bg-white text-blue-500 px-2 py-0.5 rounded">HARI INI</span></h4>
+                                    <h4 class="font-label-md text-spectacular-dark font-bold bg-gradient-to-r from-blue-400 to-blue-200 inline-block px-3 py-1 rounded-lg mb-2 tracking-widest uppercase text-xs flex items-center gap-2 flex-wrap shadow-lg">FINAL STAGE <span class="badge-status hidden ml-1 bg-white text-blue-500 px-2 py-0.5 rounded">HARI INI</span></h4>
                                     <p class="text-xs sm:text-sm text-white/80 font-medium">Case analysis &amp; Presentation</p>
                                 </div>
                             </div>
@@ -473,7 +497,7 @@
                 <div class="reveal-on-scroll" style="transition-delay: 0.2s">
                     <div class="glass-card rounded-[2rem] sm:rounded-[2.5rem] p-6 sm:p-10 border-t-4 border-t-accent-gold relative overflow-hidden">
                         <div class="flex items-center gap-4 sm:gap-5 mb-8 sm:mb-10 pb-6 sm:pb-8 border-b border-white/10 relative z-10">
-                            <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-accent-gold/20 border border-accent-gold/40 flex items-center justify-center shrink-0">
+                            <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-accent-gold/20 border border-accent-gold/40 flex items-center justify-center shrink-0 shadow-lg">
                                 <span class="material-symbols-outlined text-accent-gold text-[28px] sm:text-[32px]">workspace_premium</span>
                             </div>
                             <h3 class="font-headline-md text-xl sm:text-2xl text-white font-bold">Tingkat Perguruan Tinggi</h3>
@@ -531,7 +555,7 @@
                                 <div class="timeline-dot absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-white/20 transition-all"></div>
                                 <div class="timeline-date-label w-full sm:w-28 shrink-0 font-label-md text-accent-gold font-bold text-base sm:text-lg">03 Oktober</div>
                                 <div class="flex-1 w-full mt-1 sm:mt-0">
-                                    <h4 class="font-label-md text-spectacular-dark font-bold bg-gradient-to-r from-accent-gold to-yellow-200 inline-block px-3 py-1 rounded-lg mb-2 tracking-widest uppercase text-xs flex items-center gap-2 flex-wrap">FINAL STAGE <span class="badge-status hidden ml-1 bg-spectacular-dark text-accent-gold px-2 py-0.5 rounded">HARI INI</span></h4>
+                                    <h4 class="font-label-md text-spectacular-dark font-bold bg-gradient-to-r from-accent-gold to-yellow-200 inline-block px-3 py-1 rounded-lg mb-2 tracking-widest uppercase text-xs flex items-center gap-2 flex-wrap shadow-lg">FINAL STAGE <span class="badge-status hidden ml-1 bg-spectacular-dark text-accent-gold px-2 py-0.5 rounded">HARI INI</span></h4>
                                     <p class="text-xs sm:text-sm text-white/80 font-medium">Case analysis &amp; Presentation</p>
                                 </div>
                             </div>
@@ -543,7 +567,7 @@
     </section>
 
     <!-- Fees Section -->
-    <section class="py-20 sm:py-24 px-4 sm:px-margin-mobile md:px-margin-desktop scroll-mt-20 relative" id="biaya">
+    <section class="py-20 sm:py-24 px-4 sm:px-margin-mobile md:px-margin-desktop scroll-mt-20 relative snap-start" id="biaya">
         <div class="max-w-container-max mx-auto relative z-10">
             <div class="text-center mb-16 sm:mb-20 reveal-on-scroll">
                 <span class="font-label-md text-accent-gold uppercase tracking-[0.3em] mb-3 sm:mb-4 block font-bold text-xs sm:text-sm">Investasi Kompetisi</span>
@@ -560,14 +584,14 @@
                         <h3 class="font-headline-md text-xl sm:text-2xl text-white font-bold">Biaya SMA/SMK</h3>
                     </div>
                     <div id="fee-container-sma" class="space-y-4">
-                        <div class="fee-row fee-sma flex justify-between items-center gap-3 bg-white/5 border border-white/10 p-4 sm:p-5 rounded-2xl transition-all duration-300" data-start="2026-08-03" data-end="2026-09-07">
+                        <div class="fee-row fee-sma flex justify-between items-center gap-3 bg-white/5 border border-white/10 p-4 sm:p-5 rounded-2xl transition-all duration-300 hover:border-blue-400/40" data-start="2026-08-03" data-end="2026-09-07">
                             <div class="flex flex-col flex-1">
                                 <span class="font-body-lg text-white/90 font-medium text-sm sm:text-base">Pendaftaran Online</span>
                                 <span class="fee-active-label hidden text-[10px] font-extrabold text-blue-400 mt-1 uppercase tracking-wider">Tahap Aktif</span>
                             </div>
                             <span class="font-label-md text-spectacular-dark bg-gradient-to-r from-green-400 to-emerald-300 px-3 sm:px-4 py-1.5 rounded-full uppercase text-xs tracking-widest font-extrabold shadow-sm shrink-0 whitespace-nowrap">Free</span>
                         </div>
-                        <div class="fee-row fee-sma flex justify-between items-center gap-3 bg-white/5 border border-white/10 p-4 sm:p-5 rounded-2xl transition-all duration-300" data-start="2026-09-09" data-end="2026-09-12">
+                        <div class="fee-row fee-sma flex justify-between items-center gap-3 bg-white/5 border border-white/10 p-4 sm:p-5 rounded-2xl transition-all duration-300 hover:border-blue-400/40" data-start="2026-09-09" data-end="2026-09-12">
                             <div class="flex flex-col flex-1">
                                 <span class="font-body-lg text-white/90 font-medium text-sm sm:text-base">Daftar Ulang (Finalist)</span>
                                 <span class="fee-active-label hidden text-[10px] font-extrabold text-blue-400 mt-1 uppercase tracking-wider">Tahap Aktif</span>
@@ -586,21 +610,21 @@
                         <h3 class="font-headline-md text-xl sm:text-2xl text-white font-bold">Biaya Perguruan Tinggi</h3>
                     </div>
                     <div id="fee-container-univ" class="space-y-4">
-                        <div class="fee-row fee-univ flex justify-between items-center gap-3 bg-white/5 border border-white/10 p-4 sm:p-5 rounded-2xl transition-all duration-300" data-start="2026-08-03" data-end="2026-09-05">
+                        <div class="fee-row fee-univ flex justify-between items-center gap-3 bg-white/5 border border-white/10 p-4 sm:p-5 rounded-2xl transition-all duration-300 hover:border-accent-gold/40" data-start="2026-08-03" data-end="2026-09-05">
                             <div class="flex flex-col flex-1">
                                 <span class="font-body-lg text-white/90 font-medium text-sm sm:text-base">Gelombang 1</span>
                                 <span class="fee-active-label hidden text-[10px] font-extrabold text-accent-gold mt-1 uppercase tracking-wider">Tahap Aktif</span>
                             </div>
                             <span class="font-headline-md text-accent-gold text-[18px] sm:text-[20px] font-extrabold shrink-0 whitespace-nowrap">Rp 50.000</span>
                         </div>
-                        <div class="fee-row fee-univ flex justify-between items-center gap-3 bg-white/5 border border-white/10 p-4 sm:p-5 rounded-2xl transition-all duration-300" data-start="2026-09-06" data-end="2026-09-20">
+                        <div class="fee-row fee-univ flex justify-between items-center gap-3 bg-white/5 border border-white/10 p-4 sm:p-5 rounded-2xl transition-all duration-300 hover:border-accent-gold/40" data-start="2026-09-06" data-end="2026-09-20">
                             <div class="flex flex-col flex-1">
                                 <span class="font-body-lg text-white/90 font-medium text-sm sm:text-base">Gelombang 2</span>
                                 <span class="fee-active-label hidden text-[10px] font-extrabold text-accent-gold mt-1 uppercase tracking-wider">Tahap Aktif</span>
                             </div>
                             <span class="font-headline-md text-accent-gold text-[18px] sm:text-[20px] font-extrabold shrink-0 whitespace-nowrap">Rp 100.000</span>
                         </div>
-                        <div class="fee-row fee-univ flex justify-between items-center gap-3 bg-white/5 border border-white/10 p-4 sm:p-5 rounded-2xl transition-all duration-300 relative overflow-hidden" data-start="2026-09-24" data-end="2026-09-25">
+                        <div class="fee-row fee-univ flex justify-between items-center gap-3 bg-white/5 border border-white/10 p-4 sm:p-5 rounded-2xl transition-all duration-300 relative overflow-hidden hover:border-accent-gold/40" data-start="2026-09-24" data-end="2026-09-25">
                             <div class="absolute inset-0 bg-gradient-to-r from-accent-gold/0 via-accent-gold/10 to-accent-gold/0 animate-shimmer"></div>
                             <div class="flex flex-col flex-1 relative z-10">
                                 <span class="font-body-lg text-white/90 font-medium text-sm sm:text-base">Daftar Ulang Semifinal</span>
@@ -613,7 +637,7 @@
             </div>
 
             <!-- Payment Info -->
-            <div class="max-w-3xl mx-auto bg-gradient-to-br from-[#0a2e1f] to-[#041710] rounded-[2rem] sm:rounded-[3rem] p-6 sm:p-12 text-white relative overflow-hidden shadow-xl border border-accent-gold/30 reveal-on-scroll">
+            <div class="max-w-3xl mx-auto bg-gradient-to-br from-[#0a2e1f] to-[#041710] rounded-[2rem] sm:rounded-[3rem] p-6 sm:p-12 text-white relative overflow-hidden shadow-xl border border-accent-gold/30 reveal-on-scroll hover:shadow-[0_0_40px_rgba(212,175,55,0.15)] transition-shadow duration-500">
                 <div class="relative z-10 flex flex-col sm:flex-row items-center gap-6 sm:gap-10 text-center sm:text-left">
                     <div class="w-16 h-16 sm:w-24 sm:h-24 bg-white/10 rounded-2xl sm:rounded-3xl flex items-center justify-center shrink-0 border border-white/20">
                         <span class="material-symbols-outlined text-[32px] sm:text-[48px] text-accent-gold">account_balance</span>
@@ -629,7 +653,7 @@
     </section>
 
     <!-- Alur Section -->
-    <section class="py-20 sm:py-24 px-4 sm:px-margin-mobile md:px-margin-desktop scroll-mt-20 relative border-t border-white/10 bg-spectacular-dark/40" id="alur">
+    <section class="py-20 sm:py-24 px-4 sm:px-margin-mobile md:px-margin-desktop scroll-mt-20 relative border-t border-white/10 bg-spectacular-dark/40 snap-start" id="alur">
         <div class="max-w-container-max mx-auto relative z-10">
             <div class="text-center mb-16 sm:mb-24 reveal-on-scroll">
                 <span class="font-label-md text-accent-gold uppercase tracking-[0.3em] mb-3 sm:mb-4 block font-bold text-xs sm:text-sm">Mekanisme Pendaftaran</span>
@@ -639,28 +663,28 @@
                 <div class="hidden md:block absolute top-14 left-24 right-24 h-0.5 bg-gradient-to-r from-accent-gold/0 via-accent-gold/40 to-accent-gold/0"></div>
                 <div class="flex flex-col items-center text-center reveal-on-scroll group" style="transition-delay: 0.1s">
                     <div class="w-20 h-20 sm:w-28 sm:h-28 rounded-full glass-card border-2 border-white/15 flex items-center justify-center mb-6 sm:mb-8 relative z-10 group-hover:border-accent-gold transition-all duration-300">
-                        <span class="material-symbols-outlined text-white text-[30px] sm:text-[40px] group-hover:text-accent-gold transition-colors">touch_app</span>
+                        <span class="material-symbols-outlined text-white text-[30px] sm:text-[40px] group-hover:text-accent-gold group-hover:scale-110 transition-all duration-300">touch_app</span>
                         <div class="absolute -top-1 -right-1 sm:-top-2 sm:-right-2 w-7 h-7 sm:w-10 sm:h-10 rounded-full bg-accent-gold text-spectacular-dark text-xs sm:text-sm font-extrabold flex items-center justify-center shadow-md">1</div>
                     </div>
                     <h4 class="font-headline-md text-lg sm:text-[22px] text-white font-bold mb-2 group-hover:text-accent-gold transition-colors">Pilih Jalur</h4>
                 </div>
                 <div class="flex flex-col items-center text-center reveal-on-scroll group" style="transition-delay: 0.2s">
                     <div class="w-20 h-20 sm:w-28 sm:h-28 rounded-full glass-card border-2 border-white/15 flex items-center justify-center mb-6 sm:mb-8 relative z-10 group-hover:border-accent-gold transition-all duration-300">
-                        <span class="material-symbols-outlined text-white text-[30px] sm:text-[40px] group-hover:text-accent-gold transition-colors">edit_note</span>
+                        <span class="material-symbols-outlined text-white text-[30px] sm:text-[40px] group-hover:text-accent-gold group-hover:scale-110 transition-all duration-300">edit_note</span>
                         <div class="absolute -top-1 -right-1 sm:-top-2 sm:-right-2 w-7 h-7 sm:w-10 sm:h-10 rounded-full bg-accent-gold text-spectacular-dark text-xs sm:text-sm font-extrabold flex items-center justify-center shadow-md">2</div>
                     </div>
                     <h4 class="font-headline-md text-lg sm:text-[22px] text-white font-bold mb-2 group-hover:text-accent-gold transition-colors">Isi Data</h4>
                 </div>
                 <div class="flex flex-col items-center text-center reveal-on-scroll group" style="transition-delay: 0.3s">
                     <div class="w-20 h-20 sm:w-28 sm:h-28 rounded-full glass-card border-2 border-white/15 flex items-center justify-center mb-6 sm:mb-8 relative z-10 group-hover:border-accent-gold transition-all duration-300">
-                        <span class="material-symbols-outlined text-white text-[30px] sm:text-[40px] group-hover:text-accent-gold transition-colors">mark_email_read</span>
+                        <span class="material-symbols-outlined text-white text-[30px] sm:text-[40px] group-hover:text-accent-gold group-hover:scale-110 transition-all duration-300">mark_email_read</span>
                         <div class="absolute -top-1 -right-1 sm:-top-2 sm:-right-2 w-7 h-7 sm:w-10 sm:h-10 rounded-full bg-accent-gold text-spectacular-dark text-xs sm:text-sm font-extrabold flex items-center justify-center shadow-md">3</div>
                     </div>
                     <h4 class="font-headline-md text-lg sm:text-[22px] text-white font-bold mb-2 group-hover:text-accent-gold transition-colors">Verifikasi</h4>
                 </div>
                 <div class="flex flex-col items-center text-center reveal-on-scroll group" style="transition-delay: 0.4s">
                     <div class="w-20 h-20 sm:w-28 sm:h-28 rounded-full glass-card border-2 border-white/15 flex items-center justify-center mb-6 sm:mb-8 relative z-10 group-hover:border-accent-gold transition-all duration-300">
-                        <span class="material-symbols-outlined text-white text-[30px] sm:text-[40px] group-hover:text-accent-gold transition-colors">task_alt</span>
+                        <span class="material-symbols-outlined text-white text-[30px] sm:text-[40px] group-hover:text-accent-gold group-hover:scale-110 transition-all duration-300">task_alt</span>
                         <div class="absolute -top-1 -right-1 sm:-top-2 sm:-right-2 w-7 h-7 sm:w-10 sm:h-10 rounded-full bg-accent-gold text-spectacular-dark text-xs sm:text-sm font-extrabold flex items-center justify-center shadow-md">4</div>
                     </div>
                     <h4 class="font-headline-md text-lg sm:text-[22px] text-white font-bold mb-2 group-hover:text-accent-gold transition-colors">Selesai</h4>
@@ -670,7 +694,7 @@
     </section>
 
     <!-- Media Partners Section -->
-    <section class="py-24 sm:py-32 px-4 sm:px-margin-mobile md:px-margin-desktop bg-[#010a07] text-white overflow-hidden scroll-mt-20 relative border-t border-accent-gold/20" id="partners">
+    <section class="py-24 sm:py-32 px-4 sm:px-margin-mobile md:px-margin-desktop bg-[#010a07] text-white overflow-hidden scroll-mt-20 relative border-t border-accent-gold/20 snap-start" id="partners">
         <div class="max-w-container-max mx-auto text-center reveal-on-scroll relative z-10">
             <span class="font-label-md text-accent-gold uppercase tracking-[0.4em] mb-4 sm:mb-6 block font-bold text-xs sm:text-sm">Our Support Network</span>
             <p class="text-white/70 max-w-2xl mx-auto mb-16 sm:mb-20 text-base sm:text-lg px-2">Acara ini terselenggara berkat dukungan para partner strategis. Kami membuka kesempatan kolaborasi melalui program <span class="text-accent-gold font-bold">Open Sponsorship</span>.</p>
@@ -703,7 +727,7 @@
                     <p class="text-white/70 text-base sm:text-xl leading-relaxed mb-6 sm:mb-8">Raih kesempatan memenangkan total hadiah senilai jutaan rupiah, trofi eksklusif, serta sertifikat nasional untuk portofolio Anda.</p>
                 </div>
                 <div class="scale-on-scroll">
-                    <div class="glass-card rounded-[2.5rem] sm:rounded-[3rem] p-6 sm:p-12 text-center relative border border-accent-gold/30 shadow-xl overflow-hidden">
+                    <div class="glass-card rounded-[2.5rem] sm:rounded-[3rem] p-6 sm:p-12 text-center relative border border-accent-gold/30 shadow-xl overflow-hidden animate-float">
                         <div class="relative z-10">
                             <span class="font-label-md uppercase text-accent-gold tracking-[0.4em] mb-4 sm:mb-6 block font-bold text-xs sm:text-sm">Grand Prize Pool</span>
                             <div class="flex flex-col items-center justify-center gap-0">
@@ -726,7 +750,7 @@
 </main>
 
 <!-- Footer -->
-<footer class="bg-[#010a07] pt-20 sm:pt-24 pb-12 px-4 sm:px-margin-mobile md:px-margin-desktop border-t border-white/15 relative overflow-hidden reveal-on-scroll">
+<footer class="bg-[#010a07] pt-20 sm:pt-24 pb-12 px-4 sm:px-margin-mobile md:px-margin-desktop border-t border-white/15 relative overflow-hidden reveal-on-scroll snap-start">
     <div class="max-w-container-max mx-auto grid md:grid-cols-12 gap-10 sm:gap-12 mb-16 sm:mb-20 relative z-10">
         <div class="md:col-span-4 text-center md:text-left">
             <div class="flex items-center justify-center md:justify-start gap-3 mb-6 sm:mb-8">
@@ -736,7 +760,8 @@
             <p class="text-white/60 leading-relaxed mb-6 sm:mb-8 text-sm sm:text-base">Accounting Festival Bina Insani (AFBI #10) adalah platform kompetisi akuntansi bergengsi yang diselenggarakan oleh Perguruan Tinggi Bina Insani.</p>
         </div>
         <div class="md:col-span-4">
-            <h4 class="font-headline-md text-lg sm:text-[20px] text-white font-bold mb-6 sm:mb-8 text-center md:text-left">Informasi & Kontak</h4>
+            <h4 class="font-headline-md text-lg sm:text-[20px] text-white font-bold mb-1 text-center md:text-left">Informasi & Kontak</h4>
+            <p class="text-xs text-accent-gold/80 italic mb-5 sm:mb-7 text-center md:text-left">(Klik informasi di bawah)</p>
             <div class="space-y-4 sm:space-y-6">
                 <div class="flex items-start gap-3 sm:gap-4">
                     <span class="material-symbols-outlined text-accent-gold shrink-0">location_on</span>
@@ -749,8 +774,8 @@
                 <div class="flex items-start gap-3 sm:gap-4">
                     <span class="material-symbols-outlined text-accent-gold shrink-0">call</span>
                     <div class="text-xs sm:text-sm text-white/70 space-y-1 flex flex-col">
-                        <a href="tel:+6285691901012" class="hover:text-accent-gold transition-colors">0856-9190-1012 (Wike)</a>
-                        <a href="tel:+6285973704457" class="hover:text-accent-gold transition-colors">0859-7370-4457 (Fachri)</a>
+                        <a href="https://wa.me/6285691901012" target="_blank" rel="noopener noreferrer" class="hover:text-accent-gold transition-colors">0856-9190-1012 (Wike)</a>
+                        <a href="https://wa.me/6285973704457" target="_blank" rel="noopener noreferrer" class="hover:text-accent-gold transition-colors">0859-7370-4457 (Fachri)</a>
                     </div>
                 </div>
                 <div class="flex items-start gap-3 sm:gap-4">
@@ -763,7 +788,7 @@
                 </div>
             </div>
         </div>
-        <div class="md:col-span-4 flex flex-col gap-4">
+        <div class="md:col-span-4 flex flex-col gap-4 mt-6 md:mt-0">
             <h4 class="font-headline-md text-lg sm:text-[20px] text-white font-bold mb-2 text-center md:text-left">Butuh Bantuan?</h4>
             <a class="flex items-center justify-center gap-3 glass-card p-4 rounded-2xl hover:border-accent-gold/50 transition-all group shadow-md" href="https://wa.me/6285691901012" target="_blank" rel="noopener noreferrer">
                 <span class="material-symbols-outlined text-accent-gold group-hover:scale-125 transition-transform">chat</span>
@@ -987,6 +1012,7 @@
                     if (entry.isIntersecting) {
                         entry.target.classList.add('active');
                     } else {
+                        // Memastikan animasi terpancing kembali saat elemen di scroll-out (keluar dari layar)
                         entry.target.classList.remove('active');
                     }
                 });
