@@ -1,4 +1,4 @@
-name: AFBI #10 Security & Quality Workflow
+name: "AFBI #10 Security & Quality Workflow"
 
 on:
   push:
