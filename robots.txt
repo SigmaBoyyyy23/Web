@@ -1,0 +1,6 @@
+# Izinkan seluruh mesin pencari mengindeks landing page AFBI #10
+User-agent: *
+Allow: /
+
+# Tautan menuju sitemap utama situs
+Sitemap: https://pendaftaranafbi.vercel.app/sitemap.xml

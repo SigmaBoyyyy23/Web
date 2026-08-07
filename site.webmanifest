@@ -1,0 +1,16 @@
+{
+  "name": "AFBI #10 - Accounting Festival Bina Insani",
+  "short_name": "AFBI #10",
+  "description": "Situs resmi pendaftaran Accounting Festival Bina Insani #10. Kompetisi akuntansi nasional berhadiah puluhan juta rupiah.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#02120C",
+  "theme_color": "#D4AF37",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "48x48 32x32 16x16",
+      "type": "image/x-icon"
+    }
+  ]
+}
