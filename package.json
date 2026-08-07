@@ -4,21 +4,9 @@
   "private": true,
   "description": "Situs resmi pendaftaran Accounting Festival Bina Insani (AFBI #10)",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint",
+    "build": "echo 'No build step required for static HTML'",
     "security:audit": "npm audit --audit-level=high"
   },
-  "dependencies": {
-    "next": "^15.0.0",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
-  },
-  "devDependencies": {
-    "@types/node": "^20.0.0",
-    "@types/react": "^19.0.0",
-    "@types/react-dom": "^19.0.0",
-    "typescript": "^5.0.0"
-  }
+  "dependencies": {},
+  "devDependencies": {}
 }
