@@ -119,6 +119,46 @@
             -webkit-font-smoothing: antialiased;
         }
 
+        /* Authentic iOS Liquid Glass & Spring Physics Design System (Hero Section Only) */
+        .ios-glass {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(25px) saturate(180%);
+            -webkit-backdrop-filter: blur(25px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.1), inset 0 0.5px 1px 0 rgba(255, 255, 255, 0.7);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            will-change: transform, background, box-shadow;
+        }
+        .ios-glass:hover {
+            background: rgba(255, 255, 255, 0.35);
+            border-color: rgba(255, 255, 255, 0.8);
+            transform: scale(1.03) translateY(-2px);
+            box-shadow: 0 16px 40px 0 rgba(0, 0, 0, 0.15), inset 0 1px 2px 0 rgba(255, 255, 255, 0.9);
+        }
+        .ios-glass:active {
+            transform: scale(0.96) translateY(0);
+            box-shadow: 0 4px 15px 0 rgba(0, 0, 0, 0.1), inset 0 1px 1px 0 rgba(255, 255, 255, 0.5);
+        }
+
+        .ios-glass-gold {
+            background: rgba(212, 175, 55, 0.25);
+            backdrop-filter: blur(25px) saturate(180%);
+            -webkit-backdrop-filter: blur(25px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 10px 30px 0 rgba(212, 175, 55, 0.2), inset 0 0.5px 1px 0 rgba(255, 255, 255, 0.8);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            will-change: transform, background, box-shadow;
+        }
+        .ios-glass-gold:hover {
+            background: rgba(212, 175, 55, 0.4);
+            border-color: rgba(255, 255, 255, 0.95);
+            transform: scale(1.03) translateY(-2px);
+            box-shadow: 0 16px 45px 0 rgba(212, 175, 55, 0.45), inset 0 1px 2px 0 rgba(255, 255, 255, 0.9);
+        }
+        .ios-glass-gold:active {
+            transform: scale(0.96) translateY(0);
+        }
+
         .clean-card {
             background: #FFFFFF;
             border: 1px solid rgba(0, 54, 36, 0.1);
@@ -240,6 +280,11 @@
     </div>
 </div>
 
+<!-- Floating CS Support Button -->
+<a href="#layanan-bantuan" class="fixed bottom-6 right-6 z-[150] w-14 h-14 bg-primary-green border-2 border-accent-gold text-accent-gold rounded-full shadow-2xl flex items-center justify-center transition-all transform hover:scale-110 hover:shadow-glow group" title="Butuh Bantuan? Hubungi CS">
+    <span class="material-symbols-outlined text-[28px] animate-pulse">support_agent</span>
+</a>
+
 <!-- Navigation Header -->
 <header class="fixed top-0 w-full z-[100] bg-primary-green shadow-lg h-20 flex items-center">
     <nav class="max-w-container-max mx-auto px-4 md:px-margin-desktop w-full flex justify-between items-center">
@@ -283,7 +328,7 @@
 </header>
 
 <main class="pt-20">
-    <!-- SECTION 1: HERO -->
+    <!-- SECTION 1: HERO (With iPhone Liquid Glass Buttons) -->
     <section class="relative pt-6 sm:pt-12 pb-24 sm:pb-36 px-4 sm:px-margin-mobile md:px-margin-desktop min-h-[85vh] flex items-center justify-center overflow-hidden bg-white text-text-dark">
         <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none opacity-20">
             <video 
@@ -319,12 +364,13 @@
                 </div>
             </div>
 
+            <!-- Hero Section Buttons with iOS Liquid Glass -->
             <div class="flex flex-col sm:flex-row items-center justify-center gap-5 w-full">
-                <a href="#jalur" class="w-full sm:w-auto flex items-center justify-center gap-3 bg-accent-gold text-dark-green px-9 py-4 rounded-full font-extrabold text-[16px] hover:bg-yellow-500 transition-all shadow-xl hover:shadow-glow transform hover:-translate-y-1">
+                <a href="#jalur" class="w-full sm:w-auto flex items-center justify-center gap-3 ios-glass-gold text-dark-green px-9 py-4 rounded-full font-extrabold text-[16px] shadow-xl">
                     <span class="material-symbols-outlined text-[22px]">workspace_premium</span>
                     Amankan Posisi Kompetisi
                 </a>
-                <a href="#seminar" class="w-full sm:w-auto flex items-center justify-center gap-3 bg-surface-light hover:bg-gray-100 border border-gray-300 text-text-dark px-9 py-4 rounded-full font-extrabold text-[16px] transition-all shadow-sm transform hover:-translate-y-1">
+                <a href="#seminar" class="w-full sm:w-auto flex items-center justify-center gap-3 ios-glass border border-gray-300/80 text-text-dark px-9 py-4 rounded-full font-extrabold text-[16px] shadow-sm">
                     <span class="material-symbols-outlined text-[22px]">campaign</span>
                     Ikuti Webinar Nasional
                 </a>
@@ -367,7 +413,7 @@
                     
                     <div class="mt-auto w-full space-y-3">
                         <div id="wrapper-btn-sma" class="w-full">
-                            <a id="btn-sma" class="flex items-center justify-center gap-2 w-full bg-accent-gold text-white hover:bg-yellow-600 py-3.5 rounded-xl font-bold transition-all shadow-md" href="https://docs.google.com/forms/d/e/1FAIpQLScb2IaWgS0ruWlx1HD-sZ_Y3jntpevXIFrGXi2VKmJmBjkJVg/viewform" target="_blank" rel="noopener noreferrer">
+                            <a id="btn-sma" class="flex items-center justify-center gap-2 w-full bg-accent-gold text-dark-green hover:bg-yellow-500 py-3.5 rounded-xl font-bold transition-all shadow-md" href="https://docs.google.com/forms/d/e/1FAIpQLScb2IaWgS0ruWlx1HD-sZ_Y3jntpevXIFrGXi2VKmJmBjkJVg/viewform" target="_blank" rel="noopener noreferrer">
                                 <span class="material-symbols-outlined text-[20px]">edit_document</span> Isi Formulir Pendaftaran
                             </a>
                         </div>
@@ -500,6 +546,15 @@
                                 <div>
                                     <p class="text-text-dark font-bold">Hybrid System</p>
                                     <p class="text-text-muted text-sm">Ruang Seminar (Offline) & Zoom Meeting (Online)</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-full bg-primary-green/10 flex items-center justify-center text-primary-green shrink-0">
+                                    <span class="material-symbols-outlined text-[20px]">verified</span>
+                                </div>
+                                <div>
+                                    <p class="text-text-dark font-bold">Benefit Peserta</p>
+                                    <p class="text-text-muted text-sm">E-Sertifikat, Ilmu yang bermanfaat, dan Relasi</p>
                                 </div>
                             </li>
                         </ul>
@@ -973,7 +1028,7 @@
         </div>
         
         <!-- Layanan Bantuan -->
-        <div class="md:col-span-4 flex flex-col gap-3">
+        <div class="md:col-span-4 flex flex-col gap-3" id="layanan-bantuan">
             <h4 class="font-headline-md text-lg text-white font-bold mb-3 text-center md:text-left">Layanan Bantuan</h4>
             <a class="flex items-center justify-between bg-white/10 hover:bg-white/20 border border-white/10 p-3.5 rounded-xl transition-all text-white/90 text-sm group shadow-sm" href="https://wa.me/6285691901012" target="_blank" rel="noopener noreferrer">
                 <div class="flex items-center gap-3">
@@ -1295,7 +1350,7 @@
                 if(badgeUniv) badgeUniv.classList.add('hidden');
             } else if (activeUniv.type !== 'idle') {
                 if(badgeUnivText) badgeUnivText.textContent = activeUniv.name;
-                if(badgeUniv) badgeUniv.classList.add('hidden');
+                if(badgeUniv) badgeUniv.classList.remove('hidden');
             }
 
             // Seminar / Webinar Automation
