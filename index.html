@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html class="scroll-smooth" lang="id">
 <head>
@@ -120,6 +119,14 @@
             -webkit-font-smoothing: antialiased;
         }
 
+        /* Strategic Super Rare Geometric Clip-Paths for Icon Badges Only */
+        .shape-rare-hex {
+            clip-path: polygon(25% 6.7%, 75% 6.7%, 100% 50%, 75% 93.3%, 25% 93.3%, 0% 50%);
+        }
+        .shape-rare-oct {
+            clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+        }
+
         /* Authentic iOS Liquid Glass & Spring Physics Design System (Hero Section Only) */
         .ios-glass {
             background: rgba(255, 255, 255, 0.2);
@@ -179,7 +186,7 @@
             opacity: 1 !important;
         }
         .sponsor-logo:hover {
-            transform: scale(1.06);
+            transform: scale(1.08);
         }
         
         /* Smooth Bi-directional Scroll Reveal Animations */
@@ -215,8 +222,8 @@
             width: 100%;
             overflow: hidden;
             line-height: 0;
-            margin-top: -4px;
-            margin-bottom: -4px;
+            margin-top: -5px;
+            margin-bottom: -5px;
             z-index: 5;
             background-color: transparent;
             transform: translateZ(0);
@@ -224,7 +231,7 @@
         .art-wave-divider svg {
             position: relative;
             display: block;
-            width: calc(100% + 4px);
+            width: calc(100% + 10px);
             height: 80px;
             transform: scale(1.02);
             transform-origin: center;
@@ -281,10 +288,10 @@
     </div>
 </div>
 
-<!-- Floating CS Support Button with Unique Dual CS Icons (Female Left, Male Right) -->
+<!-- Floating CS Support Button (Simple Circle Shape) -->
 <a href="#layanan-bantuan" class="fixed bottom-6 right-6 z-[150] w-16 h-16 bg-primary-green border-2 border-accent-gold text-accent-gold rounded-full shadow-2xl flex items-center justify-center gap-0.5 transition-all transform hover:scale-110 hover:shadow-glow group px-1" title="Butuh Bantuan? Hubungi CS">
-    <span class="material-symbols-outlined text-[20px] animate-pulse">support_agent</span>
-    <span class="material-symbols-outlined text-[20px] animate-pulse">face</span>
+    <span class="material-symbols-outlined text-[18px] animate-pulse">support_agent</span>
+    <span class="material-symbols-outlined text-[18px] animate-pulse">face</span>
 </a>
 
 <!-- Navigation Header -->
@@ -292,9 +299,9 @@
     <nav class="max-w-container-max mx-auto px-4 md:px-margin-desktop w-full flex justify-between items-center">
         <!-- Brand Identity -->
         <div class="flex items-center gap-2 sm:gap-3 shrink-0">
-            <img alt="Universitas Bina Insani Logo" class="h-8 md:h-10 w-auto object-contain" src="https://lh3.googleusercontent.com/d/1XSmBjcItttgowk-YIxS_2tbGvqoSiYIi"/>
+            <img alt="Universitas Bina Insani Logo" class="h-8 md:h-10 w-auto object-contain rounded-lg p-0.5 bg-white/10" src="https://lh3.googleusercontent.com/d/1XSmBjcItttgowk-YIxS_2tbGvqoSiYIi"/>
             <span class="text-accent-gold font-extrabold text-sm sm:text-base mx-1">X</span>
-            <img alt="Logo AFBI" class="h-8 md:h-10 w-auto object-contain" src="https://lh3.googleusercontent.com/d/1WcJIEBxSORsmHIwIAKcnSya7maKkzSPY"/>
+            <img alt="Logo AFBI" class="h-8 md:h-10 w-auto object-contain rounded-lg p-0.5 bg-white/10" src="https://lh3.googleusercontent.com/d/1WcJIEBxSORsmHIwIAKcnSya7maKkzSPY"/>
             <span class="font-headline-md font-extrabold text-white tracking-wide text-[16px] md:text-[20px] hidden sm:block ml-2">
                 AFBI <span class="text-accent-gold animate-luxury-blink">#10</span>
             </span>
@@ -330,8 +337,8 @@
 </header>
 
 <main class="pt-20">
-    <!-- SECTION 1: HERO (With iPhone Liquid Glass Buttons & Rare Icons) -->
-    <section class="relative pt-6 sm:pt-12 pb-24 sm:pb-36 px-4 sm:px-margin-mobile md:px-margin-desktop min-h-[85vh] flex items-center justify-center overflow-hidden bg-white text-text-dark">
+    <!-- SECTION 1: HERO -->
+    <section class="relative pt-8 sm:pt-16 pb-24 sm:pb-36 px-4 sm:px-margin-mobile md:px-margin-desktop min-h-[85vh] flex items-center justify-center overflow-hidden bg-white text-text-dark">
         <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none opacity-20">
             <video 
                 class="w-full h-full object-cover scale-105 filter contrast-125" 
@@ -355,26 +362,26 @@
                 Kompetisi akuntansi tingkat nasional paling bergengsi tahun ini. Kuasai era baru <span class="text-primary-green font-bold">Artificial Intelligence (AI)</span>, tunjukkan keahlian analisis finansialmu, dan rebut total hadiah puluhan juta rupiah!
             </p>
 
-            <!-- Sponsor Logos in Hero Section -->
-            <div class="mb-10">
-                <span class="font-label-sm text-text-muted uppercase tracking-[0.2em] mb-4 block font-bold text-xs">Disponsori Oleh</span>
-                <div class="flex flex-wrap justify-center items-center gap-6 sm:gap-10">
-                    <img src="https://lh3.googleusercontent.com/d/1OocdIMk1MyK_m5KMZ-yVlPJjiWSXSAtQ" alt="BSI" class="h-9 sm:h-11 object-contain sponsor-logo">
-                    <img src="https://lh3.googleusercontent.com/d/19MrxwqjVPKFqfZgFmyc1L8IDYaCK685D" alt="Pegadaian" class="h-9 sm:h-11 object-contain sponsor-logo">
-                    <img src="https://lh3.googleusercontent.com/d/12LuJW2l6CKke9DdQAWIwDDz_o_7hhds3" alt="Kita Lulus" class="h-9 sm:h-11 object-contain sponsor-logo">
-                    <img src="https://lh3.googleusercontent.com/d/1HKSrR6O9hq7ZLXfHti26mVD4QufAdlkw" alt="Iluni" class="h-9 sm:h-11 object-contain sponsor-logo">
+            <!-- Sponsor Logos in Hero Section (No Box Shape & Enlarged Size) -->
+            <div class="mb-12">
+                <span class="font-label-sm text-text-muted uppercase tracking-[0.2em] mb-5 block font-bold text-xs">Disponsori Oleh</span>
+                <div class="flex flex-wrap justify-center items-center gap-6 sm:gap-12 max-w-4xl mx-auto px-2">
+                    <img src="https://lh3.googleusercontent.com/d/1OocdIMk1MyK_m5KMZ-yVlPJjiWSXSAtQ" alt="BSI" class="h-14 sm:h-20 w-auto object-contain sponsor-logo">
+                    <img src="https://lh3.googleusercontent.com/d/19MrxwqjVPKFqfZgFmyc1L8IDYaCK685D" alt="Pegadaian" class="h-14 sm:h-20 w-auto object-contain sponsor-logo">
+                    <img src="https://lh3.googleusercontent.com/d/12LuJW2l6CKke9DdQAWIwDDz_o_7hhds3" alt="Kita Lulus" class="h-14 sm:h-20 w-auto object-contain sponsor-logo">
+                    <img src="https://lh3.googleusercontent.com/d/1HKSrR6O9hq7ZLXfHti26mVD4QufAdlkw" alt="Iluni" class="h-14 sm:h-20 w-auto object-contain sponsor-logo">
                 </div>
             </div>
 
-            <!-- Hero Section Buttons with iOS Liquid Glass & Rare Icons -->
+            <!-- Hero Section Buttons with iOS Liquid Glass -->
             <div class="flex flex-col sm:flex-row items-center justify-center gap-5 w-full">
-                <a href="#jalur" class="w-full sm:w-auto flex items-center justify-center gap-3 ios-glass-gold text-dark-green px-9 py-4 rounded-full font-extrabold text-[16px] shadow-xl">
-                    <span class="material-symbols-outlined text-[22px]">military_tech</span>
-                    Amankan Posisi Kompetisi
+                <a href="#jalur" class="w-full sm:w-auto flex items-center justify-center gap-3 ios-glass-gold text-dark-green px-8 py-4 rounded-full font-extrabold text-sm sm:text-base shadow-xl text-center">
+                    <span class="material-symbols-outlined text-[22px] shrink-0">military_tech</span>
+                    <span>Amankan Posisi Mu Kompetisi Di Tingkat Nasional</span>
                 </a>
-                <a href="#seminar" class="w-full sm:w-auto flex items-center justify-center gap-3 ios-glass border border-gray-300/80 text-text-dark px-9 py-4 rounded-full font-extrabold text-[16px] shadow-sm">
-                    <span class="material-symbols-outlined text-[22px]">podcasts</span>
-                    Ikuti Webinar Nasional
+                <a href="#seminar" class="w-full sm:w-auto flex items-center justify-center gap-3 ios-glass border border-gray-300/80 text-text-dark px-8 py-4 rounded-full font-extrabold text-sm sm:text-base shadow-sm text-center">
+                    <span class="material-symbols-outlined text-[22px] shrink-0">podcasts</span>
+                    <span>Ikuti Seminar/Webinar</span>
                 </a>
             </div>
 
@@ -401,14 +408,14 @@
             </div>
             
             <div class="grid md:grid-cols-2 gap-8 sm:gap-10 max-w-5xl mx-auto">
-                <!-- Tingkat SMA / SMK Card with Super Rare Icon: history_edu -->
-                <div class="clean-card p-8 sm:p-10 flex flex-col items-start relative reveal-on-scroll">
-                    <div id="badge-sma" class="hidden absolute top-6 right-6 bg-accent-gold/10 text-accent-gold px-3 py-1.5 rounded-full font-bold text-xs shadow-sm flex items-center gap-2">
+                <!-- Tingkat SMA / SMK Card -->
+                <div class="clean-card p-8 sm:p-10 flex flex-col items-start relative reveal-on-scroll border-2 border-accent-gold/40">
+                    <div id="badge-sma" class="hidden absolute top-6 right-6 bg-accent-gold/10 text-accent-gold px-3.5 py-1.5 shape-rare-oct font-bold text-xs shadow-sm flex items-center gap-2">
                         <span id="text-badge-sma">Status</span>
                     </div>
 
-                    <div class="w-16 h-16 bg-accent-gold/10 text-accent-gold rounded-2xl flex items-center justify-center mb-6 hover:scale-110 transition-transform">
-                        <span class="material-symbols-outlined text-[32px]">history_edu</span>
+                    <div class="w-16 h-16 bg-accent-gold/10 text-accent-gold shape-rare-hex flex items-center justify-center mb-6 hover:scale-110 transition-transform">
+                        <span class="material-symbols-outlined text-[30px]">history_edu</span>
                     </div>
 
                     <h3 class="font-headline-md text-2xl sm:text-3xl text-text-dark mb-3 font-bold hover:text-accent-gold transition-colors">Tingkat SMA / SMK</h3>
@@ -421,21 +428,21 @@
                             </a>
                         </div>
                         <div class="w-full" id="actions-sma">
-                            <a class="flex items-center justify-center gap-2 w-full bg-white border border-gray-200 text-text-dark hover:bg-gray-50 py-3.5 rounded-xl font-bold transition-all" id="btn-booklet-sma" href="https://drive.google.com/file/d/1kc8GNGqRgRQ4e1lqPYLolstntcwkOcs3/view?usp=drivesdk" target="_blank">
+                            <a class="flex items-center justify-center gap-2 w-full bg-surface-light border border-gray-200 text-text-dark hover:bg-gray-100 py-3.5 rounded-xl font-bold transition-all" id="btn-booklet-sma" href="https://drive.google.com/file/d/1kc8GNGqRgRQ4e1lqPYLolstntcwkOcs3/view?usp=drivesdk" target="_blank">
                                 <span class="material-symbols-outlined text-[20px]">chrome_reader_mode</span> Unduh Booklet
                             </a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Perguruan Tinggi Card with Super Rare Icon: biotech -->
-                <div class="clean-card p-8 sm:p-10 flex flex-col items-start relative reveal-on-scroll">
-                    <div id="badge-univ" class="hidden absolute top-6 right-6 bg-primary-green/10 text-primary-green px-3 py-1.5 rounded-full font-bold text-xs shadow-sm flex items-center gap-2">
+                <!-- Perguruan Tinggi Card -->
+                <div class="clean-card p-8 sm:p-10 flex flex-col items-start relative reveal-on-scroll border-2 border-primary-green/30">
+                    <div id="badge-univ" class="hidden absolute top-6 right-6 bg-primary-green/10 text-primary-green px-3.5 py-1.5 shape-rare-oct font-bold text-xs shadow-sm flex items-center gap-2">
                         <span id="text-badge-univ">Status</span>
                     </div>
 
-                    <div class="w-16 h-16 bg-primary-green/10 text-primary-green rounded-2xl flex items-center justify-center mb-6 hover:scale-110 transition-transform">
-                        <span class="material-symbols-outlined text-[32px]">biotech</span>
+                    <div class="w-16 h-16 bg-primary-green/10 text-primary-green shape-rare-hex flex items-center justify-center mb-6 hover:scale-110 transition-transform">
+                        <span class="material-symbols-outlined text-[30px]">biotech</span>
                     </div>
 
                     <h3 class="font-headline-md text-2xl sm:text-3xl text-text-dark mb-3 font-bold hover:text-primary-green transition-colors">Perguruan Tinggi</h3>
@@ -448,7 +455,7 @@
                             </a>
                         </div>
                         <div class="w-full" id="actions-univ">
-                            <a class="flex items-center justify-center gap-2 w-full bg-white border border-gray-200 text-text-dark hover:bg-gray-50 py-3.5 rounded-xl font-bold transition-all" id="btn-booklet-univ" href="https://drive.google.com/file/d/1S_7ovDhG5k-aDssmGQZvymogaQwwWl_l/view?usp=drivesdk" target="_blank">
+                            <a class="flex items-center justify-center gap-2 w-full bg-surface-light border border-gray-200 text-text-dark hover:bg-gray-100 py-3.5 rounded-xl font-bold transition-all" id="btn-booklet-univ" href="https://drive.google.com/file/d/1S_7ovDhG5k-aDssmGQZvymogaQwwWl_l/view?usp=drivesdk" target="_blank">
                                 <span class="material-symbols-outlined text-[20px]">chrome_reader_mode</span> Unduh Booklet
                             </a>
                         </div>
@@ -468,16 +475,16 @@
     <!-- SECTION 3: WEBINAR -->
     <section class="py-20 sm:py-24 px-4 sm:px-margin-mobile md:px-margin-desktop relative bg-white text-text-dark scroll-mt-20" id="seminar">
         <div class="max-w-container-max mx-auto relative z-10">
-            <!-- Kolaborasi Antara : -->
-            <div class="text-center mb-10 reveal-on-scroll">
+            <!-- Kolaborasi Antara : (No Box Shape & Enlarged Size) -->
+            <div class="text-center mb-14 reveal-on-scroll">
                 <span class="font-label-md text-accent-gold uppercase tracking-[0.2em] mb-6 block font-bold text-sm">Kolaborasi Antara :</span>
-                <div class="flex justify-center items-center gap-8 sm:gap-16 flex-wrap max-w-5xl mx-auto">
-                    <img src="https://lh3.googleusercontent.com/d/1XSmBjcItttgowk-YIxS_2tbGvqoSiYIi" alt="Universitas Bina Insani" class="h-12 sm:h-16 w-auto object-contain sponsor-logo">
-                    <img src="https://lh3.googleusercontent.com/d/1WcJIEBxSORsmHIwIAKcnSya7maKkzSPY" alt="AFBI" class="h-12 sm:h-16 w-auto object-contain sponsor-logo">
-                    <img src="https://lh3.googleusercontent.com/d/1AyaKHhxZj1yvcFggRYWR9MuTJ39LgrC0" alt="Disaintek" class="h-12 sm:h-16 w-auto object-contain sponsor-logo">
-                    <img src="https://lh3.googleusercontent.com/d/1lWGfKB1ejTjeWVVmUdY8IRX6TQvVp7YU" alt="Tut Wuri Handayani" class="h-12 sm:h-16 w-auto object-contain sponsor-logo">
-                    <img src="https://lh3.googleusercontent.com/d/1uYrPE8QDr35UXTwMpFenE_biZu21Wpze" alt="IAI Jabar" class="h-12 sm:h-16 w-auto object-contain sponsor-logo">
-                    <img src="https://lh3.googleusercontent.com/d/1yKBOuSa-0-BTxA6LUdKsZL71rtUr9qwy" alt="Accounting Club" class="h-12 sm:h-16 w-auto object-contain sponsor-logo">
+                <div class="flex justify-center items-center gap-6 sm:gap-12 flex-wrap max-w-5xl mx-auto px-2">
+                    <img src="https://lh3.googleusercontent.com/d/1XSmBjcItttgowk-YIxS_2tbGvqoSiYIi" alt="Universitas Bina Insani" class="h-16 sm:h-24 w-auto object-contain sponsor-logo">
+                    <img src="https://lh3.googleusercontent.com/d/1WcJIEBxSORsmHIwIAKcnSya7maKkzSPY" alt="AFBI" class="h-16 sm:h-24 w-auto object-contain sponsor-logo">
+                    <img src="https://lh3.googleusercontent.com/d/1AyaKHhxZj1yvcFggRYWR9MuTJ39LgrC0" alt="Disaintek" class="h-16 sm:h-24 w-auto object-contain sponsor-logo">
+                    <img src="https://lh3.googleusercontent.com/d/1lWGfKB1ejTjeWVVmUdY8IRX6TQvVp7YU" alt="Tut Wuri Handayani" class="h-16 sm:h-24 w-auto object-contain sponsor-logo">
+                    <img src="https://lh3.googleusercontent.com/d/1uYrPE8QDr35UXTwMpFenE_biZu21Wpze" alt="IAI Jabar" class="h-16 sm:h-24 w-auto object-contain sponsor-logo">
+                    <img src="https://lh3.googleusercontent.com/d/1yKBOuSa-0-BTxA6LUdKsZL71rtUr9qwy" alt="Accounting Club" class="h-16 sm:h-24 w-auto object-contain sponsor-logo">
                 </div>
             </div>
 
@@ -485,7 +492,8 @@
                 <span class="font-label-md text-accent-gold uppercase tracking-[0.2em] mb-3 block font-bold text-sm animate-luxury-blink">Online & Offline Event</span>
                 <h2 class="font-headline-xl text-[32px] sm:text-[40px] text-text-dark font-bold mb-6">Seminar Akuntansi <span class="text-accent-gold animate-luxury-blink">Nasional</span></h2>
                 <div class="h-1 w-20 bg-accent-gold mx-auto mb-6 rounded-full animate-luxury-blink"></div>
-                <div class="max-w-3xl mx-auto bg-surface-light p-6 sm:p-8 rounded-[1.5rem] border border-gray-200/80 shadow-sm reveal-on-scroll">
+                <div class="max-w-3xl mx-auto bg-surface-light p-6 sm:p-8 rounded-2xl border border-gray-200/80 shadow-sm reveal-on-scroll">
+                    <span class="font-label-md text-accent-gold uppercase tracking-[0.2em] mb-2 block font-bold text-xs animate-luxury-blink">Topik Pembahasan :</span>
                     <p class="text-text-dark text-lg sm:text-xl font-semibold leading-relaxed tracking-tight">
                         "Digital Accounting in the AI Era: Building Professional Careers and Sustainable Accountability"
                     </p>
@@ -493,49 +501,49 @@
             </div>
 
             <div class="grid md:grid-cols-3 gap-8 mb-16 reveal-on-scroll items-stretch max-w-5xl mx-auto">
-                <div class="clean-card p-8 sm:p-10 text-center flex flex-col items-center justify-between shadow-elegant hover:shadow-elegant-hover transition-all reveal-on-scroll">
+                <div class="clean-card p-8 sm:p-10 text-center flex flex-col items-center justify-between shadow-elegant hover:shadow-elegant-hover transition-all reveal-on-scroll border-2 border-accent-gold/20">
                     <div class="flex flex-col items-center w-full">
                         <div class="w-32 h-32 rounded-full mb-6 p-1 bg-accent-gold/30 border-2 border-accent-gold shadow-md flex items-center justify-center">
                             <img src="https://lh3.googleusercontent.com/d/1ZTzbhi7cz8PbLhPAJtFzC14IK1oAs1P9" alt="Dr. Ivan Yudianto" class="w-full h-full rounded-full object-cover bg-white">
                         </div>
                         <h4 class="font-headline-md font-bold text-text-dark text-lg mb-1">Dr. Ivan Yudianto, S.E., M.Si., Ak., CA., QIA., CWM., CRP., CGAE</h4>
-                        <span class="inline-block bg-accent-gold/10 text-amber-800 font-bold text-[11px] px-3 py-1 rounded-full uppercase tracking-wider mb-4 animate-luxury-blink">Pembicara 1</span>
+                        <span class="inline-block bg-accent-gold/10 text-amber-800 font-bold text-[11px] px-3.5 py-1 shape-rare-oct uppercase tracking-wider mb-4 animate-luxury-blink">Pembicara 1</span>
                     </div>
                     <p class="text-text-muted text-sm mt-auto border-t border-gray-100 pt-4 w-full font-medium">Wakil Ketua I IAI Jabar</p>
                 </div>
 
-                <div class="clean-card p-8 sm:p-10 text-center flex flex-col items-center justify-between shadow-elegant hover:shadow-elegant-hover transition-all reveal-on-scroll">
+                <div class="clean-card p-8 sm:p-10 text-center flex flex-col items-center justify-between shadow-elegant hover:shadow-elegant-hover transition-all reveal-on-scroll border-2 border-accent-gold/20">
                     <div class="flex flex-col items-center w-full">
                         <div class="w-32 h-32 rounded-full mb-6 p-1 bg-accent-gold/30 border-2 border-accent-gold shadow-md flex items-center justify-center">
                             <img src="https://lh3.googleusercontent.com/d/1qIHmihx-GzgsJh_KR0-yfoygfcNzRhTS" alt="Dr. Lies Zulfiati" class="w-full h-full rounded-full object-cover bg-white">
                         </div>
                         <h4 class="font-headline-md font-bold text-text-dark text-lg mb-1">Dr. Lies Zulfiati, S.E., M.Si., Ak., CA</h4>
-                        <span class="inline-block bg-accent-gold/10 text-amber-800 font-bold text-[11px] px-3 py-1 rounded-full uppercase tracking-wider mb-4 animate-luxury-blink">Pembicara 2</span>
+                        <span class="inline-block bg-accent-gold/10 text-amber-800 font-bold text-[11px] px-3.5 py-1 shape-rare-oct uppercase tracking-wider mb-4 animate-luxury-blink">Pembicara 2</span>
                     </div>
                     <p class="text-text-muted text-sm mt-auto border-t border-gray-100 pt-4 w-full font-medium">Tenaga Ahli Badan Akuntabilitas Publik DPD RI</p>
                 </div>
 
-                <div class="clean-card p-8 sm:p-10 text-center flex flex-col items-center justify-between shadow-elegant hover:shadow-elegant-hover transition-all reveal-on-scroll">
+                <div class="clean-card p-8 sm:p-10 text-center flex flex-col items-center justify-between shadow-elegant hover:shadow-elegant-hover transition-all reveal-on-scroll border-2 border-primary-green/20">
                     <div class="flex flex-col items-center w-full">
                         <div class="w-32 h-32 rounded-full mb-6 p-1 bg-accent-gold/30 border-2 border-accent-gold shadow-md flex items-center justify-center">
                             <img src="https://lh3.googleusercontent.com/d/1meIDAoeoKi8YC3v9J65WmixJr73aGjLC" alt="Kadek Wisnu Bhuana" class="w-full h-full rounded-full object-cover bg-white">
                         </div>
                         <h4 class="font-headline-md font-bold text-text-dark text-lg mb-1">Kadek Wisnu Bhuana, S.E., M.Ak., Ak., CSRS, CRP</h4>
-                        <span class="inline-block bg-primary-green/10 text-primary-green font-bold text-[11px] px-3 py-1 rounded-full uppercase tracking-wider mb-4">Moderator</span>
+                        <span class="inline-block bg-primary-green/10 text-primary-green font-bold text-[11px] px-3.5 py-1 shape-rare-oct uppercase tracking-wider mb-4">Moderator</span>
                     </div>
                     <p class="text-text-muted text-sm mt-auto border-t border-gray-100 pt-4 w-full font-medium">Praktisi & Akademisi Profesional</p>
                 </div>
             </div>
 
             <div class="grid lg:grid-cols-2 gap-8 mb-16 reveal-on-scroll max-w-6xl mx-auto">
-                <div class="bg-surface-light border border-gray-200 p-8 sm:p-10 rounded-[2rem] shadow-elegant flex flex-col justify-between reveal-on-scroll">
+                <div class="bg-surface-light border border-gray-200 p-8 sm:p-10 rounded-2xl shadow-elegant flex flex-col justify-between reveal-on-scroll">
                     <div>
                         <h3 class="font-headline-md text-xl text-primary-green font-bold mb-6 border-b border-gray-200 pb-4">
                             Informasi Pelaksanaan
                         </h3>
                         <ul class="space-y-4 mb-8">
                             <li class="flex items-start gap-4">
-                                <div class="w-10 h-10 rounded-full bg-primary-green/10 flex items-center justify-center text-primary-green shrink-0">
+                                <div class="w-10 h-10 rounded-xl bg-primary-green/10 flex items-center justify-center text-primary-green shrink-0">
                                     <span class="material-symbols-outlined text-[20px]">date_range</span>
                                 </div>
                                 <div>
@@ -544,7 +552,7 @@
                                 </div>
                             </li>
                             <li class="flex items-start gap-4">
-                                <div class="w-10 h-10 rounded-full bg-primary-green/10 flex items-center justify-center text-primary-green shrink-0">
+                                <div class="w-10 h-10 rounded-xl bg-primary-green/10 flex items-center justify-center text-primary-green shrink-0">
                                     <span class="material-symbols-outlined text-[20px]">pin_drop</span>
                                 </div>
                                 <div>
@@ -553,7 +561,7 @@
                                 </div>
                             </li>
                             <li class="flex items-start gap-4">
-                                <div class="w-10 h-10 rounded-full bg-primary-green/10 flex items-center justify-center text-primary-green shrink-0">
+                                <div class="w-10 h-10 rounded-xl bg-primary-green/10 flex items-center justify-center text-primary-green shrink-0">
                                     <span class="material-symbols-outlined text-[20px]">verified_user</span>
                                 </div>
                                 <div>
@@ -589,7 +597,7 @@
                     </div>
                 </div>
 
-                <div class="bg-surface-light border border-gray-200 p-8 sm:p-10 rounded-[2rem] shadow-elegant flex flex-col justify-center reveal-on-scroll">
+                <div class="bg-surface-light border border-gray-200 p-8 sm:p-10 rounded-2xl shadow-elegant flex flex-col justify-center reveal-on-scroll">
                     <div class="text-center mb-8">
                         <h3 class="font-headline-md text-xl text-primary-green font-bold mb-2">Pendaftaran Seminar</h3>
                         <p class="text-text-muted text-sm">Pilih jalur pendaftaran sesuai dengan status kepesertaan Anda.</p>
@@ -647,9 +655,9 @@
 
             <div class="grid lg:grid-cols-2 gap-8 sm:gap-12">
                 <div class="reveal-on-scroll" style="transition-delay: 0.1s">
-                    <div class="bg-white/5 border border-white/10 rounded-[2rem] p-6 sm:p-10 backdrop-blur-sm shadow-xl">
+                    <div class="bg-white/5 border border-white/10 rounded-2xl p-6 sm:p-10 backdrop-blur-sm shadow-xl">
                         <div class="flex items-center gap-4 sm:gap-5 mb-8 pb-6 border-b border-white/10">
-                            <div class="w-14 h-14 rounded-2xl bg-accent-gold/20 flex items-center justify-center shrink-0">
+                            <div class="w-14 h-14 rounded-xl bg-accent-gold/20 flex items-center justify-center shrink-0">
                                 <span class="material-symbols-outlined text-accent-gold text-[28px]">history_edu</span>
                             </div>
                             <h3 class="font-headline-md text-xl sm:text-2xl text-white font-bold">Tingkat SMA / SMK</h3>
@@ -716,9 +724,9 @@
                 </div>
 
                 <div class="reveal-on-scroll" style="transition-delay: 0.2s">
-                    <div class="bg-white/5 border border-white/10 rounded-[2rem] p-6 sm:p-10 backdrop-blur-sm shadow-xl">
+                    <div class="bg-white/5 border border-white/10 rounded-2xl p-6 sm:p-10 backdrop-blur-sm shadow-xl">
                         <div class="flex items-center gap-4 sm:gap-5 mb-8 pb-6 border-b border-white/10">
-                            <div class="w-14 h-14 rounded-2xl bg-accent-gold/20 flex items-center justify-center shrink-0">
+                            <div class="w-14 h-14 rounded-xl bg-accent-gold/20 flex items-center justify-center shrink-0">
                                 <span class="material-symbols-outlined text-accent-gold text-[28px]">biotech</span>
                             </div>
                             <h3 class="font-headline-md text-xl sm:text-2xl text-white font-bold">Tingkat Perguruan Tinggi</h3>
@@ -869,7 +877,7 @@
                 </div>
             </div>
 
-            <div class="max-w-3xl mx-auto bg-gradient-to-r from-primary-green to-dark-green rounded-[2rem] p-8 sm:p-12 text-white shadow-elegant reveal-on-scroll border border-accent-gold/30">
+            <div class="max-w-3xl mx-auto bg-gradient-to-r from-primary-green to-dark-green rounded-2xl p-8 sm:p-12 text-white shadow-elegant reveal-on-scroll border border-accent-gold/30">
                 <div class="flex flex-col sm:flex-row items-center gap-6 sm:gap-10 text-center sm:text-left">
                     <div class="w-16 h-16 sm:w-20 sm:h-20 bg-white/10 rounded-2xl flex items-center justify-center shrink-0 border border-white/20 shadow-inner">
                         <span class="material-symbols-outlined text-accent-gold text-[36px]">account_balance</span>
@@ -952,10 +960,10 @@
             <p class="text-text-muted max-w-2xl mx-auto mb-16 text-base px-2">Acara ini terselenggara berkat dukungan para partner strategis. Kami membuka kesempatan kolaborasi melalui program <span class="text-accent-gold font-bold">Open Sponsorship</span>.</p>
             
             <div class="relative max-w-4xl mx-auto reveal-on-scroll">
-                <div class="rounded-[2rem] overflow-hidden shadow-sm border border-gray-100 bg-surface-light p-2">
-                    <img alt="Sponsorship &amp; Media Partners" class="w-full h-auto object-cover rounded-[1.5rem]" src="https://lh3.googleusercontent.com/d/1jVRMuiJ-rizmVQIWh5p-YbsFLnajdmkI"/>
+                <div class="rounded-2xl overflow-hidden shadow-sm border border-gray-100 bg-surface-light p-2">
+                    <img alt="Sponsorship &amp; Media Partners" class="w-full h-auto object-cover rounded-xl" src="https://lh3.googleusercontent.com/d/1jVRMuiJ-rizmVQIWh5p-YbsFLnajdmkI"/>
                 </div>
-                <div class="absolute -bottom-8 left-1/2 -translate-x-1/2 bg-white p-5 sm:p-6 rounded-[1.5rem] shadow-elegant flex items-center gap-4 sm:gap-6 border border-gray-100 w-11/12 sm:w-auto justify-center">
+                <div class="absolute -bottom-8 left-1/2 -translate-x-1/2 bg-white p-5 sm:p-6 rounded-2xl shadow-elegant flex items-center gap-4 sm:gap-6 border border-gray-100 w-11/12 sm:w-auto justify-center">
                     <div class="flex flex-col items-start text-left">
                         <span class="font-label-sm uppercase tracking-[0.2em] text-text-muted font-bold mb-1 text-[10px]">Terbuka Untuk</span>
                         <span class="font-headline-md text-[20px] text-text-dark font-extrabold leading-none">Partnership</span>
@@ -966,7 +974,7 @@
                 </div>
             </div>
 
-            <div class="mt-28 sm:mt-36 grid md:grid-cols-2 gap-12 items-center relative max-w-5xl mx-auto bg-gradient-to-br from-surface-light via-white to-amber-50/40 p-10 sm:p-14 rounded-[2.5rem] border border-accent-gold/30 shadow-elegant reveal-on-scroll">
+            <div class="mt-28 sm:mt-36 grid md:grid-cols-2 gap-12 items-center relative max-w-5xl mx-auto bg-gradient-to-br from-surface-light via-white to-amber-50/40 p-10 sm:p-14 rounded-3xl border border-accent-gold/30 shadow-elegant reveal-on-scroll">
                 <div class="text-center md:text-left reveal-on-scroll">
                     <span class="inline-block bg-accent-gold/10 text-amber-800 font-bold text-xs px-3.5 py-1.5 rounded-full uppercase tracking-widest mb-4 animate-luxury-blink">Grand Prize Pool</span>
                     <h3 class="font-headline-xl text-[36px] sm:text-[52px] leading-tight mb-4 tracking-tight font-extrabold text-text-dark">
@@ -976,7 +984,7 @@
                     <p class="text-text-muted text-base sm:text-lg leading-relaxed">Raih kesempatan memenangkan total hadiah senilai puluhan juta rupiah, trofi eksklusif tingkat nasional, serta beasiswa bergengsi.</p>
                 </div>
                 <div class="scale-on-scroll flex justify-center md:justify-end">
-                    <div class="bg-white rounded-[2rem] p-8 sm:p-10 text-center shadow-elegant border border-accent-gold/20 min-w-[280px]">
+                    <div class="bg-white rounded-3xl p-8 sm:p-10 text-center shadow-elegant border border-accent-gold/20 min-w-[280px]">
                         <span class="font-headline-xl text-[64px] sm:text-[84px] leading-none font-extrabold text-accent-gold animate-luxury-blink">30</span>
                         <span class="block font-headline-md text-[24px] sm:text-[28px] text-text-dark font-extrabold mt-2">Juta Rupiah</span>
                         <div class="mt-6 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-green text-white shadow-md">
@@ -991,19 +999,19 @@
 
 </main>
 
-<!-- Artistic Divider -->
+<!-- Artistic Divider (Zero Gap Lock) -->
 <div class="art-wave-divider bg-dark-green">
     <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
         <path d="M0,0 C150,90 350,-40 600,45 C850,130 1050,10 1200,35 L1200,0 L0,0 Z" fill="#FFFFFF"></path>
     </svg>
 </div>
 
-<!-- Footer -->
-<footer class="bg-dark-green pt-12 pb-12 px-4 sm:px-margin-mobile md:px-margin-desktop relative overflow-hidden text-white reveal-on-scroll">
+<!-- Footer (Without independent reveal-on-scroll translation to prevent curve detachment bug) -->
+<footer class="bg-dark-green pt-12 pb-12 px-4 sm:px-margin-mobile md:px-margin-desktop relative overflow-hidden text-white">
     <div class="max-w-container-max mx-auto grid md:grid-cols-12 gap-10 relative z-10">
         <div class="md:col-span-4 text-center md:text-left">
             <div class="flex items-center justify-center md:justify-start gap-3 mb-6">
-                <img alt="Logo AFBI" class="h-10 p-1 object-contain" src="https://lh3.googleusercontent.com/d/1WcJIEBxSORsmHIwIAKcnSya7maKkzSPY"/>
+                <img alt="Logo AFBI" class="h-10 p-1 object-contain rounded-lg bg-white/10" src="https://lh3.googleusercontent.com/d/1WcJIEBxSORsmHIwIAKcnSya7maKkzSPY"/>
                 <span class="font-headline-md text-white font-extrabold text-[20px] tracking-widest">AFBI <span class="text-accent-gold animate-luxury-blink">#10</span></span>
             </div>
             <p class="text-white/70 leading-relaxed text-sm">Accounting Festival Bina Insani (AFBI #10) adalah platform kompetisi akuntansi bergengsi tingkat nasional yang diselenggarakan secara profesional oleh Perguruan Tinggi Bina Insani.</p>
@@ -1240,7 +1248,7 @@
             if (shareUrl) window.open(shareUrl, '_blank');
         };
 
-        // Bi-directional Scroll Reveal Observer (animates smoothly when scrolling both up and down)
+        // Bi-directional Scroll Reveal Observer
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -1268,9 +1276,6 @@
             return `${yyyy}-${mm}-${dd}`;
         };
 
-        // TEST DATE CONFIGURATION:
-        // Isi string tanggal (contoh: '2026-09-08' atau '2026-10-04') untuk simulasi.
-        // Biarkan null atau kosong jika ingin menggunakan tanggal real-time sistem saat ini.
         const TEST_OVERRIDE_DATE = null; 
 
         let currentDate = TEST_OVERRIDE_DATE || getWIBDate();
@@ -1307,30 +1312,25 @@
             </div>
         `;
 
-        // Global post-event handling (> 3 Oct 2026)
         if (currentDate > '2026-10-03') {
             const finishedMsg = "Sudah selesai, sampai ketemu di AFBI #11";
             
-            // Lomba SMA
             const wrapperSma = document.getElementById('wrapper-btn-sma');
             if(wrapperSma) wrapperSma.innerHTML = generateBlock(finishedMsg, "text-accent-gold");
             const badgeSma = document.getElementById('badge-sma');
             if(badgeSma) badgeSma.classList.add('hidden');
 
-            // Lomba Univ
             const wrapperUniv = document.getElementById('wrapper-btn-univ');
             if(wrapperUniv) wrapperUniv.innerHTML = generateBlock(finishedMsg, "text-primary-green");
             const badgeUniv = document.getElementById('badge-univ');
             if(badgeUniv) badgeUniv.classList.add('hidden');
 
-            // Seminar Offline & Online
             const seminarOfflineWrapper = document.getElementById('seminar-offline-btn-wrapper');
             if(seminarOfflineWrapper) seminarOfflineWrapper.innerHTML = `<span class="text-xs font-bold text-amber-700 bg-amber-50 border border-amber-200 px-4 py-2 rounded-xl block text-center">${finishedMsg}</span>`;
             
             const seminarOnlineWrapper = document.getElementById('seminar-online-btn-wrapper');
             if(seminarOnlineWrapper) seminarOnlineWrapper.innerHTML = `<span class="text-xs font-bold text-amber-700 bg-amber-50 border border-amber-200 px-4 py-2 rounded-xl block text-center">${finishedMsg}</span>`;
         } else {
-            // Normal Active Smart Date Logic
             const activeSma = getActivePhase(scheduleSMA, currentDate);
             const badgeSma = document.getElementById('badge-sma');
             const badgeSmaText = document.getElementById('text-badge-sma');
@@ -1357,7 +1357,6 @@
                 if(badgeUniv) badgeUniv.classList.remove('hidden');
             }
 
-            // Seminar / Webinar Automation
             const offlineCard = document.getElementById('seminar-offline-card');
             if (offlineCard) {
                 const deadlineStr = offlineCard.getAttribute('data-deadline');
@@ -1383,7 +1382,6 @@
             }
         }
 
-        // Timeline & Fee highlighters
         document.querySelectorAll('.timeline-row').forEach(row => {
             const start = row.getAttribute('data-start');
             const end = row.getAttribute('data-end');
