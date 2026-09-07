@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html class="scroll-smooth" lang="id">
 <head>
@@ -240,7 +241,7 @@
     <div id="share-content" class="bg-white border border-gray-200 w-full sm:max-w-md rounded-t-[2.5rem] sm:rounded-[2rem] p-6 shadow-2xl transform translate-y-full sm:translate-y-0 transition-transform duration-300">
         <div class="flex justify-between items-center mb-5">
             <h3 class="font-headline-md text-lg font-bold text-text-dark flex items-center gap-2">
-                <span class="material-symbols-outlined text-text-muted">share</span> Bagikan AFBI #10
+                <span class="material-symbols-outlined text-text-muted">ios_share</span> Bagikan AFBI #10
             </h3>
             <button onclick="closeShareModal()" class="w-9 h-9 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-text-dark transition-all">
                 <span class="material-symbols-outlined text-sm">close</span>
@@ -280,9 +281,10 @@
     </div>
 </div>
 
-<!-- Floating CS Support Button -->
-<a href="#layanan-bantuan" class="fixed bottom-6 right-6 z-[150] w-14 h-14 bg-primary-green border-2 border-accent-gold text-accent-gold rounded-full shadow-2xl flex items-center justify-center transition-all transform hover:scale-110 hover:shadow-glow group" title="Butuh Bantuan? Hubungi CS">
-    <span class="material-symbols-outlined text-[28px] animate-pulse">support_agent</span>
+<!-- Floating CS Support Button with Unique Dual CS Icons (Female Left, Male Right) -->
+<a href="#layanan-bantuan" class="fixed bottom-6 right-6 z-[150] w-16 h-16 bg-primary-green border-2 border-accent-gold text-accent-gold rounded-full shadow-2xl flex items-center justify-center gap-0.5 transition-all transform hover:scale-110 hover:shadow-glow group px-1" title="Butuh Bantuan? Hubungi CS">
+    <span class="material-symbols-outlined text-[20px] animate-pulse">support_agent</span>
+    <span class="material-symbols-outlined text-[20px] animate-pulse">face</span>
 </a>
 
 <!-- Navigation Header -->
@@ -309,26 +311,26 @@
             <!-- Audio Player -->
             <div class="flex items-center bg-white/10 border border-white/20 rounded-full p-1 shadow-sm">
                 <button id="prev-btn" class="text-white hover:bg-white/20 p-1.5 rounded-full transition-all" title="Lagu Sebelumnya">
-                    <span class="material-symbols-outlined text-[16px] block">skip_previous</span>
+                    <span class="material-symbols-outlined text-[16px] block">fast_rewind</span>
                 </button>
                 <button id="music-toggle-btn" class="text-accent-gold hover:bg-white/20 p-1.5 rounded-full transition-all flex items-center justify-center" title="Play/Pause">
                     <span id="music-icon" class="material-symbols-outlined text-[18px]">play_arrow</span>
                 </button>
                 <button id="next-btn" class="text-white hover:bg-white/20 p-1.5 rounded-full transition-all" title="Lagu Selanjutnya">
-                    <span class="material-symbols-outlined text-[16px] block">skip_next</span>
+                    <span class="material-symbols-outlined text-[16px] block">fast_forward</span>
                 </button>
             </div>
             
             <!-- CTA Button -->
             <a class="hidden sm:flex items-center gap-2 bg-accent-gold text-dark-green px-5 py-2.5 rounded-full font-extrabold text-sm hover:bg-yellow-500 transition-all shadow-md hover:shadow-glow" href="#jalur">
-                Daftar <span class="material-symbols-outlined text-[16px]">rocket_launch</span>
+                Daftar <span class="material-symbols-outlined text-[16px]">bolt</span>
             </a>
         </div>
     </nav>
 </header>
 
 <main class="pt-20">
-    <!-- SECTION 1: HERO (With iPhone Liquid Glass Buttons) -->
+    <!-- SECTION 1: HERO (With iPhone Liquid Glass Buttons & Rare Icons) -->
     <section class="relative pt-6 sm:pt-12 pb-24 sm:pb-36 px-4 sm:px-margin-mobile md:px-margin-desktop min-h-[85vh] flex items-center justify-center overflow-hidden bg-white text-text-dark">
         <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none opacity-20">
             <video 
@@ -364,20 +366,20 @@
                 </div>
             </div>
 
-            <!-- Hero Section Buttons with iOS Liquid Glass -->
+            <!-- Hero Section Buttons with iOS Liquid Glass & Rare Icons -->
             <div class="flex flex-col sm:flex-row items-center justify-center gap-5 w-full">
                 <a href="#jalur" class="w-full sm:w-auto flex items-center justify-center gap-3 ios-glass-gold text-dark-green px-9 py-4 rounded-full font-extrabold text-[16px] shadow-xl">
-                    <span class="material-symbols-outlined text-[22px]">workspace_premium</span>
+                    <span class="material-symbols-outlined text-[22px]">military_tech</span>
                     Amankan Posisi Kompetisi
                 </a>
                 <a href="#seminar" class="w-full sm:w-auto flex items-center justify-center gap-3 ios-glass border border-gray-300/80 text-text-dark px-9 py-4 rounded-full font-extrabold text-[16px] shadow-sm">
-                    <span class="material-symbols-outlined text-[22px]">campaign</span>
+                    <span class="material-symbols-outlined text-[22px]">podcasts</span>
                     Ikuti Webinar Nasional
                 </a>
             </div>
 
             <button onclick="openShareModal()" class="mt-10 text-text-muted hover:text-accent-gold font-semibold text-sm flex items-center justify-center gap-2 mx-auto transition-colors">
-                <span class="material-symbols-outlined text-[18px]">share</span> Bagikan Peluang Emas Ini ke Rekanmu
+                <span class="material-symbols-outlined text-[18px]">share_reviews</span> Bagikan Peluang Emas Ini ke Rekanmu
             </button>
         </div>
     </section>
@@ -399,13 +401,14 @@
             </div>
             
             <div class="grid md:grid-cols-2 gap-8 sm:gap-10 max-w-5xl mx-auto">
+                <!-- Tingkat SMA / SMK Card with Super Rare Icon: history_edu -->
                 <div class="clean-card p-8 sm:p-10 flex flex-col items-start relative reveal-on-scroll">
                     <div id="badge-sma" class="hidden absolute top-6 right-6 bg-accent-gold/10 text-accent-gold px-3 py-1.5 rounded-full font-bold text-xs shadow-sm flex items-center gap-2">
                         <span id="text-badge-sma">Status</span>
                     </div>
 
                     <div class="w-16 h-16 bg-accent-gold/10 text-accent-gold rounded-2xl flex items-center justify-center mb-6 hover:scale-110 transition-transform">
-                        <span class="material-symbols-outlined text-[32px]">badge</span>
+                        <span class="material-symbols-outlined text-[32px]">history_edu</span>
                     </div>
 
                     <h3 class="font-headline-md text-2xl sm:text-3xl text-text-dark mb-3 font-bold hover:text-accent-gold transition-colors">Tingkat SMA / SMK</h3>
@@ -414,24 +417,25 @@
                     <div class="mt-auto w-full space-y-3">
                         <div id="wrapper-btn-sma" class="w-full">
                             <a id="btn-sma" class="flex items-center justify-center gap-2 w-full bg-accent-gold text-dark-green hover:bg-yellow-500 py-3.5 rounded-xl font-bold transition-all shadow-md" href="https://docs.google.com/forms/d/e/1FAIpQLScb2IaWgS0ruWlx1HD-sZ_Y3jntpevXIFrGXi2VKmJmBjkJVg/viewform" target="_blank" rel="noopener noreferrer">
-                                <span class="material-symbols-outlined text-[20px]">edit_document</span> Isi Formulir Pendaftaran
+                                <span class="material-symbols-outlined text-[20px]">post_add</span> Isi Formulir Pendaftaran
                             </a>
                         </div>
                         <div class="w-full" id="actions-sma">
                             <a class="flex items-center justify-center gap-2 w-full bg-white border border-gray-200 text-text-dark hover:bg-gray-50 py-3.5 rounded-xl font-bold transition-all" id="btn-booklet-sma" href="https://drive.google.com/file/d/1kc8GNGqRgRQ4e1lqPYLolstntcwkOcs3/view?usp=drivesdk" target="_blank">
-                                <span class="material-symbols-outlined text-[20px]">menu_book</span> Unduh Booklet
+                                <span class="material-symbols-outlined text-[20px]">chrome_reader_mode</span> Unduh Booklet
                             </a>
                         </div>
                     </div>
                 </div>
 
+                <!-- Perguruan Tinggi Card with Super Rare Icon: biotech -->
                 <div class="clean-card p-8 sm:p-10 flex flex-col items-start relative reveal-on-scroll">
                     <div id="badge-univ" class="hidden absolute top-6 right-6 bg-primary-green/10 text-primary-green px-3 py-1.5 rounded-full font-bold text-xs shadow-sm flex items-center gap-2">
                         <span id="text-badge-univ">Status</span>
                     </div>
 
                     <div class="w-16 h-16 bg-primary-green/10 text-primary-green rounded-2xl flex items-center justify-center mb-6 hover:scale-110 transition-transform">
-                        <span class="material-symbols-outlined text-[32px]">school</span>
+                        <span class="material-symbols-outlined text-[32px]">biotech</span>
                     </div>
 
                     <h3 class="font-headline-md text-2xl sm:text-3xl text-text-dark mb-3 font-bold hover:text-primary-green transition-colors">Perguruan Tinggi</h3>
@@ -440,12 +444,12 @@
                     <div class="mt-auto w-full space-y-3">
                         <div id="wrapper-btn-univ" class="w-full">
                             <a id="btn-univ" class="flex items-center justify-center gap-2 w-full bg-primary-green text-white hover:bg-dark-green py-3.5 rounded-xl font-bold transition-all shadow-md" href="https://docs.google.com/forms/d/e/1FAIpQLScxhHFW34yDEbQsneOqo73maVjwnPEj2Q0sAXJwzWTnYrA-Tg/viewform" target="_blank" rel="noopener noreferrer">
-                                <span class="material-symbols-outlined text-[20px]">edit_document</span> Isi Formulir Pendaftaran
+                                <span class="material-symbols-outlined text-[20px]">post_add</span> Isi Formulir Pendaftaran
                             </a>
                         </div>
                         <div class="w-full" id="actions-univ">
                             <a class="flex items-center justify-center gap-2 w-full bg-white border border-gray-200 text-text-dark hover:bg-gray-50 py-3.5 rounded-xl font-bold transition-all" id="btn-booklet-univ" href="https://drive.google.com/file/d/1S_7ovDhG5k-aDssmGQZvymogaQwwWl_l/view?usp=drivesdk" target="_blank">
-                                <span class="material-symbols-outlined text-[20px]">menu_book</span> Unduh Booklet
+                                <span class="material-symbols-outlined text-[20px]">chrome_reader_mode</span> Unduh Booklet
                             </a>
                         </div>
                     </div>
@@ -532,7 +536,7 @@
                         <ul class="space-y-4 mb-8">
                             <li class="flex items-start gap-4">
                                 <div class="w-10 h-10 rounded-full bg-primary-green/10 flex items-center justify-center text-primary-green shrink-0">
-                                    <span class="material-symbols-outlined text-[20px]">calendar_month</span>
+                                    <span class="material-symbols-outlined text-[20px]">date_range</span>
                                 </div>
                                 <div>
                                     <p class="text-text-dark font-bold">Selasa, 13 Oktober 2026</p>
@@ -541,7 +545,7 @@
                             </li>
                             <li class="flex items-start gap-4">
                                 <div class="w-10 h-10 rounded-full bg-primary-green/10 flex items-center justify-center text-primary-green shrink-0">
-                                    <span class="material-symbols-outlined text-[20px]">location_on</span>
+                                    <span class="material-symbols-outlined text-[20px]">pin_drop</span>
                                 </div>
                                 <div>
                                     <p class="text-text-dark font-bold">Hybrid System</p>
@@ -550,7 +554,7 @@
                             </li>
                             <li class="flex items-start gap-4">
                                 <div class="w-10 h-10 rounded-full bg-primary-green/10 flex items-center justify-center text-primary-green shrink-0">
-                                    <span class="material-symbols-outlined text-[20px]">verified</span>
+                                    <span class="material-symbols-outlined text-[20px]">verified_user</span>
                                 </div>
                                 <div>
                                     <p class="text-text-dark font-bold">Benefit Peserta</p>
@@ -646,7 +650,7 @@
                     <div class="bg-white/5 border border-white/10 rounded-[2rem] p-6 sm:p-10 backdrop-blur-sm shadow-xl">
                         <div class="flex items-center gap-4 sm:gap-5 mb-8 pb-6 border-b border-white/10">
                             <div class="w-14 h-14 rounded-2xl bg-accent-gold/20 flex items-center justify-center shrink-0">
-                                <span class="material-symbols-outlined text-accent-gold text-[28px]">badge</span>
+                                <span class="material-symbols-outlined text-accent-gold text-[28px]">history_edu</span>
                             </div>
                             <h3 class="font-headline-md text-xl sm:text-2xl text-white font-bold">Tingkat SMA / SMK</h3>
                         </div>
@@ -715,7 +719,7 @@
                     <div class="bg-white/5 border border-white/10 rounded-[2rem] p-6 sm:p-10 backdrop-blur-sm shadow-xl">
                         <div class="flex items-center gap-4 sm:gap-5 mb-8 pb-6 border-b border-white/10">
                             <div class="w-14 h-14 rounded-2xl bg-accent-gold/20 flex items-center justify-center shrink-0">
-                                <span class="material-symbols-outlined text-accent-gold text-[28px]">school</span>
+                                <span class="material-symbols-outlined text-accent-gold text-[28px]">biotech</span>
                             </div>
                             <h3 class="font-headline-md text-xl sm:text-2xl text-white font-bold">Tingkat Perguruan Tinggi</h3>
                         </div>
@@ -803,7 +807,7 @@
                 <div class="clean-card p-8 sm:p-10 reveal-on-scroll">
                     <div class="flex items-center gap-4 mb-8">
                         <div class="w-12 h-12 bg-accent-gold/10 rounded-2xl flex items-center justify-center shrink-0">
-                            <span class="material-symbols-outlined text-accent-gold text-[24px]">payments</span>
+                            <span class="material-symbols-outlined text-accent-gold text-[24px]">price_check</span>
                         </div>
                         <h3 class="font-headline-md text-xl sm:text-2xl text-text-dark font-bold">Biaya SMA/SMK</h3>
                     </div>
@@ -835,7 +839,7 @@
                 <div class="clean-card p-8 sm:p-10 reveal-on-scroll">
                     <div class="flex items-center gap-4 mb-8">
                         <div class="w-12 h-12 bg-accent-gold/10 rounded-2xl flex items-center justify-center shrink-0">
-                            <span class="material-symbols-outlined text-accent-gold text-[24px]">account_balance_wallet</span>
+                            <span class="material-symbols-outlined text-accent-gold text-[24px]">wallet</span>
                         </div>
                         <h3 class="font-headline-md text-xl sm:text-2xl text-text-dark font-bold">Biaya Perguruan Tinggi</h3>
                     </div>
@@ -901,7 +905,7 @@
                 
                 <div class="flex flex-col items-center text-center reveal-on-scroll group" style="transition-delay: 0.1s">
                     <div class="w-24 h-24 rounded-full bg-white/10 border border-white/20 flex items-center justify-center mb-6 relative z-10 group-hover:border-accent-gold transition-all shadow-sm">
-                        <span class="material-symbols-outlined text-white text-[32px] group-hover:text-accent-gold transition-all">touch_app</span>
+                        <span class="material-symbols-outlined text-white text-[32px] group-hover:text-accent-gold transition-all">gesture</span>
                         <div class="absolute -top-1 -right-1 w-8 h-8 rounded-full bg-accent-gold text-dark-green text-xs font-extrabold flex items-center justify-center">1</div>
                     </div>
                     <h4 class="font-headline-md text-lg text-white font-bold mb-2">Pilih Jalur</h4>
@@ -909,7 +913,7 @@
                 
                 <div class="flex flex-col items-center text-center reveal-on-scroll group" style="transition-delay: 0.2s">
                     <div class="w-24 h-24 rounded-full bg-white/10 border border-white/20 flex items-center justify-center mb-6 relative z-10 group-hover:border-accent-gold transition-all shadow-sm">
-                        <span class="material-symbols-outlined text-white text-[32px] group-hover:text-accent-gold transition-all">edit_note</span>
+                        <span class="material-symbols-outlined text-white text-[32px] group-hover:text-accent-gold transition-all">note_alt</span>
                         <div class="absolute -top-1 -right-1 w-8 h-8 rounded-full bg-accent-gold text-dark-green text-xs font-extrabold flex items-center justify-center">2</div>
                     </div>
                     <h4 class="font-headline-md text-lg text-white font-bold mb-2">Isi Data</h4>
@@ -917,7 +921,7 @@
                 
                 <div class="flex flex-col items-center text-center reveal-on-scroll group" style="transition-delay: 0.3s">
                     <div class="w-24 h-24 rounded-full bg-white/10 border border-white/20 flex items-center justify-center mb-6 relative z-10 group-hover:border-accent-gold transition-all shadow-sm">
-                        <span class="material-symbols-outlined text-white text-[32px] group-hover:text-accent-gold transition-all">mark_email_read</span>
+                        <span class="material-symbols-outlined text-white text-[32px] group-hover:text-accent-gold transition-all">forward_to_inbox</span>
                         <div class="absolute -top-1 -right-1 w-8 h-8 rounded-full bg-accent-gold text-dark-green text-xs font-extrabold flex items-center justify-center">3</div>
                     </div>
                     <h4 class="font-headline-md text-lg text-white font-bold mb-2">Verifikasi</h4>
@@ -925,7 +929,7 @@
                 
                 <div class="flex flex-col items-center text-center reveal-on-scroll group" style="transition-delay: 0.4s">
                     <div class="w-24 h-24 rounded-full bg-white/10 border border-white/20 flex items-center justify-center mb-6 relative z-10 group-hover:border-accent-gold transition-all shadow-sm">
-                        <span class="material-symbols-outlined text-white text-[32px] group-hover:text-accent-gold transition-all">task_alt</span>
+                        <span class="material-symbols-outlined text-white text-[32px] group-hover:text-accent-gold transition-all">rule</span>
                         <div class="absolute -top-1 -right-1 w-8 h-8 rounded-full bg-accent-gold text-dark-green text-xs font-extrabold flex items-center justify-center">4</div>
                     </div>
                     <h4 class="font-headline-md text-lg text-white font-bold mb-2">Selesai</h4>
@@ -957,7 +961,7 @@
                         <span class="font-headline-md text-[20px] text-text-dark font-extrabold leading-none">Partnership</span>
                     </div>
                     <a class="bg-accent-gold text-white p-3 rounded-xl hover:bg-yellow-600 transition-colors shadow-sm flex items-center justify-center shrink-0" href="mailto:accfestbiu@gmail.com" target="_blank" rel="noopener noreferrer">
-                        <span class="material-symbols-outlined text-[24px]">mail</span>
+                        <span class="material-symbols-outlined text-[24px]">contact_mail</span>
                     </a>
                 </div>
             </div>
@@ -976,7 +980,7 @@
                         <span class="font-headline-xl text-[64px] sm:text-[84px] leading-none font-extrabold text-accent-gold animate-luxury-blink">30</span>
                         <span class="block font-headline-md text-[24px] sm:text-[28px] text-text-dark font-extrabold mt-2">Juta Rupiah</span>
                         <div class="mt-6 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-green text-white shadow-md">
-                            <span class="material-symbols-outlined text-sm text-accent-gold">workspace_premium</span>
+                            <span class="material-symbols-outlined text-sm text-accent-gold">military_tech</span>
                             <span class="text-[11px] font-bold uppercase tracking-wider">National Level</span>
                         </div>
                     </div>
@@ -1009,11 +1013,11 @@
             <h4 class="font-headline-md text-lg text-white font-bold mb-6 text-center md:text-left">Informasi & Kontak</h4>
             <div class="space-y-4">
                 <div class="flex items-start gap-3 justify-center md:justify-start">
-                    <span class="material-symbols-outlined text-accent-gold shrink-0">location_on</span>
+                    <span class="material-symbols-outlined text-accent-gold shrink-0">pin_drop</span>
                     <a href="https://www.google.com/maps/search/?api=1&query=Perguruan+Tinggi+Bina+Insani,+Jl.+Raya+Siliwangi+No.9,+Rawalumbu,+Kota+Bekasi" target="_blank" rel="noopener noreferrer" class="text-sm text-white/70 hover:text-white transition-colors text-left">Jl. Raya Siliwangi No.9, Rawalumbu, Kota Bekasi, Jawa Barat 17116</a>
                 </div>
                 <div class="flex items-center gap-3 justify-center md:justify-start">
-                    <span class="material-symbols-outlined text-accent-gold shrink-0">mail</span>
+                    <span class="material-symbols-outlined text-accent-gold shrink-0">contact_mail</span>
                     <a href="mailto:accfestbiu@gmail.com" class="text-sm text-white/70 hover:text-white transition-colors">accfestbiu@gmail.com</a>
                 </div>
                 <div class="flex items-center gap-3 justify-center md:justify-start">
@@ -1049,7 +1053,7 @@
                     </div>
                     <div class="flex flex-col text-left">
                         <span class="font-bold text-white text-xs">Chat Fachri</span>
-                        <span class="text-white/60 text-[11px]">Admin 2 (Official Support)</span>
+                        <span class="text-white/60 text-[11px]">Admin 2 (CS Support)</span>
                     </div>
                 </div>
                 <span class="material-symbols-outlined text-white/40 group-hover:text-accent-gold text-sm transition-colors">arrow_forward</span>
@@ -1401,7 +1405,7 @@
             if (currentDate >= start && currentDate <= end) {
                 row.classList.add('biaya-highlight-active');
                 const label = row.querySelector('.fee-active-label');
-                if (label) label.classList.remove('hidden');
+                if (label) label.classList.add('inline-block');
             }
         });
     });
