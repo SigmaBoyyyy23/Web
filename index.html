@@ -119,7 +119,7 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* Authentic iOS Liquid Glass & Spring Physics Design System (Hero Section Only) */
+        /* Authentic iOS Liquid Glass & Spring Physics Design System */
         .ios-glass {
             background: rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(25px) saturate(180%);
@@ -286,7 +286,7 @@
     <span class="material-symbols-outlined text-[18px] animate-pulse">face</span>
 </a>
 
-<!-- Navigation Header with Translucent Hero Shade Wave -->
+<!-- Navigation Header (Green) -->
 <header class="fixed top-0 w-full z-[100] bg-primary-green drop-shadow-lg flex flex-col">
     <!-- Navbar Container -->
     <nav class="max-w-container-max mx-auto px-4 md:px-margin-desktop w-full flex justify-between items-center h-20 relative z-10 bg-primary-green">
@@ -329,11 +329,11 @@
     </nav>
 </header>
 
-<!-- Main Content with Balanced Padding -->
+<!-- Main Content with Alternating Sequence (Hero: White) -->
 <main class="pt-20">
-    <!-- SECTION 1: HERO -->
-    <section class="relative pt-12 sm:pt-20 pb-28 sm:pb-40 px-4 sm:px-margin-mobile md:px-margin-desktop min-h-[85vh] flex items-center justify-center overflow-hidden bg-primary-green text-white">
-        <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none opacity-20">
+    <!-- SECTION 1: HERO (White) -->
+    <section class="relative pt-12 sm:pt-20 pb-28 sm:pb-40 px-4 sm:px-margin-mobile md:px-margin-desktop min-h-[85vh] flex items-center justify-center overflow-hidden bg-white text-text-dark">
+        <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none opacity-10">
             <video 
                 class="w-full h-full object-cover scale-105 filter contrast-125" 
                 autoplay 
@@ -343,22 +343,22 @@
                 preload="auto">
                 <source src="https://files.catbox.moe/y7h4e8.mp4" type="video/mp4">
             </video>
-            <div class="absolute inset-0 bg-gradient-to-b from-[#003624]/60 via-[#003624]/80 to-[#003624]"></div>
+            <div class="absolute inset-0 bg-gradient-to-b from-white/60 via-white/80 to-white"></div>
         </div>
         
         <div class="max-w-[1050px] mx-auto text-center relative z-10 w-full reveal-on-scroll">
             
-            <h1 class="font-headline-xl text-[40px] sm:text-[58px] md:text-[74px] leading-tight text-white mb-6 font-extrabold tracking-tight">
+            <h1 class="font-headline-xl text-[40px] sm:text-[58px] md:text-[74px] leading-tight text-text-dark mb-6 font-extrabold tracking-tight">
                 Accounting Festival <br class="hidden sm:inline"/> Bina Insani <span class="text-accent-gold animate-luxury-blink inline-block">#10</span>
             </h1>
 
-            <p class="font-body-lg text-white/90 text-base sm:text-lg md:text-xl leading-relaxed mb-8 max-w-3xl mx-auto font-medium">
-                Kompetisi akuntansi tingkat nasional paling bergengsi tahun ini. Kuasai era baru <span class="text-accent-gold font-bold">Artificial Intelligence (AI)</span>, tunjukkan keahlian analisis finansialmu, dan rebut total hadiah puluhan juta rupiah!
+            <p class="font-body-lg text-text-muted text-base sm:text-lg md:text-xl leading-relaxed mb-8 max-w-3xl mx-auto font-medium">
+                Kompetisi akuntansi tingkat nasional paling bergengsi tahun ini. Kuasai era baru <span class="text-primary-green font-bold">Artificial Intelligence (AI)</span>, tunjukkan keahlian analisis finansialmu, dan rebut total hadiah puluhan juta rupiah!
             </p>
 
             <!-- Sponsor Logos in Hero Section -->
             <div class="mb-12">
-                <span class="font-label-sm text-accent-gold uppercase tracking-[0.2em] mb-5 block font-bold text-xs">Disponsori Oleh</span>
+                <span class="font-label-sm text-primary-green uppercase tracking-[0.2em] mb-5 block font-bold text-xs">Disponsori Oleh</span>
                 <div class="flex flex-wrap justify-center items-center gap-6 sm:gap-12 max-w-4xl mx-auto px-2">
                     <img src="https://lh3.googleusercontent.com/d/1OocdIMk1MyK_m5KMZ-yVlPJjiWSXSAtQ" alt="BSI" class="h-14 sm:h-20 w-auto object-contain sponsor-logo">
                     <img src="https://lh3.googleusercontent.com/d/19MrxwqjVPKFqfZgFmyc1L8IDYaCK685D" alt="Pegadaian" class="h-14 sm:h-20 w-auto object-contain sponsor-logo">
@@ -367,48 +367,48 @@
                 </div>
             </div>
 
-            <!-- Hero Section Buttons with iOS Liquid Glass -->
+            <!-- Hero Section Buttons -->
             <div class="flex flex-col sm:flex-row items-center justify-center gap-5 w-full">
-                <a href="#jalur" class="w-full sm:w-auto flex items-center justify-center gap-3 ios-glass-gold text-dark-green px-8 py-4 rounded-full font-extrabold text-sm sm:text-base shadow-xl text-center">
-                    <span class="material-symbols-outlined text-[22px] shrink-0">military_tech</span>
+                <a href="#jalur" class="w-full sm:w-auto flex items-center justify-center gap-3 bg-primary-green text-white hover:bg-dark-green px-8 py-4 rounded-full font-extrabold text-sm sm:text-base shadow-xl text-center transition-all">
+                    <span class="material-symbols-outlined text-[22px] shrink-0 text-accent-gold">military_tech</span>
                     <span>Amankan Posisi Mu Di Kompetisi Tingkat Nasional</span>
                 </a>
-                <a href="#seminar" class="w-full sm:w-auto flex items-center justify-center gap-3 ios-glass border border-white/40 text-white px-8 py-4 rounded-full font-extrabold text-sm sm:text-base shadow-sm text-center">
-                    <span class="material-symbols-outlined text-[22px] shrink-0">podcasts</span>
+                <a href="#seminar" class="w-full sm:w-auto flex items-center justify-center gap-3 bg-surface-light border border-gray-300 text-text-dark hover:bg-gray-100 px-8 py-4 rounded-full font-extrabold text-sm sm:text-base shadow-sm text-center transition-all">
+                    <span class="material-symbols-outlined text-[22px] shrink-0 text-primary-green">podcasts</span>
                     <span>Ikuti Seminar/Webinar</span>
                 </a>
             </div>
 
-            <button onclick="openShareModal()" class="mt-10 text-white/80 hover:text-accent-gold font-semibold text-sm flex items-center justify-center gap-2 mx-auto transition-colors">
+            <button onclick="openShareModal()" class="mt-10 text-text-muted hover:text-primary-green font-semibold text-sm flex items-center justify-center gap-2 mx-auto transition-colors">
                 <span class="material-symbols-outlined text-[18px]">share_reviews</span> Bagikan Peluang Emas Ini ke Rekanmu
             </button>
         </div>
     </section>
 
-    <!-- Artistic Divider Transition to White -->
-    <div class="art-wave-divider bg-white">
+    <!-- Artistic Divider Transition to Green -->
+    <div class="art-wave-divider bg-primary-green">
         <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-            <path d="M0,0 C150,90 350,-40 600,45 C850,130 1050,10 1200,35 L1200,0 L0,0 Z" fill="#003624"></path>
+            <path d="M0,0 C150,90 350,-40 600,45 C850,130 1050,10 1200,35 L1200,0 L0,0 Z" fill="#FFFFFF"></path>
         </svg>
     </div>
 
-    <!-- SECTION 2: LOMBA AKUNTANSI -->
-    <section class="py-20 sm:py-24 px-4 sm:px-margin-mobile md:px-margin-desktop bg-white text-text-dark relative scroll-mt-20" id="jalur">
+    <!-- SECTION 2: LOMBA AKUNTANSI (Green with Solid White Cards) -->
+    <section class="py-20 sm:py-24 px-4 sm:px-margin-mobile md:px-margin-desktop bg-primary-green text-white relative scroll-mt-20" id="jalur">
         <div class="max-w-container-max mx-auto relative z-10">
             <div class="text-center mb-16 sm:mb-20 reveal-on-scroll">
                 <span class="font-label-md text-accent-gold uppercase tracking-[0.2em] mb-3 block font-bold text-sm animate-luxury-blink">Arena Kompetisi</span>
-                <h2 class="font-headline-xl text-[32px] sm:text-[40px] text-text-dark font-bold tracking-tight">Pilih Tingkat <span class="text-accent-gold animate-luxury-blink">Pendidikan</span></h2>
+                <h2 class="font-headline-xl text-[32px] sm:text-[40px] text-white font-bold tracking-tight">Pilih Tingkat <span class="text-accent-gold animate-luxury-blink">Pendidikan</span></h2>
                 <div class="h-1 w-20 bg-accent-gold mx-auto mt-4 rounded-full animate-luxury-blink"></div>
             </div>
             
             <div class="grid md:grid-cols-2 gap-8 sm:gap-10 max-w-5xl mx-auto">
-                <!-- Tingkat SMA / SMK Card -->
-                <div class="clean-card p-8 sm:p-10 flex flex-col items-start relative reveal-on-scroll border-2 border-accent-gold/40">
-                    <div id="badge-sma" class="hidden absolute top-6 right-6 bg-accent-gold/10 text-accent-gold px-3.5 py-1.5 rounded-full font-bold text-xs shadow-sm flex items-center gap-2 max-w-[50%] sm:max-w-[60%] overflow-hidden text-right">
+                <!-- Tingkat SMA / SMK Card (Solid White) -->
+                <div class="bg-white text-text-dark border-2 border-accent-gold p-8 sm:p-10 rounded-[1.5rem] flex flex-col items-start relative reveal-on-scroll shadow-2xl">
+                    <div id="badge-sma" class="hidden absolute top-6 right-6 bg-accent-gold/20 text-dark-green px-3.5 py-1.5 rounded-full font-bold text-xs shadow-sm flex items-center gap-2 max-w-[50%] sm:max-w-[60%] overflow-hidden text-right">
                         <span id="text-badge-sma" class="truncate">Status</span>
                     </div>
 
-                    <div class="w-16 h-16 bg-accent-gold/10 text-accent-gold rounded-2xl flex items-center justify-center mb-6 hover:scale-110 transition-transform">
+                    <div class="w-16 h-16 bg-accent-gold/20 text-dark-green rounded-2xl flex items-center justify-center mb-6 hover:scale-110 transition-transform">
                         <span class="material-symbols-outlined text-[30px]">history_edu</span>
                     </div>
 
@@ -429,8 +429,8 @@
                     </div>
                 </div>
 
-                <!-- Perguruan Tinggi Card -->
-                <div class="clean-card p-8 sm:p-10 flex flex-col items-start relative reveal-on-scroll border-2 border-primary-green/30">
+                <!-- Perguruan Tinggi Card (Solid White) -->
+                <div class="bg-white text-text-dark border-2 border-primary-green/30 p-8 sm:p-10 rounded-[1.5rem] flex flex-col items-start relative reveal-on-scroll shadow-2xl">
                     <div id="badge-univ" class="hidden absolute top-6 right-6 bg-primary-green/10 text-primary-green px-3.5 py-1.5 rounded-full font-bold text-xs shadow-sm flex items-center gap-2 max-w-[50%] sm:max-w-[60%] overflow-hidden text-right">
                         <span id="text-badge-univ" class="truncate">Status</span>
                     </div>
@@ -459,19 +459,19 @@
         </div>
     </section>
 
-    <!-- Artistic Divider Transition to Green -->
-    <div class="art-wave-divider bg-primary-green">
+    <!-- Artistic Divider Transition to White -->
+    <div class="art-wave-divider bg-white">
         <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-            <path d="M0,0 C150,90 350,-40 600,45 C850,130 1050,10 1200,35 L1200,0 L0,0 Z" fill="#FFFFFF"></path>
+            <path d="M0,0 C150,90 350,-40 600,45 C850,130 1050,10 1200,35 L1200,0 L0,0 Z" fill="#003624"></path>
         </svg>
     </div>
 
-    <!-- SECTION 3: WEBINAR -->
-    <section class="py-20 sm:py-24 px-4 sm:px-margin-mobile md:px-margin-desktop relative bg-primary-green text-white scroll-mt-20" id="seminar">
+    <!-- SECTION 3: WEBINAR (White) -->
+    <section class="py-20 sm:py-24 px-4 sm:px-margin-mobile md:px-margin-desktop relative bg-white text-text-dark scroll-mt-20" id="seminar">
         <div class="max-w-container-max mx-auto relative z-10">
             <!-- Kolaborasi Antara -->
             <div class="text-center mb-14 reveal-on-scroll">
-                <span class="font-label-md text-accent-gold uppercase tracking-[0.2em] mb-6 block font-bold text-sm">Kolaborasi Antara :</span>
+                <span class="font-label-md text-primary-green uppercase tracking-[0.2em] mb-6 block font-bold text-sm">Kolaborasi Antara :</span>
                 <div class="flex justify-center items-center gap-6 sm:gap-12 flex-wrap max-w-5xl mx-auto px-2">
                     <img src="https://lh3.googleusercontent.com/d/1XSmBjcItttgowk-YIxS_2tbGvqoSiYIi" alt="Universitas Bina Insani" class="h-16 sm:h-24 w-auto object-contain sponsor-logo">
                     <img src="https://lh3.googleusercontent.com/d/1WcJIEBxSORsmHIwIAKcnSya7maKkzSPY" alt="AFBI" class="h-16 sm:h-24 w-auto object-contain sponsor-logo">
@@ -484,11 +484,11 @@
 
             <div class="text-center mb-16 reveal-on-scroll">
                 <span class="font-label-md text-accent-gold uppercase tracking-[0.2em] mb-3 block font-bold text-sm animate-luxury-blink">Online & Offline Event</span>
-                <h2 class="font-headline-xl text-[32px] sm:text-[40px] text-white font-bold mb-6">Seminar Akuntansi <span class="text-accent-gold animate-luxury-blink">Nasional</span></h2>
+                <h2 class="font-headline-xl text-[32px] sm:text-[40px] text-text-dark font-bold mb-6">Seminar Akuntansi <span class="text-accent-gold animate-luxury-blink">Nasional</span></h2>
                 <div class="h-1 w-20 bg-accent-gold mx-auto mb-6 rounded-full animate-luxury-blink"></div>
-                <div class="max-w-3xl mx-auto bg-white/5 border border-white/10 p-6 sm:p-8 rounded-2xl backdrop-blur-sm shadow-xl reveal-on-scroll">
-                    <span class="font-label-md text-accent-gold uppercase tracking-[0.2em] mb-2 block font-bold text-xs animate-luxury-blink">Topik Pembahasan :</span>
-                    <p class="text-white text-lg sm:text-xl font-semibold leading-relaxed tracking-tight">
+                <div class="max-w-3xl mx-auto bg-surface-light border border-gray-200 p-6 sm:p-8 rounded-2xl shadow-xl reveal-on-scroll">
+                    <span class="font-label-md text-primary-green uppercase tracking-[0.2em] mb-2 block font-bold text-xs">Topik Pembahasan :</span>
+                    <p class="text-text-dark text-lg sm:text-xl font-semibold leading-relaxed tracking-tight">
                         "Digital Accounting in the AI Era: Building Professional Careers and Sustainable Accountability"
                     </p>
                 </div>
@@ -496,135 +496,293 @@
 
             <div class="grid md:grid-cols-3 gap-8 mb-16 reveal-on-scroll items-stretch max-w-5xl mx-auto">
                 <!-- Pembicara Section -->
-                <div class="bg-white/5 border border-white/10 p-8 sm:p-10 rounded-2xl text-center flex flex-col items-center justify-between shadow-xl backdrop-blur-sm">
+                <div class="bg-surface-light border border-gray-200 p-8 sm:p-10 rounded-2xl text-center flex flex-col items-center justify-between shadow-xl">
                     <div class="flex flex-col items-center w-full">
-                        <div class="w-32 h-32 rounded-full mb-6 p-1 bg-accent-gold/30 border-2 border-accent-gold shadow-md flex items-center justify-center">
+                        <div class="w-32 h-32 rounded-full mb-6 p-1 bg-primary-green/20 border-2 border-primary-green shadow-md flex items-center justify-center">
                             <img src="https://lh3.googleusercontent.com/d/1ZTzbhi7cz8PbLhPAJtFzC14IK1oAs1P9" alt="Dr. Ivan Yudianto" class="w-full h-full rounded-full object-cover bg-white">
                         </div>
-                        <h4 class="font-headline-md font-bold text-white text-lg mb-1">Dr. Ivan Yudianto, S.E., M.Si., Ak., CA., QIA., CWM., CRP., CGAE</h4>
-                        <span class="inline-block bg-accent-gold/20 text-accent-gold font-bold text-[11px] px-3.5 py-1 rounded-full uppercase tracking-wider mb-4 animate-luxury-blink">Pembicara 1</span>
+                        <h4 class="font-headline-md font-bold text-text-dark text-lg mb-1">Dr. Ivan Yudianto, S.E., M.Si., Ak., CA., QIA., CWM., CRP., CGAE</h4>
+                        <span class="inline-block bg-primary-green/10 text-primary-green font-bold text-[11px] px-3.5 py-1 rounded-full uppercase tracking-wider mb-4">Pembicara 1</span>
                     </div>
-                    <p class="text-white/80 text-sm mt-auto border-t border-white/10 pt-4 w-full font-medium">Wakil Ketua I IAI Jabar</p>
+                    <p class="text-text-muted text-sm mt-auto border-t border-gray-200 pt-4 w-full font-medium">Wakil Ketua I IAI Jabar</p>
                 </div>
 
-                <div class="bg-white/5 border border-white/10 p-8 sm:p-10 rounded-2xl text-center flex flex-col items-center justify-between shadow-xl backdrop-blur-sm">
+                <div class="bg-surface-light border border-gray-200 p-8 sm:p-10 rounded-2xl text-center flex flex-col items-center justify-between shadow-xl">
                     <div class="flex flex-col items-center w-full">
-                        <div class="w-32 h-32 rounded-full mb-6 p-1 bg-accent-gold/30 border-2 border-accent-gold shadow-md flex items-center justify-center">
+                        <div class="w-32 h-32 rounded-full mb-6 p-1 bg-primary-green/20 border-2 border-primary-green shadow-md flex items-center justify-center">
                             <img src="https://lh3.googleusercontent.com/d/1qIHmihx-GzgsJh_KR0-yfoygfcNzRhTS" alt="Dr. Lies Zulfiati" class="w-full h-full rounded-full object-cover bg-white">
                         </div>
-                        <h4 class="font-headline-md font-bold text-white text-lg mb-1">Dr. Lies Zulfiati, S.E., M.Si., Ak., CA</h4>
-                        <span class="inline-block bg-accent-gold/20 text-accent-gold font-bold text-[11px] px-3.5 py-1 rounded-full uppercase tracking-wider mb-4 animate-luxury-blink">Pembicara 2</span>
+                        <h4 class="font-headline-md font-bold text-text-dark text-lg mb-1">Dr. Lies Zulfiati, S.E., M.Si., Ak., CA</h4>
+                        <span class="inline-block bg-primary-green/10 text-primary-green font-bold text-[11px] px-3.5 py-1 rounded-full uppercase tracking-wider mb-4">Pembicara 2</span>
                     </div>
-                    <p class="text-white/80 text-sm mt-auto border-t border-white/10 pt-4 w-full font-medium">Tenaga Ahli Badan Akuntabilitas Publik DPD RI</p>
+                    <p class="text-text-muted text-sm mt-auto border-t border-gray-200 pt-4 w-full font-medium">Tenaga Ahli Badan Akuntabilitas Publik DPD RI</p>
                 </div>
 
-                <div class="bg-white/5 border border-white/10 p-8 sm:p-10 rounded-2xl text-center flex flex-col items-center justify-between shadow-xl backdrop-blur-sm">
+                <div class="bg-surface-light border border-gray-200 p-8 sm:p-10 rounded-2xl text-center flex flex-col items-center justify-between shadow-xl">
                     <div class="flex flex-col items-center w-full">
-                        <div class="w-32 h-32 rounded-full mb-6 p-1 bg-accent-gold/30 border-2 border-accent-gold shadow-md flex items-center justify-center">
+                        <div class="w-32 h-32 rounded-full mb-6 p-1 bg-primary-green/20 border-2 border-primary-green shadow-md flex items-center justify-center">
                             <img src="https://lh3.googleusercontent.com/d/1meIDAoeoKi8YC3v9J65WmixJr73aGjLC" alt="Kadek Wisnu Bhuana" class="w-full h-full rounded-full object-cover bg-white">
                         </div>
-                        <h4 class="font-headline-md font-bold text-white text-lg mb-1">Kadek Wisnu Bhuana, S.E., M.Ak., Ak., CSRS, CRP</h4>
-                        <span class="inline-block bg-white/10 text-white font-bold text-[11px] px-3.5 py-1 rounded-full uppercase tracking-wider mb-4">Moderator</span>
+                        <h4 class="font-headline-md font-bold text-text-dark text-lg mb-1">Kadek Wisnu Bhuana, S.E., M.Ak., Ak., CSRS, CRP</h4>
+                        <span class="inline-block bg-gray-200 text-text-dark font-bold text-[11px] px-3.5 py-1 rounded-full uppercase tracking-wider mb-4">Moderator</span>
                     </div>
-                    <p class="text-white/80 text-sm mt-auto border-t border-white/10 pt-4 w-full font-medium">Praktisi & Akademisi Profesional</p>
+                    <p class="text-text-muted text-sm mt-auto border-t border-gray-200 pt-4 w-full font-medium">Praktisi & Akademisi Profesional</p>
                 </div>
             </div>
 
             <div class="grid lg:grid-cols-2 gap-8 mb-16 reveal-on-scroll max-w-6xl mx-auto">
                 <!-- Info Seminar -->
-                <div class="bg-white/5 border border-white/10 p-8 sm:p-10 rounded-2xl shadow-xl backdrop-blur-sm flex flex-col justify-between">
+                <div class="bg-surface-light border border-gray-200 p-8 sm:p-10 rounded-2xl shadow-xl flex flex-col justify-between">
                     <div>
-                        <h3 class="font-headline-md text-xl text-accent-gold font-bold mb-6 border-b border-white/10 pb-4">
+                        <h3 class="font-headline-md text-xl text-primary-green font-bold mb-6 border-b border-gray-200 pb-4">
                             Informasi Pelaksanaan
                         </h3>
                         <ul class="space-y-4 mb-8">
                             <li class="flex items-start gap-4">
-                                <div class="w-10 h-10 rounded-xl bg-accent-gold/20 flex items-center justify-center text-accent-gold shrink-0">
+                                <div class="w-10 h-10 rounded-xl bg-primary-green/10 flex items-center justify-center text-primary-green shrink-0">
                                     <span class="material-symbols-outlined text-[20px]">date_range</span>
                                 </div>
                                 <div>
-                                    <p class="text-white font-bold">Selasa, 13 Oktober 2026</p>
-                                    <p class="text-white/70 text-sm">08.00 - 12.25 WIB</p>
+                                    <p class="text-text-dark font-bold">Selasa, 13 Oktober 2026</p>
+                                    <p class="text-text-muted text-sm">08.00 - 12.25 WIB</p>
                                 </div>
                             </li>
                             <li class="flex items-start gap-4">
-                                <div class="w-10 h-10 rounded-xl bg-accent-gold/20 flex items-center justify-center text-accent-gold shrink-0">
+                                <div class="w-10 h-10 rounded-xl bg-primary-green/10 flex items-center justify-center text-primary-green shrink-0">
                                     <span class="material-symbols-outlined text-[20px]">pin_drop</span>
                                 </div>
                                 <div>
-                                    <p class="text-white font-bold">Hybrid System</p>
-                                    <p class="text-white/70 text-sm">Ruang Seminar (Offline) & Zoom Meeting (Online)</p>
+                                    <p class="text-text-dark font-bold">Hybrid System</p>
+                                    <p class="text-text-muted text-sm">Ruang Seminar (Offline) & Zoom Meeting (Online)</p>
                                 </div>
                             </li>
                             <li class="flex items-start gap-4">
-                                <div class="w-10 h-10 rounded-xl bg-accent-gold/20 flex items-center justify-center text-accent-gold shrink-0">
+                                <div class="w-10 h-10 rounded-xl bg-primary-green/10 flex items-center justify-center text-primary-green shrink-0">
                                     <span class="material-symbols-outlined text-[20px]">verified_user</span>
                                 </div>
                                 <div>
-                                    <p class="text-white font-bold">Benefit Peserta</p>
-                                    <p class="text-white/70 text-sm">E-Sertifikat, Ilmu yang bermanfaat, dan Relasi</p>
+                                    <p class="text-text-dark font-bold">Benefit Peserta</p>
+                                    <p class="text-text-muted text-sm">E-Sertifikat, Ilmu yang bermanfaat, dan Relasi</p>
                                 </div>
                             </li>
                         </ul>
 
-                        <h3 class="font-headline-md text-xl text-accent-gold font-bold mb-4 border-b border-white/10 pb-4">
+                        <h3 class="font-headline-md text-xl text-primary-green font-bold mb-4 border-b border-gray-200 pb-4">
                             HTM & Pembayaran
                         </h3>
                         <div class="flex flex-col sm:flex-row gap-4 mb-6">
-                            <div class="bg-white/10 border border-white/20 px-4 py-3 rounded-xl flex-1">
-                                <p class="text-white/70 text-xs font-bold uppercase mb-1">Mahasiswa BIU (Offline)</p>
-                                <p class="text-accent-gold font-extrabold text-lg">Rp 20.000 / orang</p>
+                            <div class="bg-white border border-gray-200 px-4 py-3 rounded-xl flex-1 shadow-sm">
+                                <p class="text-text-muted text-xs font-bold uppercase mb-1">Mahasiswa BIU (Offline)</p>
+                                <p class="text-primary-green font-extrabold text-lg">Rp 20.000 / orang</p>
                             </div>
-                            <div class="bg-white/10 border border-white/20 px-4 py-3 rounded-xl flex-1">
-                                <p class="text-white/70 text-xs font-bold uppercase mb-1">Peserta Umum (Online)</p>
-                                <p class="text-accent-gold font-extrabold text-lg">Rp 15.000 / orang</p>
+                            <div class="bg-white border border-gray-200 px-4 py-3 rounded-xl flex-1 shadow-sm">
+                                <p class="text-text-muted text-xs font-bold uppercase mb-1">Peserta Umum (Online)</p>
+                                <p class="text-primary-green font-extrabold text-lg">Rp 15.000 / orang</p>
                             </div>
                         </div>
                     </div>
-                    <div class="bg-white/10 border border-white/20 p-4 rounded-xl space-y-2">
-                        <div class="flex justify-between items-center text-sm border-b border-white/10 pb-2">
-                            <span class="text-white/70 font-medium">Gopay (0895323345566)</span>
-                            <span class="text-accent-gold font-bold text-right">Adinda Niken Febri</span>
+                    <div class="bg-white border border-gray-200 p-4 rounded-xl space-y-2 shadow-sm">
+                        <div class="flex justify-between items-center text-sm border-b border-gray-100 pb-2">
+                            <span class="text-text-muted font-medium">Gopay (0895323345566)</span>
+                            <span class="text-text-dark font-bold text-right">Adinda Niken Febri</span>
                         </div>
                         <div class="flex justify-between items-center text-sm">
-                            <span class="text-white/70 font-medium">Seabank (901282877893)</span>
-                            <span class="text-accent-gold font-bold text-right">Adinda Niken Febri</span>
+                            <span class="text-text-muted font-medium">Seabank (901282877893)</span>
+                            <span class="text-text-dark font-bold text-right">Adinda Niken Febri</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="bg-white/5 border border-white/10 p-8 sm:p-10 rounded-2xl shadow-xl backdrop-blur-sm flex flex-col justify-center">
+                <div class="bg-surface-light border border-gray-200 p-8 sm:p-10 rounded-2xl shadow-xl flex flex-col justify-center">
                     <div class="text-center mb-8">
-                        <h3 class="font-headline-md text-xl text-accent-gold font-bold mb-2">Pendaftaran Seminar</h3>
-                        <p class="text-white/70 text-sm">Pilih jalur pendaftaran sesuai dengan status kepesertaan Anda.</p>
+                        <h3 class="font-headline-md text-xl text-primary-green font-bold mb-2">Pendaftaran Seminar</h3>
+                        <p class="text-text-muted text-sm">Pilih jalur pendaftaran sesuai dengan status kepesertaan Anda.</p>
                     </div>
 
                     <div class="space-y-4">
                         <!-- Offline Seminar -->
-                        <div id="seminar-offline-card" class="bg-white/10 border border-white/20 rounded-xl p-5 hover:border-accent-gold transition-all flex flex-col sm:flex-row items-center justify-between gap-4 shadow-sm" data-deadline="2026-10-12T12:00:00+07:00">
+                        <div id="seminar-offline-card" class="bg-white border border-gray-200 rounded-xl p-5 hover:border-primary-green transition-all flex flex-col sm:flex-row items-center justify-between gap-4 shadow-sm" data-deadline="2026-10-12T12:00:00+07:00">
                             <div class="text-center sm:text-left">
-                                <h4 class="font-bold text-white text-base mb-1">Mahasiswa Bina Insani</h4>
-                                <span class="inline-block bg-accent-gold/20 text-accent-gold text-[10px] px-2.5 py-0.5 rounded-full uppercase tracking-wider font-bold mb-1">OFFLINE, Rp 20.000/orang</span>
-                                <p class="text-[11px] text-white/70">Pendaftaran terakhir: Senin, 12 Oktober 2026, pukul 12.00 WIB</p>
+                                <h4 class="font-bold text-text-dark text-base mb-1">Mahasiswa Bina Insani</h4>
+                                <span class="inline-block bg-primary-green/10 text-primary-green text-[10px] px-2.5 py-0.5 rounded-full uppercase tracking-wider font-bold mb-1">OFFLINE, Rp 20.000/orang</span>
+                                <p class="text-[11px] text-text-muted">Pendaftaran terakhir: Senin, 12 Oktober 2026, pukul 12.00 WIB</p>
                             </div>
                             <div id="seminar-offline-btn-wrapper" class="w-full sm:w-auto shrink-0">
-                                <a id="seminar-offline-btn" href="https://docs.google.com/forms/d/e/1FAIpQLSdbD6S5srLQoy6T6Q-e2lMff6ZBUrsPQwOt79tNqqe_v45NsQ/viewform?usp=dialog" target="_blank" class="w-full sm:w-auto bg-accent-gold text-dark-green py-2.5 px-6 rounded-xl font-bold text-sm hover:bg-yellow-500 transition-colors text-center whitespace-nowrap shadow-sm block">
+                                <a id="seminar-offline-btn" href="https://docs.google.com/forms/d/e/1FAIpQLSdbD6S5srLQoy6T6Q-e2lMff6ZBUrsPQwOt79tNqqe_v45NsQ/viewform?usp=dialog" target="_blank" class="w-full sm:w-auto bg-primary-green text-white py-2.5 px-6 rounded-xl font-bold text-sm hover:bg-dark-green transition-colors text-center whitespace-nowrap shadow-sm block">
                                     Daftar Sekarang
                                 </a>
                             </div>
                         </div>
 
                         <!-- Online Seminar -->
-                        <div id="seminar-online-card" class="bg-white/10 border border-white/20 rounded-xl p-5 hover:border-accent-gold transition-all flex flex-col sm:flex-row items-center justify-between gap-4 shadow-sm" data-deadline="2026-10-12T23:59:00+07:00">
+                        <div id="seminar-online-card" class="bg-white border border-gray-200 rounded-xl p-5 hover:border-primary-green transition-all flex flex-col sm:flex-row items-center justify-between gap-4 shadow-sm" data-deadline="2026-10-12T23:59:00+07:00">
                             <div class="text-center sm:text-left">
-                                <h4 class="font-bold text-white text-base mb-1">Peserta Umum</h4>
-                                <span class="inline-block bg-accent-gold/20 text-accent-gold text-[10px] px-2.5 py-0.5 rounded-full uppercase tracking-wider font-bold mb-1">ONLINE, Rp 15.000/orang</span>
-                                <p class="text-[11px] text-white/70">Pendaftaran terakhir: Senin, 12 Oktober 2026, pukul 23.59 WIB</p>
+                                <h4 class="font-bold text-text-dark text-base mb-1">Peserta Umum</h4>
+                                <span class="inline-block bg-primary-green/10 text-primary-green text-[10px] px-2.5 py-0.5 rounded-full uppercase tracking-wider font-bold mb-1">ONLINE, Rp 15.000/orang</span>
+                                <p class="text-[11px] text-text-muted">Pendaftaran terakhir: Senin, 12 Oktober 2026, pukul 23.59 WIB</p>
                             </div>
                             <div id="seminar-online-btn-wrapper" class="w-full sm:w-auto shrink-0">
-                                <a id="seminar-online-btn" href="https://docs.google.com/forms/d/e/1FAIpQLScr8DCkEpEbhLNuHoOAHqe9zS96DJOpqW5OCFAMu-rSf0Z3xA/viewform?usp=dialog" target="_blank" class="w-full sm:w-auto bg-accent-gold text-dark-green py-2.5 px-6 rounded-xl font-bold text-sm hover:bg-yellow-500 transition-colors text-center whitespace-nowrap shadow-sm block">
+                                <a id="seminar-online-btn" href="https://docs.google.com/forms/d/e/1FAIpQLScr8DCkEpEbhLNuHoOAHqe9zS96DJOpqW5OCFAMu-rSf0Z3xA/viewform?usp=dialog" target="_blank" class="w-full sm:w-auto bg-primary-green text-white py-2.5 px-6 rounded-xl font-bold text-sm hover:bg-dark-green transition-colors text-center whitespace-nowrap shadow-sm block">
                                     Daftar Sekarang
                                 </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Artistic Divider Transition to Green -->
+    <div class="art-wave-divider bg-primary-green">
+        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M0,0 C150,90 350,-40 600,45 C850,130 1050,10 1200,35 L1200,0 L0,0 Z" fill="#FFFFFF"></path>
+        </svg>
+    </div>
+
+    <!-- SECTION 4: TIMELINE (Green) -->
+    <section class="py-20 sm:py-24 px-4 sm:px-margin-mobile md:px-margin-desktop relative scroll-mt-20 bg-primary-green text-white" id="timeline">
+        <div class="max-w-container-max mx-auto relative z-10">
+            <div class="text-center mb-16 sm:mb-20 reveal-on-scroll">
+                <span class="font-label-md text-accent-gold uppercase tracking-[0.2em] mb-3 block font-bold text-sm animate-luxury-blink">Agenda Penting</span>
+                <h2 class="font-headline-xl text-[32px] sm:text-[40px] text-white font-bold tracking-tight">Timeline <span class="text-accent-gold animate-luxury-blink">Kompetisi</span></h2>
+                <div class="h-1 w-20 bg-accent-gold mx-auto mt-4 rounded-full animate-luxury-blink"></div>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-8 sm:gap-12">
+                <div class="reveal-on-scroll" style="transition-delay: 0.1s">
+                    <div class="bg-white/5 border border-white/10 p-6 sm:p-10 shadow-xl rounded-[1.5rem] backdrop-blur-sm">
+                        <div class="flex items-center gap-4 sm:gap-5 mb-8 pb-6 border-b border-white/10">
+                            <div class="w-14 h-14 rounded-xl bg-accent-gold/20 flex items-center justify-center shrink-0">
+                                <span class="material-symbols-outlined text-accent-gold text-[28px]">history_edu</span>
+                            </div>
+                            <h3 class="font-headline-md text-xl sm:text-2xl text-white font-bold">Tingkat SMA / SMK</h3>
+                        </div>
+                        <div id="timeline-container-sma" class="space-y-4 relative z-10 text-white/80">
+                            <div class="timeline-row flex flex-col sm:flex-row items-start gap-1 sm:gap-6 relative border-l-2 border-white/20 ml-2 pl-4 sm:pl-6 pb-6" data-start="2026-08-03" data-end="2026-09-07">
+                                <div class="timeline-dot absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-white/40"></div>
+                                <div class="w-full sm:w-28 shrink-0 font-label-md text-accent-gold font-bold text-sm sm:text-base">03 Aug - 07 Sep</div>
+                                <div class="flex-1 w-full mt-1 sm:mt-0">
+                                    <h4 class="font-headline-md text-base text-white font-bold mb-1 flex items-center gap-2 flex-wrap">Pendaftaran <span class="badge-status hidden text-[10px] bg-accent-gold text-dark-green px-2.5 py-0.5 rounded-full uppercase font-extrabold tracking-wider animate-luxury-blink">Sedang Berlangsung</span></h4>
+                                    <p class="text-xs sm:text-sm text-white/70">Registrasi awal &amp; pengumpulan dokumen</p>
+                                </div>
+                            </div>
+                            <div class="timeline-row flex flex-col sm:flex-row items-start gap-1 sm:gap-6 relative border-l-2 border-white/20 ml-2 pl-4 sm:pl-6 pb-6" data-start="2026-09-08" data-end="2026-09-08">
+                                <div class="timeline-dot absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-white/40"></div>
+                                <div class="w-full sm:w-28 shrink-0 font-label-md text-accent-gold font-bold text-sm sm:text-base">08 September</div>
+                                <div class="flex-1 w-full mt-1 sm:mt-0">
+                                    <h4 class="font-headline-md text-base text-white font-bold mb-1 flex items-center gap-2 flex-wrap">Exposure Test <span class="badge-status hidden text-[10px] bg-accent-gold text-dark-green px-2.5 py-0.5 rounded-full uppercase font-extrabold tracking-wider animate-luxury-blink">Sedang Berlangsung</span></h4>
+                                    <p class="text-xs sm:text-sm text-white/70">Uji kompetensi dasar daring</p>
+                                </div>
+                            </div>
+                            <div class="timeline-row flex flex-col sm:flex-row items-start gap-1 sm:gap-6 relative border-l-2 border-white/20 ml-2 pl-4 sm:pl-6 pb-6" data-start="2026-09-09" data-end="2026-09-12">
+                                <div class="timeline-dot absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-white/40"></div>
+                                <div class="w-full sm:w-28 shrink-0 font-label-md text-accent-gold font-bold text-sm sm:text-base">09 - 12 Sep</div>
+                                <div class="flex-1 w-full mt-1 sm:mt-0">
+                                    <h4 class="font-headline-md text-base text-white font-bold mb-1 flex items-center gap-2 flex-wrap">Daftar Ulang <span class="badge-status hidden text-[10px] bg-accent-gold text-dark-green px-2.5 py-0.5 rounded-full uppercase font-extrabold tracking-wider animate-luxury-blink">Sedang Berlangsung</span></h4>
+                                    <p class="text-xs sm:text-sm text-white/70">Konfirmasi administrasi peserta</p>
+                                </div>
+                            </div>
+                            <div class="timeline-row flex flex-col sm:flex-row items-start gap-1 sm:gap-6 relative border-l-2 border-white/20 ml-2 pl-4 sm:pl-6 pb-6" data-start="2026-09-12" data-end="2026-09-12">
+                                <div class="timeline-dot absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-white/40"></div>
+                                <div class="w-full sm:w-28 shrink-0 font-label-md text-accent-gold font-bold text-sm sm:text-base">12 September</div>
+                                <div class="flex-1 w-full mt-1 sm:mt-0">
+                                    <h4 class="font-headline-md text-base text-white font-bold mb-1 flex items-center gap-2 flex-wrap">Technical Meeting <span class="badge-status hidden text-[10px] bg-accent-gold text-dark-green px-2.5 py-0.5 rounded-full uppercase font-extrabold tracking-wider animate-luxury-blink">Sedang Berlangsung</span></h4>
+                                    <p class="text-xs sm:text-sm text-white/70">Penjelasan teknis pelaksanaan lomba</p>
+                                </div>
+                            </div>
+                            <div class="timeline-row flex flex-col sm:flex-row items-start gap-1 sm:gap-6 relative border-l-2 border-white/20 ml-2 pl-4 sm:pl-6 pb-6" data-start="2026-09-14" data-end="2026-09-14">
+                                <div class="timeline-dot absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-white/40"></div>
+                                <div class="w-full sm:w-28 shrink-0 font-label-md text-accent-gold font-bold text-sm sm:text-base">14 September</div>
+                                <div class="flex-1 w-full mt-1 sm:mt-0">
+                                    <h4 class="font-headline-md text-base text-white font-bold mb-1 flex items-center gap-2 flex-wrap">Penyisihan <span class="badge-status hidden text-[10px] bg-accent-gold text-dark-green px-2.5 py-0.5 rounded-full uppercase font-extrabold tracking-wider animate-luxury-blink">Sedang Berlangsung</span></h4>
+                                    <p class="text-xs sm:text-sm text-white/70">Uji kompetensi tahap awal</p>
+                                </div>
+                            </div>
+                            <div class="timeline-row flex flex-col sm:flex-row items-start gap-1 sm:gap-6 relative border-l-2 border-white/20 ml-2 pl-4 sm:pl-6 pb-6" data-start="2026-09-15" data-end="2026-09-15">
+                                <div class="timeline-dot absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-white/40"></div>
+                                <div class="w-full sm:w-28 shrink-0 font-label-md text-accent-gold font-bold text-sm sm:text-base">15 September</div>
+                                <div class="flex-1 w-full mt-1 sm:mt-0">
+                                    <h4 class="font-headline-md text-base text-white font-bold mb-1 flex items-center gap-2 flex-wrap">Semifinal Test <span class="badge-status hidden text-[10px] bg-accent-gold text-dark-green px-2.5 py-0.5 rounded-full uppercase font-extrabold tracking-wider animate-luxury-blink">Sedang Berlangsung</span></h4>
+                                    <p class="text-xs sm:text-sm text-white/70">Uji kompetensi tahap lanjutan</p>
+                                </div>
+                            </div>
+                            <div class="timeline-row flex flex-col sm:flex-row items-start gap-1 sm:gap-6 relative border-l-2 border-transparent ml-2 pl-4 sm:pl-6" data-start="2026-09-19" data-end="2026-09-19">
+                                <div class="timeline-dot absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-white/40"></div>
+                                <div class="w-full sm:w-28 shrink-0 font-label-md text-accent-gold font-bold text-sm sm:text-base">19 September</div>
+                                <div class="flex-1 w-full mt-1 sm:mt-0">
+                                    <h4 class="font-label-md text-dark-green font-extrabold bg-accent-gold inline-block px-3 py-1 rounded-lg mb-2 tracking-widest uppercase text-xs flex items-center gap-2 flex-wrap shadow-md">FINAL STAGE <span class="badge-status hidden ml-1 bg-white text-accent-gold px-2 py-0.5 rounded animate-luxury-blink">HARI INI</span></h4>
+                                    <p class="text-xs sm:text-sm text-white/80 font-medium">Case analysis &amp; Presentation</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="reveal-on-scroll" style="transition-delay: 0.2s">
+                    <div class="bg-white/5 border border-white/10 p-6 sm:p-10 shadow-xl rounded-[1.5rem] backdrop-blur-sm">
+                        <div class="flex items-center gap-4 sm:gap-5 mb-8 pb-6 border-b border-white/10">
+                            <div class="w-14 h-14 rounded-xl bg-white/10 flex items-center justify-center shrink-0">
+                                <span class="material-symbols-outlined text-white text-[28px]">biotech</span>
+                            </div>
+                            <h3 class="font-headline-md text-xl sm:text-2xl text-white font-bold">Tingkat Perguruan Tinggi</h3>
+                        </div>
+                        <div id="timeline-container-univ" class="space-y-4 relative z-10 text-white/80">
+                            <div class="timeline-row flex flex-col sm:flex-row items-start gap-1 sm:gap-6 relative border-l-2 border-white/20 ml-2 pl-4 sm:pl-6 pb-6" data-start="2026-08-03" data-end="2026-09-05">
+                                <div class="timeline-dot absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-white/40"></div>
+                                <div class="w-full sm:w-28 shrink-0 font-label-md text-accent-gold font-bold text-sm sm:text-base">03 Aug - 05 Sep</div>
+                                <div class="flex-1 w-full mt-1 sm:mt-0">
+                                    <h4 class="font-headline-md text-base text-white font-bold mb-1 flex items-center gap-2 flex-wrap">Pendaftaran Gel. 1 <span class="badge-status hidden text-[10px] bg-accent-gold text-dark-green px-2.5 py-0.5 rounded-full uppercase font-extrabold tracking-wider animate-luxury-blink">Sedang Berlangsung</span></h4>
+                                    <p class="text-xs sm:text-sm text-white/70">Periode pendaftaran awal</p>
+                                </div>
+                            </div>
+                            <div class="timeline-row flex flex-col sm:flex-row items-start gap-1 sm:gap-6 relative border-l-2 border-white/20 ml-2 pl-4 sm:pl-6 pb-6" data-start="2026-09-06" data-end="2026-09-20">
+                                <div class="timeline-dot absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-white/40"></div>
+                                <div class="w-full sm:w-28 shrink-0 font-label-md text-accent-gold font-bold text-sm sm:text-base">06 - 20 Sep</div>
+                                <div class="flex-1 w-full mt-1 sm:mt-0">
+                                    <h4 class="font-headline-md text-base text-white font-bold mb-1 flex items-center gap-2 flex-wrap">Pendaftaran Gel. 2 <span class="badge-status hidden text-[10px] bg-accent-gold text-dark-green px-2.5 py-0.5 rounded-full uppercase font-extrabold tracking-wider animate-luxury-blink">Sedang Berlangsung</span></h4>
+                                    <p class="text-xs sm:text-sm text-white/70">Periode pendaftaran lanjutan</p>
+                                </div>
+                            </div>
+                            <div class="timeline-row flex flex-col sm:flex-row items-start gap-1 sm:gap-6 relative border-l-2 border-white/20 ml-2 pl-4 sm:pl-6 pb-6" data-start="2026-09-22" data-end="2026-09-22">
+                                <div class="timeline-dot absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-white/40"></div>
+                                <div class="w-full sm:w-28 shrink-0 font-label-md text-accent-gold font-bold text-sm sm:text-base">22 September</div>
+                                <div class="flex-1 w-full mt-1 sm:mt-0">
+                                    <h4 class="font-headline-md text-base text-white font-bold mb-1 flex items-center gap-2 flex-wrap">Technical Meeting <span class="badge-status hidden text-[10px] bg-accent-gold text-dark-green px-2.5 py-0.5 rounded-full uppercase font-extrabold tracking-wider animate-luxury-blink">Sedang Berlangsung</span></h4>
+                                    <p class="text-xs sm:text-sm text-white/70">Penjelasan teknis pelaksanaan lomba</p>
+                                </div>
+                            </div>
+                            <div class="timeline-row flex flex-col sm:flex-row items-start gap-1 sm:gap-6 relative border-l-2 border-white/20 ml-2 pl-4 sm:pl-6 pb-6" data-start="2026-09-23" data-end="2026-09-23">
+                                <div class="timeline-dot absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-white/40"></div>
+                                <div class="w-full sm:w-28 shrink-0 font-label-md text-accent-gold font-bold text-sm sm:text-base">23 September</div>
+                                <div class="flex-1 w-full mt-1 sm:mt-0">
+                                    <h4 class="font-headline-md text-base text-white font-bold mb-1 flex items-center gap-2 flex-wrap">Preliminary Test <span class="badge-status hidden text-[10px] bg-accent-gold text-dark-green px-2.5 py-0.5 rounded-full uppercase font-extrabold tracking-wider animate-luxury-blink">Sedang Berlangsung</span></h4>
+                                    <p class="text-xs sm:text-sm text-white/70">Uji kompetensi tahap awal</p>
+                                </div>
+                            </div>
+                            <div class="timeline-row flex flex-col sm:flex-row items-start gap-1 sm:gap-6 relative border-l-2 border-white/20 ml-2 pl-4 sm:pl-6 pb-6" data-start="2026-09-24" data-end="2026-09-25">
+                                <div class="timeline-dot absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-white/40"></div>
+                                <div class="w-full sm:w-28 shrink-0 font-label-md text-accent-gold font-bold text-sm sm:text-base">24 - 25 Sep</div>
+                                <div class="flex-1 w-full mt-1 sm:mt-0">
+                                    <h4 class="font-headline-md text-base text-white font-bold mb-1 flex items-center gap-2 flex-wrap">Daftar Ulang <span class="badge-status hidden text-[10px] bg-accent-gold text-dark-green px-2.5 py-0.5 rounded-full uppercase font-extrabold tracking-wider animate-luxury-blink">Sedang Berlangsung</span></h4>
+                                    <p class="text-xs sm:text-sm text-white/70">Konfirmasi administrasi peserta</p>
+                                </div>
+                            </div>
+                            <div class="timeline-row flex flex-col sm:flex-row items-start gap-1 sm:gap-6 relative border-l-2 border-white/20 ml-2 pl-4 sm:pl-6 pb-6" data-start="2026-09-26" data-end="2026-09-26">
+                                <div class="timeline-dot absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-white/40"></div>
+                                <div class="w-full sm:w-28 shrink-0 font-label-md text-accent-gold font-bold text-sm sm:text-base">26 September</div>
+                                <div class="flex-1 w-full mt-1 sm:mt-0">
+                                    <h4 class="font-headline-md text-base text-white font-bold mb-1 flex items-center gap-2 flex-wrap">Semifinal Test <span class="badge-status hidden text-[10px] bg-accent-gold text-dark-green px-2.5 py-0.5 rounded-full uppercase font-extrabold tracking-wider animate-luxury-blink">Sedang Berlangsung</span></h4>
+                                    <p class="text-xs sm:text-sm text-white/70">Uji kompetensi tahap lanjutan</p>
+                                </div>
+                            </div>
+                            <div class="timeline-row flex flex-col sm:flex-row items-start gap-1 sm:gap-6 relative border-l-2 border-transparent ml-2 pl-4 sm:pl-6" data-start="2026-10-03" data-end="2026-10-03">
+                                <div class="timeline-dot absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-white/40"></div>
+                                <div class="w-full sm:w-28 shrink-0 font-label-md text-accent-gold font-bold text-sm sm:text-base">03 Oktober</div>
+                                <div class="flex-1 w-full mt-1 sm:mt-0">
+                                    <h4 class="font-label-md text-dark-green font-extrabold bg-accent-gold inline-block px-3 py-1 rounded-lg mb-2 tracking-widest uppercase text-xs flex items-center gap-2 flex-wrap shadow-md">FINAL STAGE <span class="badge-status hidden ml-1 bg-white text-accent-gold px-2 py-0.5 rounded animate-luxury-blink">HARI INI</span></h4>
+                                    <p class="text-xs sm:text-sm text-white/80 font-medium">Case analysis &amp; Presentation</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -640,230 +798,72 @@
         </svg>
     </div>
 
-    <!-- SECTION 4: TIMELINE -->
-    <section class="py-20 sm:py-24 px-4 sm:px-margin-mobile md:px-margin-desktop relative scroll-mt-20 bg-white text-text-dark" id="timeline">
+    <!-- SECTION 5: BIAYA KOMPETISI (White) -->
+    <section class="py-20 sm:py-24 px-4 sm:px-margin-mobile md:px-margin-desktop bg-white text-text-dark scroll-mt-20 relative" id="biaya">
         <div class="max-w-container-max mx-auto relative z-10">
             <div class="text-center mb-16 sm:mb-20 reveal-on-scroll">
-                <span class="font-label-md text-accent-gold uppercase tracking-[0.2em] mb-3 block font-bold text-sm animate-luxury-blink">Agenda Penting</span>
-                <h2 class="font-headline-xl text-[32px] sm:text-[40px] text-text-dark font-bold tracking-tight">Timeline <span class="text-accent-gold animate-luxury-blink">Kompetisi</span></h2>
-                <div class="h-1 w-20 bg-accent-gold mx-auto mt-4 rounded-full animate-luxury-blink"></div>
-            </div>
-
-            <div class="grid lg:grid-cols-2 gap-8 sm:gap-12">
-                <div class="reveal-on-scroll" style="transition-delay: 0.1s">
-                    <div class="clean-card p-6 sm:p-10 shadow-elegant border-2 border-accent-gold/20">
-                        <div class="flex items-center gap-4 sm:gap-5 mb-8 pb-6 border-b border-gray-100">
-                            <div class="w-14 h-14 rounded-xl bg-accent-gold/10 flex items-center justify-center shrink-0">
-                                <span class="material-symbols-outlined text-accent-gold text-[28px]">history_edu</span>
-                            </div>
-                            <h3 class="font-headline-md text-xl sm:text-2xl text-text-dark font-bold">Tingkat SMA / SMK</h3>
-                        </div>
-                        <div id="timeline-container-sma" class="space-y-4 relative z-10 text-text-muted">
-                            <div class="timeline-row flex flex-col sm:flex-row items-start gap-1 sm:gap-6 relative border-l-2 border-gray-200 ml-2 pl-4 sm:pl-6 pb-6" data-start="2026-08-03" data-end="2026-09-07">
-                                <div class="timeline-dot absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-gray-300"></div>
-                                <div class="w-full sm:w-28 shrink-0 font-label-md text-accent-gold font-bold text-sm sm:text-base">03 Aug - 07 Sep</div>
-                                <div class="flex-1 w-full mt-1 sm:mt-0">
-                                    <h4 class="font-headline-md text-base text-text-dark font-bold mb-1 flex items-center gap-2 flex-wrap">Pendaftaran <span class="badge-status hidden text-[10px] bg-accent-gold text-dark-green px-2.5 py-0.5 rounded-full uppercase font-extrabold tracking-wider animate-luxury-blink">Sedang Berlangsung</span></h4>
-                                    <p class="text-xs sm:text-sm text-text-muted">Registrasi awal &amp; pengumpulan dokumen</p>
-                                </div>
-                            </div>
-                            <div class="timeline-row flex flex-col sm:flex-row items-start gap-1 sm:gap-6 relative border-l-2 border-gray-200 ml-2 pl-4 sm:pl-6 pb-6" data-start="2026-09-08" data-end="2026-09-08">
-                                <div class="timeline-dot absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-gray-300"></div>
-                                <div class="w-full sm:w-28 shrink-0 font-label-md text-accent-gold font-bold text-sm sm:text-base">08 September</div>
-                                <div class="flex-1 w-full mt-1 sm:mt-0">
-                                    <h4 class="font-headline-md text-base text-text-dark font-bold mb-1 flex items-center gap-2 flex-wrap">Exposure Test <span class="badge-status hidden text-[10px] bg-accent-gold text-dark-green px-2.5 py-0.5 rounded-full uppercase font-extrabold tracking-wider animate-luxury-blink">Sedang Berlangsung</span></h4>
-                                    <p class="text-xs sm:text-sm text-text-muted">Uji kompetensi dasar daring</p>
-                                </div>
-                            </div>
-                            <div class="timeline-row flex flex-col sm:flex-row items-start gap-1 sm:gap-6 relative border-l-2 border-gray-200 ml-2 pl-4 sm:pl-6 pb-6" data-start="2026-09-09" data-end="2026-09-12">
-                                <div class="timeline-dot absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-gray-300"></div>
-                                <div class="w-full sm:w-28 shrink-0 font-label-md text-accent-gold font-bold text-sm sm:text-base">09 - 12 Sep</div>
-                                <div class="flex-1 w-full mt-1 sm:mt-0">
-                                    <h4 class="font-headline-md text-base text-text-dark font-bold mb-1 flex items-center gap-2 flex-wrap">Daftar Ulang <span class="badge-status hidden text-[10px] bg-accent-gold text-dark-green px-2.5 py-0.5 rounded-full uppercase font-extrabold tracking-wider animate-luxury-blink">Sedang Berlangsung</span></h4>
-                                    <p class="text-xs sm:text-sm text-text-muted">Konfirmasi administrasi peserta</p>
-                                </div>
-                            </div>
-                            <div class="timeline-row flex flex-col sm:flex-row items-start gap-1 sm:gap-6 relative border-l-2 border-gray-200 ml-2 pl-4 sm:pl-6 pb-6" data-start="2026-09-12" data-end="2026-09-12">
-                                <div class="timeline-dot absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-gray-300"></div>
-                                <div class="w-full sm:w-28 shrink-0 font-label-md text-accent-gold font-bold text-sm sm:text-base">12 September</div>
-                                <div class="flex-1 w-full mt-1 sm:mt-0">
-                                    <h4 class="font-headline-md text-base text-text-dark font-bold mb-1 flex items-center gap-2 flex-wrap">Technical Meeting <span class="badge-status hidden text-[10px] bg-accent-gold text-dark-green px-2.5 py-0.5 rounded-full uppercase font-extrabold tracking-wider animate-luxury-blink">Sedang Berlangsung</span></h4>
-                                    <p class="text-xs sm:text-sm text-text-muted">Penjelasan teknis pelaksanaan lomba</p>
-                                </div>
-                            </div>
-                            <div class="timeline-row flex flex-col sm:flex-row items-start gap-1 sm:gap-6 relative border-l-2 border-gray-200 ml-2 pl-4 sm:pl-6 pb-6" data-start="2026-09-14" data-end="2026-09-14">
-                                <div class="timeline-dot absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-gray-300"></div>
-                                <div class="w-full sm:w-28 shrink-0 font-label-md text-accent-gold font-bold text-sm sm:text-base">14 September</div>
-                                <div class="flex-1 w-full mt-1 sm:mt-0">
-                                    <h4 class="font-headline-md text-base text-text-dark font-bold mb-1 flex items-center gap-2 flex-wrap">Penyisihan <span class="badge-status hidden text-[10px] bg-accent-gold text-dark-green px-2.5 py-0.5 rounded-full uppercase font-extrabold tracking-wider animate-luxury-blink">Sedang Berlangsung</span></h4>
-                                    <p class="text-xs sm:text-sm text-text-muted">Uji kompetensi tahap awal</p>
-                                </div>
-                            </div>
-                            <div class="timeline-row flex flex-col sm:flex-row items-start gap-1 sm:gap-6 relative border-l-2 border-gray-200 ml-2 pl-4 sm:pl-6 pb-6" data-start="2026-09-15" data-end="2026-09-15">
-                                <div class="timeline-dot absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-gray-300"></div>
-                                <div class="w-full sm:w-28 shrink-0 font-label-md text-accent-gold font-bold text-sm sm:text-base">15 September</div>
-                                <div class="flex-1 w-full mt-1 sm:mt-0">
-                                    <h4 class="font-headline-md text-base text-text-dark font-bold mb-1 flex items-center gap-2 flex-wrap">Semifinal Test <span class="badge-status hidden text-[10px] bg-accent-gold text-dark-green px-2.5 py-0.5 rounded-full uppercase font-extrabold tracking-wider animate-luxury-blink">Sedang Berlangsung</span></h4>
-                                    <p class="text-xs sm:text-sm text-text-muted">Uji kompetensi tahap lanjutan</p>
-                                </div>
-                            </div>
-                            <div class="timeline-row flex flex-col sm:flex-row items-start gap-1 sm:gap-6 relative border-l-2 border-transparent ml-2 pl-4 sm:pl-6" data-start="2026-09-19" data-end="2026-09-19">
-                                <div class="timeline-dot absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-gray-300"></div>
-                                <div class="w-full sm:w-28 shrink-0 font-label-md text-accent-gold font-bold text-sm sm:text-base">19 September</div>
-                                <div class="flex-1 w-full mt-1 sm:mt-0">
-                                    <h4 class="font-label-md text-dark-green font-extrabold bg-accent-gold inline-block px-3 py-1 rounded-lg mb-2 tracking-widest uppercase text-xs flex items-center gap-2 flex-wrap shadow-md">FINAL STAGE <span class="badge-status hidden ml-1 bg-white text-accent-gold px-2 py-0.5 rounded animate-luxury-blink">HARI INI</span></h4>
-                                    <p class="text-xs sm:text-sm text-text-muted font-medium">Case analysis &amp; Presentation</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="reveal-on-scroll" style="transition-delay: 0.2s">
-                    <div class="clean-card p-6 sm:p-10 shadow-elegant border-2 border-primary-green/20">
-                        <div class="flex items-center gap-4 sm:gap-5 mb-8 pb-6 border-b border-gray-100">
-                            <div class="w-14 h-14 rounded-xl bg-primary-green/10 flex items-center justify-center shrink-0">
-                                <span class="material-symbols-outlined text-primary-green text-[28px]">biotech</span>
-                            </div>
-                            <h3 class="font-headline-md text-xl sm:text-2xl text-text-dark font-bold">Tingkat Perguruan Tinggi</h3>
-                        </div>
-                        <div id="timeline-container-univ" class="space-y-4 relative z-10 text-text-muted">
-                            <div class="timeline-row flex flex-col sm:flex-row items-start gap-1 sm:gap-6 relative border-l-2 border-gray-200 ml-2 pl-4 sm:pl-6 pb-6" data-start="2026-08-03" data-end="2026-09-05">
-                                <div class="timeline-dot absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-gray-300"></div>
-                                <div class="w-full sm:w-28 shrink-0 font-label-md text-accent-gold font-bold text-sm sm:text-base">03 Aug - 05 Sep</div>
-                                <div class="flex-1 w-full mt-1 sm:mt-0">
-                                    <h4 class="font-headline-md text-base text-text-dark font-bold mb-1 flex items-center gap-2 flex-wrap">Pendaftaran Gel. 1 <span class="badge-status hidden text-[10px] bg-accent-gold text-dark-green px-2.5 py-0.5 rounded-full uppercase font-extrabold tracking-wider animate-luxury-blink">Sedang Berlangsung</span></h4>
-                                    <p class="text-xs sm:text-sm text-text-muted">Periode pendaftaran awal</p>
-                                </div>
-                            </div>
-                            <div class="timeline-row flex flex-col sm:flex-row items-start gap-1 sm:gap-6 relative border-l-2 border-gray-200 ml-2 pl-4 sm:pl-6 pb-6" data-start="2026-09-06" data-end="2026-09-20">
-                                <div class="timeline-dot absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-gray-300"></div>
-                                <div class="w-full sm:w-28 shrink-0 font-label-md text-accent-gold font-bold text-sm sm:text-base">06 - 20 Sep</div>
-                                <div class="flex-1 w-full mt-1 sm:mt-0">
-                                    <h4 class="font-headline-md text-base text-text-dark font-bold mb-1 flex items-center gap-2 flex-wrap">Pendaftaran Gel. 2 <span class="badge-status hidden text-[10px] bg-accent-gold text-dark-green px-2.5 py-0.5 rounded-full uppercase font-extrabold tracking-wider animate-luxury-blink">Sedang Berlangsung</span></h4>
-                                    <p class="text-xs sm:text-sm text-text-muted">Periode pendaftaran lanjutan</p>
-                                </div>
-                            </div>
-                            <div class="timeline-row flex flex-col sm:flex-row items-start gap-1 sm:gap-6 relative border-l-2 border-gray-200 ml-2 pl-4 sm:pl-6 pb-6" data-start="2026-09-22" data-end="2026-09-22">
-                                <div class="timeline-dot absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-gray-300"></div>
-                                <div class="w-full sm:w-28 shrink-0 font-label-md text-accent-gold font-bold text-sm sm:text-base">22 September</div>
-                                <div class="flex-1 w-full mt-1 sm:mt-0">
-                                    <h4 class="font-headline-md text-base text-text-dark font-bold mb-1 flex items-center gap-2 flex-wrap">Technical Meeting <span class="badge-status hidden text-[10px] bg-accent-gold text-dark-green px-2.5 py-0.5 rounded-full uppercase font-extrabold tracking-wider animate-luxury-blink">Sedang Berlangsung</span></h4>
-                                    <p class="text-xs sm:text-sm text-text-muted">Penjelasan teknis pelaksanaan lomba</p>
-                                </div>
-                            </div>
-                            <div class="timeline-row flex flex-col sm:flex-row items-start gap-1 sm:gap-6 relative border-l-2 border-gray-200 ml-2 pl-4 sm:pl-6 pb-6" data-start="2026-09-23" data-end="2026-09-23">
-                                <div class="timeline-dot absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-gray-300"></div>
-                                <div class="w-full sm:w-28 shrink-0 font-label-md text-accent-gold font-bold text-sm sm:text-base">23 September</div>
-                                <div class="flex-1 w-full mt-1 sm:mt-0">
-                                    <h4 class="font-headline-md text-base text-text-dark font-bold mb-1 flex items-center gap-2 flex-wrap">Preliminary Test <span class="badge-status hidden text-[10px] bg-accent-gold text-dark-green px-2.5 py-0.5 rounded-full uppercase font-extrabold tracking-wider animate-luxury-blink">Sedang Berlangsung</span></h4>
-                                    <p class="text-xs sm:text-sm text-text-muted">Uji kompetensi tahap awal</p>
-                                </div>
-                            </div>
-                            <div class="timeline-row flex flex-col sm:flex-row items-start gap-1 sm:gap-6 relative border-l-2 border-gray-200 ml-2 pl-4 sm:pl-6 pb-6" data-start="2026-09-24" data-end="2026-09-25">
-                                <div class="timeline-dot absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-gray-300"></div>
-                                <div class="w-full sm:w-28 shrink-0 font-label-md text-accent-gold font-bold text-sm sm:text-base">24 - 25 Sep</div>
-                                <div class="flex-1 w-full mt-1 sm:mt-0">
-                                    <h4 class="font-headline-md text-base text-text-dark font-bold mb-1 flex items-center gap-2 flex-wrap">Daftar Ulang <span class="badge-status hidden text-[10px] bg-accent-gold text-dark-green px-2.5 py-0.5 rounded-full uppercase font-extrabold tracking-wider animate-luxury-blink">Sedang Berlangsung</span></h4>
-                                    <p class="text-xs sm:text-sm text-text-muted">Konfirmasi administrasi peserta</p>
-                                </div>
-                            </div>
-                            <div class="timeline-row flex flex-col sm:flex-row items-start gap-1 sm:gap-6 relative border-l-2 border-gray-200 ml-2 pl-4 sm:pl-6 pb-6" data-start="2026-09-26" data-end="2026-09-26">
-                                <div class="timeline-dot absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-gray-300"></div>
-                                <div class="w-full sm:w-28 shrink-0 font-label-md text-accent-gold font-bold text-sm sm:text-base">26 September</div>
-                                <div class="flex-1 w-full mt-1 sm:mt-0">
-                                    <h4 class="font-headline-md text-base text-text-dark font-bold mb-1 flex items-center gap-2 flex-wrap">Semifinal Test <span class="badge-status hidden text-[10px] bg-accent-gold text-dark-green px-2.5 py-0.5 rounded-full uppercase font-extrabold tracking-wider animate-luxury-blink">Sedang Berlangsung</span></h4>
-                                    <p class="text-xs sm:text-sm text-text-muted">Uji kompetensi tahap lanjutan</p>
-                                </div>
-                            </div>
-                            <div class="timeline-row flex flex-col sm:flex-row items-start gap-1 sm:gap-6 relative border-l-2 border-transparent ml-2 pl-4 sm:pl-6" data-start="2026-10-03" data-end="2026-10-03">
-                                <div class="timeline-dot absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-gray-300"></div>
-                                <div class="w-full sm:w-28 shrink-0 font-label-md text-accent-gold font-bold text-sm sm:text-base">03 Oktober</div>
-                                <div class="flex-1 w-full mt-1 sm:mt-0">
-                                    <h4 class="font-label-md text-dark-green font-extrabold bg-accent-gold inline-block px-3 py-1 rounded-lg mb-2 tracking-widest uppercase text-xs flex items-center gap-2 flex-wrap shadow-md">FINAL STAGE <span class="badge-status hidden ml-1 bg-white text-accent-gold px-2 py-0.5 rounded animate-luxury-blink">HARI INI</span></h4>
-                                    <p class="text-xs sm:text-sm text-text-muted font-medium">Case analysis &amp; Presentation</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Artistic Divider Transition to Green -->
-    <div class="art-wave-divider bg-primary-green">
-        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-            <path d="M0,0 C150,90 350,-40 600,45 C850,130 1050,10 1200,35 L1200,0 L0,0 Z" fill="#FFFFFF"></path>
-        </svg>
-    </div>
-
-    <!-- SECTION 5: BIAYA KOMPETISI -->
-    <section class="py-20 sm:py-24 px-4 sm:px-margin-mobile md:px-margin-desktop bg-primary-green text-white scroll-mt-20 relative" id="biaya">
-        <div class="max-w-container-max mx-auto relative z-10">
-            <div class="text-center mb-16 sm:mb-20 reveal-on-scroll">
-                <span class="font-label-md text-accent-gold uppercase tracking-[0.2em] mb-3 block font-bold text-sm animate-luxury-blink">Investasi Kompetisi</span>
-                <h2 class="font-headline-xl text-[32px] sm:text-[40px] text-white font-bold tracking-tight">Detail <span class="text-accent-gold animate-luxury-blink">Biaya</span></h2>
-                <div class="h-1 w-20 bg-accent-gold mx-auto mt-4 rounded-full animate-luxury-blink"></div>
+                <span class="font-label-md text-primary-green uppercase tracking-[0.2em] mb-3 block font-bold text-sm">Investasi Kompetisi</span>
+                <h2 class="font-headline-xl text-[32px] sm:text-[40px] text-text-dark font-bold tracking-tight">Detail <span class="text-primary-green">Biaya</span></h2>
+                <div class="h-1 w-20 bg-primary-green mx-auto mt-4 rounded-full"></div>
             </div>
             
             <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-16">
-                <div class="bg-white/5 border border-white/10 p-8 sm:p-10 rounded-2xl shadow-xl backdrop-blur-sm reveal-on-scroll flex flex-col justify-between">
+                <div class="bg-surface-light border border-gray-200 p-8 sm:p-10 rounded-2xl shadow-xl reveal-on-scroll flex flex-col justify-between">
                     <div class="flex items-center gap-4 mb-8">
-                        <div class="w-12 h-12 bg-accent-gold/20 rounded-2xl flex items-center justify-center shrink-0">
-                            <span class="material-symbols-outlined text-accent-gold text-[24px]">price_check</span>
+                        <div class="w-12 h-12 bg-primary-green/10 rounded-2xl flex items-center justify-center shrink-0">
+                            <span class="material-symbols-outlined text-primary-green text-[24px]">price_check</span>
                         </div>
-                        <h3 class="font-headline-md text-xl sm:text-2xl text-white font-bold">Biaya SMA/SMK</h3>
+                        <h3 class="font-headline-md text-xl sm:text-2xl text-text-dark font-bold">Biaya SMA/SMK</h3>
                     </div>
                     <!-- Container Harga Dinamis SMA -->
                     <div id="fee-container-sma" class="space-y-4">
-                        <div class="fee-row fee-sma flex justify-between items-center gap-3 border border-white/20 p-4 rounded-xl transition-all" data-start="2026-08-03" data-end="2026-09-07">
+                        <div class="fee-row fee-sma flex justify-between items-center gap-3 border border-gray-200 bg-white p-4 rounded-xl transition-all shadow-sm" data-start="2026-08-03" data-end="2026-09-07">
                             <div class="flex flex-col flex-1">
-                                <span class="font-body-lg text-white font-medium text-sm">Pendaftaran Online</span>
+                                <span class="font-body-lg text-text-dark font-medium text-sm">Pendaftaran Online</span>
                             </div>
-                            <span class="font-label-md bg-green-500/20 text-green-300 px-3 py-1 rounded-full uppercase text-xs font-bold">Free</span>
+                            <span class="font-label-md bg-green-100 text-green-700 px-3 py-1 rounded-full uppercase text-xs font-bold">Free</span>
                         </div>
-                        <div class="fee-row fee-sma flex justify-between items-center gap-3 border border-white/20 p-4 rounded-xl transition-all" data-start="2026-09-09" data-end="2026-09-12">
+                        <div class="fee-row fee-sma flex justify-between items-center gap-3 border border-gray-200 bg-white p-4 rounded-xl transition-all shadow-sm" data-start="2026-09-09" data-end="2026-09-12">
                             <div class="flex flex-col flex-1">
-                                <span class="font-body-lg text-white font-medium text-sm">Daftar Ulang (Finalist)</span>
+                                <span class="font-body-lg text-text-dark font-medium text-sm">Daftar Ulang (Finalist)</span>
                             </div>
-                            <span class="font-headline-md text-accent-gold text-lg font-bold shrink-0">Rp 200.000</span>
+                            <span class="font-headline-md text-primary-green text-lg font-bold shrink-0">Rp 200.000</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="bg-white/5 border border-white/10 p-8 sm:p-10 rounded-2xl shadow-xl backdrop-blur-sm reveal-on-scroll flex flex-col justify-between">
+                <div class="bg-surface-light border border-gray-200 p-8 sm:p-10 rounded-2xl shadow-xl reveal-on-scroll flex flex-col justify-between">
                     <div class="flex items-center gap-4 mb-8">
-                        <div class="w-12 h-12 bg-accent-gold/20 rounded-2xl flex items-center justify-center shrink-0">
-                            <span class="material-symbols-outlined text-accent-gold text-[24px]">wallet</span>
+                        <div class="w-12 h-12 bg-primary-green/10 rounded-2xl flex items-center justify-center shrink-0">
+                            <span class="material-symbols-outlined text-primary-green text-[24px]">wallet</span>
                         </div>
-                        <h3 class="font-headline-md text-xl sm:text-2xl text-white font-bold">Biaya Perguruan Tinggi</h3>
+                        <h3 class="font-headline-md text-xl sm:text-2xl text-text-dark font-bold">Biaya Perguruan Tinggi</h3>
                     </div>
                     <!-- Container Harga Dinamis Univ -->
                     <div id="fee-container-univ" class="space-y-4">
-                        <div class="fee-row fee-univ flex justify-between items-center gap-3 border border-white/20 p-4 rounded-xl transition-all" data-start="2026-08-03" data-end="2026-09-05">
+                        <div class="fee-row fee-univ flex justify-between items-center gap-3 border border-gray-200 bg-white p-4 rounded-xl transition-all shadow-sm" data-start="2026-08-03" data-end="2026-09-05">
                             <div class="flex flex-col flex-1">
-                                <span class="font-body-lg text-white font-medium text-sm">Gelombang 1</span>
+                                <span class="font-body-lg text-text-dark font-medium text-sm">Gelombang 1</span>
                             </div>
-                            <span class="font-headline-md text-accent-gold text-lg font-bold shrink-0">Rp 50.000</span>
+                            <span class="font-headline-md text-primary-green text-lg font-bold shrink-0">Rp 50.000</span>
                         </div>
-                        <div class="fee-row fee-univ flex justify-between items-center gap-3 border border-white/20 p-4 rounded-xl transition-all" data-start="2026-09-06" data-end="2026-09-20">
+                        <div class="fee-row fee-univ flex justify-between items-center gap-3 border border-gray-200 bg-white p-4 rounded-xl transition-all shadow-sm" data-start="2026-09-06" data-end="2026-09-20">
                             <div class="flex flex-col flex-1">
-                                <span class="font-body-lg text-white font-medium text-sm">Gelombang 2</span>
+                                <span class="font-body-lg text-text-dark font-medium text-sm">Gelombang 2</span>
                             </div>
-                            <span class="font-headline-md text-accent-gold text-lg font-bold shrink-0">Rp 100.000</span>
+                            <span class="font-headline-md text-primary-green text-lg font-bold shrink-0">Rp 100.000</span>
                         </div>
-                        <div class="fee-row fee-univ flex justify-between items-center gap-3 border border-white/20 p-4 rounded-xl relative overflow-hidden transition-all" data-start="2026-09-24" data-end="2026-09-25">
+                        <div class="fee-row fee-univ flex justify-between items-center gap-3 border border-gray-200 bg-white p-4 rounded-xl relative overflow-hidden transition-all shadow-sm" data-start="2026-09-24" data-end="2026-09-25">
                             <div class="flex flex-col flex-1 relative z-10">
-                                <span class="font-body-lg text-white font-medium text-sm">Daftar Ulang Semifinal</span>
+                                <span class="font-body-lg text-text-dark font-medium text-sm">Daftar Ulang Semifinal</span>
                             </div>
-                            <span class="font-headline-md text-accent-gold text-lg font-bold relative z-10 shrink-0">Rp 100.000</span>
+                            <span class="font-headline-md text-primary-green text-lg font-bold relative z-10 shrink-0">Rp 100.000</span>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="max-w-3xl mx-auto bg-white/10 border border-white/20 rounded-2xl p-8 sm:p-12 text-white shadow-xl backdrop-blur-sm reveal-on-scroll">
+            <div class="max-w-3xl mx-auto bg-primary-green text-white rounded-2xl p-8 sm:p-12 shadow-xl reveal-on-scroll">
                 <div class="flex flex-col sm:flex-row items-center gap-6 sm:gap-10 text-center sm:text-left">
                     <div class="w-16 h-16 sm:w-20 sm:h-20 bg-accent-gold/20 rounded-2xl flex items-center justify-center shrink-0 border border-accent-gold/40 shadow-inner">
                         <span class="material-symbols-outlined text-accent-gold text-[36px]">account_balance</span>
@@ -878,60 +878,6 @@
         </div>
     </section>
 
-    <!-- Artistic Divider Transition to White -->
-    <div class="art-wave-divider bg-white">
-        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-            <path d="M0,0 C150,90 350,-40 600,45 C850,130 1050,10 1200,35 L1200,0 L0,0 Z" fill="#003624"></path>
-        </svg>
-    </div>
-
-    <!-- SECTION 6: ALUR PENDAFTARAN -->
-    <section class="py-20 sm:py-24 px-4 sm:px-margin-mobile md:px-margin-desktop scroll-mt-20 relative bg-white text-text-dark" id="alur">
-        <div class="max-w-container-max mx-auto relative z-10">
-            <div class="text-center mb-16 reveal-on-scroll">
-                <span class="font-label-md text-accent-gold uppercase tracking-[0.2em] mb-3 block font-bold text-sm animate-luxury-blink">Mekanisme Pendaftaran</span>
-                <h2 class="font-headline-xl text-[32px] sm:text-[40px] text-text-dark font-bold tracking-tight">4 Langkah <span class="text-accent-gold animate-luxury-blink">Mudah</span></h2>
-                <div class="h-1 w-20 bg-accent-gold mx-auto mt-4 rounded-full animate-luxury-blink"></div>
-            </div>
-            
-            <div class="grid md:grid-cols-4 gap-8 relative max-w-5xl mx-auto">
-                <div class="hidden md:block absolute top-12 left-24 right-24 h-[2px] bg-gray-200"></div>
-                
-                <div class="flex flex-col items-center text-center reveal-on-scroll group" style="transition-delay: 0.1s">
-                    <div class="w-24 h-24 rounded-full bg-surface-light border border-gray-200 flex items-center justify-center mb-6 relative z-10 group-hover:border-accent-gold transition-all shadow-sm">
-                        <span class="material-symbols-outlined text-primary-green text-[32px] group-hover:text-accent-gold transition-all">gesture</span>
-                        <div class="absolute -top-1 -right-1 w-8 h-8 rounded-full bg-accent-gold text-dark-green text-xs font-extrabold flex items-center justify-center">1</div>
-                    </div>
-                    <h4 class="font-headline-md text-lg text-text-dark font-bold mb-2">Pilih Jalur</h4>
-                </div>
-                
-                <div class="flex flex-col items-center text-center reveal-on-scroll group" style="transition-delay: 0.2s">
-                    <div class="w-24 h-24 rounded-full bg-surface-light border border-gray-200 flex items-center justify-center mb-6 relative z-10 group-hover:border-accent-gold transition-all shadow-sm">
-                        <span class="material-symbols-outlined text-primary-green text-[32px] group-hover:text-accent-gold transition-all">note_alt</span>
-                        <div class="absolute -top-1 -right-1 w-8 h-8 rounded-full bg-accent-gold text-dark-green text-xs font-extrabold flex items-center justify-center">2</div>
-                    </div>
-                    <h4 class="font-headline-md text-lg text-text-dark font-bold mb-2">Isi Data</h4>
-                </div>
-                
-                <div class="flex flex-col items-center text-center reveal-on-scroll group" style="transition-delay: 0.3s">
-                    <div class="w-24 h-24 rounded-full bg-surface-light border border-gray-200 flex items-center justify-center mb-6 relative z-10 group-hover:border-accent-gold transition-all shadow-sm">
-                        <span class="material-symbols-outlined text-primary-green text-[32px] group-hover:text-accent-gold transition-all">forward_to_inbox</span>
-                        <div class="absolute -top-1 -right-1 w-8 h-8 rounded-full bg-accent-gold text-dark-green text-xs font-extrabold flex items-center justify-center">3</div>
-                    </div>
-                    <h4 class="font-headline-md text-lg text-text-dark font-bold mb-2">Verifikasi</h4>
-                </div>
-                
-                <div class="flex flex-col items-center text-center reveal-on-scroll group" style="transition-delay: 0.4s">
-                    <div class="w-24 h-24 rounded-full bg-surface-light border border-gray-200 flex items-center justify-center mb-6 relative z-10 group-hover:border-accent-gold transition-all shadow-sm">
-                        <span class="material-symbols-outlined text-primary-green text-[32px] group-hover:text-accent-gold transition-all">rule</span>
-                        <div class="absolute -top-1 -right-1 w-8 h-8 rounded-full bg-accent-gold text-dark-green text-xs font-extrabold flex items-center justify-center">4</div>
-                    </div>
-                    <h4 class="font-headline-md text-lg text-text-dark font-bold mb-2">Selesai</h4>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Artistic Divider Transition to Green -->
     <div class="art-wave-divider bg-primary-green">
         <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
@@ -939,20 +885,74 @@
         </svg>
     </div>
 
-    <!-- SECTION 7: PARTNERS & PRIZE POOL -->
-    <section class="py-20 sm:py-24 px-4 sm:px-margin-mobile md:px-margin-desktop bg-primary-green text-white overflow-hidden scroll-mt-20 relative" id="partners">
+    <!-- SECTION 6: ALUR PENDAFTARAN (Green) -->
+    <section class="py-20 sm:py-24 px-4 sm:px-margin-mobile md:px-margin-desktop scroll-mt-20 relative bg-primary-green text-white" id="alur">
+        <div class="max-w-container-max mx-auto relative z-10">
+            <div class="text-center mb-16 reveal-on-scroll">
+                <span class="font-label-md text-accent-gold uppercase tracking-[0.2em] mb-3 block font-bold text-sm animate-luxury-blink">Mekanisme Pendaftaran</span>
+                <h2 class="font-headline-xl text-[32px] sm:text-[40px] text-white font-bold tracking-tight">4 Langkah <span class="text-accent-gold animate-luxury-blink">Mudah</span></h2>
+                <div class="h-1 w-20 bg-accent-gold mx-auto mt-4 rounded-full animate-luxury-blink"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-4 gap-8 relative max-w-5xl mx-auto">
+                <div class="hidden md:block absolute top-12 left-24 right-24 h-[2px] bg-white/20"></div>
+                
+                <div class="flex flex-col items-center text-center reveal-on-scroll group" style="transition-delay: 0.1s">
+                    <div class="w-24 h-24 rounded-full bg-white/5 border border-white/20 flex items-center justify-center mb-6 relative z-10 group-hover:border-accent-gold transition-all shadow-md">
+                        <span class="material-symbols-outlined text-white text-[32px] group-hover:text-accent-gold transition-all">gesture</span>
+                        <div class="absolute -top-1 -right-1 w-8 h-8 rounded-full bg-accent-gold text-dark-green text-xs font-extrabold flex items-center justify-center shadow">1</div>
+                    </div>
+                    <h4 class="font-headline-md text-lg text-white font-bold mb-2">Pilih Jalur</h4>
+                </div>
+                
+                <div class="flex flex-col items-center text-center reveal-on-scroll group" style="transition-delay: 0.2s">
+                    <div class="w-24 h-24 rounded-full bg-white/5 border border-white/20 flex items-center justify-center mb-6 relative z-10 group-hover:border-accent-gold transition-all shadow-md">
+                        <span class="material-symbols-outlined text-white text-[32px] group-hover:text-accent-gold transition-all">note_alt</span>
+                        <div class="absolute -top-1 -right-1 w-8 h-8 rounded-full bg-accent-gold text-dark-green text-xs font-extrabold flex items-center justify-center shadow">2</div>
+                    </div>
+                    <h4 class="font-headline-md text-lg text-white font-bold mb-2">Isi Data</h4>
+                </div>
+                
+                <div class="flex flex-col items-center text-center reveal-on-scroll group" style="transition-delay: 0.3s">
+                    <div class="w-24 h-24 rounded-full bg-white/5 border border-white/20 flex items-center justify-center mb-6 relative z-10 group-hover:border-accent-gold transition-all shadow-md">
+                        <span class="material-symbols-outlined text-white text-[32px] group-hover:text-accent-gold transition-all">forward_to_inbox</span>
+                        <div class="absolute -top-1 -right-1 w-8 h-8 rounded-full bg-accent-gold text-dark-green text-xs font-extrabold flex items-center justify-center shadow">3</div>
+                    </div>
+                    <h4 class="font-headline-md text-lg text-white font-bold mb-2">Verifikasi</h4>
+                </div>
+                
+                <div class="flex flex-col items-center text-center reveal-on-scroll group" style="transition-delay: 0.4s">
+                    <div class="w-24 h-24 rounded-full bg-white/5 border border-white/20 flex items-center justify-center mb-6 relative z-10 group-hover:border-accent-gold transition-all shadow-md">
+                        <span class="material-symbols-outlined text-white text-[32px] group-hover:text-accent-gold transition-all">rule</span>
+                        <div class="absolute -top-1 -right-1 w-8 h-8 rounded-full bg-accent-gold text-dark-green text-xs font-extrabold flex items-center justify-center shadow">4</div>
+                    </div>
+                    <h4 class="font-headline-md text-lg text-white font-bold mb-2">Selesai</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Artistic Divider Transition to White -->
+    <div class="art-wave-divider bg-white">
+        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M0,0 C150,90 350,-40 600,45 C850,130 1050,10 1200,35 L1200,0 L0,0 Z" fill="#003624"></path>
+        </svg>
+    </div>
+
+    <!-- SECTION 7: PARTNERS & PRIZE POOL (White) -->
+    <section class="py-20 sm:py-24 px-4 sm:px-margin-mobile md:px-margin-desktop bg-white text-text-dark overflow-hidden scroll-mt-20 relative" id="partners">
         <div class="max-w-container-max mx-auto text-center reveal-on-scroll relative z-10">
-            <span class="font-label-md text-accent-gold uppercase tracking-[0.2em] mb-4 block font-bold text-sm animate-luxury-blink">Dukungan & Kolaborasi</span>
-            <p class="text-white/85 max-w-2xl mx-auto mb-16 text-base px-2">Acara ini terselenggara berkat dukungan para partner strategis. Kami membuka kesempatan kolaborasi melalui program <span class="text-accent-gold font-bold">Open Sponsorship</span>.</p>
+            <span class="font-label-md text-primary-green uppercase tracking-[0.2em] mb-4 block font-bold text-sm">Dukungan & Kolaborasi</span>
+            <p class="text-text-muted max-w-2xl mx-auto mb-16 text-base px-2">Acara ini terselenggara berkat dukungan para partner strategis. Kami membuka kesempatan kolaborasi melalui program <span class="text-primary-green font-bold">Open Sponsorship</span>.</p>
             
             <div class="relative max-w-4xl mx-auto reveal-on-scroll">
-                <div class="rounded-2xl overflow-hidden shadow-xl border border-white/20 bg-white/5 p-2 backdrop-blur-sm">
+                <div class="rounded-2xl overflow-hidden shadow-xl border border-gray-200 bg-surface-light p-2">
                     <img alt="Sponsorship &amp; Media Partners" class="w-full h-auto object-cover rounded-xl" src="https://lh3.googleusercontent.com/d/1jVRMuiJ-rizmVQIWh5p-YbsFLnajdmkI"/>
                 </div>
-                <div class="absolute -bottom-8 left-1/2 -translate-x-1/2 bg-white p-5 sm:p-6 rounded-2xl shadow-elegant flex items-center gap-4 sm:gap-6 border border-gray-100 w-11/12 sm:w-auto justify-center">
+                <div class="absolute -bottom-8 left-1/2 -translate-x-1/2 bg-primary-green text-white p-5 sm:p-6 rounded-2xl shadow-elegant flex items-center gap-4 sm:gap-6 border border-white/20 w-11/12 sm:w-auto justify-center">
                     <div class="flex flex-col items-start text-left">
-                        <span class="font-label-sm uppercase tracking-[0.2em] text-text-muted font-bold mb-1 text-[10px]">Terbuka Untuk</span>
-                        <span class="font-headline-md text-[20px] text-text-dark font-extrabold leading-none">Partnership</span>
+                        <span class="font-label-sm uppercase tracking-[0.2em] text-accent-gold font-bold mb-1 text-[10px]">Terbuka Untuk</span>
+                        <span class="font-headline-md text-[20px] text-white font-extrabold leading-none">Partnership</span>
                     </div>
                     <a class="bg-accent-gold text-dark-green p-3 rounded-xl hover:bg-yellow-500 transition-colors shadow-sm flex items-center justify-center shrink-0 font-bold" href="mailto:accfestbiu@gmail.com" target="_blank" rel="noopener noreferrer">
                         <span class="material-symbols-outlined text-[24px]">contact_mail</span>
@@ -960,19 +960,19 @@
                 </div>
             </div>
 
-            <div class="mt-28 sm:mt-36 grid md:grid-cols-2 gap-12 items-center relative max-w-5xl mx-auto bg-white/5 border border-white/10 p-10 sm:p-14 rounded-3xl backdrop-blur-sm shadow-xl reveal-on-scroll">
+            <div class="mt-28 sm:mt-36 grid md:grid-cols-2 gap-12 items-center relative max-w-5xl mx-auto bg-surface-light border border-gray-200 p-10 sm:p-14 rounded-3xl shadow-xl reveal-on-scroll text-left">
                 <div class="text-center md:text-left reveal-on-scroll">
-                    <span class="inline-block bg-accent-gold/20 text-accent-gold font-bold text-xs px-3.5 py-1.5 rounded-full uppercase tracking-widest mb-4 animate-luxury-blink">Grand Prize Pool</span>
-                    <h3 class="font-headline-xl text-[36px] sm:text-[52px] leading-tight mb-4 tracking-tight font-extrabold text-white">
+                    <span class="inline-block bg-primary-green/10 text-primary-green font-bold text-xs px-3.5 py-1.5 rounded-full uppercase tracking-widest mb-4">Grand Prize Pool</span>
+                    <h3 class="font-headline-xl text-[36px] sm:text-[52px] leading-tight mb-4 tracking-tight font-extrabold text-text-dark">
                         Total Hadiah <br/>
-                        <span class="text-accent-gold animate-luxury-blink">Fantastis!</span>
+                        <span class="text-primary-green">Fantastis!</span>
                     </h3>
-                    <p class="text-white/80 text-base sm:text-lg leading-relaxed">Raih kesempatan memenangkan total hadiah senilai puluhan juta rupiah, trofi eksklusif tingkat nasional, serta beasiswa bergengsi.</p>
+                    <p class="text-text-muted text-base sm:text-lg leading-relaxed">Raih kesempatan memenangkan total hadiah senilai puluhan juta rupiah, trofi eksklusif tingkat nasional, serta beasiswa bergengsi.</p>
                 </div>
                 <div class="scale-on-scroll flex justify-center md:justify-end">
-                    <div class="bg-white/10 border border-white/20 rounded-3xl p-8 sm:p-10 text-center shadow-xl backdrop-blur-sm min-w-[280px]">
-                        <span class="font-headline-xl text-[64px] sm:text-[84px] leading-none font-extrabold text-accent-gold animate-luxury-blink">30</span>
-                        <span class="block font-headline-md text-[24px] sm:text-[28px] text-white font-extrabold mt-2">Juta Rupiah</span>
+                    <div class="bg-white border border-gray-200 rounded-3xl p-8 sm:p-10 text-center shadow-xl min-w-[280px]">
+                        <span class="font-headline-xl text-[64px] sm:text-[84px] leading-none font-extrabold text-primary-green">30</span>
+                        <span class="block font-headline-md text-[24px] sm:text-[28px] text-text-dark font-extrabold mt-2">Juta Rupiah</span>
                         <div class="mt-6 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent-gold text-dark-green shadow-md">
                             <span class="material-symbols-outlined text-sm">military_tech</span>
                             <span class="text-[11px] font-bold uppercase tracking-wider">National Level</span>
@@ -988,11 +988,11 @@
 <!-- Artistic Divider Transition to Footer -->
 <div class="art-wave-divider bg-dark-green">
     <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-        <path d="M0,0 C150,90 350,-40 600,45 C850,130 1050,10 1200,35 L1200,0 L0,0 Z" fill="#003624"></path>
+        <path d="M0,0 C150,90 350,-40 600,45 C850,130 1050,10 1200,35 L1200,0 L0,0 Z" fill="#FFFFFF"></path>
     </svg>
 </div>
 
-<!-- Footer -->
+<!-- Footer (Green) -->
 <footer class="bg-dark-green pt-12 pb-12 px-4 sm:px-margin-mobile md:px-margin-desktop relative overflow-hidden text-white">
     <div class="max-w-container-max mx-auto grid md:grid-cols-12 gap-10 relative z-10">
         <div class="md:col-span-4 text-center md:text-left">
@@ -1348,7 +1348,7 @@
         };
 
         const activeSma = getPhaseDetail(scheduleSMA, currentDate);
-        applyPhaseToCard(activeSma, 'badge-sma', 'text-badge-sma', 'wrapper-btn-sma', 'text-accent-gold');
+        applyPhaseToCard(activeSma, 'badge-sma', 'text-badge-sma', 'wrapper-btn-sma', 'text-primary-green');
 
         const activeUniv = getPhaseDetail(scheduleUniv, currentDate);
         applyPhaseToCard(activeUniv, 'badge-univ', 'text-badge-univ', 'wrapper-btn-univ', 'text-primary-green');
@@ -1369,7 +1369,7 @@
         checkSeminarDeadline('seminar-online-card', 'seminar-online-btn-wrapper');
 
         // =========================================================================
-        // Manajemen Tampilan Detail Biaya (Otomatisasi Penuh seperti Card Lomba)
+        // Manajemen Tampilan Detail Biaya
         // =========================================================================
         const feeDataSMA = {
             'Pendaftaran Dibuka': { label: 'Pendaftaran Online', price: 'Free', isFree: true },
@@ -1396,14 +1396,14 @@
                 const feeInfo = feeData[activeData.name];
                 if (feeInfo) {
                     const priceHtml = feeInfo.isFree 
-                        ? `<span class="font-label-md bg-green-500/20 text-green-300 px-3 py-1 rounded-full uppercase text-xs font-bold">${feeInfo.price}</span>`
-                        : `<span class="font-headline-md text-accent-gold text-lg font-bold shrink-0">${feeInfo.price}</span>`;
+                        ? `<span class="font-label-md bg-green-100 text-green-700 px-3 py-1 rounded-full uppercase text-xs font-bold">${feeInfo.price}</span>`
+                        : `<span class="font-headline-md text-primary-green text-lg font-bold shrink-0">${feeInfo.price}</span>`;
 
                     container.innerHTML = `
-                        <div class="flex justify-between items-center gap-3 border-2 border-accent-gold p-4 rounded-xl bg-accent-gold/10 shadow-sm transition-all biaya-highlight-active">
+                        <div class="flex justify-between items-center gap-3 border-2 border-primary-green p-4 rounded-xl bg-primary-green/5 shadow-sm biaya-highlight-active">
                             <div class="flex flex-col flex-1">
-                                <span class="font-body-lg text-white font-medium text-sm">${feeInfo.label}</span>
-                                <span class="text-[11px] font-extrabold text-accent-gold mt-1 uppercase tracking-wider animate-luxury-blink">● Sedang Berlangsung</span>
+                                <span class="font-body-lg text-text-dark font-medium text-sm">${feeInfo.label}</span>
+                                <span class="text-[11px] font-extrabold text-primary-green mt-1 uppercase tracking-wider animate-luxury-blink">● Sedang Berlangsung</span>
                             </div>
                             ${priceHtml}
                         </div>
@@ -1416,23 +1416,21 @@
             }
         };
 
-        // Render detail biaya secara dinamis sesuai jadwal saat ini
-        renderDynamicFee('fee-container-sma', activeSma, feeDataSMA, 'text-accent-gold');
-        renderDynamicFee('fee-container-univ', activeUniv, feeDataUniv, 'text-accent-gold');
+        renderDynamicFee('fee-container-sma', activeSma, feeDataSMA, 'text-primary-green');
+        renderDynamicFee('fee-container-univ', activeUniv, feeDataUniv, 'text-primary-green');
 
-        // Manajemen Tampilan Timeline (Termasuk Kondisi "Ended" & "Jeda Hari")
+        // Manajemen Tampilan Timeline
         const processTimelineRows = (containerId, activeData) => {
             const container = document.getElementById(containerId);
             if (!container) return;
 
-            // Logika baru untuk status kompetisi selesai (Ended)
             if (activeData.type === 'ended') {
                 container.innerHTML = `
-                    <div class="bg-surface-light border border-accent-gold/40 p-8 rounded-2xl text-center flex flex-col items-center justify-center relative overflow-hidden transition-all shadow-inner">
+                    <div class="bg-white/5 border border-accent-gold/40 p-8 rounded-2xl text-center flex flex-col items-center justify-center relative overflow-hidden transition-all shadow-inner">
                         <div class="absolute inset-0 bg-gradient-to-br from-accent-gold/10 to-transparent"></div>
                         <span class="material-symbols-outlined text-[48px] text-accent-gold mb-4 relative z-10 animate-bounce drop-shadow-md">celebration</span>
-                        <h4 class="font-headline-md text-lg sm:text-xl text-text-dark font-bold mb-2 relative z-10 tracking-tight">Rangkaian Kompetisi Selesai</h4>
-                        <p class="text-text-muted text-sm relative z-10 max-w-[250px] mx-auto leading-relaxed">Terima kasih atas partisipasinya. Sampai jumpa kembali di <span class="text-accent-gold font-bold">AFBI #11</span>!</p>
+                        <h4 class="font-headline-md text-lg sm:text-xl text-white font-bold mb-2 relative z-10 tracking-tight">Rangkaian Kompetisi Selesai</h4>
+                        <p class="text-white/80 text-sm relative z-10 max-w-[250px] mx-auto leading-relaxed">Terima kasih atas partisipasinya. Sampai jumpa kembali di <span class="text-accent-gold font-bold">AFBI #11</span>!</p>
                     </div>
                 `;
                 return;
@@ -1450,7 +1448,7 @@
                     row.classList.add('timeline-highlight-active');
                     const dot = row.querySelector('.timeline-dot');
                     if (dot) {
-                        dot.classList.remove('bg-gray-300');
+                        dot.classList.remove('bg-white/40');
                         dot.classList.add('bg-accent-gold', 'ring-4', 'ring-accent-gold/20');
                     }
                     const badge = row.querySelector('.badge-status');
@@ -1464,17 +1462,16 @@
                 }
             });
 
-            // Menyisipkan visual "Hari Ini" khusus jika sedang dalam Jeda Hari pada timeline
             if (!hasActive && activeData.type === 'gap' && nextRow) {
                 const gapDiv = document.createElement('div');
-                gapDiv.className = 'timeline-row flex flex-col sm:flex-row items-start gap-1 sm:gap-6 relative border-l-2 border-gray-200 border-dashed ml-2 pl-4 sm:pl-6 pb-6';
+                gapDiv.className = 'timeline-row flex flex-col sm:flex-row items-start gap-1 sm:gap-6 relative border-l-2 border-white/20 border-dashed ml-2 pl-4 sm:pl-6 pb-6';
                 gapDiv.innerHTML = `
-                    <div class="timeline-dot absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-gray-400 animate-pulse"></div>
-                    <div class="w-full sm:w-28 shrink-0 font-label-md text-text-muted font-bold text-sm sm:text-base">Hari Ini</div>
+                    <div class="timeline-dot absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-white/60 animate-pulse"></div>
+                    <div class="w-full sm:w-28 shrink-0 font-label-md text-white/70 font-bold text-sm sm:text-base">Hari Ini</div>
                     <div class="flex-1 w-full mt-1 sm:mt-0">
-                        <h4 class="font-headline-md text-base text-text-dark font-bold mb-1 flex items-center gap-2 flex-wrap">
+                        <h4 class="font-headline-md text-base text-white font-bold mb-1 flex items-center gap-2 flex-wrap">
                             Jeda Hari
-                            <span class="text-[10px] bg-accent-gold/10 text-accent-gold px-2.5 py-0.5 rounded-full uppercase font-bold tracking-wider animate-pulse border border-accent-gold/20 shadow-sm">Menuju ${activeData.nextEventName}</span>
+                            <span class="text-[10px] bg-accent-gold/20 text-accent-gold px-2.5 py-0.5 rounded-full uppercase font-bold tracking-wider animate-pulse border border-accent-gold/30 shadow-sm">Menuju ${activeData.nextEventName}</span>
                         </h4>
                     </div>
                 `;
