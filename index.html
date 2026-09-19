@@ -367,7 +367,7 @@
                 </div>
             </div>
 
-            <!-- Hero Section Buttons (Updated href to #seminar-daftar) -->
+            <!-- Hero Section Buttons -->
             <div class="flex flex-col sm:flex-row items-center justify-center gap-5 w-full">
                 <a href="#jalur" class="w-full sm:w-auto flex items-center justify-center gap-3 bg-primary-green text-white hover:bg-dark-green px-8 py-4 rounded-full font-extrabold text-sm sm:text-base shadow-xl text-center transition-all">
                     <span class="material-symbols-outlined text-[22px] shrink-0 text-accent-gold">military_tech</span>
@@ -421,9 +421,12 @@
                                 <span class="material-symbols-outlined text-[20px]">post_add</span> Isi Formulir Pendaftaran
                             </a>
                         </div>
-                        <div class="w-full" id="actions-sma">
-                            <a class="flex items-center justify-center gap-2 w-full bg-surface-light border border-gray-200 text-text-dark hover:bg-gray-100 py-3.5 rounded-xl font-bold transition-all" id="btn-booklet-sma" href="https://drive.google.com/file/d/1kc8GNGqRgRQ4e1lqPYLolstntcwkOcs3/view?usp=drivesdk" target="_blank">
-                                <span class="material-symbols-outlined text-[20px]">chrome_reader_mode</span> Unduh Booklet
+                        <div class="w-full grid grid-cols-2 gap-2">
+                            <a class="flex items-center justify-center gap-1.5 w-full bg-surface-light border border-gray-200 text-text-dark hover:bg-gray-100 py-3 px-2 rounded-xl font-bold text-xs transition-all" id="btn-booklet-sma" href="https://drive.google.com/file/d/1kc8GNGqRgRQ4e1lqPYLolstntcwkOcs3/view?usp=drivesdk" target="_blank">
+                                <span class="material-symbols-outlined text-[18px]">chrome_reader_mode</span> Booklet
+                            </a>
+                            <a class="flex items-center justify-center gap-1.5 w-full bg-surface-light border border-gray-200 text-text-dark hover:bg-gray-100 py-3 px-2 rounded-xl font-bold text-xs transition-all" href="#biaya-sma">
+                                <span class="material-symbols-outlined text-[18px]">payments</span> Info Biaya
                             </a>
                         </div>
                     </div>
@@ -448,9 +451,12 @@
                                 <span class="material-symbols-outlined text-[20px]">post_add</span> Isi Formulir Pendaftaran
                             </a>
                         </div>
-                        <div class="w-full" id="actions-univ">
-                            <a class="flex items-center justify-center gap-2 w-full bg-surface-light border border-gray-200 text-text-dark hover:bg-gray-100 py-3.5 rounded-xl font-bold transition-all" id="btn-booklet-univ" href="https://drive.google.com/file/d/1S_7ovDhG5k-aDssmGQZvymogaQwwWl_l/view?usp=drivesdk" target="_blank">
-                                <span class="material-symbols-outlined text-[20px]">chrome_reader_mode</span> Unduh Booklet
+                        <div class="w-full grid grid-cols-2 gap-2">
+                            <a class="flex items-center justify-center gap-1.5 w-full bg-surface-light border border-gray-200 text-text-dark hover:bg-gray-100 py-3 px-2 rounded-xl font-bold text-xs transition-all" id="btn-booklet-univ" href="https://drive.google.com/file/d/1S_7ovDhG5k-aDssmGQZvymogaQwwWl_l/view?usp=drivesdk" target="_blank">
+                                <span class="material-symbols-outlined text-[18px]">chrome_reader_mode</span> Booklet
+                            </a>
+                            <a class="flex items-center justify-center gap-1.5 w-full bg-surface-light border border-gray-200 text-text-dark hover:bg-gray-100 py-3 px-2 rounded-xl font-bold text-xs transition-all" href="#biaya-univ">
+                                <span class="material-symbols-outlined text-[18px]">payments</span> Info Biaya
                             </a>
                         </div>
                     </div>
@@ -593,7 +599,7 @@
                     </div>
                 </div>
 
-                <!-- Pendaftaran Seminar Container (Added id="seminar-daftar" and scroll margin) -->
+                <!-- Pendaftaran Seminar Container -->
                 <div id="seminar-daftar" class="bg-surface-light border border-gray-200 p-8 sm:p-10 rounded-2xl shadow-xl flex flex-col justify-center scroll-mt-28">
                     <div class="text-center mb-8">
                         <h3 class="font-headline-md text-xl text-primary-green font-bold mb-2">Pendaftaran Seminar Hybrid</h3>
@@ -809,7 +815,8 @@
             </div>
             
             <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-16">
-                <div class="bg-surface-light border border-gray-200 p-8 sm:p-10 rounded-2xl shadow-xl reveal-on-scroll flex flex-col justify-between">
+                <!-- Biaya SMA/SMK Card (Added id="biaya-sma" with scroll clearance) -->
+                <div id="biaya-sma" class="bg-surface-light border border-gray-200 p-8 sm:p-10 rounded-2xl shadow-xl reveal-on-scroll flex flex-col justify-between scroll-mt-28">
                     <div class="flex items-center gap-4 mb-8">
                         <div class="w-12 h-12 bg-primary-green/10 rounded-2xl flex items-center justify-center shrink-0">
                             <span class="material-symbols-outlined text-primary-green text-[24px]">price_check</span>
@@ -833,7 +840,8 @@
                     </div>
                 </div>
 
-                <div class="bg-surface-light border border-gray-200 p-8 sm:p-10 rounded-2xl shadow-xl reveal-on-scroll flex flex-col justify-between">
+                <!-- Biaya Perguruan Tinggi Card (Added id="biaya-univ" with scroll clearance) -->
+                <div id="biaya-univ" class="bg-surface-light border border-gray-200 p-8 sm:p-10 rounded-2xl shadow-xl reveal-on-scroll flex flex-col justify-between scroll-mt-28">
                     <div class="flex items-center gap-4 mb-8">
                         <div class="w-12 h-12 bg-primary-green/10 rounded-2xl flex items-center justify-center shrink-0">
                             <span class="material-symbols-outlined text-primary-green text-[24px]">wallet</span>
