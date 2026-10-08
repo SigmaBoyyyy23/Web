@@ -148,6 +148,9 @@ body{background:var(--navy);color:#fff;font-family:Ubuntu,system-ui,sans-serif}
 .cb.nx{margin-left:auto;background:var(--amber);color:#241f3a}
 @media (max-height:430px){.dlg{font-size:14px;padding:14px 12px 10px;min-height:110px}.cb{padding:6px 10px}}
 @media (prefers-reduced-motion:reduce){.chr.talk .bd,.chr.talk .hd,.chr.talk .ar,.chr.talk .al,.cbox,#cs::after,.ldcoin{animation:none}}
+.dlg[data-s=c]{background:#101536;color:var(--cream);border-color:var(--amber)}
+.dlg[data-s=c] .who{left:50%;transform:translateX(-50%);background:var(--amber);color:#241f3a;border-bottom-color:#0e1230;white-space:nowrap}
+.dlg[data-s=c] .txt{font-style:italic}.dlg[data-s=c] .txt.ty::after{color:var(--amber)}
 </style></head><body>
 <div id="ld" role="status" aria-live="polite" aria-label="Memuat AFBI #10">
 <div class="stars"></div><svg id="sky" viewBox="0 0 320 90" preserveAspectRatio="xMidYMax slice" aria-hidden="true"></svg>
@@ -1291,7 +1294,7 @@ about:()=>`<h2>Tentang AFBI #10</h2><div style="text-align:center;margin:8px 0 1
 <h3>Cara main</h3><p>D-pad untuk berjalan. Tombol bicara untuk masuk gedung atau ngobrol dengan warga. Tombol panah untuk lari. Kumpulkan koin dan permata!</p>
 <h3>Kontak</h3><p>Perguruan Tinggi Bina Insani, Jl. Raya Siliwangi No.9, Rawalumbu, Kota Bekasi 17116</p>`};
 const ACC={arena:'#f3b63f',sem:'#4fb6d8',tl:'#b98ae0',biaya:'#e9a23c',prize:'#f2b63a',help:'#2fa05a',intro:'#f2b63a',about:'#4fb6d8'};
-function show(id){open=true;vis.add(id);if(id=='help'||id=='prize'||id=='arena'||id=='sem'||id=='tl'||id=='biaya'){}
+function show(id){if(SEQ[id]&&!seenS.has(id)&&!cOpen){seenS.add(id);open=false;openChat(id,()=>show(id));return}open=true;vis.add(id);if(id=='help'||id=='prize'||id=='arena'||id=='sem'||id=='tl'||id=='biaya'){}
   const html=MD[id](),m=html.match(/^<h2>(.*?)<\/h2>/),title=m?m[1]:'',body=m?html.slice(m[0].length):html,sh=document.getElementById('sh');
   sh.style.setProperty('--acc',ACC[id]||'#f2b63a');
   sh.innerHTML=`<div class="hd"><span>${title}</span><button class="x" id="cx">Tutup</button></div><div class="bd">${body}</div>`;
@@ -1359,7 +1362,7 @@ const $c=id=>document.getElementById(id);
 const chW=$c('chW'),chF=$c('chF'),chatEl=$c('chat'),cdlg=$c('cdlg'),cwho=$c('cwho'),ctxt=$c('ctxt'),copts=$c('copts');
 chW.innerHTML='<span class="nm">Wike<small>Admin 1</small></span>'+charSVG('wike');
 chF.innerHTML='<span class="nm">Fachri<small>Admin 2</small></span>'+charSVG('fachri');
-let cSeq=[],cI=0,cCur=null,cTy=0,cFull='',cTyping=false,cOpen=false,cLast='fachri';
+let cSeq=[],cI=0,cCur=null,cTy=0,cFull='',cTyping=false,cOpen=false,cLast='fachri',cAfter=null,seenS=new Set();
 const FAQ=[
  {k:'Daftar lomba',w:'wike',t:()=>reg.sma||reg.univ?'Pendaftaran lomba masih dibuka! Masuk ke gedung Arena Kompetisi, lalu isi formulir sesuai jenjangmu: SMA/SMK atau Perguruan Tinggi.':'Pendaftaran lomba tahun ini sudah ditutup. Pantau terus Instagram @accfest.biu supaya nggak ketinggalan AFBI berikutnya ya!',acts:[{l:'Buka Arena Kompetisi',go:'arena'},{l:'Instagram @accfest.biu',href:'https://www.instagram.com/accfest.biu',alt:1}]},
  {k:'Seminar nasional',w:'fachri',t:()=>'Seminar Akuntansi Nasional hybrid digelar Selasa, 13 Oktober 2026, pukul 08.00 sampai 12.25 WIB, offline di Ruang Seminar dan online lewat Zoom. '+(semOff()||semOn()?'Pendaftaran masih dibuka sampai Senin, 12 Oktober 2026.':'Pendaftaran seminar sudah ditutup.'),acts:[{l:'Buka Aula Seminar',go:'sem'}]},
@@ -1368,6 +1371,8 @@ const FAQ=[
  {k:'Hubungi admin',w:'wike',t:'Boleh banget chat langsung! Aku atau Fachri siap bantu lewat WhatsApp.',acts:[{l:'WhatsApp Wike',href:CSC.wike.wa},{l:'WhatsApp Fachri',href:CSC.fachri.wa},{l:'Email',href:'mailto:accfestbiu@gmail.com',alt:1}]}];
 const SEQ={
  welcome:[
+  {w:'narr',nm:'Prolog',t:'Malam turun di Kota Bina Insani. Satu per satu lampu gedung menyala, dan dari kejauhan terdengar suara kalkulator yang nggak pernah berhenti berbunyi...'},
+  {w:'narr',nm:'Prolog',t:'Konon, tahun ini Accounting Festival Bina Insani genap berusia sepuluh tahun. Dan kamu, ya kamu, baru saja menjadi tamu spesial kota ini.'},
   {w:'wike',t:'Halo, selamat datang di kota mini Accounting Festival Bina Insani #10! Aku Wike, admin 1.'},
   {w:'fachri',t:'Aku Fachri, admin 2. AFBI #10 adalah kegiatan tahunan Perguruan Tinggi Bina Insani bertema AI dalam akuntansi.'},
   {w:'wike',t:'Ada Lomba Akuntansi SMA/SMK dan Perguruan Tinggi, plus Seminar Akuntansi Nasional hybrid. Total hadiahnya Rp 30 juta!'},
@@ -1376,19 +1381,38 @@ const SEQ={
  cs:[
   {w:'wike',t:'Halo! Aku Wike, admin AFBI #10.'},
   {w:'fachri',t:'Dan aku Fachri. Ada yang bisa kami bantu? Pilih topik di bawah ya!',menu:1}]};
+SEQ.arena=[
+ {w:'narr',nm:'Bab 1 \u00B7 Arena',t:'Pintu Arena Kompetisi berderit terbuka. Lampu sorot menyala satu per satu, dan suara keyboard saling sahut seperti orkestra akuntan.'},
+ {w:'wike',t:'Eh, akhirnya kamu sampai juga! Ini Arena, tempat calon akuntan paling jago adu otak.'},
+ {w:'fachri',t:'Tahun ini AFBI sudah yang ke-10, lho. Sepuluh tahun, Wik. Sepuluh!'},
+ {w:'wike',t:'Dan ada twist-nya: semua tantangan bertema AI dalam akuntansi. Robot boleh bantu, tapi otak kamu tetap bosnya.'},
+ {w:'fachri',t:'Ada dua jalur, SMA/SMK dan Perguruan Tinggi. Total hadiahnya Rp 30 juta, plus beasiswa Bina Insani.'},
+ {w:'narr',nm:'Bab 1 \u00B7 Arena',t:()=>reg.sma||reg.univ?'Di tengah arena, formulir pendaftaran bersinar di atas meja. Tinggal selangkah lagi menuju panggung final.':'Meja pendaftaran sudah rapi dan tertutup. Tapi tenang, cerita ini belum tamat. AFBI berikutnya sedang menunggu.'},
+ {w:'wike',t:'Ingat, debit harus sama dengan kredit. Niat kamu juga harus sama dengan aksi. Yuk lihat detailnya!',end:'Masuk Arena \u25B6'}];
+SEQ.sem=[
+ {w:'narr',nm:'Bab 2 \u00B7 Seminar',t:'Kamu melangkah ke Aula Seminar. Kursi berjajar rapi, layar Zoom menyala besar di depan, dan musik pembuka bikin bulu kuduk berdiri.'},
+ {w:'fachri',t:'Selamat datang di Aula Seminar Hybrid! Mau hadir offline boleh, mau online lewat Zoom juga boleh.'},
+ {w:'wike',t:'Temanya keren banget: Digital Accounting in the AI Era, soal membangun karier profesional dan akuntabilitas yang berkelanjutan.'},
+ {w:'narr',nm:'Bab 2 \u00B7 Seminar',t:'Lampu panggung menyorot tiga sosok yang melangkah naik: dua pembicara dan satu moderator.'},
+ {w:'fachri',t:'Ada Dr. Ivan Yudianto dari IAI Jabar dan Dr. Lies Zulfiati dari DPD RI. Kadek Wisnu Bhuana jadi moderatornya.'},
+ {w:'wike',t:'Selasa, 13 Oktober 2026, pukul 08.00 sampai 12.25 WIB. Pulangnya kamu bawa e-sertifikat, ilmu, dan relasi baru!'},
+ {w:'fachri',t:()=>semOff()||semOn()?'Pendaftaran masih dibuka sampai Senin, 12 Oktober 2026. Jangan sampai kehabisan kursi ya!':'Pendaftaran seminar sudah ditutup, tapi pantau terus Instagram @accfest.biu untuk acara berikutnya.',end:'Masuk Aula \u25B6'}];
 function cBtn(a){
  const e=document.createElement(a.href?'a':'button');e.className='cb'+(a.alt?' alt':'')+(a.nx?' nx':'');e.textContent=a.l;
  if(a.href){e.href=a.href;e.target='_blank';e.rel='noopener noreferrer'}else{e.type='button';e.onclick=a.fn||(()=>{closeChat();show(a.go)})}
  return e}
 function cLine(s){
- clearInterval(cTy);cCur=s;cLast=s.w;
- const wk=s.w=='wike',A=wk?chW:chF,B=wk?chF:chW;
- A.classList.add('act','talk');B.classList.remove('act','talk');
- cdlg.dataset.s=wk?'l':'r';cwho.textContent=CSC[s.w].nm+' \u00B7 '+CSC[s.w].role;
+ clearInterval(cTy);cCur=s;
+ const nr=s.w=='narr',wk=s.w=='wike',A=wk?chW:chF,B=wk?chF:chW;
+ if(nr){chW.classList.remove('act','talk');chF.classList.remove('act','talk')}
+ else{cLast=s.w;A.classList.add('act','talk');B.classList.remove('act','talk')}
+ cdlg.dataset.s=nr?'c':wk?'l':'r';cwho.textContent=nr?(s.nm||'Narator'):CSC[s.w].nm+' \u00B7 '+CSC[s.w].role;
  copts.innerHTML='';ctxt.textContent='';ctxt.classList.add('ty');
  cFull=typeof s.t=='function'?s.t():s.t;cTyping=true;
  if(reduceM){cDone();return}
- let i=0;cTy=setInterval(()=>{i++;ctxt.textContent=cFull.slice(0,i);if(i>=cFull.length)cDone()},20)}
+ let i=0;const tick=()=>{i++;ctxt.textContent=cFull.slice(0,i);if(i>=cFull.length){cDone();return}
+  const c=cFull[i-1],n=cFull[i];cTy=setTimeout(tick,/[.!?]/.test(c)&&(n==' '||!n)?240:/[,;:]/.test(c)?120:nr?30:22)};
+ cTy=setTimeout(tick,22)}
 function cDone(){
  clearInterval(cTy);cTyping=false;ctxt.textContent=cFull;ctxt.classList.remove('ty');
  chW.classList.remove('talk');chF.classList.remove('talk');
@@ -1405,12 +1429,12 @@ function cAdvance(){
  if(cTyping){cDone();return}
  if(!cCur||cCur.menu||cCur.back)return;
  if(cI<cSeq.length)cNext();else if(cCur.end)closeChat()}
-function openChat(mode){
- if(cOpen||open)return;cOpen=true;open=true;
+function openChat(mode,after){
+ if(cOpen||open)return;cAfter=after||null;cOpen=true;open=true;
  chatEl.classList.add('show');cSeq=SEQ[mode].slice();cI=0;cNext()}
 function closeChat(){
  clearInterval(cTy);cTyping=false;cOpen=false;open=false;
- chatEl.classList.remove('show');[chW,chF].forEach(c=>c.classList.remove('act','talk'))}
+ chatEl.classList.remove('show');[chW,chF].forEach(c=>c.classList.remove('act','talk'));const f=cAfter;cAfter=null;if(f)f()}
 cdlg.addEventListener('click',e=>{if(e.target.closest('a,button'))return;cAdvance()});
 $c('cclose').addEventListener('click',closeChat);
 $c('cs').addEventListener('click',e=>{e.currentTarget.blur();openChat('cs')});
