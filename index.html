@@ -1066,7 +1066,7 @@ function hudStatic(){const k=vis.size+'|'+coins+'|'+gems;if(k==hudKey)return;hud
   G=g}
 function hud(){hudStatic();g.imageSmoothingEnabled=true;g.drawImage(HC.c,0,0,W,64);
   const mx=8+P.x*2,my=8+P.y*2;g.fillStyle=(tm*3%2<1)?'#ff4a6a':'#fff';g.fillRect(mx-1.5,my-1.5,3,3)}
-const MW=new Map();function mw(t){let v=MW.get(t);if(v===undefined){v=g.measureText(t).width;MW.set(t,v)}return v}
+const MW=new Map();function mw(t){const k=g.font+'|'+t;let v=MW.get(k);if(v===undefined){v={width:g.measureText(t).width};MW.set(k,v)}return v}
 function drawLabels(){
   g.font='700 7.5px Ubuntu,system-ui,sans-serif';g.textAlign='left';
   for(const L of labels){
@@ -1084,8 +1084,8 @@ function drawLabels(){
     g.font='700 8px Ubuntu,system-ui,sans-serif';const w1=mw(lab).width+12;rrect(px-w1/2,py-8,w1,13,4,'#fff6d8');g.fillStyle='#fff6d8';g.beginPath();g.moveTo(px-4,py+5);g.lineTo(px,py+9);g.lineTo(px+4,py+5);g.fill();g.fillStyle='#1a1838';g.textAlign='center';g.fillText(lab,px,py+2)}
 }
 function rrect(x,y,wd,ht,r,col){g.fillStyle=col;g.beginPath();g.roundRect(x,y,wd,ht,r);g.fill()}
-function bubble(x,y,t){g.font='700 7.5px Ubuntu,system-ui,sans-serif';const mw=118,ls=[];let cur='';for(const wd of t.split(' ')){const tt=cur?cur+' '+wd:wd;if(mw(tt).width>mw&&cur){ls.push(cur);cur=wd}else cur=tt}ls.push(cur);
-  const bw=Math.min(mw,Math.max(...ls.map(l=>mw(l).width)))+12,bh=ls.length*9+6,bx=clamp(x-bw/2,4,W-bw-4),by=y-bh-4;
+function bubble(x,y,t){g.font='700 7.5px Ubuntu,system-ui,sans-serif';const maxW=118,ls=[];let cur='';for(const wd of t.split(' ')){const tt=cur?cur+' '+wd:wd;if(mw(tt).width>maxW&&cur){ls.push(cur);cur=wd}else cur=tt}ls.push(cur);
+  const bw=Math.min(maxW,Math.max(...ls.map(l=>mw(l).width)))+12,bh=ls.length*9+6,bx=clamp(x-bw/2,4,W-bw-4),by=y-bh-4;
   rrect(bx,by,bw,bh,5,'#fffdf4');g.strokeStyle='#1b1630';g.lineWidth=1;g.beginPath();g.roundRect(bx+.5,by+.5,bw-1,bh-1,5);g.stroke();
   g.fillStyle='#fffdf4';g.beginPath();g.moveTo(x-3,by+bh-.5);g.lineTo(x,by+bh+4);g.lineTo(x+3,by+bh-.5);g.fill();
   g.fillStyle='#1a1838';g.textAlign='left';ls.forEach((l,i)=>g.fillText(l,bx+6,by+10+i*9))}
