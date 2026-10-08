@@ -855,19 +855,35 @@ function updW(k,x,y,dt){const dx=x-k.x,dy=y-k.y,sdx=(dx-dy)*16,sdy=(dx+dy)*8,d=M
 // ---------- state & simulasi ----------
 let TOFF=0; // selisih jam perangkat vs server (ms), diisi otomatis
 const now=()=>new Date(Date.now()+TOFF+new Date().getTimezoneOffset()*6e4+7*36e5);
-// ---------- jam WIB (Bekasi, UTC+7) tidak tergantung zona waktu perangkat ----------
+// ---------- jam mengikuti jam perangkat masing-masing ----------
 const p2=n=>n<10?'0'+n:''+n;
-function wibT(){const d=new Date(Date.now()+TOFF+7*36e5);return{h:d.getUTCHours(),m:d.getUTCMinutes(),s:d.getUTCSeconds(),ms:d.getUTCMilliseconds(),wd:d.getUTCDay()}}
+function wibT(){const d=new Date(Date.now()+TOFF);return{h:d.getHours(),m:d.getMinutes(),s:d.getSeconds(),ms:d.getMilliseconds(),wd:d.getDay()}} // jam perangkat
+function tzLabel(){const o=-new Date().getTimezoneOffset()/60;return o==7?'WIB':o==8?'WITA':o==9?'WIT':'LOKAL'}
 function wibHr(){const t=wibT();return t.h+t.m/60+t.s/3600}
-async function syncT(){try{if(!/^https?:/.test(location.protocol))return;const t0=Date.now(),r=await fetch(location.href.split('#')[0],{method:'HEAD',cache:'no-store'}),t1=Date.now(),sd=r.headers.get('date');
-  if(!sd)return;const srv=new Date(sd).getTime()+(+r.headers.get('age')||0)*1000;if(!(srv>0))return;
-  const off=(srv+500)-(t0+t1)/2;if(Math.abs(off)>2000)TOFF=off}catch(e){}}
-syncT();setInterval(syncT,18e5);
-// ---------- siang/malam otomatis: terbit ~05:40, terbenam ~17:50 WIB ----------
+// ---------- siang/malam otomatis mengikuti jam perangkat: terbit ~05:40, terbenam ~17:50 ----------
 const sstep=(a,b,x)=>{const t=Math.max(0,Math.min(1,(x-a)/(b-a)));return t*t*(3-2*t)};
-const LGT={d:0,n:1,w:0}; // d=terang siang 0..1, n=malam, w=rona hangat fajar/senja
+const LGT={d:0,n:1,w:0,k:null}; // d=terang siang 0..1, n=malam, w=rona hangat, k=palet langit saat ini
+// palet langit per jam: [jam, atas, tengah, cakrawala, tint kota, kekuatan tint, awan, awan-terang, awan-bayangan, alfa-langit-dunia]
+const KEYS=[
+ [0,'#060919','#10163a','#1c1540','#5a6cff',0,'#262e66','#3a4488','#1a2050',0],
+ [5,'#060919','#10163a','#1c1540','#5a6cff',0,'#262e66','#3a4488','#1a2050',0],
+ [5.6,'#232a68','#6b4b8c','#f29a86','#ff9a70',.22,'#7d5c96','#ffb8a0','#4a3a78',.65],
+ [6.3,'#4a8fdb','#b3c7ec','#ffd3a2','#ffc890',.26,'#ffe6d6','#fff7ee','#e8b8b0',1],
+ [8,'#3b92e2','#7cc1f3','#c9e7fb','#fff0d8',.1,'#ffffff','#ffffff','#c3d8ee',1],
+ [12,'#2a82dc','#5eb0ee','#b3dbf8','#ffffff',0,'#ffffff','#ffffff','#bcd2ea',1],
+ [15.5,'#3a8de0','#76b8ee','#cde6f9','#fff3de',.08,'#ffffff','#ffffff','#c6d6ea',1],
+ [17.2,'#4f80cf','#dcb78f','#ffb866','#ffb060',.3,'#ffd6ae','#fff1dc','#d39a8a',1],
+ [18.1,'#3b3a90','#b45c88','#ff7a5a','#ff8a70',.3,'#e2708c','#ffb394','#7a4a8a',.9],
+ [19,'#161c58','#3a2a6a','#7a3a72','#8a6aff',.1,'#40337a','#6e4e96','#241e58',.35],
+ [19.8,'#060919','#10163a','#1c1540','#5a6cff',0,'#262e66','#3a4488','#1a2050',0],
+ [24,'#060919','#10163a','#1c1540','#5a6cff',0,'#262e66','#3a4488','#1a2050',0]];
+function skyKeys(h){let A=KEYS[0],B=KEYS[1],t=0;
+  for(let i=0;i<KEYS.length-1;i++)if(h>=KEYS[i][0]&&h<KEYS[i+1][0]){A=KEYS[i];B=KEYS[i+1];t=(h-A[0])/(B[0]-A[0]);break}
+  t=Math.round(sstep(0,1,t)*32)/32;const L=(i)=>mix(A[i],B[i],t);
+  return{top:L(1),mid:L(2),hor:L(3),tint:L(4),ta:A[5]+(B[5]-A[5])*t,cb:L(6),ch:L(7),cs:L(8),sa:A[9]+(B[9]-A[9])*t}}
+function rgbaOf(hx,a){const c=H2(hx);return'rgba('+c[0]+','+c[1]+','+c[2]+','+a+')'}
 function lightUpd(){const h=wibHr(),d=Math.round(Math.min(sstep(5,6.4,h),1-sstep(17.3,18.7,h))*40)/40;
-  LGT.d=d;LGT.n=1-d;LGT.w=Math.round(Math.sin(Math.PI*d)*20)/20}
+  LGT.d=d;LGT.n=1-d;LGT.w=Math.round(Math.sin(Math.PI*d)*20)/20;LGT.k=skyKeys(h)}
 lightUpd();setInterval(lightUpd,1000);
 const cam={x:0,y:0};
 let tm=0,paused=false,open=false,coins=0,gems=0;const got=new Set(),gotG=new Set(),vis=new Set(),fxs=[];
@@ -1011,7 +1027,7 @@ const SPI=SPN.map(id=>{const i=new Image();i.referrerPolicy='no-referrer';i.src=
 function drawBuilding(e){const b=e.b;blit(e.s,e.gx,e.gy);
   const bx=Math.round(WX(b.gx0,b.gy0)-cam.x-b.sox),by=Math.round(WY(b.gx0,b.gy0)-cam.y-b.soy);
   if(b.blink&&(tm%1.4)<.7){const X=bx+b.blink[0],Y=by+b.blink[1];w.fillStyle='#ff5a4a';w.fillRect(X-1,Y-1,3,3);w.fillStyle='#ffd0c8';w.fillRect(X,Y,1,1);w.globalAlpha=.4;w.drawImage(GLOW,X-12,Y-12,25,25);w.globalAlpha=1}
-  if(b.clk){const d=now(),mi=d.getMinutes()+d.getSeconds()/60,hr=(d.getHours()%12)+mi/60,C=b.clk;
+  if(b.clk){const d=new Date(Date.now()+TOFF),mi=d.getMinutes()+d.getSeconds()/60,hr=(d.getHours()%12)+mi/60,C=b.clk;
     const hand=(ang,r,col)=>{const u=C.cu+Math.cos(ang)*r,v=C.cv+Math.sin(ang)*r,U0=C.cu,V0=C.cv;
       lineW(bx+C.Px+U0,by+C.Py+(U0>>1)-V0,bx+C.Px+Math.round(u),by+C.Py+(Math.round(u)>>1)-Math.round(v),col)};
     hand(Math.PI/2-hr/12*6.2832,4.5,'#3a2414');hand(Math.PI/2-mi/60*6.2832,7,'#6a3a22')}
@@ -1029,16 +1045,15 @@ function drawDClock(e){ // layar LED: JJ:MM WIB, titik dua berkedip, bar detik
   const X=Math.round(SX(e.px,e.py)),Y=Math.round(SY(e.px,e.py));if(X<-60||X>W+60||Y<-20||Y>H+130)return;
   const t=wibT(),sx=X-25,sy=Y-86,hh=p2(t.h),mm=p2(t.m),A='#ffb52e';
   w.fillStyle='#07101c';w.fillRect(sx,sy,51,32);
-  'WIB'.split('').forEach((c,i)=>dgl(c,sx+3+i*4,sy+3,1,'#c98a1d'));
+  tzLabel().split('').forEach((c,i)=>dgl(c,sx+3+i*4,sy+3,1,'#c98a1d'));
   DAYN[t.wd].split('').forEach((c,i)=>dgl(c,sx+37+i*4,sy+3,1,'#4fb6d8'));
   const x0=sx+3,y0=sy+10;dgl(hh[0],x0,y0,3,A);dgl(hh[1],x0+10,y0,3,A);dgl(mm[0],x0+25,y0,3,A);dgl(mm[1],x0+35,y0,3,A);
   if(t.ms<500){w.fillStyle=A;w.fillRect(x0+21,y0+4,2,2);w.fillRect(x0+21,y0+9,2,2)}
   w.fillStyle='#1a2638';w.fillRect(sx+3,sy+27,45,2);w.fillStyle='#c98a1d';w.fillRect(sx+3,sy+27,Math.floor((t.s+t.ms/1000)/60*45),2);
   if(LGT.n>.1){w.globalCompositeOperation='lighter';w.globalAlpha=.4*LGT.n;w.drawImage(GLOW,X-40,sy-14,80,60);w.globalAlpha=1;w.globalCompositeOperation='source-over'}}
-function dayOverlay(){const L=LGT;if(L.d<.02)return; // terangkan siang tanpa menutupi kontras (tanpa kabut)
-  w.globalCompositeOperation='soft-light';w.globalAlpha=L.d;w.fillStyle='#ffffff';w.fillRect(0,0,W,H);
-  w.globalAlpha=.55*L.d;w.fillRect(0,0,W,H);
-  if(L.w>.05){w.globalCompositeOperation='soft-light';w.globalAlpha=.5*L.w;w.fillStyle='#ff9a50';w.fillRect(0,0,W,H)}
+function dayOverlay(){const L=LGT,K=L.k; // terangkan siang + color grading sesuai jam (tanpa kabut)
+  if(L.d>.02){w.globalCompositeOperation='soft-light';w.globalAlpha=L.d;w.fillStyle='#ffffff';w.fillRect(0,0,W,H);w.globalAlpha=.55*L.d;w.fillRect(0,0,W,H)}
+  if(K.ta>.02){w.globalCompositeOperation='soft-light';w.globalAlpha=K.ta;w.fillStyle=K.tint;w.fillRect(0,0,W,H)}
   w.globalCompositeOperation='source-over';w.globalAlpha=1}
 function drawProp(e){
   if(e.k=='fount'){blit(e.s,e.gx,e.gy);const cx=Math.round(SX(e.px,e.py)),cy=Math.round(SY(e.px,e.py,26));
@@ -1106,7 +1121,7 @@ const HC=mk(W*2,64*2);let hudKey='';
 function timeChip(t){const dy=LGT.d>=.5;panel(448,6,98,22);
   if(dy){G.fillStyle='#ffd23a';G.fillRect(455,14,8,8);G.fillRect(457,12,4,12);G.fillRect(453,16,12,4);G.fillStyle='#fff3a0';G.fillRect(457,16,2,2)}
   else{G.fillStyle='#f6efc8';G.fillRect(457,13,6,10);G.fillRect(455,15,10,6);G.fillRect(459,12,3,12);G.fillStyle='rgb(16,22,58)';G.fillRect(461,14,5,7)}
-  tx(p2(t.h)+':'+p2(t.m),470,23,12,'#fff','left',null,0);tx('WIB',542,23,8,'#f2b63a','right',null,0)}
+  tx(p2(t.h)+':'+p2(t.m),470,23,12,'#fff','left',null,0);tx(tzLabel(),542,23,8,'#f2b63a','right',null,0)}
 function hudStatic(){const _t=wibT(),k=vis.size+'|'+coins+'|'+gems+'|'+_t.h+':'+_t.m+(LGT.d>=.5?'d':'n');if(k==hudKey)return;hudKey=k;const x=HC.x;x.setTransform(2,0,0,2,0,0);x.clearRect(0,0,W,64);G=x;
   panel(4,4,84,56);G.imageSmoothingEnabled=false;G.drawImage(MM,8,8,76,48);
   PORT.forEach((p,i)=>{const px=96+i*32;panel(px,4,30,30);G.drawImage(p,6,4,32,26,px+2,6,26,26)});G.imageSmoothingEnabled=true;
@@ -1140,7 +1155,7 @@ function bubble(x,y,t){g.font='700 7.5px Ubuntu,system-ui,sans-serif';const maxW
   g.fillStyle='#1a1838';g.textAlign='left';ls.forEach((l,i)=>g.fillText(l,bx+6,by+10+i*9))}
 function draw(){
   w.imageSmoothingEnabled=false;w.drawImage(BGK,Math.round(-40-cam.x/GW*80),Math.round(-50-cam.y/GH*100));
-  if(LGT.d>.02){w.globalAlpha=LGT.d*.9;w.fillStyle=DSKY;w.fillRect(0,0,W,H);w.globalAlpha=1}
+  {const K=LGT.k;if(K.sa>.01){const sg=w.createLinearGradient(0,0,0,H);sg.addColorStop(0,K.top);sg.addColorStop(.55,K.mid);sg.addColorStop(1,K.hor);w.globalAlpha=K.sa*.92;w.fillStyle=sg;w.fillRect(0,0,W,H);w.globalAlpha=1}}
   w.drawImage(GRG||GR.c,Math.round(cam.x),Math.round(cam.y),W,H,0,0,W,H);
   const E=collect();for(let i=0;i<E.length;i++)E[i].d();
   dayOverlay();for(let i=0;i<DCK.length;i++)drawDClock(DCK[i]);
@@ -1161,8 +1176,7 @@ function bgBake(){
   BW=Math.ceil(innerWidth/BS);BHt=Math.ceil(innerHeight/BS);BGD.width=BW;BGD.height=BHt;bg.imageSmoothingEnabled=false;
   const r=C.getBoundingClientRect();GUT.cl=Math.max(0,Math.floor(r.left/BS));GUT.cr=Math.min(BW,Math.ceil(r.right/BS));GUT.l=GUT.cl;GUT.r=BW-GUT.cr;
   const pass=(night)=>{const o=mk(BW,BHt),x=o.x;_sd=91;
-  for(let y=0;y<BHt;y+=3){x.fillStyle=(night?skyAt:skyDay)(y/BHt);x.fillRect(0,y,BW,3)}
-  const STR=[];for(let i=0;i<Math.round(BW*BHt/900);i++)STR.push([sr()*BW|0,sr()*BHt*.62|0,sr()*6.28,sr()<.35]);
+    const STR=[];for(let i=0;i<Math.round(BW*BHt/900);i++)STR.push([sr()*BW|0,sr()*BHt*.62|0,sr()*6.28,sr()<.35]);
   const WIN=[];
   const maxH=BHt*(innerHeight>innerWidth?.3:.36),L=night?[['#1b2252',.78,.5],['#141a44',.58,.8],['#0d1233',.4,1]]:[['#7f98c8',.78,.5],['#5f79ae',.58,.8],['#46608f',.4,1]];
   L.forEach(([col,hs,al],li)=>{let X=-6;while(X<BW){const bw=10+sr()*18|0,bh=(.35+sr()*.65)*maxH*hs|0,y0=BHt-bh;
@@ -1177,7 +1191,8 @@ function bgBake(){
   BBIRD=[[BW*.2,BHt*.18,6],[BW*.55,BHt*.1,9]];
   fitC()}
 function fitC(){C.style.imageRendering=C.clientWidth*(devicePixelRatio||1)>=C.width?'pixelated':'auto'}
-function cloudD(x,y,s){bg.fillStyle=mix('#262e66','#f4f8ff',LGT.d);bg.fillRect(x,y,s*2,3);bg.fillRect(x+s*.4,y-2,s,3);bg.fillRect(x+s*1.1,y-3,s*.8,4);bg.fillStyle=mix('#3a4488','#ffffff',LGT.d);bg.fillRect(x+s*.4,y-2,s,1);bg.fillRect(x+s*1.1,y-3,s*.8,1)}
+function cloudD(x,y,s){const K=LGT.k;bg.fillStyle=K.cb;bg.fillRect(x,y,s*2,3);bg.fillRect(x+s*.4,y-2,s,3);bg.fillRect(x+s*1.1,y-3,s*.8,4);
+  bg.fillStyle=K.cs;bg.fillRect(x,y+2,s*2,1);bg.fillStyle=K.ch;bg.fillRect(x+s*.4,y-2,s,1);bg.fillRect(x+s*1.1,y-3,s*.8,1)}
 function bunting(t,y0,x0,x1){const seg=46,sg=BHt>BW?3.5:7;bg.fillStyle='#4a58a8';
   for(let x=x0;x<x1;x++){const k=((x-x0)%seg)/seg,yy=y0+Math.round(Math.sin(k*3.14159)*sg+Math.sin(t*1.4+x*.04)*.8);bg.fillRect(x,yy,1,1)}
   const C4=['#2fa05a','#f4ead0','#f2b63a','#4fb6d8','#e0583f'];let i=0;
@@ -1196,12 +1211,14 @@ function lampD(x,t,gy){const top=gy-48;bg.fillStyle='#4a4468';bg.fillRect(x,top+
   bg.fillStyle='#ffd36e';bg.fillRect(x-2,top+1,6,7);bg.fillStyle='#fff2bf';bg.fillRect(x-1,top+2,2,4);
   const f=(.1+.03*Math.sin(t*5+x))*LGT.n;bg.fillStyle='rgba(255,200,110,'+f+')';bg.fillRect(x-14,top-8,32,26);bg.fillStyle='rgba(255,200,110,'+f*.9+')';bg.fillRect(x-8,top-3,20,16)}
 function bgDraw(t){
-  if(!BSTAT)return;const dn=LGT.d,nt=LGT.n;bg.drawImage(BSTAT,0,0);if(dn>.01&&BSTAT_D){bg.globalAlpha=dn;bg.drawImage(BSTAT_D,0,0);bg.globalAlpha=1}
-  if(LGT.w>.03){const gr=bg.createLinearGradient(0,BHt*.35,0,BHt);gr.addColorStop(0,'rgba(255,140,70,0)');gr.addColorStop(1,'rgba(255,150,80,'+(.22*LGT.w)+')');bg.fillStyle=gr;bg.fillRect(0,0,BW,BHt)}
-  bg.globalAlpha=nt;for(const s of nt>.04?BSTARS:[]){const b=Math.sin(t*1.6+s[2]);bg.fillStyle=s[3]?(b>.2?'#ffffff':'#4a5490'):'#7a84c0';bg.fillRect(s[0],s[1],1,1);if(s[3]&&b>.9){bg.fillRect(s[0]-1,s[1],3,1);bg.fillRect(s[0],s[1]-1,1,3)}}
+  if(!BSTAT)return;const dn=LGT.d,nt=LGT.n,K=LGT.k,ns=sstep(.6,1,nt);
+  {const sg=bg.createLinearGradient(0,0,0,BHt*.78);sg.addColorStop(0,K.top);sg.addColorStop(.55,K.mid);sg.addColorStop(1,K.hor);bg.fillStyle=sg;bg.fillRect(0,0,BW,BHt)}
+  bg.drawImage(BSTAT,0,0);if(dn>.01&&BSTAT_D){bg.globalAlpha=dn;bg.drawImage(BSTAT_D,0,0);bg.globalAlpha=1}
+  if(K.ta>.05){const gr=bg.createLinearGradient(0,BHt*.45,0,BHt);gr.addColorStop(0,rgbaOf(K.hor,0));gr.addColorStop(1,rgbaOf(K.hor,.22*Math.min(1,K.ta*3)));bg.fillStyle=gr;bg.fillRect(0,0,BW,BHt)}
+  bg.globalAlpha=ns;for(const s of ns>.04?BSTARS:[]){const b=Math.sin(t*1.6+s[2]);bg.fillStyle=s[3]?(b>.2?'#ffffff':'#4a5490'):'#7a84c0';bg.fillRect(s[0],s[1],1,1);if(s[3]&&b>.9){bg.fillRect(s[0]-1,s[1],3,1);bg.fillRect(s[0],s[1]-1,1,3)}}
   bg.globalAlpha=1;{const h=wibHr();
-   if(nt>.05){const p=Math.min(1,Math.max(0,((h-18+24)%24)/12)),mx=Math.round(BW*(.12+.76*p)),my=Math.round(BHt*(.38-.26*Math.sin(Math.PI*p)));
-     bg.globalAlpha=nt;disc(bg,mx,my,8,'#f6efc8');disc(bg,mx-4,my-3,7,skyAt(my/BHt));bg.fillStyle='rgba(246,239,200,.08)';bg.fillRect(mx-16,my-14,32,28);bg.globalAlpha=1}
+   if(ns>.05){const p=Math.min(1,Math.max(0,((h-18+24)%24)/12)),mx=Math.round(BW*(.12+.76*p)),my=Math.round(BHt*(.38-.26*Math.sin(Math.PI*p)));
+     bg.globalAlpha=ns;disc(bg,mx,my,8,'#f6efc8');disc(bg,mx-4,my-3,7,(f=>f<.55?mix(K.top,K.mid,f/.55):mix(K.mid,K.hor,(f-.55)/.45))(Math.min(1,my/(BHt*.78))));bg.fillStyle='rgba(246,239,200,.08)';bg.fillRect(mx-16,my-14,32,28);bg.globalAlpha=1}
    if(dn>.05){const p=Math.min(1,Math.max(0,(h-6)/12)),sx=Math.round(BW*(.1+.8*p)),sy=Math.round(BHt*(.42-.32*Math.sin(Math.PI*p)));
      bg.globalAlpha=Math.min(1,dn*1.2);disc(bg,sx,sy,9,'#fff1a8');disc(bg,sx,sy,6,'#ffd84a');bg.fillStyle='rgba(255,240,170,.18)';bg.fillRect(sx-16,sy-14,32,28);bg.globalAlpha=1}}
   for(const c of BCLOUD){c[0]+=c[3]*.07;if(c[0]>BW+30)c[0]=-30;cloudD(Math.round(c[0]),Math.round(c[1]),c[2])}
