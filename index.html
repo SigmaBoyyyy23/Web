@@ -74,7 +74,118 @@ body{background:var(--navy);color:#fff;font-family:Ubuntu,system-ui,sans-serif}
 .ok{background:#2fa05a;color:#fff}.no{background:#d94a4a;color:#fff}
 .row{display:flex;gap:8px;padding:6px 0;border-bottom:1px dashed #c9b88a}.row b{min-width:92px;font-weight:700;color:#7a5a10}
 .acc{background:#0e1230;color:var(--amber);padding:10px;margin:8px 0;text-align:center;font-size:24px;font-weight:700;border-radius:4px;word-break:break-all;letter-spacing:.02em}
+
+/* ===== LOADING ===== */
+#ld{position:fixed;inset:0;z-index:30;display:flex;align-items:center;justify-content:center;padding:20px;background:radial-gradient(120% 90% at 50% 100%,#2a2150 0%,#141a3d 45%,#090c20 100%);color:#fff;font-family:Ubuntu,system-ui,sans-serif;transition:opacity .5s ease,visibility .5s;touch-action:none;overflow:hidden}
+#ld.out{opacity:0;visibility:hidden;pointer-events:none}
+#ld .stars{position:absolute;inset:0;pointer-events:none}
+#ld .stars::before{content:"";position:absolute;left:4vw;top:6vh;width:3px;height:3px;background:#fff;box-shadow:14vw 9vh #cfd6ff,29vw 3vh #fff,41vw 14vh #cfd6ff,57vw 5vh #fff,68vw 17vh #cfd6ff,81vw 8vh #fff,92vw 15vh #cfd6ff,8vw 24vh #fff,22vw 31vh #cfd6ff,47vw 27vh #fff,74vw 33vh #fff,90vw 29vh #cfd6ff,35vw 40vh #fff,62vw 44vh #cfd6ff;animation:ldtw 2.2s steps(2) infinite}
+@keyframes ldtw{50%{opacity:.35}}
+#sky{position:absolute;left:0;right:0;bottom:0;width:100%;height:34vh;pointer-events:none}
+#sky .w1{animation:ldtw 1.7s steps(2) infinite}#sky .w2{opacity:.3;animation:ldtw 2.6s steps(2) infinite .6s}
+.ldc{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;margin-bottom:12vh}
+.ldl{display:flex;align-items:center;gap:10px}
+.ldl img{height:38px;width:auto;max-width:110px;object-fit:contain;background:#fff;border-radius:4px;padding:3px 6px}
+.ldl b{color:var(--amber);font-size:15px}
+.ldt b{display:block;font-size:clamp(36px,11vw,60px);line-height:1;color:var(--amber);letter-spacing:.04em;text-shadow:0 4px 0 #7a4a00,0 0 20px rgba(242,182,58,.35)}
+.ldt span{display:block;margin-top:6px;font-size:13px;color:#aab3e0;font-weight:500}
+.ldcoin{width:26px;height:26px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#ffe58a,#f2b63a 60%,#b9781a);border:3px solid #7a4a00;animation:ldcoin .9s steps(8) infinite}
+@keyframes ldcoin{0%,100%{transform:scaleX(1)}25%{transform:scaleX(.55)}50%{transform:scaleX(.12)}75%{transform:scaleX(.55)}}
+.bar{width:min(78vw,320px);height:20px;padding:3px;background:#0b0f26;border:3px solid var(--line);border-radius:4px;box-shadow:0 4px 0 #070a1c}
+.bar i{display:block;height:100%;transform-origin:left center;transform:scaleX(0);background:repeating-linear-gradient(90deg,#f2b63a 0 8px,#c98f1d 8px 10px);animation:ldp 3s cubic-bezier(.25,.6,.3,1) forwards}
+@keyframes ldp{to{transform:scaleX(.93)}}
+.bar.done i{animation:none;transform:scaleX(1)}
+.lds{font-size:13px;color:var(--cream);min-height:1.3em}
+
+/* ===== TOMBOL CUSTOMER SERVICE ===== */
+#cs{position:fixed;right:max(14px,env(safe-area-inset-right,0px));bottom:calc(14px + env(safe-area-inset-bottom,0px));width:56px;height:56px;padding:0;border-radius:50%;border:3px solid #0e1230;background:radial-gradient(circle at 35% 30%,#4ee08a,#2f9e5b 55%,#1b6b3c);box-shadow:0 4px 0 #0e1230,0 8px 18px rgba(0,0,0,.45);display:flex;align-items:center;justify-content:center;z-index:5;cursor:pointer;touch-action:manipulation}
+#cs svg{width:62%;height:62%;image-rendering:pixelated;filter:drop-shadow(1px 0 0 #0e1230) drop-shadow(-1px 0 0 #0e1230) drop-shadow(0 1px 0 #0e1230) drop-shadow(0 -1px 0 #0e1230)}
+#cs::after{content:"";position:absolute;inset:-3px;border-radius:50%;border:3px solid #4ee08a;opacity:0;animation:csr 2.6s ease-out infinite;pointer-events:none}
+@keyframes csr{0%{transform:scale(1);opacity:.7}100%{transform:scale(1.6);opacity:0}}
+#cs:active{transform:translateY(3px);box-shadow:0 1px 0 #0e1230}
+#cs .dot{position:absolute;top:1px;right:1px;width:13px;height:13px;border-radius:50%;background:#f2b63a;border:2px solid #0e1230;border-radius:0}
+@media (orientation:landscape){#cs{bottom:auto;top:calc(50% - var(--ch)/2 + var(--ch)*.12);right:calc(50% - var(--cw)/2 + var(--mr))}}
+
+/* ===== DIALOG WIKE & FACHRI ===== */
+#chat{position:fixed;inset:0;z-index:12;display:none;align-items:flex-end;justify-content:center;background:rgba(6,8,24,.8);touch-action:manipulation}
+#chat.show{display:flex}
+#chat *{touch-action:manipulation}
+#chat>.x{position:absolute;top:max(12px,env(safe-area-inset-top,0px));right:12px;z-index:3}
+.cbox{position:relative;width:100%;max-width:700px;padding:0 10px max(12px,env(safe-area-inset-bottom,0px));animation:cin .3s ease-out}
+@keyframes cin{from{transform:translateY(24px);opacity:0}to{transform:none;opacity:1}}
+.stage{display:flex;justify-content:space-around;align-items:flex-end;margin-bottom:-4px;position:relative;z-index:1;pointer-events:none}
+.chr{display:flex;flex-direction:column;align-items:center;gap:4px;transform-origin:50% 100%;transform:scale(.9);filter:brightness(.5) saturate(.6);transition:transform .25s,filter .25s}
+.chr.act{transform:none;filter:none}
+.chr .nm{font:700 12px Ubuntu,system-ui,sans-serif;color:var(--cream);background:#0e1230;border:2px solid var(--line);border-radius:4px;padding:2px 9px}
+.chr .nm small{font-weight:500;color:#aab3e0;margin-left:5px}
+.chr svg{height:clamp(120px,34vh,260px);width:auto;aspect-ratio:24/36;display:block;overflow:visible;filter:drop-shadow(2px 0 0 #0e1230) drop-shadow(-2px 0 0 #0e1230) drop-shadow(0 2px 0 #0e1230) drop-shadow(0 -2px 0 #0e1230)}
+.chr .eyes{transform-box:fill-box;transform-origin:center;animation:blink 4.2s infinite}
+#chF .eyes{animation-delay:-1.6s}
+@keyframes blink{0%,93%,100%{transform:scaleY(1)}96%{transform:scaleY(.1)}}
+.chr .mo{opacity:0}
+.chr.talk .mo{animation:mo .56s step-end infinite}
+.chr.talk .mc{animation:mcl .56s step-end infinite}
+@keyframes mo{0%{opacity:0}18%{opacity:1}42%{opacity:0}58%{opacity:1}80%{opacity:0}}
+@keyframes mcl{0%{opacity:1}18%{opacity:0}42%{opacity:1}58%{opacity:0}80%{opacity:1}}
+.chr.talk .bd{animation:bob .5s ease-in-out infinite}
+.chr.talk .hd{transform-origin:12px 16px;animation:nod .9s ease-in-out infinite}
+.chr.talk .ar{transform-origin:19px 17px;animation:gst .8s ease-in-out infinite}
+.chr.talk .al{transform-origin:5px 17px;animation:gstl 1.1s ease-in-out infinite .2s}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-.7px)}}
+@keyframes nod{0%,100%{transform:rotate(0)}30%{transform:rotate(-2deg)}70%{transform:rotate(2deg)}}
+@keyframes gst{0%,100%{transform:rotate(0)}50%{transform:rotate(-22deg)}}
+@keyframes gstl{0%,100%{transform:rotate(0)}50%{transform:rotate(22deg)}}
+.dlg{position:relative;z-index:2;background:#f6eed6;color:var(--ink);border:3px solid #0e1230;border-radius:8px;box-shadow:0 4px 0 #0e1230;padding:16px 14px 12px;min-height:130px;font-size:15px;line-height:1.45}
+.dlg .who{position:absolute;top:-16px;left:12px;background:#0e1230;color:var(--amber);border-bottom:3px solid var(--amber);padding:3px 12px;border-radius:5px 5px 0 0;font-weight:700;font-size:13px}
+.dlg[data-s=r] .who{left:auto;right:12px}
+.txt{min-height:3em}
+.txt.ty::after{content:"\258C";color:#1b5e3a;animation:blk .5s steps(2) infinite}
+@keyframes blk{50%{opacity:0}}
+.opts{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.cb{font:700 13px Ubuntu,system-ui,sans-serif;padding:8px 12px;background:#2f9e5b;color:#fff;border:2px solid #0e1230;border-radius:4px;box-shadow:0 3px 0 #0e1230;text-decoration:none;cursor:pointer;touch-action:manipulation}
+.cb:active{transform:translateY(3px);box-shadow:none}
+.cb.alt{background:#fff;color:var(--ink)}
+.cb.nx{margin-left:auto;background:var(--amber);color:#241f3a}
+@media (max-height:430px){.dlg{font-size:14px;padding:14px 12px 10px;min-height:110px}.cb{padding:6px 10px}}
+@media (prefers-reduced-motion:reduce){.chr.talk .bd,.chr.talk .hd,.chr.talk .ar,.chr.talk .al,.cbox,#cs::after,.ldcoin{animation:none}}
 </style></head><body>
+<div id="ld" role="status" aria-live="polite" aria-label="Memuat AFBI #10">
+<div class="stars"></div><svg id="sky" viewBox="0 0 320 90" preserveAspectRatio="xMidYMax slice" aria-hidden="true"></svg>
+<div class="ldc">
+<div class="ldl"><img src="https://lh3.googleusercontent.com/d/1XSmBjcItttgowk-YIxS_2tbGvqoSiYIi" alt="Bina Insani" referrerpolicy="no-referrer" onerror="this.style.display='none'"><b>X</b><img src="https://lh3.googleusercontent.com/d/1WcJIEBxSORsmHIwIAKcnSya7maKkzSPY" alt="AFBI" referrerpolicy="no-referrer" onerror="this.style.display='none'"></div>
+<div class="ldt"><b>AFBI #10</b><span>Accounting Festival Bina Insani</span></div>
+<div class="ldcoin" aria-hidden="true"></div>
+<div class="bar" id="ldbar"><i></i></div>
+<div class="lds" id="lds">Membangun gedung kota...</div>
+</div></div>
+<script>
+(function(){
+var ld=document.getElementById('ld'),bar=document.getElementById('ldbar'),st=document.getElementById('lds');
+var min=false,ready=false,done=false,gone=false,q=[];
+window.LOADING=true;
+window.AFTERLOAD=function(cb){gone?cb():q.push(cb)};
+// siluet kota
+var bs=[[0,26,42],[28,20,60],[50,30,36],[82,18,70],[102,26,50],[130,34,78],[166,22,44],[190,28,64],[220,20,38],[242,30,56],[274,22,72],[298,24,46]],h='';
+bs.forEach(function(b,i){var x=b[0],w=b[1],hh=b[2];h+='<rect x="'+x+'" y="'+(90-hh)+'" width="'+w+'" height="'+hh+'" fill="#0b0f26"/>';
+for(var wy=90-hh+6;wy<84;wy+=8)for(var wx=x+4;wx<x+w-4;wx+=7){if((wx*7+wy*3+i)%5==0)continue;h+='<rect class="w'+((wx+wy+i)%3)+'" x="'+wx+'" y="'+wy+'" width="3" height="4" fill="#f2b63a"/>'}});
+document.getElementById('sky').innerHTML=h;
+// teks status
+var msg=['Membangun gedung kota...','Menyalakan lampu jalan...','Menyebar koin dan permata...','Memanggil Wike dan Fachri...','Hampir selesai...'],mi=0;
+var iv=setInterval(function(){if(done){clearInterval(iv);return}mi=Math.min(msg.length-1,mi+1);st.textContent=msg[mi]},650);
+// minimal tampil 2,4 detik sejak frame pertama terlukis
+requestAnimationFrame(function(){setTimeout(function(){min=true;fin()},2400)});
+setTimeout(function(){min=true;ready=true;fin()},9000);
+window.__ldReady=function(){ready=true;fin()};
+function fin(){
+ if(done||!min||!ready)return;done=true;window.LOADING=false;
+ bar.classList.add('done');st.textContent='Siap! Selamat datang!';
+ setTimeout(function(){ld.classList.add('out');setTimeout(function(){
+  ld.remove();gone=true;var f=q.splice(0);for(var i=0;i<f.length;i++){try{f[i]()}catch(e){console.error(e)}}},350)},350)}
+// blokir input keyboard selama loading
+addEventListener('keydown',function(e){if(!done){e.stopImmediatePropagation();e.preventDefault()}},true);
+})();
+</script>
+
 <canvas id="bgd"></canvas>
 <div id="app">
 <div id="brand"><span id="bl1"></span><b>X</b><span id="bl2"></span></div>
@@ -85,7 +196,12 @@ body{background:var(--navy);color:#fff;font-family:Ubuntu,system-ui,sans-serif}
 <div id="ab"><button class="rb" id="B" aria-label="Lari"></button><button class="rb" id="A" aria-label="Aksi"></button></div></div>
 </div>
 <div id="m"><div class="sheet" id="sh"></div></div>
-<script>
+<button id="cs" type="button" tabindex="-1" aria-label="Customer Service"><svg viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"><rect x="5" y="0" width="1" height="1" fill="#fff"/><rect x="6" y="0" width="1" height="1" fill="#fff"/><rect x="7" y="0" width="1" height="1" fill="#fff"/><rect x="8" y="0" width="1" height="1" fill="#fff"/><rect x="9" y="0" width="1" height="1" fill="#fff"/><rect x="10" y="0" width="1" height="1" fill="#fff"/><rect x="3" y="1" width="1" height="1" fill="#fff"/><rect x="4" y="1" width="1" height="1" fill="#fff"/><rect x="11" y="1" width="1" height="1" fill="#fff"/><rect x="12" y="1" width="1" height="1" fill="#fff"/><rect x="2" y="2" width="1" height="1" fill="#fff"/><rect x="13" y="2" width="1" height="1" fill="#fff"/><rect x="2" y="3" width="1" height="1" fill="#fff"/><rect x="13" y="3" width="1" height="1" fill="#fff"/><rect x="1" y="4" width="1" height="1" fill="#fff"/><rect x="14" y="4" width="1" height="1" fill="#fff"/><rect x="1" y="5" width="1" height="1" fill="#fff"/><rect x="14" y="5" width="1" height="1" fill="#fff"/><rect x="0" y="6" width="1" height="1" fill="#fff"/><rect x="1" y="6" width="1" height="1" fill="#fff"/><rect x="2" y="6" width="1" height="1" fill="#fff"/><rect x="13" y="6" width="1" height="1" fill="#fff"/><rect x="14" y="6" width="1" height="1" fill="#fff"/><rect x="15" y="6" width="1" height="1" fill="#fff"/><rect x="0" y="7" width="1" height="1" fill="#fff"/><rect x="1" y="7" width="1" height="1" fill="#fff"/><rect x="2" y="7" width="1" height="1" fill="#fff"/><rect x="13" y="7" width="1" height="1" fill="#fff"/><rect x="14" y="7" width="1" height="1" fill="#fff"/><rect x="15" y="7" width="1" height="1" fill="#fff"/><rect x="0" y="8" width="1" height="1" fill="#fff"/><rect x="1" y="8" width="1" height="1" fill="#fff"/><rect x="2" y="8" width="1" height="1" fill="#fff"/><rect x="13" y="8" width="1" height="1" fill="#fff"/><rect x="14" y="8" width="1" height="1" fill="#fff"/><rect x="15" y="8" width="1" height="1" fill="#fff"/><rect x="0" y="9" width="1" height="1" fill="#fff"/><rect x="1" y="9" width="1" height="1" fill="#fff"/><rect x="2" y="9" width="1" height="1" fill="#fff"/><rect x="13" y="9" width="1" height="1" fill="#fff"/><rect x="14" y="9" width="1" height="1" fill="#fff"/><rect x="15" y="9" width="1" height="1" fill="#fff"/><rect x="0" y="10" width="1" height="1" fill="#fff"/><rect x="1" y="10" width="1" height="1" fill="#fff"/><rect x="2" y="10" width="1" height="1" fill="#fff"/><rect x="13" y="10" width="1" height="1" fill="#fff"/><rect x="14" y="10" width="1" height="1" fill="#fff"/><rect x="15" y="10" width="1" height="1" fill="#fff"/><rect x="1" y="11" width="1" height="1" fill="#fff"/><rect x="2" y="11" width="1" height="1" fill="#fff"/><rect x="13" y="11" width="1" height="1" fill="#fff"/><rect x="14" y="11" width="1" height="1" fill="#fff"/><rect x="15" y="11" width="1" height="1" fill="#fff"/><rect x="13" y="12" width="1" height="1" fill="#fff"/><rect x="14" y="12" width="1" height="1" fill="#fff"/><rect x="12" y="13" width="1" height="1" fill="#fff"/><rect x="13" y="13" width="1" height="1" fill="#fff"/><rect x="7" y="14" width="1" height="1" fill="#f2b63a"/><rect x="8" y="14" width="1" height="1" fill="#f2b63a"/><rect x="9" y="14" width="1" height="1" fill="#fff"/><rect x="10" y="14" width="1" height="1" fill="#fff"/><rect x="11" y="14" width="1" height="1" fill="#fff"/><rect x="12" y="14" width="1" height="1" fill="#fff"/></svg><span class="dot"></span></button>
+<div id="chat" role="dialog" aria-modal="true" aria-label="Percakapan dengan Wike dan Fachri">
+<button class="x" id="cclose" type="button">Tutup</button>
+<div class="cbox"><div class="stage"><div class="chr" id="chW"></div><div class="chr" id="chF"></div></div>
+<div class="dlg" id="cdlg" data-s="l"><div class="who" id="cwho"></div><div class="txt" id="ctxt"></div><div class="opts" id="copts"></div></div></div></div>
+<script type="text/plain" id="game">
 'use strict';
 const W=640,H=360;
 const C=document.getElementById('c'),g=C.getContext('2d',{alpha:false});
@@ -824,7 +940,7 @@ function step(dt){tm+=dt;SG=sig();if(paused)return;stepWorld(dt);if(open)return;
   gemsAt.forEach(([x,y],i)=>{if(!gotG.has(i)&&Math.hypot(P.x-x,P.y-y)<.6){gotG.add(i);gems++;fxs.push({x,y,s:'+1 permata',c:'#e08aff',t:1.1})}});
   const tip=near?'Tekan tombol aksi untuk masuk: '+near.n.replace('KAMPUS','KAMPUS BINA INSANI'):nearN?'Tekan tombol aksi untuk ngobrol dengan '+nearN.d.nm:'Koin '+coins+'/'+NC+'  •  Permata '+gems+'/'+NG;
   if(tip!=lastTip){const t=document.getElementById('tip');t.innerHTML='<span></span>';t.firstChild.textContent=tip;lastTip=tip}
-  if(!once){once=true;setTimeout(()=>show('intro'),500)}}
+  if(!once){once=true;AFTERLOAD(()=>openChat('welcome'))}}
 // ---------- latar langit kota ----------
 const BGK=(()=>{const o=mk(W+80,H+100),x=o.x;_sd=3;
   const gr=x.createLinearGradient(0,0,0,H+100);gr.addColorStop(0,'#090c20');gr.addColorStop(.55,'#141a3d');gr.addColorStop(1,'#2a2150');x.fillStyle=gr;x.fillRect(0,0,W+80,H+100);
@@ -1141,4 +1257,95 @@ function loop(n){requestAnimationFrame(loop);
   if(n-bgT>(open?200:66)){bgT=n;bgDraw(tm)}
   if(!open&&!paused&&iv<200){ivEma+=(iv-ivEma)*.06;if(ivEma>27&&qlvl>0&&n-qT>2500){qT=n;setQ(qlvl-1);ivEma=17}}}
 requestAnimationFrame(loop);
-</script></body></html>
+
+// ---------- dialog Wike & Fachri ----------
+const reduceM=matchMedia('(prefers-reduced-motion:reduce)').matches;
+const CSC={wike:{nm:'Wike',role:'Admin 1',wa:'https://wa.me/6285691901012'},fachri:{nm:'Fachri',role:'Admin 2',wa:'https://wa.me/6285973704457'}};
+function charSVG(k){
+ const F=k=='wike',R=(x,y,w,h,f)=>'<rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" fill="'+f+'"/>';
+ const sk=F?'#f3cda6':'#e4b58a',hr=F?'#3b2218':'#1a1824',tp=F?'#8e5bd6':'#2fa05a',td=F?'#6c3fb4':'#1e7a42',bt=F?'#22306a':'#2b3566',sh='#1b1630',sl=F?7:4;
+ let s='<svg viewBox="0 0 24 36" shape-rendering="crispEdges" aria-hidden="true"><g class="bd">';
+ if(F)s+=R(9,31,2,3,sk)+R(13,31,2,3,sk)+R(8,34,3,2,sh)+R(13,34,3,2,sh)+R(7,26,10,5,bt)+R(7,30,10,1,'#f4ead0');
+ else s+=R(7,26,4,8,bt)+R(13,26,4,8,bt)+R(11,26,2,3,bt)+R(7,26,10,1,'#0e1230')+R(7,34,4,2,sh)+R(13,34,4,2,sh);
+ const arm=(x,c)=>'<g class="'+c+'">'+R(x,17,2,sl,tp)+R(x,17+sl,2,9-sl,sk)+'</g>';
+ s+=arm(4,'al')+arm(18,'ar')+R(6,16,12,10,tp)+R(16,16,2,10,td);
+ s+=F?R(10,16,4,2,'#fff')+R(11,16,2,1,sk):R(9,16,3,2,'#f4ead0')+R(12,16,3,2,'#f4ead0');
+ s+=R(11,17,2,3,'#f2b63a')+R(10,20,4,4,'#fff')+R(11,21,2,1,'#2f9e5b')+R(11,23,2,1,'#c9b070');
+ s+='<g class="hd">';
+ if(F)s+=R(6,2,12,2,hr)+R(5,4,14,4,hr)+R(5,8,2,13,hr)+R(17,8,2,13,hr)+R(7,7,10,9,sk)+R(7,7,10,2,hr)+R(7,9,1,2,hr)+R(16,9,1,2,hr)+R(15,4,2,1,'#f2b63a');
+ else s+=R(6,2,12,2,hr)+R(6,4,12,4,hr)+R(6,10,1,2,sk)+R(17,10,1,2,sk)+R(7,7,10,9,sk)+R(7,7,10,1,hr)+R(7,8,2,1,hr)+R(15,8,2,1,hr)+R(6,8,1,2,hr)+R(17,8,1,2,hr)+R(8,9,2,1,hr)+R(14,9,2,1,hr);
+ s+='<g class="eyes">'+R(8,10,2,2,sh)+R(14,10,2,2,sh)+R(8,10,1,1,'#fff')+R(14,10,1,1,'#fff')+'</g>';
+ if(F)s+=R(8,12,2,1,'#f29b9b')+R(14,12,2,1,'#f29b9b');
+ s+='<g class="mc">'+R(11,13,2,1,'#a8483f')+'</g><g class="mo">'+R(11,13,2,1,'#5e1a22')+R(11,14,2,1,'#e0707a')+'</g></g></g></svg>';
+ return s}
+const $c=id=>document.getElementById(id);
+const chW=$c('chW'),chF=$c('chF'),chatEl=$c('chat'),cdlg=$c('cdlg'),cwho=$c('cwho'),ctxt=$c('ctxt'),copts=$c('copts');
+chW.innerHTML='<span class="nm">Wike<small>Admin 1</small></span>'+charSVG('wike');
+chF.innerHTML='<span class="nm">Fachri<small>Admin 2</small></span>'+charSVG('fachri');
+let cSeq=[],cI=0,cCur=null,cTy=0,cFull='',cTyping=false,cOpen=false,cLast='fachri';
+const FAQ=[
+ {k:'Daftar lomba',w:'wike',t:()=>reg.sma||reg.univ?'Pendaftaran lomba masih dibuka! Masuk ke gedung Arena Kompetisi, lalu isi formulir sesuai jenjangmu: SMA/SMK atau Perguruan Tinggi.':'Pendaftaran lomba tahun ini sudah ditutup. Pantau terus Instagram @accfest.biu supaya nggak ketinggalan AFBI berikutnya ya!',acts:[{l:'Buka Arena Kompetisi',go:'arena'},{l:'Instagram @accfest.biu',href:'https://www.instagram.com/accfest.biu',alt:1}]},
+ {k:'Seminar nasional',w:'fachri',t:()=>'Seminar Akuntansi Nasional hybrid digelar Selasa, 13 Oktober 2026, pukul 08.00 sampai 12.25 WIB, offline di Ruang Seminar dan online lewat Zoom. '+(semOff()||semOn()?'Pendaftaran masih dibuka sampai Senin, 12 Oktober 2026.':'Pendaftaran seminar sudah ditutup.'),acts:[{l:'Buka Aula Seminar',go:'sem'}]},
+ {k:'Biaya dan hadiah',w:'wike',t:'Pendaftaran online SMA/SMK gratis, daftar ulang finalis Rp 200.000. Untuk Perguruan Tinggi: gelombang 1 Rp 50.000, gelombang 2 Rp 100.000, daftar ulang semifinal Rp 100.000. Total hadiah Rp 30 juta!',acts:[{l:'Buka Gedung Biaya',go:'biaya'},{l:'Sponsor dan Hadiah',go:'prize',alt:1}]},
+ {k:'Jadwal lomba',w:'fachri',t:'Final SMA/SMK diadakan 19 September, dan Grand Final Perguruan Tinggi pada 3 Oktober 2026. Detail tiap tahap ada di Menara Timeline.',acts:[{l:'Buka Menara Timeline',go:'tl'}]},
+ {k:'Hubungi admin',w:'wike',t:'Boleh banget chat langsung! Aku atau Fachri siap bantu lewat WhatsApp.',acts:[{l:'WhatsApp Wike',href:CSC.wike.wa},{l:'WhatsApp Fachri',href:CSC.fachri.wa},{l:'Email',href:'mailto:accfestbiu@gmail.com',alt:1}]}];
+const SEQ={
+ welcome:[
+  {w:'wike',t:'Halo, selamat datang di kota mini Accounting Festival Bina Insani #10! Aku Wike, admin 1.'},
+  {w:'fachri',t:'Aku Fachri, admin 2. AFBI #10 adalah kegiatan tahunan Perguruan Tinggi Bina Insani bertema AI dalam akuntansi.'},
+  {w:'wike',t:'Ada Lomba Akuntansi SMA/SMK dan Perguruan Tinggi, plus Seminar Akuntansi Nasional hybrid. Total hadiahnya Rp 30 juta!'},
+  {w:'fachri',t:'Jalan-jalan ke 6 gedung buat info lengkap, kumpulkan koin dan permata, dan ajak ngobrol warga kota ya.'},
+  {w:'wike',t:'Kalau butuh bantuan, klik tombol Customer Service bulat di pojok kanan. Selamat menjelajah!',end:'Mulai jelajah \u25B6'}],
+ cs:[
+  {w:'wike',t:'Halo! Aku Wike, admin AFBI #10.'},
+  {w:'fachri',t:'Dan aku Fachri. Ada yang bisa kami bantu? Pilih topik di bawah ya!',menu:1}]};
+function cBtn(a){
+ const e=document.createElement(a.href?'a':'button');e.className='cb'+(a.alt?' alt':'')+(a.nx?' nx':'');e.textContent=a.l;
+ if(a.href){e.href=a.href;e.target='_blank';e.rel='noopener noreferrer'}else{e.type='button';e.onclick=a.fn||(()=>{closeChat();show(a.go)})}
+ return e}
+function cLine(s){
+ clearInterval(cTy);cCur=s;cLast=s.w;
+ const wk=s.w=='wike',A=wk?chW:chF,B=wk?chF:chW;
+ A.classList.add('act','talk');B.classList.remove('act','talk');
+ cdlg.dataset.s=wk?'l':'r';cwho.textContent=CSC[s.w].nm+' \u00B7 '+CSC[s.w].role;
+ copts.innerHTML='';ctxt.textContent='';ctxt.classList.add('ty');
+ cFull=typeof s.t=='function'?s.t():s.t;cTyping=true;
+ if(reduceM){cDone();return}
+ let i=0;cTy=setInterval(()=>{i++;ctxt.textContent=cFull.slice(0,i);if(i>=cFull.length)cDone()},20)}
+function cDone(){
+ clearInterval(cTy);cTyping=false;ctxt.textContent=cFull;ctxt.classList.remove('ty');
+ chW.classList.remove('talk');chF.classList.remove('talk');
+ const s=cCur;copts.innerHTML='';
+ (s.acts||[]).forEach(a=>copts.appendChild(cBtn(a)));
+ if(s.menu){FAQ.forEach(q=>copts.appendChild(cBtn({l:q.k,fn:()=>cAsk(q)})));copts.appendChild(cBtn({l:'Tutup',alt:1,fn:closeChat}))}
+ else if(s.back)copts.appendChild(cBtn({l:'Tanya lainnya',alt:1,fn:cMenu}));
+ else if(cI<cSeq.length)copts.appendChild(cBtn({l:'Lanjut \u25B6',nx:1,fn:cNext}));
+ else if(s.end)copts.appendChild(cBtn({l:s.end,nx:1,fn:closeChat}))}
+function cNext(){const s=cSeq[cI++];if(s)cLine(s)}
+function cAsk(q){cSeq=[{w:q.w,t:q.t,acts:q.acts,back:1}];cI=0;cNext()}
+function cMenu(){cSeq=[{w:cLast=='wike'?'fachri':'wike',t:'Mau tanya apa lagi?',menu:1}];cI=0;cNext()}
+function cAdvance(){
+ if(cTyping){cDone();return}
+ if(!cCur||cCur.menu||cCur.back)return;
+ if(cI<cSeq.length)cNext();else if(cCur.end)closeChat()}
+function openChat(mode){
+ if(cOpen||open)return;cOpen=true;open=true;
+ chatEl.classList.add('show');cSeq=SEQ[mode].slice();cI=0;cNext()}
+function closeChat(){
+ clearInterval(cTy);cTyping=false;cOpen=false;open=false;
+ chatEl.classList.remove('show');[chW,chF].forEach(c=>c.classList.remove('act','talk'))}
+cdlg.addEventListener('click',e=>{if(e.target.closest('a,button'))return;cAdvance()});
+$c('cclose').addEventListener('click',closeChat);
+$c('cs').addEventListener('click',e=>{e.currentTarget.blur();openChat('cs')});
+addEventListener('keydown',e=>{
+ if(!cOpen)return;
+ if(e.key=='Escape'){closeChat();return}
+ if((e.key==' '||e.key=='Enter')&&!(document.activeElement&&document.activeElement.closest&&document.activeElement.closest('#chat button,#chat a'))){e.preventDefault();cAdvance()}});
+</script>
+<script>
+// jalankan game setelah loading sempat terlukis
+requestAnimationFrame(function(){setTimeout(function(){
+ try{var s=document.createElement('script');s.textContent=document.getElementById('game').textContent;document.body.appendChild(s)}catch(e){console.error(e)}
+ requestAnimationFrame(function(){if(window.__ldReady)window.__ldReady()})},40)});
+</script>
+</body></html>
