@@ -30,13 +30,13 @@ html,body{height:100%;margin:0;overflow:hidden;overscroll-behavior:none;-webkit-
 img{-webkit-touch-callout:none}input,textarea,select{font-size:max(16px,1em)}
 *{box-sizing:border-box;-webkit-user-select:none;user-select:none;touch-action:none;-webkit-tap-highlight-color:transparent}
 body{background:var(--navy);color:#fff;font-family:Ubuntu,system-ui,sans-serif}
-#bgd{position:fixed;inset:0;width:100%;height:100%;image-rendering:pixelated;z-index:0;display:block;touch-action:none}
-#app{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;z-index:1}
+#bgd{position:fixed;top:0;right:0;bottom:0;left:0;width:100%;height:100%;image-rendering:pixelated;z-index:0;display:block;touch-action:none}
+#app{position:fixed;top:0;right:0;bottom:0;left:0;display:flex;flex-direction:column;align-items:center;z-index:1}
 #brand{width:100%;height:48px;flex:none;display:flex;align-items:center;justify-content:center;gap:10px;background:transparent;padding-top:env(safe-area-inset-top,0px);position:relative;z-index:2}
 #brand img,.bl{height:32px;width:auto;max-width:92px;object-fit:contain;background:#fff;border-radius:4px;padding:2px 5px}
 #brand b{color:var(--amber);font-size:14px}
 .lgf{display:inline-block;background:#fff2;border:1px dashed #fff6;border-radius:4px;padding:2px 7px;font-size:11px;font-weight:500}
-#c{width:var(--cw);height:auto;aspect-ratio:16/9;display:block;background:var(--navy);flex:none;position:relative;z-index:1;box-shadow:0 0 0 2px #3a4797,0 0 0 5px #0b0f26,0 10px 40px rgba(0,0,0,.65)}
+#c{width:var(--cw);height:var(--ch);aspect-ratio:16/9;display:block;background:var(--navy);flex:none;position:relative;z-index:1;box-shadow:0 0 0 2px #3a4797,0 0 0 5px #0b0f26,0 10px 40px rgba(0,0,0,.65)}
 #deck{flex:1;width:100%;position:relative;min-height:0;background:transparent;z-index:2}
 #card{position:absolute;left:12px;right:12px;top:42px;max-width:520px;margin:0 auto;pointer-events:none;background:rgba(10,14,40,.82);border:2px solid var(--line);border-top:3px solid #2fa05a;border-radius:4px;padding:6px 10px 5px;overflow:hidden}
 #card .ct{display:flex;justify-content:space-between;align-items:center;gap:10px}
@@ -71,7 +71,7 @@ body{background:var(--navy);color:#fff;font-family:Ubuntu,system-ui,sans-serif}
 #tip{top:auto;bottom:44px;pointer-events:none}
 #dp,#ab{top:auto;bottom:max(10px,calc(var(--ch)*.04));transform:none}
 .p{background:rgba(29,38,88,.72)}.rb{background:rgba(29,38,88,.72)}}
-#m{position:fixed;inset:0;background:rgba(6,8,24,.74);display:none;align-items:flex-end;justify-content:center;z-index:9}
+#m{position:fixed;top:0;right:0;bottom:0;left:0;background:rgba(6,8,24,.74);display:none;align-items:flex-end;justify-content:center;z-index:9}
 #m.show{display:flex}
 .sheet{--acc:#f2b63a;touch-action:pan-y;width:100%;max-width:700px;max-height:90%;overflow-y:auto;background:#f6eed6;color:var(--ink);border:3px solid #0e1230;border-bottom:0;border-radius:8px 8px 0 0;font-size:15px;line-height:1.45;user-select:text;-webkit-user-select:text}
 .sheet *{touch-action:pan-y;user-select:text;-webkit-user-select:text}
@@ -96,9 +96,9 @@ body{background:var(--navy);color:#fff;font-family:Ubuntu,system-ui,sans-serif}
 .acc{background:#0e1230;color:var(--amber);padding:10px;margin:8px 0;text-align:center;font-size:24px;font-weight:700;border-radius:4px;word-break:break-all;letter-spacing:.02em}
 
 /* ===== LOADING ===== */
-#ld{position:fixed;inset:0;z-index:30;display:flex;align-items:center;justify-content:center;padding:20px;background:radial-gradient(120% 90% at 50% 100%,#2a2150 0%,#141a3d 45%,#090c20 100%);color:#fff;font-family:Ubuntu,system-ui,sans-serif;transition:opacity .5s ease,visibility .5s;touch-action:none;overflow:hidden}
+#ld{position:fixed;top:0;right:0;bottom:0;left:0;z-index:30;display:flex;align-items:center;justify-content:center;padding:20px;background:radial-gradient(120% 90% at 50% 100%,#2a2150 0%,#141a3d 45%,#090c20 100%);color:#fff;font-family:Ubuntu,system-ui,sans-serif;transition:opacity .5s ease,visibility .5s;touch-action:none;overflow:hidden}
 #ld.out{opacity:0;visibility:hidden;pointer-events:none}
-#ld .stars{position:absolute;inset:0;pointer-events:none}
+#ld .stars{position:absolute;top:0;right:0;bottom:0;left:0;pointer-events:none}
 #ld .stars::before{content:"";position:absolute;left:4vw;top:6vh;width:3px;height:3px;background:#fff;box-shadow:14vw 9vh #cfd6ff,29vw 3vh #fff,41vw 14vh #cfd6ff,57vw 5vh #fff,68vw 17vh #cfd6ff,81vw 8vh #fff,92vw 15vh #cfd6ff,8vw 24vh #fff,22vw 31vh #cfd6ff,47vw 27vh #fff,74vw 33vh #fff,90vw 29vh #cfd6ff,35vw 40vh #fff,62vw 44vh #cfd6ff;animation:ldtw 2.2s steps(2) infinite}
 @keyframes ldtw{50%{opacity:.35}}
 #sky{position:absolute;left:0;right:0;bottom:0;width:100%;height:34vh;pointer-events:none}
@@ -120,14 +120,14 @@ body{background:var(--navy);color:#fff;font-family:Ubuntu,system-ui,sans-serif}
 /* ===== TOMBOL CUSTOMER SERVICE ===== */
 #cs{position:fixed;right:max(14px,env(safe-area-inset-right,0px));bottom:calc(14px + env(safe-area-inset-bottom,0px));width:56px;height:56px;padding:0;border-radius:50%;border:3px solid #0e1230;background:radial-gradient(circle at 35% 30%,#4ee08a,#2f9e5b 55%,#1b6b3c);box-shadow:0 4px 0 #0e1230,0 8px 18px rgba(0,0,0,.45);display:flex;align-items:center;justify-content:center;z-index:5;cursor:pointer;touch-action:manipulation}
 #cs svg{width:62%;height:62%;image-rendering:pixelated;filter:drop-shadow(1px 0 0 #0e1230) drop-shadow(-1px 0 0 #0e1230) drop-shadow(0 1px 0 #0e1230) drop-shadow(0 -1px 0 #0e1230)}
-#cs::after{content:"";position:absolute;inset:-3px;border-radius:50%;border:3px solid #4ee08a;opacity:0;animation:csr 2.6s ease-out infinite;pointer-events:none}
+#cs::after{content:"";position:absolute;top:-3px;right:-3px;bottom:-3px;left:-3px;border-radius:50%;border:3px solid #4ee08a;opacity:0;animation:csr 2.6s ease-out infinite;pointer-events:none}
 @keyframes csr{0%{transform:scale(1);opacity:.7}100%{transform:scale(1.6);opacity:0}}
 #cs:active{transform:translateY(3px);box-shadow:0 1px 0 #0e1230}
 #cs .dot{position:absolute;top:1px;right:1px;width:13px;height:13px;border-radius:50%;background:#f2b63a;border:2px solid #0e1230;border-radius:0}
 @media (orientation:landscape){#cs{bottom:auto;top:calc(50% - var(--ch)/2 + var(--ch)*.12);right:calc(50% - var(--cw)/2 + var(--mr))}}
 
 /* ===== DIALOG WIKE & FACHRI ===== */
-#chat{position:fixed;inset:0;z-index:12;display:none;align-items:flex-end;justify-content:center;background:rgba(6,8,24,.8);touch-action:manipulation}
+#chat{position:fixed;top:0;right:0;bottom:0;left:0;z-index:12;display:none;align-items:flex-end;justify-content:center;background:rgba(6,8,24,.8);touch-action:manipulation}
 #chat.show{display:flex}
 #chat *{touch-action:manipulation}
 #chat>.x{position:absolute;top:max(12px,env(safe-area-inset-top,0px));right:12px;z-index:3}
@@ -183,7 +183,7 @@ body{background:var(--navy);color:#fff;font-family:Ubuntu,system-ui,sans-serif}
 .gres{text-align:center}.gres b{display:block;font-size:44px;color:#b8860b}
 #dp .p,#dp>i{display:none}
 #dp{width:calc(var(--u)*2.5);height:calc(var(--u)*2.5)}
-#jb{position:absolute;inset:0;border-radius:50%;background:rgba(20,26,68,.62);border:3px solid #4a58b4;box-shadow:0 4px 0 #070a1c,inset 0 0 0 12px rgba(74,88,180,.16);touch-action:none}
+#jb{position:absolute;top:0;right:0;bottom:0;left:0;border-radius:50%;background:rgba(20,26,68,.62);border:3px solid #4a58b4;box-shadow:0 4px 0 #070a1c,inset 0 0 0 12px rgba(74,88,180,.16);touch-action:none}
 #jb.on{background:rgba(20,26,68,.82)}
 #jk{position:absolute;left:50%;top:50%;width:44%;height:44%;margin:-22% 0 0 -22%;border-radius:50%;background:#f2b63a;border:3px solid #fff0b0;box-shadow:0 3px 0 #070a1c;pointer-events:none}
 #mpb{left:0;top:0;width:calc(var(--u)*1.1);height:calc(var(--u)*1.1);padding:0;font-weight:700;font-size:calc(var(--u)*.26);font-family:Ubuntu,system-ui,sans-serif;color:var(--cream)}
@@ -2187,7 +2187,7 @@ C.addEventListener('pointerdown',e=>{const r=C.getBoundingClientRect(),x=(e.clie
 // ---------- loop ----------
 bakeGround();GRG=gp(GR.c);
 // ---------- loop dengan pembatas fps & kualitas adaptif ----------
-let qlvl=(/Android|iPhone|iPad|Mobile/i.test(navigator.userAgent)&&(navigator.hardwareConcurrency||4)<=4)?1:2,lastDraw=0,lastN=0,ivEma=16.7,qT=0,bgT=0,last=performance.now();
+let loopErr=0,qlvl=(/Android|iPhone|iPad|Mobile/i.test(navigator.userAgent)&&(navigator.hardwareConcurrency||4)<=4)?1:2,lastDraw=0,lastN=0,ivEma=16.7,qT=0,bgT=0,last=performance.now();
 function setQ(l){qlvl=l;LITE=l==0;applyQ(l==2?2:1);hudKey='';fitC()}
 setQ(qlvl);
 function loop(n){requestAnimationFrame(loop);
@@ -2195,8 +2195,7 @@ function loop(n){requestAnimationFrame(loop);
   const gap=paused?160:open?33:15.2;
   if(n-lastDraw<gap)return;
   const dt=Math.min(.05,(n-last)/1000),iv=n-lastDraw;last=n;lastDraw=n;
-  step(dt);draw();
-  if(n-bgT>(open?200:66)){bgT=n;bgDraw(tm)}
+  try{step(dt);draw();if(n-bgT>(open?200:66)){bgT=n;bgDraw(tm)}loopErr=0}catch(e){console.error(e);if(++loopErr>=30)recover('loop')}
   if(!open&&!paused&&iv<200){ivEma+=(iv-ivEma)*.06;if(ivEma>27&&qlvl>0&&n-qT>2500){qT=n;setQ(qlvl-1);ivEma=17}}}
 requestAnimationFrame(loop);
 
@@ -2319,12 +2318,23 @@ addEventListener('keydown',e=>{
   addEventListener('popstate',()=>{if(!pushed)return;pushed=false;if(ch.classList.contains('show'))closeChat();else if(!selLock)hide();else pushed=true});
   document.addEventListener('visibilitychange',()=>{SND.pause(document.hidden)});
 })();
+// ---- pemulihan layar hitam (canvas dibuang browser saat tab di latar belakang) ----
+function recover(why){try{profSave()}catch(e){}
+  try{const k='afbi_rc',now0=Date.now(),t=+(sessionStorage.getItem(k+'t')||0),n=+(sessionStorage.getItem(k)||0);if(now0-t<20000&&n>=2)return;sessionStorage.setItem(k,String(now0-t<20000?n+1:1));sessionStorage.setItem(k+'t',String(now0))}catch(e){}
+  location.reload()}
+let ctxLost=false;
+[C,BGD].forEach(cv=>{try{cv.addEventListener('contextlost',e=>{e.preventDefault();ctxLost=true});cv.addEventListener('contextrestored',()=>{ctxLost=true;checkHealth()})}catch(e){}});
+function canvasBlank(cv){try{const x=cv.getContext('2d'),w=cv.width,h=cv.height;for(let a=1;a<9;a++)for(let b=1;b<9;b++){if(x.getImageData((w*a/9)|0,(h*b/9)|0,1,1).data[3]>0)return false}return true}catch(e){return false}}
+function checkHealth(){if(document.hidden||window.LOADING)return;if(ctxLost||canvasBlank(GR.c)){recover('blank')}else{try{bgBake()}catch(e){}hudKey=''}}
+['visibilitychange','pageshow','focus'].forEach(ev=>addEventListener(ev,()=>{if(ev=='visibilitychange'&&document.hidden)return;setTimeout(checkHealth,350)}));
+window.__gameOk=1;
 restoreProgress();
 </script>
 <script>
 // jalankan game setelah loading sempat terlukis
 requestAnimationFrame(function(){setTimeout(function(){
  try{var s=document.createElement('script');s.textContent=document.getElementById('game').textContent;document.body.appendChild(s)}catch(e){console.error(e)}
+ setTimeout(function chk(){if(window.__gameOk)return;if(document.hidden){setTimeout(chk,2000);return}var d=document.createElement('div');d.style.cssText='position:fixed;top:0;right:0;bottom:0;left:0;z-index:99;background:#0b0f26;color:#f4ead0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:24px;text-align:center;font:500 15px Ubuntu,system-ui,sans-serif';d.innerHTML='<b style="color:#f2b63a;font-size:20px">Game belum bisa dimuat</b><span>Browser kamu mungkin versi lama atau koneksi terputus. Progres tersimpan aman.</span><button style="font:700 15px Ubuntu,system-ui,sans-serif;padding:12px 22px;border-radius:8px;border:2px solid #0e1230;background:#f2b63a;color:#241f3a" onclick="location.reload()">Muat ulang</button>';document.body.appendChild(d)},7000);
  requestAnimationFrame(function(){if(window.__ldReady)window.__ldReady()})},40)});
 </script>
 </body></html>
