@@ -1,12 +1,31 @@
 <!doctype html><html lang="id"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="theme-color" content="#0b0f26">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>AFBI #10 · Kota Bina Insani</title>
 <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+<script>
+// ---- perbaikan iOS Safari ----
+(function(){
+ // roundRect belum ada di iOS < 16 -> polyfill supaya label/bubble di kanvas tidak error
+ var P=window.CanvasRenderingContext2D&&CanvasRenderingContext2D.prototype;
+ if(P&&!P.roundRect)P.roundRect=function(x,y,w,h,r){r=Array.isArray(r)?r[0]:(r||0);r=Math.max(0,Math.min(r,w/2,h/2));this.moveTo(x+r,y);this.arcTo(x+w,y,x+w,y+h,r);this.arcTo(x+w,y+h,x,y+h,r);this.arcTo(x,y+h,x,y,r);this.arcTo(x,y,x+w,y,r);this.closePath()};
+ // cubit 2 jari (pinch) dan zoom 2x tap yang tidak bisa dimatikan lewat CSS di iOS
+ ['gesturestart','gesturechange','gestureend'].forEach(function(n){document.addEventListener(n,function(e){e.preventDefault()},{passive:false})});
+ var lt=0;document.addEventListener('touchend',function(e){var n=Date.now(),t=e.target;if(n-lt<350&&!(t&&t.closest&&t.closest('input,textarea,select,[contenteditable]')))e.preventDefault();lt=n},{passive:false});
+ document.addEventListener('touchmove',function(e){if(e.touches&&e.touches.length>1)e.preventDefault()},{passive:false});
+ // iOS lama tanpa unit dvh: pakai innerHeight
+ if(!(window.CSS&&CSS.supports&&CSS.supports('height','100dvh'))){var f=function(){document.documentElement.style.setProperty('--H',innerHeight+'px')};f();addEventListener('resize',f);addEventListener('orientationchange',function(){setTimeout(f,200)})}
+})();
+</script>
 <style>
 :root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--navy:#0b0f26;--navy2:#141a44;--line:#3a4797;--cream:#f4ead0;--amber:#f2b63a;--ink:#241f3a;
 --H:100vh;--cw:min(100vw,calc(var(--H)*1.7778),1280px);--ch:calc(var(--cw)*.5625);--dh:calc(var(--H) - 56px - var(--ch) - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px));--u:clamp(34px,min(14.5vw,calc((var(--dh) - 64px)/3.3)),72px);--ml:max(10px,3vw);--mr:max(10px,3vw)}
 @supports(height:100dvh){:root{--H:100dvh}}
-html,body{height:100%;margin:0;overflow:hidden}
+html,body{height:100%;margin:0;overflow:hidden;overscroll-behavior:none;-webkit-text-size-adjust:100%;text-size-adjust:100%;-webkit-touch-callout:none}
+img{-webkit-touch-callout:none}input,textarea,select{font-size:max(16px,1em)}
 *{box-sizing:border-box;-webkit-user-select:none;user-select:none;touch-action:none;-webkit-tap-highlight-color:transparent}
 body{background:var(--navy);color:#fff;font-family:Ubuntu,system-ui,sans-serif}
 #bgd{position:fixed;inset:0;width:100%;height:100%;image-rendering:pixelated;z-index:0;display:block;touch-action:none}
@@ -63,7 +82,7 @@ body{background:var(--navy);color:#fff;font-family:Ubuntu,system-ui,sans-serif}
 .lgs{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center;margin:8px 0}
 .sheet .lgf{background:#fff;color:#5a4a2a;border-color:#c9b070;height:44px;display:inline-flex;align-items:center}
 .spk{display:flex;gap:12px;align-items:center;background:#fff;border:2px solid #0e1230;border-radius:6px;padding:8px;margin:8px 0}
-.spk img,.spk .lgf{width:68px;height:68px;flex:none;border-radius:50%;object-fit:cover;object-position:top;border:2px solid #1b5e3a;background:#eee;justify-content:center;text-align:center;font-size:10px}
+.spk img,.spk .lgf{opacity:1;filter:none;width:68px;height:68px;flex:none;border-radius:50%;object-fit:cover;object-position:top;border:2px solid #1b5e3a;background:#eee;justify-content:center;text-align:center;font-size:10px}
 .spk div{min-width:0}.spk b{display:block;font-size:13.5px;line-height:1.25}.spk span{display:block;font-size:12px;color:#5a4a2a;margin-top:2px}
 .spk em{display:inline-block;font-style:normal;font-size:11px;font-weight:700;background:#1b5e3a;color:#fff;border-radius:3px;padding:1px 7px;margin-bottom:3px}
 .mimg{width:100%;border-radius:6px;border:2px solid #0e1230;margin:6px 0}
@@ -1662,7 +1681,7 @@ const tl=(rows)=>rows.map(([s,e,d,n])=>{const k=T>e?'✔':T>=s?'▶':'·';const 
 const fee=r=>r.map(([a,b])=>`<div class="row"><b style="min-width:150px">${a}</b><span>${b}</span></div>`).join('');
 const LD='https://lh3.googleusercontent.com/d/';
 const SPK=[['1ZTzbhi7cz8PbLhPAJtFzC14IK1oAs1P9','Dr. Ivan Yudianto, S.E., M.Si., Ak., CA., QIA., CWM., CRP., CGAE','Wakil Ketua I IAI Jabar','Pembicara 1'],['1qIHmihx-GzgsJh_KR0-yfoygfcNzRhTS','Dr. Lies Zulfiati, S.E., M.Si., Ak., CA','Tenaga Ahli Badan Akuntabilitas Publik DPD RI','Pembicara 2'],['1meIDAoeoKi8YC3v9J65WmixJr73aGjLC','Kadek Wisnu Bhuana, S.E., M.Ak., Ak., CSRS, CRP','Praktisi &amp; Akademisi Profesional','Moderator']];
-const spks=()=>SPK.map(([id,n,r,t])=>`<div class="spk"><img class="sp" src="${LD}${id}" alt="${n.split(',')[0]}" referrerpolicy="no-referrer"><div><em>${t}</em><b>${n}</b><span>${r}</span></div></div>`).join('');
+const spks=()=>SPK.map(([id,n,r,t])=>`<div class="spk"><img class="spp" src="${LD}${id}" alt="${n.split(',')[0]}" referrerpolicy="no-referrer"><div><em>${t}</em><b>${n}</b><span>${r}</span></div></div>`).join('');
 const LG={biu:['1XSmBjcItttgowk-YIxS_2tbGvqoSiYIi','Bina Insani'],afbi:['1WcJIEBxSORsmHIwIAKcnSya7maKkzSPY','AFBI'],dis:['1AyaKHhxZj1yvcFggRYWR9MuTJ39LgrC0','Disaintek'],tut:['1lWGfKB1ejTjeWVVmUdY8IRX6TQvVp7YU','Tut Wuri Handayani'],iai:['1uYrPE8QDr35UXTwMpFenE_biZu21Wpze','IAI Jabar'],acc:['1yKBOuSa-0-BTxA6LUdKsZL71rtUr9qwy','Accounting Club'],bsi:[SPN[0],'BSI'],peg:[SPN[1],'Pegadaian'],kl:[SPN[2],'Kita Lulus'],il:[SPN[3],'Iluni']};
 const lg=(k,c='lg')=>`<img class="${c}" src="${LD}${LG[k][0]}" alt="${LG[k][1]}" referrerpolicy="no-referrer">`;
 const lgs=ks=>`<div class="lgs">${ks.map(k=>lg(k)).join('')}</div>`;
@@ -1703,7 +1722,7 @@ function show(id){if(id[0]=='g'&&id[1]=='_'){play(id);return}SND.p('open');if(SE
   document.getElementById('m').classList.add('show');sh.scrollTop=0;document.getElementById('cx').onclick=hide;imgFix(sh)}
 function hide(){if(selLock)return;if(open)SND.p('close');SND.mood('town');clearInterval(GT);open=false;document.getElementById('m').classList.remove('show')}
 document.getElementById('m').addEventListener('pointerdown',e=>{if(e.target.id=='m')hide()});
-function imgFix(r){r.querySelectorAll('img.lg,img.bl,img.mimg,img.sp').forEach(i=>{if(i.dataset.f)return;i.dataset.f=1;i.addEventListener('error',()=>{const m=i.src.match(/\/d\/([\w-]+)/);if(m&&!i.dataset.t){i.dataset.t=1;i.src='https://drive.google.com/thumbnail?id='+m[1]+'&sz=w400';return}const s=document.createElement('span');s.className='lgf';s.textContent=i.alt;i.replaceWith(s)})})}
+function imgFix(r){r.querySelectorAll('img.lg,img.bl,img.mimg,img.spp').forEach(i=>{if(i.dataset.f)return;i.dataset.f=1;i.addEventListener('error',()=>{const m=i.src.match(/\/d\/([\w-]+)/);if(m&&!i.dataset.t){i.dataset.t=1;i.src='https://drive.google.com/thumbnail?id='+m[1]+'&sz=w400';return}const s=document.createElement('span');s.className='lgf';s.textContent=i.alt;i.replaceWith(s)})})}
 document.getElementById('bl1').innerHTML=lg('biu','bl');document.getElementById('bl2').innerHTML=lg('afbi','bl');imgFix(document.getElementById('brand'));
 // ---------- minigame ----------
 let GT=0;const GBEST={};const $g=id=>document.getElementById(id);
@@ -1762,7 +1781,7 @@ const SND=(()=>{let ac=null,mg,mus,sfx,nb=null,on=true,mood='town',nextT=0,tmr=0
     if(!on){nextT=now+.1;return}if(nextT<now)nextT=now+.05;
     while(nextT<now+.22){play1(step++,nextT);nextT+=60/PAT[cur()].bpm/4}};
   return{get on(){return on},get st(){return ac?ac.state:'none'},
-    unlock(){if(!init())return;if(ac.state=='suspended')ac.resume();if(!tmr){nextT=ac.currentTime+.1;tmr=setInterval(sched,50)}},
+    unlock(){if(!init())return;if(ac.state!='running'){try{var rp=ac.resume();if(rp&&rp.catch)rp.catch(function(){})}catch(e){}}if(!tmr){nextT=ac.currentTime+.1;tmr=setInterval(sched,50)}},
     p(n){if(!on||!ac||ac.state!='running')return;try{FX[n]&&FX[n]()}catch(e){}},
     note(i){if(!on||!ac||ac.state!='running')return;try{tone([330,262,392,523][i],ac.currentTime,.3,'square',.2)}catch(e){}},
     vis(h){if(ac){try{h?ac.suspend():on&&ac.resume()}catch(e){}}},
