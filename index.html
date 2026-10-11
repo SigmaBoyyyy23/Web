@@ -5,6 +5,8 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>AFBI #10 · Kota Bina Insani</title>
+<link rel="preconnect" href="https://lh3.googleusercontent.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
 <script>
 // ---- perbaikan iOS Safari ----
@@ -82,7 +84,7 @@ body{background:var(--navy);color:#fff;font-family:Ubuntu,system-ui,sans-serif}
 .lgs{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center;margin:8px 0}
 .sheet .lgf{background:#fff;color:#5a4a2a;border-color:#c9b070;height:44px;display:inline-flex;align-items:center}
 .spk{display:flex;gap:12px;align-items:center;background:#fff;border:2px solid #0e1230;border-radius:6px;padding:8px;margin:8px 0}
-.spk img,.spk .lgf{opacity:1;filter:none;width:68px;height:68px;flex:none;border-radius:50%;object-fit:cover;object-position:top;border:2px solid #1b5e3a;background:#eee;justify-content:center;text-align:center;font-size:10px}
+.spk img,.spk .lgf{opacity:1;filter:none;image-rendering:auto;width:76px;height:76px;flex:none;border-radius:50%;object-fit:cover;object-position:center 18%;border:2px solid #1b5e3a;background:#fff;justify-content:center;text-align:center;font-size:10px}
 .spk div{min-width:0}.spk b{display:block;font-size:13.5px;line-height:1.25}.spk span{display:block;font-size:12px;color:#5a4a2a;margin-top:2px}
 .spk em{display:inline-block;font-style:normal;font-size:11px;font-weight:700;background:#1b5e3a;color:#fff;border-radius:3px;padding:1px 7px;margin-bottom:3px}
 .mimg{width:100%;border-radius:6px;border:2px solid #0e1230;margin:6px 0}
@@ -1681,7 +1683,8 @@ const tl=(rows)=>rows.map(([s,e,d,n])=>{const k=T>e?'✔':T>=s?'▶':'·';const 
 const fee=r=>r.map(([a,b])=>`<div class="row"><b style="min-width:150px">${a}</b><span>${b}</span></div>`).join('');
 const LD='https://lh3.googleusercontent.com/d/';
 const SPK=[['1ZTzbhi7cz8PbLhPAJtFzC14IK1oAs1P9','Dr. Ivan Yudianto, S.E., M.Si., Ak., CA., QIA., CWM., CRP., CGAE','Wakil Ketua I IAI Jabar','Pembicara 1'],['1qIHmihx-GzgsJh_KR0-yfoygfcNzRhTS','Dr. Lies Zulfiati, S.E., M.Si., Ak., CA','Tenaga Ahli Badan Akuntabilitas Publik DPD RI','Pembicara 2'],['1meIDAoeoKi8YC3v9J65WmixJr73aGjLC','Kadek Wisnu Bhuana, S.E., M.Ak., Ak., CSRS, CRP','Praktisi &amp; Akademisi Profesional','Moderator']];
-const spks=()=>SPK.map(([id,n,r,t])=>`<div class="spk"><img class="spp" src="${LD}${id}" alt="${n.split(',')[0]}" referrerpolicy="no-referrer"><div><em>${t}</em><b>${n}</b><span>${r}</span></div></div>`).join('');
+SPK.forEach(s=>{const i=new Image();i.referrerPolicy='no-referrer';i.src=LD+s[0]+'=s600'}); // pemanasan cache
+const spks=()=>SPK.map(([id,n,r,t])=>`<div class="spk"><img class="spp" data-sz="1" src="${LD}${id}=s600" decoding="async" alt="${n.split(',')[0]}" referrerpolicy="no-referrer"><div><em>${t}</em><b>${n}</b><span>${r}</span></div></div>`).join('');
 const LG={biu:['1XSmBjcItttgowk-YIxS_2tbGvqoSiYIi','Bina Insani'],afbi:['1WcJIEBxSORsmHIwIAKcnSya7maKkzSPY','AFBI'],dis:['1AyaKHhxZj1yvcFggRYWR9MuTJ39LgrC0','Disaintek'],tut:['1lWGfKB1ejTjeWVVmUdY8IRX6TQvVp7YU','Tut Wuri Handayani'],iai:['1uYrPE8QDr35UXTwMpFenE_biZu21Wpze','IAI Jabar'],acc:['1yKBOuSa-0-BTxA6LUdKsZL71rtUr9qwy','Accounting Club'],bsi:[SPN[0],'BSI'],peg:[SPN[1],'Pegadaian'],kl:[SPN[2],'Kita Lulus'],il:[SPN[3],'Iluni']};
 const lg=(k,c='lg')=>`<img class="${c}" src="${LD}${LG[k][0]}" alt="${LG[k][1]}" referrerpolicy="no-referrer">`;
 const lgs=ks=>`<div class="lgs">${ks.map(k=>lg(k)).join('')}</div>`;
@@ -1722,7 +1725,7 @@ function show(id){if(id[0]=='g'&&id[1]=='_'){play(id);return}SND.p('open');if(SE
   document.getElementById('m').classList.add('show');sh.scrollTop=0;document.getElementById('cx').onclick=hide;imgFix(sh)}
 function hide(){if(selLock)return;if(open)SND.p('close');SND.mood('town');clearInterval(GT);open=false;document.getElementById('m').classList.remove('show')}
 document.getElementById('m').addEventListener('pointerdown',e=>{if(e.target.id=='m')hide()});
-function imgFix(r){r.querySelectorAll('img.lg,img.bl,img.mimg,img.spp').forEach(i=>{if(i.dataset.f)return;i.dataset.f=1;i.addEventListener('error',()=>{const m=i.src.match(/\/d\/([\w-]+)/);if(m&&!i.dataset.t){i.dataset.t=1;i.src='https://drive.google.com/thumbnail?id='+m[1]+'&sz=w400';return}const s=document.createElement('span');s.className='lgf';s.textContent=i.alt;i.replaceWith(s)})})}
+function imgFix(r){r.querySelectorAll('img.lg,img.bl,img.mimg,img.spp').forEach(i=>{if(i.dataset.f)return;i.dataset.f=1;i.addEventListener('error',()=>{const m=i.src.match(/\/d\/([\w-]+)/);if(i.dataset.sz&&!i.dataset.s0){i.dataset.s0=1;i.src=i.src.replace(/=s\d+$/,'');return}if(m&&!i.dataset.t){i.dataset.t=1;i.src='https://drive.google.com/thumbnail?id='+m[1]+'&sz=w'+(i.dataset.sz?800:400);return}const s=document.createElement('span');s.className='lgf';s.textContent=i.alt;i.replaceWith(s)})})}
 document.getElementById('bl1').innerHTML=lg('biu','bl');document.getElementById('bl2').innerHTML=lg('afbi','bl');imgFix(document.getElementById('brand'));
 // ---------- minigame ----------
 let GT=0;const GBEST={};const $g=id=>document.getElementById(id);
@@ -1781,7 +1784,7 @@ const SND=(()=>{let ac=null,mg,mus,sfx,nb=null,on=true,mood='town',nextT=0,tmr=0
     if(!on){nextT=now+.1;return}if(nextT<now)nextT=now+.05;
     while(nextT<now+.22){play1(step++,nextT);nextT+=60/PAT[cur()].bpm/4}};
   return{get on(){return on},get st(){return ac?ac.state:'none'},
-    unlock(){if(!init())return;if(ac.state!='running'){try{var rp=ac.resume();if(rp&&rp.catch)rp.catch(function(){})}catch(e){}}if(!tmr){nextT=ac.currentTime+.1;tmr=setInterval(sched,50)}},
+    pause(h){try{if(ac){if(h)ac.suspend();else if(on)ac.resume()}}catch(e){}},unlock(){if(!init())return;if(ac.state!='running'){try{var rp=ac.resume();if(rp&&rp.catch)rp.catch(function(){})}catch(e){}}if(!tmr){nextT=ac.currentTime+.1;tmr=setInterval(sched,50)}},
     p(n){if(!on||!ac||ac.state!='running')return;try{FX[n]&&FX[n]()}catch(e){}},
     note(i){if(!on||!ac||ac.state!='running')return;try{tone([330,262,392,523][i],ac.currentTime,.3,'square',.2)}catch(e){}},
     vis(h){if(ac){try{h?ac.suspend():on&&ac.resume()}catch(e){}}},
@@ -2307,6 +2310,15 @@ addEventListener('keydown',e=>{
  if(!cOpen)return;
  if(e.key=='Escape'){closeChat();return}
  if((e.key==' '||e.key=='Enter')&&!(document.activeElement&&document.activeElement.closest&&document.activeElement.closest('#chat button,#chat a'))){e.preventDefault();cAdvance()}});
+(function(){const m=document.getElementById('m'),ch=document.getElementById('chat');let pushed=false;
+  const isOpen=()=>m.classList.contains('show')||ch.classList.contains('show');
+  new MutationObserver(()=>{if(isOpen()){if(!pushed){try{history.pushState({m:1},'')}catch(e){}pushed=true}}else if(pushed){pushed=false;if(history.state&&history.state.m){try{history.back()}catch(e){}}}})
+   .observe(m,{attributes:true,attributeFilter:['class']});
+  new MutationObserver(()=>{if(isOpen()){if(!pushed){try{history.pushState({m:1},'')}catch(e){}pushed=true}}else if(pushed){pushed=false;if(history.state&&history.state.m){try{history.back()}catch(e){}}}})
+   .observe(ch,{attributes:true,attributeFilter:['class']});
+  addEventListener('popstate',()=>{if(!pushed)return;pushed=false;if(ch.classList.contains('show'))closeChat();else if(!selLock)hide();else pushed=true});
+  document.addEventListener('visibilitychange',()=>{SND.pause(document.hidden)});
+})();
 restoreProgress();
 </script>
 <script>
