@@ -265,6 +265,13 @@ body{background:var(--navy);color:#fff;font-family:Ubuntu,system-ui,sans-serif}
 .gbs.gv .gb{display:flex;align-items:center;gap:10px;width:100%;box-sizing:border-box;text-align:left;font-size:14px;line-height:1.25;padding:10px 12px;min-height:46px;flex:none}
 .gb .ol{flex:none;width:26px;height:26px;border-radius:50%;background:#fff6d8;color:#1a1534;border:2px solid #0e1230;display:flex;align-items:center;justify-content:center;font-size:13px}
 .gb .ol+span{flex:1;min-width:0}
+.gbs.gv .gb{justify-content:center!important;text-align:center!important;position:relative;padding:12px 46px;width:100%}
+.gbs.gv .gb .ol{position:absolute;left:10px;top:50%;transform:translateY(-50%)}
+.gbs.gv .gb .ol+span{flex:none;max-width:100%}
+.gbs.gv .gb,.gv.lg .gb,.lg .gb{justify-content:center!important;text-align:center!important;padding:12px 14px!important}
+.gbs.gv .gb .ol{position:static!important;transform:none!important;flex:none}
+.gbs.gv .gb .ol+span{flex:0 1 auto!important;text-align:center!important;min-width:0}
+#gb p,#gb .gq,#gb .gf{text-align:center}
 </style></head><body>
 <div id="ld" role="status" aria-live="polite" aria-label="Memuat AFBI #10">
 <div class="stars"></div><svg id="sky" viewBox="0 0 320 90" preserveAspectRatio="xMidYMax slice" aria-hidden="true"></svg>
@@ -424,15 +431,15 @@ for(let j=18;j<=20;j++)for(let i=14;i<=16;i++)blockT(i,j);   // air mancur
 for(let i=21;i<=24;i++)blockT(i,13);                          // halte
 // props: [jenis, gx, gy, varian]
 const PROPS=[
- ['tree',1.5,16.8,0],['tree',11.3,15.6,1],['tree',20.8,15.7,0],['palm',23,19.3,0],['tree',25.6,16.6,1],['palm',24.8,22.2,1],['tree',1.5,22.3,1],['tree',27.4,20.4,0],['palm',10.6,22.4,0],
+ ['tree',1.5,16.8,0],['tree',11.3,15.6,1],['tree',20.8,15.7,0],['palm',23,19.3,0],['palm',24.8,22.2,1],['tree',1.5,22.3,1],['tree',27.4,20.4,0],['palm',10.6,22.4,0],
  ['palm',35.5,3.6,0],['palm',35.5,21.6,1],['tree',35.5,15.4,0],['palm',29.5,5.6,1],['palm',35.5,10.1,1],
  ['lamp',1.5,8.55],['lamp',6.2,8.55],['lamp',11.2,8.55],['lamp',19.3,8.55],['lamp',24.3,8.55],['lamp',28.9,8.55],
  ['lamp',3.5,13.45],['lamp',9.5,13.45],['lamp',15.4,13.45],['lamp',19.5,13.45],['lamp',27.5,13.45],
  ['lamp',11,15.6],['lamp',20.5,21.5],['lamp',10.5,21.5],
- ['plant',2.3,6.6],['plant',4.8,6.6],['plant',7.3,6.6],['plant',9.8,6.6],['plant',22.8,6.6],['plant',25.3,6.6],['plant',27.8,6.6],
+ ['plant',2.3,6.6],['plant',4.8,6.6],['plant',7.3,6.6],['plant',9.8,6.6],['plant',20.3,6.6],['plant',22.8,6.6],['plant',25.3,6.6],['plant',27.8,6.6],
  ['bench',12.6,19.5,'y'],['bench',18.7,19.5,'y'],['bench',15.5,16.6,'x'],
  ['shelter',21.2,13.65],['bike',25.7,14.5],['cart',19.1,15.7,'BAKSO'],['cart',28.3,14.7,'ES TEH'],
- ['fount',15.5,19.5],['tlight',29.5,8.5,'NS'],['tlight',34.5,8.5,'EW'],['tlight',29.5,13.5,'EW'],['tlight',34.5,13.5,'NS'],['dclock',17.5,13.6],
+ ['fount',15.5,19.5],['flag',12.5,7.3,0],['flag',19.6,7.15,1],['tlight',29.5,8.5,'NS'],['tlight',34.5,8.5,'EW'],['tlight',29.5,13.5,'EW'],['tlight',34.5,13.5,'NS'],['dclock',17.5,13.6],
  ['cart',4.5,28,'KUIS'], ['cart',10,28,'SUM'], ['cart',21,28,'AKUN'], ['cart',26.5,28,'ASET'], ['cart',4.5,35,'MEMO'], ['cart',10,35,'ALUR'], ['cart',21,35,'CEK'], ['balloon',5.6,27.8,0],
  ['balloon',8.9,27.8,1], ['balloon',22.1,27.8,2], ['balloon',25.4,27.8,0], ['balloon',5.6,34.8,1], ['balloon',8.9,34.8,2], ['balloon',22.1,34.8,0], ['gsign',15.5,23.4], ['balloon',12.6,23.6,0],
  ['balloon',18.4,23.6,1], ['plant',13.3,23.1], ['plant',17.7,23.1], ['tree',2.5,25.5,0], ['tree',26.5,25.5,1], ['plant',14.2,26.5], ['plant',17.8,26.5], ['plant',14.2,33],
@@ -445,8 +452,8 @@ const PROPS=[
  ['palm',35.5,53,1], ['tree',35.5,61,0], ['palm',35.5,67,1]
 ];
 // atraksi taman bermain: footprint (setengah lebar/dalam) dan titik main
-const ATT={hoop:{w:1.2,d:1.0},dart:{w:.9,d:.7},mole:{w:.9,d:.6},catchb:{w:.8,d:.6},stack:{w:.7,d:.7},simon:{w:.8,d:.7},sack:{w:1.2,d:.4},seesaw:{w:.9,d:.5},ferris:{w:1.4,d:1.0},carousel:{w:1.4,d:1.0},tent:{w:1.2,d:.9},pajak:{w:.8,d:.6},bank:{w:.8,d:.6},profesi:{w:.7,d:.5},afbi:{w:.7,d:.5},budget:{w:.7,d:.5},podS:{w:1.3,d:.25},podU:{w:1.3,d:.25},rumus:{w:.7,d:.5},swing:{w:.8,d:.5},slide:{w:.7,d:.9}};
-[['rumus',26.5,35],['hoop',4.5,42],['dart',10,42],['stack',21,42],['simon',26.5,42],['mole',4.5,49],['catchb',10,49],['sack',21,49],['seesaw',26.5,49],['ferris',4.5,56],['tent',10,56],['carousel',21,56],['pajak',26.5,56],['bank',4.5,63],['profesi',10,63],['afbi',21,63],['budget',26.5,63],['podS',12.2,6.75],['podU',19.8,6.75],['swing',1.5,38],['swing',1.5,66],['slide',1.5,52]].forEach(a=>PROPS.push(['att',a[1],a[2],a[0]]));
+const ATT={hoop:{w:1.2,d:1.0},dart:{w:.9,d:.7},mole:{w:.9,d:.6},catchb:{w:.8,d:.6},stack:{w:.7,d:.7},simon:{w:.8,d:.7},sack:{w:1.2,d:.4},seesaw:{w:.9,d:.5},ferris:{w:1.4,d:1.0},carousel:{w:1.4,d:1.0},tent:{w:1.2,d:.9},pajak:{w:.8,d:.6},bank:{w:.8,d:.6},profesi:{w:.7,d:.5},afbi:{w:.7,d:.5},budget:{w:.7,d:.5},podS:{w:1.3,d:.5},podU:{w:1.3,d:.5},rumus:{w:.7,d:.5},swing:{w:.8,d:.5},slide:{w:.7,d:.9}};
+[['rumus',26.5,35],['hoop',4.5,42],['dart',10,42],['stack',21,42],['simon',26.5,42],['mole',4.5,49],['catchb',10,49],['sack',21,49],['seesaw',26.5,49],['ferris',4.5,56],['tent',10,56],['carousel',21,56],['pajak',26.5,56],['bank',4.5,63],['profesi',10,63],['afbi',21,63],['budget',26.5,63],['podS',22.4,17.4],['podU',26.2,17.4],['swing',1.5,38],['swing',1.5,66],['slide',1.5,52]].forEach(a=>PROPS.push(['att',a[1],a[2],a[0]]));
 const BL0=BL.map(r=>r.slice()),SOFTR={lamp:.1,tlight:.1,flag:.1,dclock:.2,bike:.18,plant:.26,tree:.26,palm:.22},SOFTC=[],SOFTT=new Set(),HARDT=new Set();
 PROPS.forEach(p=>{const[k,x,y]=p,i=Math.floor(x),j=Math.floor(y);
   if(SOFTR[k]!=null)SOFTC.push([x,y,SOFTR[k],i,j]);else if(k=='cart'||k=='bench')HARDT.add(j*100+i);
@@ -460,7 +467,7 @@ const coinsAt=[[3.6,8.3],[9.6,8.5],[13.2,6.7],[21.6,8.3],[26.6,8.4],[6.5,14.3],[
 const gemsAt=[[29.6,3.4],[35.6,18.4],[0.7,22.4],[26.2,20.8]];
 coinsAt.push([5,31.5],[12.5,31.5],[18.5,31.5],[25,31.5],[15.5,25.8],[15.5,38.5],[8,45.5],[23,45.5],[12.5,52.5],[18.5,52.5],[15.5,59.5]);gemsAt.push([3.4,27],[26,38.5],[36,32],[3,59.5],[26,66.5]);
 const NC=coinsAt.length,NG=gemsAt.length;
-const PDM=[{id:'p_sma',n:'PODIUM SMA/SMK',dx:12.2,dy:7.9},{id:'p_univ',n:'PODIUM UNIV',dx:19.8,dy:7.9}];
+const PDM=[{id:'p_sma',n:'PODIUM SMA/SMK',dx:22.4,dy:18.6},{id:'p_univ',n:'PODIUM UNIV',dx:26.2,dy:18.6}];
 const STN=[{id:'g_kuis',n:'KUIS DEBIT KREDIT',dx:4.5,dy:29.2},{id:'g_sum',n:'HITUNG KILAT',dx:10,dy:29.2},{id:'g_pilah',n:'PILAH AKUN',dx:21,dy:29.2},{id:'g_aset',n:'PERSAMAAN AKUNTANSI',dx:26.5,dy:29.2},
  {id:'g_memo',n:'MEMORI AKUN',dx:4.5,dy:36.2},{id:'g_urut',n:'URUTAN AKUNTANSI',dx:10,dy:36.2},{id:'g_audit',n:'AI AUDITOR',dx:21,dy:36.2},{id:'g_rumus',n:'LAB RUMUS',dx:26.5,dy:36.2},
  {id:'g_basket',n:'BASKET NERACA',dx:4.5,dy:43.8},{id:'g_dart',n:'LEMPAR DART',dx:10,dy:43.8},{id:'g_stack',n:'TUMPUK ASET',dx:21,dy:43.8},{id:'g_simon',n:'PIANO JURNAL',dx:26.5,dy:43.8},
@@ -1768,7 +1775,7 @@ const GN={g_kuis:['Kuis Debit Kredit','#d94a3a'],g_sum:['Hitung Kilat','#4fb6d8'
 function gend(b,id,sc,max,msg,low){clearInterval(GT);SND.p(max?(sc>=max*.6?'win':'lose'):(sc>0?'win':'lose'));const o=GBEST[id];if(o==null||(low?sc<o:sc>o))GBEST[id]=sc;if(max&&sc>=max)PROF.perf=1;profSave();
  b.innerHTML='<div class="gres"><b>'+sc+(max?' / '+max:'')+'</b><p>'+msg+'</p><p>Rekor: '+GBEST[id]+'</p><button class="gb" id="ga">Main lagi</button><button class="gb reg" id="gr2">'+regT().t+' \u25B8</button></div>';$g('ga').onclick=()=>play(id);$g('gr2').onclick=()=>{hide();setTimeout(goReg,60)};checkEggs()}
 function gmc(b,id,Q,tx){let i=0,sc=0,lk=0;const nx=()=>{if(i>=Q.length){gend(b,id,sc,Q.length,sc>=Q.length*.85?tx[0]:sc>=Q.length*.6?tx[1]:tx[2]);return}lk=0;const q=Q[i];
- b.innerHTML='<div class="gi"><span>Soal '+(i+1)+'/'+Q.length+'</span><span>Skor '+sc+'</span></div><p>'+tx[3]+'</p><div class="gq">'+q[0]+'</div><div class="gbs gv'+(q[2].some(o=>o.length>18)?' lg':'')+'">'+q[2].map((o,k)=>'<button class="gb" data-a="'+o+'">'+(q[2].length>2?'<b class="ol">'+'ABCDE'[k]+'</b>':'')+'<span>'+o+'</span></button>').join('')+'</div><div class="gf" id="gf"></div>';
+ b.innerHTML='<div class="gi"><span>Soal '+(i+1)+'/'+Q.length+'</span><span>Skor '+sc+'</span></div><p>'+tx[3]+'</p><div class="gq">'+q[0]+'</div><div class="gbs gv'+(q[2].some(o=>o.length>18)?' lg':'')+'">'+q[2].map((o,k)=>'<button class="gb" data-a="'+o+'">'+'<b class="ol">'+'ABCDE'[k]+'</b>'+'<span>'+o+'</span></button>').join('')+'</div><div class="gf" id="gf"></div>';
  b.querySelectorAll('.gb').forEach(x=>x.onclick=()=>{if(lk)return;lk=1;const r=x.dataset.a==q[1];if(r)sc++;$g('gf').textContent=r?'Benar!':'Jawaban: '+q[1];x.classList.add(r?'ok':'no');b.querySelectorAll('.gb').forEach(y=>{if(y.dataset.a==q[1])y.classList.add('ok')});SND.p(r?'ok':'no');i++;setTimeout(nx,r?600:1200)})};nx()}
 // bank soal (dikocok, diambil 20 tiap main)
 const KUIS_BANK=[['Beli peralatan secara tunai: akun Peralatan','D'],['Bayar gaji karyawan: akun Beban Gaji','D'],['Kas bertambah: akun Kas','D'],['Bayar sewa gedung: akun Beban Sewa','D'],['Utang dilunasi: akun Utang berkurang','D'],['Pemilik menarik prive: akun Prive','D'],['Penjualan kredit: akun Piutang Usaha bertambah','D'],['Beli persediaan barang: akun Persediaan','D'],['Bayar tagihan listrik: akun Beban Listrik','D'],['Bayar biaya iklan: akun Beban Iklan','D'],['Beli kendaraan secara tunai: akun Kendaraan','D'],['Mencatat penyusutan: akun Beban Penyusutan','D'],['Beli perlengkapan kantor: akun Perlengkapan','D'],['Bayar asuransi dimuka: akun Asuransi Dibayar Dimuka','D'],['Utang bank dicicil: akun Utang Bank berkurang','D'],
@@ -1970,6 +1977,7 @@ const RT=[()=>{const p=rn(10,29)*10,l=rn(2,9)*10;return['Penjualan '+rj(p)+', HP
 function rumusQ(){const out=[];for(let i=0;i<20;i++){const r=RT[i%RT.length](),pc=r[3];let an=r[1],o;if(pc){const v=parseInt(an);o=[an,(v+5)+'%',(v>5?v-5:v+10)+'%']}else{o=[an,an+r[2],an-r[2]>0?an-r[2]:an+2*r[2]].map(v=>rj(v));an=rj(an)}out.push([r[0],an,shuf(o)])}return shuf(out)}
 const bfq=()=>shuf(BFS).slice(0,20).map(s=>[s[0],s[1]?'BENAR':'SALAH',['BENAR','SALAH']]);
 const BGT=['Anggaran (budget) adalah?|Rencana keuangan untuk periode tertentu|Laporan transaksi yang sudah terjadi|Daftar utang pemilik','Biaya tetap adalah biaya yang?|Jumlahnya tidak berubah saat volume produksi naik|Naik setiap unit bertambah|Hanya muncul saat rugi','Contoh biaya variabel?|Bahan baku|Sewa gedung|Gaji manajer tetap','HPP singkatan dari?|Harga Pokok Penjualan|Harga Pasar Produk|Hitungan Pajak Perusahaan','Titik impas (BEP) terjadi saat?|Total pendapatan sama dengan total biaya|Laba paling tinggi|Seluruh utang lunas','Laba kotor dihitung dari?|Penjualan dikurangi HPP|Penjualan ditambah beban|Aset dikurangi liabilitas','Selisih anggaran (varians) menunjukkan?|Perbedaan antara anggaran dan realisasi|Total aset perusahaan|Jumlah kas di bank','Anggaran kas berguna untuk?|Memperkirakan arus kas masuk dan keluar|Menghitung pajak tahunan|Mencatat penyusutan aset','Biaya overhead pabrik termasuk?|Listrik pabrik dan penyusutan mesin|Bahan baku langsung|Gaji pegawai toko ritel','Harga jual Rp 50 ribu, biaya variabel Rp 30 ribu. Margin kontribusi per unit?|Rp 20 ribu|Rp 80 ribu|Rp 15 ribu','Anggaran fleksibel menyesuaikan dengan?|Tingkat aktivitas sebenarnya|Jumlah karyawan baru|Harga saham','Akuntansi manajemen terutama melayani?|Pihak internal manajemen|Hanya investor luar|Hanya kantor pajak','Tujuan utama anggaran?|Perencanaan dan pengendalian keuangan|Menghindari semua pengeluaran|Menaikkan harga otomatis','Biaya peluang (opportunity cost) adalah?|Nilai pilihan terbaik yang dikorbankan|Biaya yang sudah dibayar lunas|Biaya tetap bulanan','Biaya tenaga kerja langsung termasuk komponen?|Biaya produksi|Beban bunga|Dividen','Anggaran penjualan biasanya disusun lebih dulu karena?|Menjadi dasar anggaran lainnya|Paling mudah diubah|Tidak perlu data','Biaya yang sudah terjadi dan tidak bisa ditarik kembali disebut?|Biaya hangus (sunk cost)|Biaya variabel|Biaya peluang','Rumus laba bersih sederhana?|Pendapatan dikurangi seluruh beban|Aset ditambah liabilitas|Kas dikurangi piutang','Realisasi biaya lebih besar dari anggaran, varians disebut?|Tidak menguntungkan|Selalu menguntungkan|Netral tanpa makna','Anggaran modal (capital budgeting) membahas?|Keputusan investasi jangka panjang|Pencatatan kas harian|Gaji bulanan'];
+addEventListener('keydown',e=>{if(!open||e.key.length!=1)return;const k='abcde'.indexOf(e.key.toLowerCase());if(k<0)return;const bs=[...document.querySelectorAll('#gb .gb')].filter(x=>x.querySelector('.ol'));if(bs[k])bs[k].click()});
 const q20=B=>()=>shuf(mkq(B)).slice(0,20);
 const NEWG={g_basket:gm_basket,g_dart:gm_dart,g_tikus:gm_tikus,g_koin:gm_koin,g_stack:gm_stack,g_simon:gm_simon,g_karung:gm_karung,g_seesaw:gm_seesaw,
  g_istilah:(b,id)=>gmc(b,id,q20(IST)(),['Kamus akuntansi berjalan!','Lumayan, istilahnya mulai nempel.','Yuk baca lagi istilah dasarnya.','Pilih arti yang paling tepat.']),
@@ -2098,13 +2106,13 @@ function play(id){open=true;SND.p('open');SND.mood('arcade');const sh=$g('sh');s
  if(NEWG[id]){NEWG[id](b,id);return}
  if(id=='g_kuis'){const Q=shuf(KUIS_BANK).slice(0,20);let i=0,sc=0,lk=0;
   const nx=()=>{if(i>=Q.length){gend(b,id,sc,Q.length,sc>=17?'Debit = Kredit! Akuntan sejati!':sc>=12?'Lumayan, tinggal diasah dikit lagi!':'Yuk coba lagi, pasti bisa!');return}lk=0;
-   b.innerHTML='<div class="gi"><span>Soal '+(i+1)+'/'+Q.length+'</span><span>Skor '+sc+'</span></div><p>Akun ini dicatat di sisi mana?</p><div class="gq">'+Q[i][0]+'</div><div class="gbs"><button class="gb" data-a="D">DEBIT</button><button class="gb k" data-a="K">KREDIT</button></div><div class="gf" id="gf"></div>';
-   b.querySelectorAll('.gb').forEach(x=>x.onclick=()=>{if(lk)return;lk=1;const r=x.dataset.a==Q[i][1];if(r)sc++;$g('gf').textContent=r?'Benar!':'Salah, jawabannya '+(Q[i][1]=='D'?'DEBIT':'KREDIT');x.classList.add(r?'ok':'no');SND.p(r?'ok':'no');i++;setTimeout(nx,r?600:1100)})};nx()}
+   b.innerHTML='<div class="gi"><span>Soal '+(i+1)+'/'+Q.length+'</span><span>Skor '+sc+'</span></div><p>Akun ini dicatat di sisi mana?</p><div class="gq">'+Q[i][0]+'</div><div class="gbs gv"><button class="gb" data-a="D"><b class="ol">A</b><span>DEBIT</span></button><button class="gb k" data-a="K"><b class="ol">B</b><span>KREDIT</span></button></div><div class="gf" id="gf"></div>';
+   b.querySelectorAll('.gb').forEach(x=>x.onclick=()=>{if(lk)return;lk=1;const r=x.dataset.a==Q[i][1];if(r)sc++;$g('gf').textContent=r?'Benar!':'Salah, jawabannya '+(Q[i][1]=='D'?'DEBIT':'KREDIT');x.classList.add(r?'ok':'no');b.querySelectorAll('.gb').forEach(y=>{if(y.dataset.a==Q[i][1])y.classList.add('ok')});SND.p(r?'ok':'no');i++;setTimeout(nx,r?600:1100)})};nx()}
  else if(id=='g_sum'){let t=45,sc=0,n=0;
   const fin=()=>gend(b,id,sc,20,sc>=17?'Kalkulator berjalan!':sc>=11?'Mantap!':'Coba lagi biar makin cepat!');
   const upd=()=>{if($g('gs'))$g('gs').textContent='Soal '+Math.min(n,20)+'/20 \u00B7 Skor '+sc};
   const q=()=>{n++;const a=20+Math.random()*80|0,c=20+Math.random()*80|0,d=Math.random()*40|0,an=a+c-d;const o=shuf([an,an+10,an-10]);
-   upd();$g('gb2').innerHTML='<div class="gq">'+a+' + '+c+' - '+d+' = ?</div><div class="gbs">'+o.map(v=>'<button class="gb" data-v="'+v+'">'+v+'</button>').join('')+'</div>';
+   upd();$g('gb2').innerHTML='<div class="gq">'+a+' + '+c+' - '+d+' = ?</div><div class="gbs gv">'+o.map((v,k)=>'<button class="gb" data-v="'+v+'"><b class="ol">'+'ABC'[k]+'</b><span>'+v+'</span></button>').join('')+'</div>';
    b.querySelectorAll('#gb2 .gb').forEach(x=>x.onclick=()=>{if(+x.dataset.v==an)sc++;else t=Math.max(0,t-2);if($g('gt'))$g('gt').textContent='Waktu '+t;if(n>=20||t<=0){upd();fin()}else q()})};
   b.innerHTML='<div class="gi"><span id="gt">Waktu 45</span><span id="gs">Soal 1/20 \u00B7 Skor 0</span></div><p>Hitung secepat kilat! 20 soal, salah jawab = waktu -2 detik.</p><div id="gb2"></div>';q();
   GT=setInterval(()=>{t--;if($g('gt'))$g('gt').textContent='Waktu '+Math.max(0,t);if(t<=0)fin()},1000)}
@@ -2235,7 +2243,7 @@ function showPodium(id){const d=PODS[id],sh=document.getElementById('sh');SND.p(
  const st=(h,c,l,nm)=>'<div style="flex:1;text-align:center"><div style="font-size:11px;font-weight:700;line-height:1.2;min-height:60px;padding:0 2px">'+esc((nm||'').split('|')[0])+'<br><span style="font-weight:500;font-size:10px;opacity:.8">'+esc((nm||'').split('|')[1]||'')+'</span></div><div style="height:'+h+'px;background:'+c+';border:2px solid #0e1230;border-bottom:0;border-radius:6px 6px 0 0;display:flex;align-items:center;justify-content:center;font:800 26px Ubuntu,system-ui,sans-serif;color:#1a1534">'+l+'</div></div>';
  sh.innerHTML='<div class="hd"><span>'+d.t+'</span><button class="x" id="cx">Tutup</button></div><div class="bd"><div style="display:flex;gap:6px;align-items:flex-end;margin:8px 0 0">'+st(70,'#c9ced9','2',d.n[1])+st(100,'#ffd34a','1',d.n[0])+st(50,'#d9955a','3',d.n[2])+'</div><div style="height:6px;background:#0e1230;border-radius:0 0 4px 4px"></div><p style="text-align:center">Selamat untuk para juara AFBI! Tonton momen kemenangan mereka di video resmi.</p><a class="btn" href="'+d.u+'" target="_blank" rel="noopener noreferrer">Tonton video pemenang \u25B8</a></div>';
  document.getElementById('m').classList.add('show');sh.scrollTop=0;document.getElementById('cx').onclick=hide}
-const FAC=[['\u25B2','#e8433a','Gapura Mini Games','Pintu masuk Taman Bermain',15.5,23.4],['\u25C6','#58a8de','Air Mancur','Taman tengah kota',15.5,19.5],['\u25A0','#9aa0b8','Halte','Tempat tunggu',23,13.6],['\u25CF','#e8843a','Warung Bakso','Pak Bakso',19.1,15.7],['\u25CF','#5ec4c9','Es Teh','Bu Es Teh',28.3,14.7],['\u2605','#f2b63a','Podium SMA/SMK','Video pemenang lomba SMA/SMK',12.2,7.2],['\u2605','#4f86d0','Podium Universitas','Video pemenang lomba mahasiswa',19.8,7.2]];
+const FAC=[['\u25B2','#e8433a','Gapura Mini Games','Pintu masuk Taman Bermain',15.5,23.4],['\u25C6','#58a8de','Air Mancur','Taman tengah kota',15.5,19.5],['\u25A0','#9aa0b8','Halte','Tempat tunggu',23,13.6],['\u25CF','#e8843a','Warung Bakso','Pak Bakso',19.1,15.7],['\u25CF','#5ec4c9','Es Teh','Bu Es Teh',28.3,14.7],['\u2605','#f2b63a','Podium SMA/SMK','Video pemenang lomba SMA/SMK',22.4,17.6],['\u2605','#4f86d0','Podium Universitas','Video pemenang lomba mahasiswa',26.2,17.6]];
 function showMap(){if(open||paused)return;open=true;const S=10,cv=document.createElement('canvas');cv.width=N*S;cv.height=M*S;const x=cv.getContext('2d');
  for(let j=0;j<M;j++)for(let i=0;i<N;i++){x.fillStyle=MPC[TY[j][i]]||'#6aaf4e';x.fillRect(i*S,j*S,S,S)}
  x.fillStyle='#e9e2b8';for(let i=0;i<N;i+=2)if(i<30||i>33)x.fillRect(i*S+2,10.5*S-1,S-4,2);
