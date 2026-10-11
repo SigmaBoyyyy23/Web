@@ -213,7 +213,7 @@ body{background:var(--navy);color:#fff;font-family:Ubuntu,system-ui,sans-serif}
 
 /* ===== MINIGAME BARU ===== */
 .sheet .gcv{display:block;width:100%;max-width:340px;margin:8px auto;background:#14204f;border:3px solid #0e1230;border-radius:8px;touch-action:none;-webkit-user-select:none;user-select:none}
-.gv.lg .gb{flex:1 1 100%;text-align:left;font-size:14px;line-height:1.25;padding:10px 12px}
+.gv.gvl .gb{flex:1 1 100%;text-align:left;font-size:14px;line-height:1.25;padding:10px 12px}
 .sheet .gtap{display:flex;gap:10px;margin-top:10px}.gtap .gb{flex:1;padding:22px 6px;font-size:18px;touch-action:none}
 .tgt{text-align:center;font-weight:700;font-size:14px;background:#0e1230;color:var(--cream);border-radius:6px;padding:6px;margin-top:6px}.tgt b{color:var(--amber);font-size:17px}
 .mgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
@@ -268,7 +268,7 @@ body{background:var(--navy);color:#fff;font-family:Ubuntu,system-ui,sans-serif}
 .gbs.gv .gb{justify-content:center!important;text-align:center!important;position:relative;padding:12px 46px;width:100%}
 .gbs.gv .gb .ol{position:absolute;left:10px;top:50%;transform:translateY(-50%)}
 .gbs.gv .gb .ol+span{flex:none;max-width:100%}
-.gbs.gv .gb,.gv.lg .gb,.lg .gb{justify-content:center!important;text-align:center!important;padding:12px 14px!important}
+.gbs.gv .gb,.gv.gvl .gb{justify-content:center!important;text-align:center!important;padding:12px 14px!important;width:100%!important;box-sizing:border-box!important}
 .gbs.gv .gb .ol{position:static!important;transform:none!important;flex:none}
 .gbs.gv .gb .ol+span{flex:0 1 auto!important;text-align:center!important;min-width:0}
 #gb p,#gb .gq,#gb .gf{text-align:center}
@@ -1775,7 +1775,7 @@ const GN={g_kuis:['Kuis Debit Kredit','#d94a3a'],g_sum:['Hitung Kilat','#4fb6d8'
 function gend(b,id,sc,max,msg,low){clearInterval(GT);SND.p(max?(sc>=max*.6?'win':'lose'):(sc>0?'win':'lose'));const o=GBEST[id];if(o==null||(low?sc<o:sc>o))GBEST[id]=sc;if(max&&sc>=max)PROF.perf=1;profSave();
  b.innerHTML='<div class="gres"><b>'+sc+(max?' / '+max:'')+'</b><p>'+msg+'</p><p>Rekor: '+GBEST[id]+'</p><button class="gb" id="ga">Main lagi</button><button class="gb reg" id="gr2">'+regT().t+' \u25B8</button></div>';$g('ga').onclick=()=>play(id);$g('gr2').onclick=()=>{hide();setTimeout(goReg,60)};checkEggs()}
 function gmc(b,id,Q,tx){let i=0,sc=0,lk=0;const nx=()=>{if(i>=Q.length){gend(b,id,sc,Q.length,sc>=Q.length*.85?tx[0]:sc>=Q.length*.6?tx[1]:tx[2]);return}lk=0;const q=Q[i];
- b.innerHTML='<div class="gi"><span>Soal '+(i+1)+'/'+Q.length+'</span><span>Skor '+sc+'</span></div><p>'+tx[3]+'</p><div class="gq">'+q[0]+'</div><div class="gbs gv'+(q[2].some(o=>o.length>18)?' lg':'')+'">'+q[2].map((o,k)=>'<button class="gb" data-a="'+o+'">'+'<b class="ol">'+'ABCDE'[k]+'</b>'+'<span>'+o+'</span></button>').join('')+'</div><div class="gf" id="gf"></div>';
+ b.innerHTML='<div class="gi"><span>Soal '+(i+1)+'/'+Q.length+'</span><span>Skor '+sc+'</span></div><p>'+tx[3]+'</p><div class="gq">'+q[0]+'</div><div class="gbs gv'+(q[2].some(o=>o.length>18)?' gvl':'')+'">'+q[2].map((o,k)=>'<button class="gb" data-a="'+o+'">'+'<b class="ol">'+'ABCDE'[k]+'</b>'+'<span>'+o+'</span></button>').join('')+'</div><div class="gf" id="gf"></div>';
  b.querySelectorAll('.gb').forEach(x=>x.onclick=()=>{if(lk)return;lk=1;const r=x.dataset.a==q[1];if(r)sc++;$g('gf').textContent=r?'Benar!':'Jawaban: '+q[1];x.classList.add(r?'ok':'no');b.querySelectorAll('.gb').forEach(y=>{if(y.dataset.a==q[1])y.classList.add('ok')});SND.p(r?'ok':'no');i++;setTimeout(nx,r?600:1200)})};nx()}
 // bank soal (dikocok, diambil 20 tiap main)
 const KUIS_BANK=[['Beli peralatan secara tunai: akun Peralatan','D'],['Bayar gaji karyawan: akun Beban Gaji','D'],['Kas bertambah: akun Kas','D'],['Bayar sewa gedung: akun Beban Sewa','D'],['Utang dilunasi: akun Utang berkurang','D'],['Pemilik menarik prive: akun Prive','D'],['Penjualan kredit: akun Piutang Usaha bertambah','D'],['Beli persediaan barang: akun Persediaan','D'],['Bayar tagihan listrik: akun Beban Listrik','D'],['Bayar biaya iklan: akun Beban Iklan','D'],['Beli kendaraan secara tunai: akun Kendaraan','D'],['Mencatat penyusutan: akun Beban Penyusutan','D'],['Beli perlengkapan kantor: akun Perlengkapan','D'],['Bayar asuransi dimuka: akun Asuransi Dibayar Dimuka','D'],['Utang bank dicicil: akun Utang Bank berkurang','D'],
