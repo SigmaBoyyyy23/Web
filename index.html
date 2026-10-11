@@ -23,10 +23,9 @@ body{background:var(--navy);color:#fff;font-family:Ubuntu,system-ui,sans-serif}
 #card .tt span{display:block;font-size:10.5px;color:#aab3e0;font-weight:500}
 #cd{text-align:right;padding-right:2px}#cd b{display:block;font-size:19px;color:#fff;line-height:1.1}#cd i{display:block;font-style:normal;font-size:10.5px;color:#4ee08a;font-weight:500}
 .mq{margin-top:5px;border-top:1px dashed #34408a;padding-top:4px;overflow:hidden;white-space:nowrap;font-size:11px;color:var(--cream)}
-.mq div{display:inline-block;animation:mq 34s linear infinite;will-change:transform}.mq span{padding-right:28px}
+.mq div{display:inline-block;animation:mq 26s linear infinite;will-change:transform}.mq span{padding-right:28px}
 @keyframes mq{to{transform:translateX(-50%)}}
 @media (orientation:landscape){#card{display:none}}
-@media (prefers-reduced-motion:reduce){.mq div{animation:none}}
 #tip{position:absolute;left:12px;right:12px;top:8px;text-align:center;pointer-events:none}
 #tip span{display:inline-block;max-width:100%;background:rgba(8,10,30,.85);border:1px solid var(--line);border-radius:4px;padding:3px 10px;font-size:clamp(11px,3.1vw,13px);font-weight:500;color:var(--cream)}
 #dp{position:absolute;left:var(--ml);top:60%;transform:translateY(-50%);width:calc(var(--u)*3.05);height:calc(var(--u)*3.05)}
@@ -219,7 +218,6 @@ body{background:var(--navy);color:#fff;font-family:Ubuntu,system-ui,sans-serif}
 @keyframes ctap2{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
 #dock{position:absolute;left:12px;right:12px;bottom:calc(100% - (var(--dh)*.6 - var(--u)*1.525) + 8px);display:flex;flex-direction:column;align-items:center;gap:8px;z-index:5;pointer-events:none}
 #deck #dock{pointer-events:none}
-@media (orientation:portrait) and (max-height:720px){#card{top:45px;padding:4px 10px 3px}#card .tt span,#card .mq,#cd i{display:none}}
 #nudge{display:none;position:relative;width:100%;max-width:420px;z-index:5;pointer-events:auto;background:#fff6d8;color:#241f3a;border:3px solid #0e1230;border-radius:10px;box-shadow:0 4px 0 #0e1230;padding:10px 12px;font:500 clamp(12px,3.4vw,14px)/1.35 Ubuntu,system-ui,sans-serif;cursor:pointer}
 #nudge.show{display:block}
 .gb.reg{background:#f2b63a;color:#241f3a;margin-top:8px}
@@ -1276,12 +1274,12 @@ function stepWorld(dt){
   const tx=clamp(px-W/2,0,GW-W),ty=clamp(py-H*.62,0,GH-H);
   cam.x+=(tx-cam.x)*Math.min(1,dt*6);cam.y+=(ty-cam.y)*Math.min(1,dt*6)}
 function step(dt){tm+=dt;SG=sig();if(paused)return;stepWorld(dt);if(open)return;stepPlayer(dt);
-  coinsAt.forEach(([x,y],i)=>{if(!got.has(i)&&Math.hypot(P.x-x,P.y-y)<.6){got.add(i);coins++;SND.p('coin');fxs.push({x,y,s:'+1',c:'#ffd34a',t:.9});checkEggs()}});
-  gemsAt.forEach(([x,y],i)=>{if(!gotG.has(i)&&Math.hypot(P.x-x,P.y-y)<.6){gotG.add(i);gems++;SND.p('gem');fxs.push({x,y,s:'+1 permata',c:'#e08aff',t:1.1});checkEggs()}});
+  coinsAt.forEach(([x,y],i)=>{if(!got.has(i)&&Math.hypot(P.x-x,P.y-y)<.6){got.add(i);coins++;SND.p('coin');fxs.push({x,y,s:'+1',c:'#ffd34a',t:.9});checkEggs();profSave()}});
+  gemsAt.forEach(([x,y],i)=>{if(!gotG.has(i)&&Math.hypot(P.x-x,P.y-y)<.6){gotG.add(i);gems++;SND.p('gem');fxs.push({x,y,s:'+1 permata',c:'#e08aff',t:1.1});checkEggs();profSave()}});
   egStep(dt);
   const tip=near?'Tekan tombol aksi untuk masuk: '+near.n.replace('KAMPUS','KAMPUS BINA INSANI'):nearN?'Tekan tombol aksi untuk ngobrol dengan '+nearN.d.nm:'Koin '+coins+'/'+NC+'  •  Permata '+gems+'/'+NG+'  •  '+skyPhase(wibHr());
   if(tip!=lastTip){const t=document.getElementById('tip');t.innerHTML='<span></span>';t.firstChild.textContent=tip;lastTip=tip}
-  if(!once){once=true;AFTERLOAD(()=>PROF.saved?openChat('welcome'):openSelect(()=>openChat('welcome')))}}
+  if(!once){once=true;AFTERLOAD(()=>PROF.saved?(PROF.sec>20||coins||gems||vis.size?welcomeBack():openChat('welcome')):openSelect(()=>openChat('welcome')))}}
 // ---------- latar langit kota ----------
 const BGK=(()=>{const o=mk(W+80,H+100),x=o.x;_sd=3;
   const gr=x.createLinearGradient(0,0,0,H+100);gr.addColorStop(0,'#090c20');gr.addColorStop(.55,'#141a3d');gr.addColorStop(1,'#2a2150');x.fillStyle=gr;x.fillRect(0,0,W+80,H+100);
@@ -1698,7 +1696,7 @@ about:()=>`<h2>Tentang AFBI #10</h2><div style="text-align:center;margin:8px 0 1
 <h3>Cara main</h3><p>Joystick analog untuk berjalan. Ketuk minimap di pojok kiri atas (atau tekan M) untuk peta besar dan legenda. Tombol bicara untuk masuk gedung atau ngobrol dengan warga. Tombol panah untuk lari. Kumpulkan koin dan permata!</p>
 <h3>Kontak</h3><p>Perguruan Tinggi Bina Insani, Jl. Raya Siliwangi No.9, Rawalumbu, Kota Bekasi 17116</p>`};
 const ACC={arena:'#f3b63f',sem:'#4fb6d8',tl:'#b98ae0',biaya:'#e9a23c',prize:'#f2b63a',help:'#2fa05a',intro:'#f2b63a',about:'#4fb6d8'};
-function show(id){if(id[0]=='g'&&id[1]=='_'){play(id);return}SND.p('open');if(SEQ[id]&&!seenS.has(id)&&!cOpen){seenS.add(id);open=false;openChat(id,()=>show(id));return}open=true;vis.add(id);if(id=='help'||id=='prize'||id=='arena'||id=='sem'||id=='tl'||id=='biaya'){}
+function show(id){if(id[0]=='g'&&id[1]=='_'){play(id);return}SND.p('open');if(SEQ[id]&&!seenS.has(id)&&!cOpen){seenS.add(id);open=false;openChat(id,()=>show(id));return}open=true;vis.add(id);profSave();if(id=='help'||id=='prize'||id=='arena'||id=='sem'||id=='tl'||id=='biaya'){}
   const html=MD[id](),m=html.match(/^<h2>(.*?)<\/h2>/),title=m?m[1]:'',body=m?html.slice(m[0].length):html,sh=document.getElementById('sh');
   sh.style.setProperty('--acc',ACC[id]||'#f2b63a');
   sh.innerHTML=`<div class="hd"><span>${title}</span><button class="x" id="cx">Tutup</button></div><div class="bd">${body}</div>`;
@@ -2029,7 +2027,16 @@ function play(id){open=true;SND.p('open');SND.mood('arcade');const sh=$g('sh');s
 const SKEY='afbi10_profile_v1';
 const PROF={name:'Raka',g:'m',col:null,saved:0,sec:0,perf:0,scare:0,sp:0,eggs:new Set()};
 try{const s=JSON.parse(localStorage.getItem(SKEY)||'null');if(s){PROF.name=String(s.name||'Raka').slice(0,12);PROF.g=s.g=='f'?'f':'m';PROF.col=s.col||null;PROF.saved=1;PROF.sec=+s.sec||0;PROF.perf=s.perf?1:0;PROF.scare=+s.scare||0;PROF.sp=s.sp?1:0;(s.eggs||[]).forEach(e=>PROF.eggs.add(e));if(s.best)Object.assign(GBEST,s.best)}}catch(e){}
-function profSave(){try{localStorage.setItem(SKEY,JSON.stringify({name:PROF.name,g:PROF.g,col:PROF.col,sec:PROF.sec,perf:PROF.perf,scare:PROF.scare,sp:PROF.sp,eggs:[...PROF.eggs],best:GBEST}))}catch(e){}}
+function profSave(){if(!PROF.saved)return;try{const bid=new Set(BLD.map(b=>b.id));localStorage.setItem(SKEY,JSON.stringify({v:2,name:PROF.name,g:PROF.g,col:PROF.col,sec:PROF.sec,perf:PROF.perf,scare:PROF.scare,sp:PROF.sp,eggs:[...PROF.eggs],best:GBEST,
+  nc:NC,got:[...got],ng:NG,gotG:[...gotG],vis:[...vis],seen:[...seenS].filter(k=>bid.has(k)),pos:[+P.x.toFixed(2),+P.y.toFixed(2)],t:Date.now()}))}catch(e){}}
+// muat progres yang tersimpan di browser (dipanggil sekali setelah semua data game siap)
+function restoreProgress(){try{const s=JSON.parse(localStorage.getItem(SKEY)||'null');if(!s)return;
+  if(s.nc===NC&&Array.isArray(s.got))s.got.forEach(i=>{if(Number.isInteger(i)&&i>=0&&i<NC&&!got.has(i)){got.add(i);coins++}});
+  if(s.ng===NG&&Array.isArray(s.gotG))s.gotG.forEach(i=>{if(Number.isInteger(i)&&i>=0&&i<NG&&!gotG.has(i)){gotG.add(i);gems++}});
+  const bid=new Set(BLD.map(b=>b.id));(s.vis||[]).forEach(k=>{if(bid.has(k))vis.add(k)});(s.seen||[]).forEach(k=>{if(bid.has(k)&&SEQ[k])seenS.add(k)});
+  if(Array.isArray(s.pos)){const x=+s.pos[0],y=+s.pos[1];if(isFinite(x)&&isFinite(y)&&WAL(x,y)&&canStand(x,y,.17,true)){P.x=x;P.y=y}}}catch(e){}}
+function welcomeBack(){SEQ.back=[{w:'wike',t:'Selamat datang kembali, '+PROF.name+'! Progresmu masih tersimpan: koin '+coins+'/'+NC+', permata '+gems+'/'+NG+', gedung '+vis.size+'/'+BLD.length+'.',end:'Lanjut jelajah \u25B6'}];openChat('back')}
+addEventListener('pagehide',()=>profSave());document.addEventListener('visibilitychange',()=>{if(document.hidden)profSave()});
 const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 const HERO0=HERO.map(h=>({...h}));
 const ALYA={nm:'Alya',skin:SK[1],hair:'#2b1a24',hs:'long',top:'#ff6f9f',tc:'tee',pants:'#3a3f6a',skirt:'#3a3f6a',shoes:'#f4f1ea',bag:'#8a6aa8',sd:0};
@@ -2063,7 +2070,7 @@ function renderProf(){const sh=$g('sh'),st=sh.scrollTop,l=lvl(),L=leadLook(PROF.
    +'<h3>Karakter</h3>'+pcsHTML(PROF.g,PROF.col,64)+swHTML(PROF.g,PROF.col)
    +'<h3>Statistik</h3><div class="pst"><div><b>'+coins+'/'+NC+'</b>Koin</div><div><b>'+gems+'/'+NG+'</b>Permata</div><div><b>'+vis.size+'/'+BLD.length+'</b>Gedung dikunjungi</div><div><b>'+Math.min(Object.keys(GBEST).length,Object.keys(GN).length)+'/'+Object.keys(GN).length+'</b>Minigame dicoba</div><div><b>'+fmtT(PROF.sec)+'</b>Waktu menjelajah</div><div><b>'+ph+'</b>Sekarang '+p2(t.h)+':'+p2(t.m)+' '+tzLabel()+'</div></div>'
    +'<h3>Rekor minigame</h3>'+gm+'<h3>Easter egg ('+PROF.eggs.size+'/'+EGGS.length+')</h3>'+eg
-   +'<button class="gb k" id="prs" style="width:100%;margin-top:16px">Reset profil &amp; progres</button><p style="font-size:11px;color:#7a6a4a;text-align:center">Profil tersimpan di perangkat ini.</p></div>';
+   +'<button class="gb k" id="prs" style="width:100%;margin-top:16px">Reset profil &amp; progres</button><p style="font-size:11px;color:#7a6a4a;text-align:center">Profil dan progres (koin, permata, gedung, rekor minigame, posisi) tersimpan otomatis di browser ini.</p></div>';
   $g('cx').onclick=hide;
   const nm=$g('pnm');nm.oninput=()=>{PROF.name=nm.value.trim().slice(0,12)||defName(PROF.g);HERO[0].nm=PROF.name};nm.onchange=profSave;
   sh.querySelectorAll('.pc').forEach(el=>el.onclick=()=>{PROF.g=el.dataset.g;applyHero();profSave();renderProf()});
@@ -2086,7 +2093,7 @@ function checkEggs(){let n=0;for(const e of EGGS){if(!PROF.eggs.has(e.id)&&e.ok(
 function nextToast(){const e=eggTQ.shift(),el=$g('egg');if(!e){eggBusy=false;return}eggBusy=true;
   el.innerHTML='<i>'+e.ic+'</i><div><b>Easter Egg: '+e.t+'</b><span>'+e.d+'</span></div>';el.classList.add('show');
   setTimeout(()=>{el.classList.remove('show');setTimeout(nextToast,500)},e.id=='all'?5200:3600)}
-function egStep(dt){egAcc+=dt;if(egAcc>=1){egAcc-=1;PROF.sec++;checkEggs();if(PROF.sec%20==0)profSave()}
+function egStep(dt){egAcc+=dt;if(egAcc>=1){egAcc-=1;PROF.sec++;checkEggs();if(PROF.sec%5==0)profSave()}
   if(eggQ.length&&!open&&!cOpen)openChat(eggQ.shift())}
 // konfeti di layar
 const CF=[];let cfT=0;
@@ -2281,6 +2288,7 @@ addEventListener('keydown',e=>{
  if(!cOpen)return;
  if(e.key=='Escape'){closeChat();return}
  if((e.key==' '||e.key=='Enter')&&!(document.activeElement&&document.activeElement.closest&&document.activeElement.closest('#chat button,#chat a'))){e.preventDefault();cAdvance()}});
+restoreProgress();
 </script>
 <script>
 // jalankan game setelah loading sempat terlukis
