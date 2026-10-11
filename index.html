@@ -2049,7 +2049,8 @@ function play(id){open=true;SND.p('open');SND.mood('arcade');const sh=$g('sh');s
 const SKEY='afbi10_profile_v1';
 const PROF={name:'Raka',g:'m',col:null,saved:0,sec:0,perf:0,scare:0,sp:0,eggs:new Set()};
 try{const s=JSON.parse(localStorage.getItem(SKEY)||'null');if(s){PROF.name=String(s.name||'Raka').slice(0,12);PROF.g=s.g=='f'?'f':'m';PROF.col=s.col||null;PROF.saved=1;PROF.sec=+s.sec||0;PROF.perf=s.perf?1:0;PROF.scare=+s.scare||0;PROF.sp=s.sp?1:0;(s.eggs||[]).forEach(e=>PROF.eggs.add(e));if(s.best)Object.assign(GBEST,s.best)}}catch(e){}
-function profSave(){if(!PROF.saved)return;try{const bid=new Set(BLD.map(b=>b.id));localStorage.setItem(SKEY,JSON.stringify({v:2,name:PROF.name,g:PROF.g,col:PROF.col,sec:PROF.sec,perf:PROF.perf,scare:PROF.scare,sp:PROF.sp,eggs:[...PROF.eggs],best:GBEST,
+let NOSAVE=false;
+function profSave(){if(NOSAVE||!PROF.saved)return;try{const bid=new Set(BLD.map(b=>b.id));localStorage.setItem(SKEY,JSON.stringify({v:2,name:PROF.name,g:PROF.g,col:PROF.col,sec:PROF.sec,perf:PROF.perf,scare:PROF.scare,sp:PROF.sp,eggs:[...PROF.eggs],best:GBEST,
   nc:NC,got:[...got],ng:NG,gotG:[...gotG],vis:[...vis],seen:[...seenS].filter(k=>bid.has(k)),pos:[+P.x.toFixed(2),+P.y.toFixed(2)],t:Date.now()}))}catch(e){}}
 // muat progres yang tersimpan di browser (dipanggil sekali setelah semua data game siap)
 function restoreProgress(){try{const s=JSON.parse(localStorage.getItem(SKEY)||'null');if(!s)return;
@@ -2097,7 +2098,7 @@ function renderProf(){const sh=$g('sh'),st=sh.scrollTop,l=lvl(),L=leadLook(PROF.
   const nm=$g('pnm');nm.oninput=()=>{PROF.name=nm.value.trim().slice(0,12)||defName(PROF.g);HERO[0].nm=PROF.name};nm.onchange=profSave;
   sh.querySelectorAll('.pc').forEach(el=>el.onclick=()=>{PROF.g=el.dataset.g;applyHero();profSave();renderProf()});
   sh.querySelectorAll('.sw').forEach(el=>el.onclick=()=>{PROF.col=el.dataset.c;applyHero();profSave();renderProf()});
-  let rs=0;$g('prs').onclick=e=>{if(!rs){rs=1;e.currentTarget.textContent='Yakin? Ketuk lagi untuk menghapus semuanya';return}try{localStorage.removeItem(SKEY)}catch(_){}location.reload()};
+  let rs=0;$g('prs').onclick=e=>{if(!rs){rs=1;e.currentTarget.textContent='Yakin? Ketuk lagi untuk menghapus semuanya';return}NOSAVE=true;PROF.saved=0;try{localStorage.removeItem(SKEY)}catch(_){}try{sessionStorage.clear()}catch(_){}location.reload()};
   sh.scrollTop=st}
 // ---- easter egg ----
 const EGGS=[
