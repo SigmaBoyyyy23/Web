@@ -244,6 +244,23 @@ body{background:var(--navy);color:#fff;font-family:Ubuntu,system-ui,sans-serif}
 .gb.reg{background:#f2b63a;color:#241f3a;margin-top:8px}
 .promo{background:#fff6d8;border:2px solid #f2b63a;border-radius:8px;padding:8px 10px;margin:0 0 10px;font-size:13px;line-height:1.35;color:#241f3a}
 @media (orientation:landscape){#dock{left:auto;right:calc(var(--mr) + var(--u)*3.4);bottom:70px;width:300px;align-items:flex-end}#cta{animation:none}#nudge{width:300px}}
+
+#card{cursor:pointer;pointer-events:auto}
+.phero{background:linear-gradient(135deg,#1b2566,#3a2a7a);color:#fff;border:3px solid #0e1230;border-radius:8px;padding:12px;margin:2px 0 10px;text-align:center;box-shadow:0 3px 0 #0e1230}
+.phero em{display:inline-block;font-style:normal;font-size:10px;font-weight:800;letter-spacing:.12em;background:#ff6b4a;color:#fff;border-radius:10px;padding:2px 8px;margin-bottom:6px}
+.phero b{display:block;font-size:19px;line-height:1.15;color:#ffd34a}.phero span{display:block;font-size:12px;opacity:.9;margin-top:3px}
+.pcd{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:10px}.pcd div{background:rgba(0,0,0,.35);border:2px solid #0e1230;border-radius:6px;padding:6px 2px}
+.pcd b{font-size:24px;color:#fff;font-variant-numeric:tabular-nums}.pcd i{display:block;font-style:normal;font-size:9px;letter-spacing:.1em;opacity:.8}
+.pbn{border:2px solid #0e1230;border-left:6px solid #2f9e5b;background:#e9f9ee;border-radius:6px;padding:8px 10px;margin:0 0 8px;font-size:13px;line-height:1.35}.pbn b:first-child{display:block;color:#1d7a43}
+.pbn.hot{border-left-color:#e8433a;background:#fff0ec;animation:phot 1.4s ease-in-out infinite}.pbn.hot b:first-child{color:#c7311f}
+.pbn.live{border-left-color:#ff6b4a;background:#fff0ec}.pbn.off{border-left-color:#888;background:#eee}
+@keyframes phot{50%{background:#ffe0d8}}
+.pls{margin:6px 0 4px;padding-left:18px;font-size:13px;line-height:1.45}.pls li{margin:3px 0}
+.p2{display:grid;grid-template-columns:1fr 1fr;gap:8px}.p2 .btn{margin:6px 0;font-size:13px;padding:10px 6px}
+.btn.alt{background:#fff6d8;color:#241f3a;border-color:#0e1230;cursor:pointer;font-family:inherit}.btn.wa{background:#25a65b}
+.pms{margin:6px 0}.pm{display:flex;align-items:center;gap:8px;padding:6px 8px;border:2px solid #0e1230;border-radius:6px;margin:5px 0;background:#fff;font-size:13px}
+.pm i{font-style:normal;width:18px;text-align:center;color:#999;font-weight:800}.pm span{flex:1}.pm em{font-style:normal;font-weight:700;color:#8a6a1e}.pm.ok{background:#e9f9ee}.pm.ok i{color:#1d7a43}
+#cta.hot{background:linear-gradient(#ff8a6a,#e8433a);color:#fff;animation:ctap2 .9s ease-in-out infinite}
 </style></head><body>
 <div id="ld" role="status" aria-live="polite" aria-label="Memuat AFBI #10">
 <div class="stars"></div><svg id="sky" viewBox="0 0 320 90" preserveAspectRatio="xMidYMax slice" aria-hidden="true"></svg>
@@ -1229,7 +1246,7 @@ function bfs(sx,sy,tx,ty){const si=Math.floor(sx),sj=Math.floor(sy),ti=Math.floo
   for(let h=0;h<q.length&&!f;h++){const[i,j]=q[h];for(const[a,b]of[[1,0],[-1,0],[0,1],[0,-1]]){const ni=i+a,nj=j+b,k=key(ni,nj);if(prev.has(k)||!WAL(ni+.5,nj+.5))continue;prev.set(k,key(i,j));q.push([ni,nj]);if(ni==ti&&nj==tj){f=true;break}}}
   if(!f)return null;const path=[];let k=key(ti,tj);while(k!=-1){path.push([k%N+.5+rnd(-.18,.18),(k/N|0)+.5+rnd(-.18,.18)]);k=prev.get(k)}path.reverse();path.shift();path.push([tx,ty]);return path}
 // NPC
-const semOff=()=>now()<new Date('2026-10-12T12:00:00+07:00'),semOn=()=>now()<new Date('2026-10-12T23:59:00+07:00');
+const semOff=()=>Date.now()+TOFF<+new Date('2026-10-12T12:00:00+07:00'),semOn=()=>Date.now()+TOFF<+new Date('2026-10-12T23:59:00+07:00');
 const inR=(s,e)=>{const d=now(),t=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');return t>=s&&t<=e};
 const regOpen=()=>inR('2026-08-03','2026-09-20');
 const NPCDEF=[
@@ -1660,7 +1677,7 @@ function bgDraw(t){
 // kartu info (potret): hitung mundur seminar + teks berjalan
 function cardUpd(){const el=document.getElementById('cd');if(!el)return;
   const st=new Date('2026-10-13T08:00:00+07:00'),en=new Date('2026-10-13T12:25:00+07:00'),nw=new Date();let big,small;
-  if(nw<st){const d=Math.ceil((st-nw)/864e5);big='H-'+d;small='Seminar 13 Okt 2026'}else if(nw<=en){big='LIVE';small='Seminar sedang berlangsung'}else{big='Terima kasih';small='AFBI #10 telah usai'}
+  if(nw<st){const d=Math.ceil((st-nw)/864e5);big='H-'+d;small=(semOff()||semOn())?'Ketuk untuk daftar \u25B8':'Seminar 13 Okt 2026'}else if(nw<=en){big='LIVE';small='Seminar sedang berlangsung'}else{big='Terima kasih';small='AFBI #10 telah usai'}
   el.innerHTML='<b>'+big+'</b><i>'+small+'</i>'}
 cardUpd();setInterval(cardUpd,6e4);
 let _rz=0;function rz(){clearTimeout(_rz);_rz=setTimeout(bgBake,120)}
@@ -1723,12 +1740,12 @@ function show(id){if(id[0]=='g'&&id[1]=='_'){play(id);return}SND.p('open');if(SE
   sh.style.setProperty('--acc',ACC[id]||'#f2b63a');
   sh.innerHTML=`<div class="hd"><span>${title}</span><button class="x" id="cx">Tutup</button></div><div class="bd">${body}</div>`;
   document.getElementById('m').classList.add('show');sh.scrollTop=0;document.getElementById('cx').onclick=hide;imgFix(sh)}
-function hide(){if(selLock)return;if(open)SND.p('close');SND.mood('town');clearInterval(GT);open=false;document.getElementById('m').classList.remove('show')}
+function hide(){if(selLock)return;clearInterval(PROMO_T);if(open)SND.p('close');SND.mood('town');clearInterval(GT);open=false;document.getElementById('m').classList.remove('show')}
 document.getElementById('m').addEventListener('pointerdown',e=>{if(e.target.id=='m')hide()});
 function imgFix(r){r.querySelectorAll('img.lg,img.bl,img.mimg,img.spp').forEach(i=>{if(i.dataset.f)return;i.dataset.f=1;i.addEventListener('error',()=>{const m=i.src.match(/\/d\/([\w-]+)/);if(i.dataset.sz&&!i.dataset.s0){i.dataset.s0=1;i.src=i.src.replace(/=s\d+$/,'');return}if(m&&!i.dataset.t){i.dataset.t=1;i.src='https://drive.google.com/thumbnail?id='+m[1]+'&sz=w'+(i.dataset.sz?800:400);return}const s=document.createElement('span');s.className='lgf';s.textContent=i.alt;i.replaceWith(s)})})}
 document.getElementById('bl1').innerHTML=lg('biu','bl');document.getElementById('bl2').innerHTML=lg('afbi','bl');imgFix(document.getElementById('brand'));
 // ---------- minigame ----------
-let GT=0;const GBEST={};const $g=id=>document.getElementById(id);
+let GT=0,PROMO_T=0;const GBEST={};const $g=id=>document.getElementById(id);
 const shuf=a=>a.map(v=>[Math.random(),v]).sort((x,y)=>x[0]-y[0]).map(v=>v[1]);
 const GN={g_kuis:['Kuis Debit Kredit','#d94a3a'],g_sum:['Hitung Kilat','#4fb6d8'],g_memo:['Memori Akun','#b98ae0'],g_pilah:['Pilah Akun','#2fa05a'],g_aset:['Persamaan Akuntansi','#f2b63a'],g_urut:['Urutan Akuntansi','#e9a23c'],g_audit:['AI Auditor','#7a5ad6'],
  g_basket:['Basket Neraca','#e9732a'],g_dart:['Lempar Dart','#d94a3a'],g_stack:['Tumpuk Aset','#4fb6d8'],g_simon:['Piano Jurnal','#b98ae0'],g_tikus:['Pukul Akun','#8a5a34'],g_koin:['Tangkap Rejeki','#f2b63a'],g_karung:['Lari Karung','#2fa05a'],g_seesaw:['Jungkat Neraca','#e9a23c'],
@@ -1949,8 +1966,6 @@ const NEWG={g_basket:gm_basket,g_dart:gm_dart,g_tikus:gm_tikus,g_koin:gm_koin,g_
  g_rumus:(b,id)=>gmc(b,id,rumusQ(),['Kalkulator hidup!','Hitunganmu cukup rapi.','Coba hitung lagi pelan-pelan.','Hitung dan pilih jawaban yang benar.'])};
 
 // ================= ARAHKAN PEMAIN KE PENDAFTARAN =================
-const regT=()=>semOff()||semOn()?{id:'sem',t:'DAFTAR SEMINAR 13 OKT',s:'Aula Seminar'}:(reg.sma||reg.univ)?{id:'arena',t:'DAFTAR LOMBA AFBI #10',s:'Arena Kompetisi'}:{id:'tl',t:'CEK JADWAL AFBI',s:'Menara Timeline'};
-const goReg=()=>{if(open||paused||selLock)return;SND.p('open');show(regT().id)};
 function drawGuide(){if(!PROF.saved||open||selLock)return;const T=regT(),b=BLD.find(q=>q.id==T.id);if(!b||vis.has(T.id))return;if(evNear().some(e=>e.b==T.id))return;
   const px=SX(b.dx,b.dy),py=SY(b.dx,b.dy)-40+Math.sin(tm*5)*3;g.font='700 8px Ubuntu,system-ui,sans-serif';g.textAlign='center';
   if(px>16&&px<W-16&&py>82&&py<H-14){g.fillStyle='#0e1230';g.beginPath();g.moveTo(px-9,py-13);g.lineTo(px+9,py-13);g.lineTo(px,py+1);g.closePath();g.fill();
@@ -2002,14 +2017,63 @@ function drawEvents(){if(!PROF.saved||open||selLock)return;const L=evNear();if(!
       const t=e0.n+' \u00B7 '+e0.l+(es.length>1?' +'+(es.length-1):''),w1=mw(t).width+12,ty=ey<H/2?ey+20:ey-22,tx=Math.min(W-w1/2-4,Math.max(w1/2+4,ex));
       rrect(tx-w1/2-1,ty-8,w1+2,15,5,'#0e1230');rrect(tx-w1/2,ty-7,w1,13,4,e0.lv?'#4ee08a':'#fff6d8');g.fillStyle='#241f3a';g.fillText(t,tx,ty+2.5)}}}
 const FUN={t0:0,last:0,txt:''};
-function nudge(){const n=document.getElementById('nudge');if(!n||open||paused||cOpen)return;const T=regT();
-  n.innerHTML='<b>Halo '+PROF.name+'!</b> '+(T.id=='sem'?'Seminar AFBI #10 sebentar lagi, kursi terbatas.':T.id=='arena'?'Lomba AFBI #10 masih dibuka.':'Cek jadwal AFBI terbaru.')+' Ikuti <b>panah emas</b> ke '+T.s+', atau ketuk di sini untuk daftar.';
-  n.classList.add('show');SND.p('egg');FUN.last=performance.now();clearTimeout(FUN.h);FUN.h=setTimeout(()=>n.classList.remove('show'),9000)}
-function funnelTick(){const c=document.getElementById('cta');if(!c)return;const on=PROF.saved&&!selLock;c.classList.toggle('show',!!on);if(!on)return;
-  const T=regT(),tx=T.t+' \u25B8';if(tx!=FUN.txt){FUN.txt=tx;c.textContent=tx}
-  const now=performance.now();if(!FUN.t0)FUN.t0=now;if(vis.has(T.id))return;
-  if(!FUN.last&&now-FUN.t0>12000)nudge();else if(FUN.last&&now-FUN.last>150000)nudge()}
-{const c=document.getElementById('cta'),n=document.getElementById('nudge');if(c)c.onclick=goReg;if(n)n.onclick=()=>{n.classList.remove('show');goReg()};setInterval(funnelTick,1000)}
+
+// ================= MARKETING: EVENT TERDEKAT =================
+const SEM_S=new Date('2026-10-13T08:00:00+07:00'),SEM_E=new Date('2026-10-13T12:25:00+07:00'),SEM_OFF=new Date('2026-10-12T12:00:00+07:00'),SEM_ON=new Date('2026-10-12T23:59:00+07:00');
+const nowI=()=>new Date(Date.now()+TOFF),pad2=n=>String(n).padStart(2,'0');
+const fmtLeft=ms=>{const d=Math.floor(ms/864e5),h=Math.floor(ms%864e5/36e5),m=Math.floor(ms%36e5/6e4);return d>0?d+' hari '+h+' jam':h>0?h+' jam '+m+' menit':Math.max(1,m)+' menit'};
+function regDeadline(){const n=nowI();if(n<SEM_OFF)return{k:'offline',ms:SEM_OFF-n,w:'Senin, 12 Okt 2026 pukul 12.00 WIB'};if(n<SEM_ON)return{k:'online',ms:SEM_ON-n,w:'Senin, 12 Okt 2026 pukul 23.59 WIB'};return null}
+const semWhen=()=>{const n=nowI();if(n>=SEM_E)return'sudah selesai';if(n>=SEM_S)return'sedang berlangsung (LIVE)';const ms=SEM_S-n;return ms<864e5?'dimulai '+fmtLeft(ms)+' lagi':'tinggal '+Math.floor(ms/864e5)+' hari lagi'};
+const evLine=()=>{const dl=regDeadline();return' Seminar AFBI #10 '+semWhen()+'.'+(dl?' Pendaftaran '+dl.k+' tutup '+fmtLeft(dl.ms)+' lagi.':'')+' Ketuk tombol DAFTAR di layar ya!'};
+const regT=()=>{const dl=regDeadline(),n=nowI();
+  if(dl){const w=dl.ms>=2*864e5?Math.floor(dl.ms/864e5)+' HARI':dl.ms>=36e5?Math.floor(dl.ms/36e5)+' JAM':Math.max(1,Math.ceil(dl.ms/6e4))+' MENIT';return{id:'sem',t:'DAFTAR SEMINAR \u00B7 TUTUP '+w+' LAGI',s:'Aula Seminar',hot:dl.ms<864e5}}
+  if(n<SEM_E)return{id:'sem',t:n>=SEM_S?'SEMINAR LIVE \u00B7 IKUT SEKARANG':'LIHAT INFO SEMINAR',s:'Aula Seminar'};
+  if(reg.sma||reg.univ)return{id:'arena',t:'DAFTAR LOMBA AFBI #10',s:'Arena Kompetisi'};
+  return{id:'tl',t:'CEK EVENT TERDEKAT',s:'Menara Timeline'}};
+const missions=()=>{const g=Object.keys(GBEST).length;return[{t:'Kunjungi Aula Seminar',ok:vis.has('sem')},{t:'Coba 3 minigame',ok:g>=3,p:Math.min(3,g)+'/3'},{t:'Kumpulkan 5 koin',ok:coins>=5,p:Math.min(5,coins)+'/5'},{t:'Buka formulir pendaftaran seminar',ok:!!PROF.rc}]};
+const shareURL=()=>location.href.split('#')[0];
+const shareMsg=()=>'Yuk ikut Seminar Akuntansi Nasional AFBI #10: "Digital Accounting in the AI Era". Selasa, 13 Oktober 2026, 08.00 WIB, hybrid (offline & Zoom), dapat e-sertifikat. Daftar sebelum 12 Oktober! Main game kotanya dulu: '+shareURL();
+const calURL=()=>'https://calendar.google.com/calendar/render?action=TEMPLATE&text='+encodeURIComponent('Seminar Akuntansi Nasional AFBI #10')+'&dates=20261013T010000Z/20261013T052500Z&details='+encodeURIComponent('Digital Accounting in the AI Era: Building Professional Careers and Sustainable Accountability. Hybrid: Ruang Seminar & Zoom. Info: @accfest.biu')+'&location='+encodeURIComponent('Kampus Bina Insani, Rawalumbu, Bekasi / Zoom');
+const icsURL=()=>'data:text/calendar;charset=utf-8,'+encodeURIComponent(['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//AFBI//ID','BEGIN:VEVENT','UID:afbi10-seminar@binainsani','DTSTAMP:20261001T000000Z','DTSTART:20261013T010000Z','DTEND:20261013T052500Z','SUMMARY:Seminar Akuntansi Nasional AFBI #10','DESCRIPTION:Digital Accounting in the AI Era. Hybrid (Ruang Seminar & Zoom). Info @accfest.biu','LOCATION:Kampus Bina Insani Rawalumbu Bekasi / Zoom','BEGIN:VALARM','TRIGGER:-P1D','ACTION:DISPLAY','DESCRIPTION:Seminar AFBI #10 besok','END:VALARM','END:VEVENT','END:VCALENDAR'].join('\r\n'));
+function evUp(max){const n=now(),M3=['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agu','Sep','Okt','Nov','Des'];
+  return EVT.map(e=>({b:e.b,n:e.n,s:evD(e.s),e:evD(e.e)})).filter(e=>n<=e.e).sort((a,c)=>a.s-c.s).slice(0,max).map(e=>{const ms=e.s-n;
+    const d0=new Date(n.getFullYear(),n.getMonth(),n.getDate()),d1=new Date(e.s.getFullYear(),e.s.getMonth(),e.s.getDate()),dd=Math.round((d1-d0)/864e5);
+    e.l=ms<=0?'LIVE':dd<=0?'HARI INI':dd==1?'BESOK':'H-'+dd;e.d=e.s.getDate()+' '+M3[e.s.getMonth()]+' \u00B7 '+pad2(e.s.getHours())+'.'+pad2(e.s.getMinutes());return e})}
+MD.promo=()=>{const n=nowI(),dl=regDeadline(),over=n>=SEM_E,live=!over&&n>=SEM_S,mis=missions(),done=mis.filter(m=>m.ok).length;let ban;
+  if(over)ban='<div class="pbn off"><b>Terima kasih!</b><span>AFBI #10 telah usai. Pantau acara berikutnya di Instagram @accfest.biu.</span></div>';
+  else if(live)ban='<div class="pbn live"><b>LIVE sekarang</b><span>Seminar sedang berlangsung. Gabung lewat Zoom atau datang ke Ruang Seminar!</span></div>';
+  else if(dl)ban='<div class="pbn '+(dl.ms<864e5?'hot':'')+'"><b>'+(dl.ms<864e5?'Segera tutup!':'Pendaftaran dibuka')+'</b><span>Daftar '+dl.k+' ditutup '+dl.w+'. Sisa waktu: <b id="pdl">'+fmtLeft(dl.ms)+'</b></span></div>';
+  else ban='<div class="pbn off"><b>Pendaftaran sudah ditutup</b><span>Pantau info terbaru di Instagram @accfest.biu.</span></div>';
+  const cd=over||live?'':'<div class="pcd"><div><b id="pc-d">00</b><i>HARI</i></div><div><b id="pc-h">00</b><i>JAM</i></div><div><b id="pc-m">00</b><i>MENIT</i></div><div><b id="pc-s">00</b><i>DETIK</i></div></div>';
+  const ups=evUp(3);
+  return `<h2>Event Terdekat</h2><div class="phero"><em>EVENT TERDEKAT</em><b>Seminar Akuntansi Nasional AFBI #10</b><span>"Digital Accounting in the AI Era"</span><span>Selasa, 13 Oktober 2026 \u00B7 08.00 WIB \u00B7 Hybrid</span>${cd}</div>${ban}
+<h3>Kenapa harus ikut?</h3><ul class="pls"><li>E-sertifikat untuk semua peserta</li><li>Dua narasumber: Wakil Ketua I IAI Jabar dan Tenaga Ahli BAP DPD RI</li><li>Hybrid: datang ke Ruang Seminar atau ikut lewat Zoom</li><li>Bahas AI dalam akuntansi, bekal karier akuntan masa depan</li><li>Biaya ringan: offline Rp 20.000, online Rp 15.000</li></ul>
+<h3>Daftar sekarang</h3>${bt('Daftar offline \u00B7 Rp 20.000 (mahasiswa Bina Insani)',L.off,semOff())}${bt('Daftar online \u00B7 Rp 15.000 (umum)',L.on,semOn())}
+<h3>Jangan sampai ketinggalan</h3><div class="p2"><a class="btn alt" href="${calURL()}" target="_blank" rel="noopener noreferrer">+ Google Kalender</a><a class="btn alt" href="${icsURL()}" download="afbi10-seminar.ics">+ Kalender HP (.ics)</a></div>
+<h3>Ajak teman, makin seru</h3><div class="p2"><a class="btn wa" href="https://wa.me/?text=${encodeURIComponent(shareMsg())}" target="_blank" rel="noopener noreferrer">Kirim via WhatsApp</a><button class="btn alt" id="pcopy" type="button">Salin pesan</button></div>${navigator.share?'<button class="btn alt" id="pshare" type="button" style="width:100%">Bagikan ke aplikasi lain</button>':''}
+${ups.length?'<h3>Event berikutnya</h3>'+ups.map(e=>'<div class="row" data-b="'+e.b+'" style="cursor:pointer"><b>'+e.n+'</b><span>'+e.l+' \u00B7 '+e.d+' \u25B8</span></div>').join(''):''}
+<h3>Misi Duta AFBI (${done}/4)</h3><div class="pms">${mis.map(m=>'<div class="pm '+(m.ok?'ok':'')+'"><i>'+(m.ok?'\u2714':'\u25CB')+'</i><span>'+m.t+'</span><em>'+(m.p||'')+'</em></div>').join('')}</div><p>${done>=4?'Lencana <b>Duta AFBI #10</b> sudah jadi milikmu. Terima kasih sudah ikut menyebarkan acaranya!':'Selesaikan semua misi untuk membuka lencana <b>Duta AFBI #10</b> di profilmu.'}</p>
+<h3>Narasumber</h3>${spks()}<p style="margin-top:10px">Info lengkap: Instagram <b>@accfest.biu</b></p>`};
+function promoStart(){clearInterval(PROMO_T);const up=()=>{const a=$g('pc-d'),b=$g('pdl');if(!a&&!b){clearInterval(PROMO_T);return}
+  if(a){let ms=Math.max(0,SEM_S-nowI());$g('pc-d').textContent=pad2(Math.floor(ms/864e5));$g('pc-h').textContent=pad2(Math.floor(ms%864e5/36e5));$g('pc-m').textContent=pad2(Math.floor(ms%36e5/6e4));$g('pc-s').textContent=pad2(Math.floor(ms%6e4/1e3))}
+  if(b){const dl=regDeadline();if(dl)b.textContent=fmtLeft(dl.ms)}};up();PROMO_T=setInterval(up,1000)}
+function showPromo(){if(open||paused||selLock)return;SND.p('open');open=true;const html=MD.promo(),m=html.match(/^<h2>(.*?)<\/h2>/),sh=$g('sh');sh.style.setProperty('--acc','#ff6b4a');
+  sh.innerHTML='<div class="hd"><span>'+m[1]+'</span><button class="x" id="cx">Tutup</button></div><div class="bd">'+html.slice(m[0].length)+'</div>';$g('m').classList.add('show');sh.scrollTop=0;$g('cx').onclick=hide;imgFix(sh);promoStart()}
+const goReg=()=>showPromo();
+$g('sh').addEventListener('click',e=>{const t=e.target;if(!t.closest)return;const a=t.closest('a.btn');
+  if(a&&/docs\.google\.com\/forms/.test(a.href||'')){if(!PROF.rc){PROF.rc=1;profSave();checkEggs()}SND.p('win');return}
+  const r=t.closest('[data-b]');if(r){const b=r.dataset.b;hide();setTimeout(()=>show(b),60);return}
+  if(t.closest('#pshare')){try{navigator.share({title:'Seminar AFBI #10',text:shareMsg(),url:shareURL()}).catch(()=>{})}catch(_){}return}
+  if(t.closest('#pcopy')){const bt2=t.closest('#pcopy'),ok=()=>{bt2.textContent='Tersalin!';SND.p('ok')};try{navigator.clipboard.writeText(shareMsg()).then(ok,()=>{})}catch(_){const ta=document.createElement('textarea');ta.value=shareMsg();document.body.appendChild(ta);ta.select();try{document.execCommand('copy');ok()}catch(__){}ta.remove()}}});
+function nudge(){const n=$g('nudge');if(!n||open||paused||cOpen)return;const T=regT(),dl=regDeadline();
+  n.innerHTML='<b>Halo '+PROF.name+'!</b> Seminar AFBI #10 '+semWhen()+'. '+(dl?'Pendaftaran '+dl.k+' tutup <b>'+fmtLeft(dl.ms)+'</b> lagi. ':'')+'Ketuk di sini untuk lihat &amp; daftar.';
+  n.classList.add('show');SND.p('egg');FUN.last=performance.now();FUN.n=(FUN.n||0)+1;clearTimeout(FUN.h);FUN.h=setTimeout(()=>n.classList.remove('show'),8000)}
+function funnelTick(){const c=$g('cta');if(!c)return;const on=PROF.saved&&!selLock;c.classList.toggle('show',!!on);if(!on)return;
+  const T=regT(),tx=T.t+' \u25B8';if(tx!=FUN.txt){FUN.txt=tx;c.textContent=tx}c.classList.toggle('hot',!!T.hot);
+  const nw=performance.now();if(!FUN.t0)FUN.t0=nw;if(PROF.rc||nowI()>=SEM_E||(FUN.n||0)>=4)return;
+  if(!FUN.last&&nw-FUN.t0>12000)nudge();else if(FUN.last&&nw-FUN.last>120000)nudge()}
+{const c=$g('cta'),n=$g('nudge');if(c)c.onclick=goReg;if(n)n.onclick=()=>{n.classList.remove('show');goReg()};const cd=$g('card');if(cd)cd.onclick=goReg;setInterval(funnelTick,1000)}
+{const t0=document.title;let iv=0,f=0;document.addEventListener('visibilitychange',()=>{clearInterval(iv);if(document.hidden&&!PROF.rc&&nowI()<SEM_E){const dl=regDeadline(),a='\uD83C\uDF9F Seminar AFBI #10 '+(dl?'tutup '+fmtLeft(dl.ms)+' lagi':semWhen()),b='Daftar sekarang, '+PROF.name+'?';document.title=a;iv=setInterval(()=>{document.title=(f^=1)?a:b},1600)}else document.title=t0})}
 
 function play(id){open=true;SND.p('open');SND.mood('arcade');const sh=$g('sh');sh.style.setProperty('--acc',GN[id][1]);
  sh.innerHTML='<div class="hd"><span>'+GN[id][0]+'</span><button class="x" id="cx">Tutup</button></div><div class="bd" id="gb"></div>';
@@ -2047,10 +2111,10 @@ function play(id){open=true;SND.p('open');SND.mood('arcade');const sh=$g('sh');s
    else{lk=1;setTimeout(()=>{y.className='gc';x.className='gc';a=-1;lk=0},750)}})}}
 // ---------- profil pemain, pilih karakter, easter egg ----------
 const SKEY='afbi10_profile_v1';
-const PROF={name:'Raka',g:'m',col:null,saved:0,sec:0,perf:0,scare:0,sp:0,eggs:new Set()};
-try{const s=JSON.parse(localStorage.getItem(SKEY)||'null');if(s){PROF.name=String(s.name||'Raka').slice(0,12);PROF.g=s.g=='f'?'f':'m';PROF.col=s.col||null;PROF.saved=1;PROF.sec=+s.sec||0;PROF.perf=s.perf?1:0;PROF.scare=+s.scare||0;PROF.sp=s.sp?1:0;(s.eggs||[]).forEach(e=>PROF.eggs.add(e));if(s.best)Object.assign(GBEST,s.best)}}catch(e){}
+const PROF={name:'Raka',g:'m',col:null,saved:0,sec:0,perf:0,scare:0,sp:0,rc:0,eggs:new Set()};
+try{const s=JSON.parse(localStorage.getItem(SKEY)||'null');if(s){PROF.name=String(s.name||'Raka').slice(0,12);PROF.g=s.g=='f'?'f':'m';PROF.col=s.col||null;PROF.saved=1;PROF.sec=+s.sec||0;PROF.perf=s.perf?1:0;PROF.scare=+s.scare||0;PROF.sp=s.sp?1:0;PROF.rc=s.rc?1:0;(s.eggs||[]).forEach(e=>PROF.eggs.add(e));if(s.best)Object.assign(GBEST,s.best)}}catch(e){}
 let NOSAVE=false;
-function profSave(){if(NOSAVE||!PROF.saved)return;try{const bid=new Set(BLD.map(b=>b.id));localStorage.setItem(SKEY,JSON.stringify({v:2,name:PROF.name,g:PROF.g,col:PROF.col,sec:PROF.sec,perf:PROF.perf,scare:PROF.scare,sp:PROF.sp,eggs:[...PROF.eggs],best:GBEST,
+function profSave(){if(NOSAVE||!PROF.saved)return;try{const bid=new Set(BLD.map(b=>b.id));localStorage.setItem(SKEY,JSON.stringify({v:2,name:PROF.name,g:PROF.g,col:PROF.col,sec:PROF.sec,perf:PROF.perf,scare:PROF.scare,sp:PROF.sp,rc:PROF.rc,eggs:[...PROF.eggs],best:GBEST,
   nc:NC,got:[...got],ng:NG,gotG:[...gotG],vis:[...vis],seen:[...seenS].filter(k=>bid.has(k)),pos:[+P.x.toFixed(2),+P.y.toFixed(2)],t:Date.now()}))}catch(e){}}
 // muat progres yang tersimpan di browser (dipanggil sekali setelah semua data game siap)
 function restoreProgress(){try{const s=JSON.parse(localStorage.getItem(SKEY)||'null');if(!s)return;
@@ -2058,7 +2122,7 @@ function restoreProgress(){try{const s=JSON.parse(localStorage.getItem(SKEY)||'n
   if(s.ng===NG&&Array.isArray(s.gotG))s.gotG.forEach(i=>{if(Number.isInteger(i)&&i>=0&&i<NG&&!gotG.has(i)){gotG.add(i);gems++}});
   const bid=new Set(BLD.map(b=>b.id));(s.vis||[]).forEach(k=>{if(bid.has(k))vis.add(k)});(s.seen||[]).forEach(k=>{if(bid.has(k)&&SEQ[k])seenS.add(k)});
   if(Array.isArray(s.pos)){const x=+s.pos[0],y=+s.pos[1];if(isFinite(x)&&isFinite(y)&&WAL(x,y)&&canStand(x,y,.17,true)){P.x=x;P.y=y}}}catch(e){}}
-function welcomeBack(){SEQ.back=[{w:'wike',t:'Selamat datang kembali, '+PROF.name+'! Progresmu masih tersimpan: koin '+coins+'/'+NC+', permata '+gems+'/'+NG+', gedung '+vis.size+'/'+BLD.length+'.',end:'Lanjut jelajah \u25B6'}];openChat('back')}
+function welcomeBack(){SEQ.back=[{w:'wike',t:'Selamat datang kembali, '+PROF.name+'! Progresmu masih tersimpan: koin '+coins+'/'+NC+', permata '+gems+'/'+NG+', gedung '+vis.size+'/'+BLD.length+'.'+evLine(),end:'Lanjut jelajah \u25B6'}];openChat('back')}
 addEventListener('pagehide',()=>profSave());document.addEventListener('visibilitychange',()=>{if(document.hidden)profSave()});
 const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 const HERO0=HERO.map(h=>({...h}));
@@ -2109,6 +2173,7 @@ const EGGS=[
  {id:'mAll',ic:'\uD83C\uDFAE',t:'Jawara Taman Bermain',d:'Semua minigame di Taman Bermain sudah kamu coba.',h:'Coba semua minigame.',ok:()=>Object.keys(GBEST).length>=Object.keys(GN).length},
  {id:'perf',ic:'\uD83C\uDFAF',t:'Debit = Kredit!',d:'Nilai sempurna di satu minigame.',h:'Dapatkan nilai penuh di satu minigame.',ok:()=>!!PROF.perf},
  {id:'bird',ic:'\uD83D\uDC26',t:'Pawang Burung',d:'Merpati-merpati di taman sudah hafal langkah kakimu.',h:'Kagetkan merpati di taman 5 kali.',ok:()=>PROF.scare>=5},
+ {id:'duta',ic:'\uD83C\uDF9F\uFE0F',t:'Duta AFBI #10',d:'Semua misi menuju AFBI #10 selesai. Terima kasih sudah ikut menyebarkan acaranya!',h:'Selesaikan 4 misi di kartu Event Terdekat (ketuk tombol DAFTAR).',ok:()=>missions().every(m=>m.ok)},
  {id:'all',ic:'\uD83D\uDC51',t:'Kejutan Sponsor',d:'Semua koin dan permata! Mahkota Akuntan Sejati jadi milikmu. Cek gedung Sponsor & Hadiah.',h:'Kumpulkan SEMUA koin dan permata, lalu mampir ke gedung Sponsor.',ok:()=>coins>=NC&&gems>=NG,chat:'egg'}];
 const eggQ=[],eggTQ=[];let eggBusy=false,egAcc=0;
 function checkEggs(){let n=0;for(const e of EGGS){if(!PROF.eggs.has(e.id)&&e.ok()){PROF.eggs.add(e.id);eggTQ.push(e);confetti(e.id=='all'?170:60,e.id);SND.p('egg');if(e.chat)eggQ.push(e.chat);n++}}
@@ -2239,6 +2304,7 @@ const SEQ={
   {w:'fachri',t:'Aku Fachri, admin 2. AFBI #10 adalah kegiatan tahunan Perguruan Tinggi Bina Insani bertema AI dalam akuntansi.'},
   {w:'wike',t:'Ada Lomba Akuntansi SMA/SMK dan Perguruan Tinggi, plus Seminar Akuntansi Nasional hybrid. Total hadiahnya Rp 30 juta!'},
   {w:'fachri',t:'Jalan-jalan ke 6 gedung buat info lengkap, kumpulkan koin dan permata, dan ajak ngobrol warga kota ya. Jangan lupa mampir ke Taman Bermain di selatan, ada '+Object.keys(GN).length+' minigame seru: kuis, arcade, sampai wahana!'},
+  {w:'wike',t:'Oh iya! Seminar AFBI #10 tinggal sebentar lagi. Cari tombol emas DAFTAR di layar, di sana ada hitung mundur, info biaya, dan tombol daftarnya. Aku tunggu kamu di Aula Seminar!'},
   {w:'wike',t:'Kalau butuh bantuan, klik tombol Customer Service bulat di pojok kanan. Ketuk potret karaktermu di pojok kiri atas untuk lihat profil. Selamat menjelajah!',end:'Mulai jelajah \u25B6'}],
  cs:[
   {w:'wike',t:'Halo! Aku Wike, admin AFBI #10.'},
